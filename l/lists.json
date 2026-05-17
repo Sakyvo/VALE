@@ -235,5 +235,18 @@
       "Pax10_Revamp",
       "eum3edit_ÂÂRevamp"
     ]
+  },
+  {
+    "name": "overlay",
+    "cover": "",
+    "description": "Default-equivalent overlays (auto-detected)",
+    "packs": [
+      "Cases_Block_Overlaywhite_fire",
+      "Idiol_Snow_v4",
+      "LightMap_Clear_Walls",
+      "no_color_purple_sky_and_glint_overlay",
+      "no_color_red_sky_and_glint_overlay",
+      "sky_glint_overlay"
+    ]
   }
 ]

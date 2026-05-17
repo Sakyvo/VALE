@@ -25,7 +25,7 @@ class PackSearch {
       return;
     }
 
-    let results = this.loader.index.items.filter(pack =>
+    let results = (this.loader.allItems || this.loader.index.items).filter(pack =>
       pack.displayName.toLowerCase().includes(query) ||
       pack.name.toLowerCase().includes(query)
     );
@@ -39,15 +39,20 @@ class PackSearch {
 
   renderResults(results) {
     this.resultsContainer.innerHTML = results
-      .map(pack => `
+      .map(pack => {
+        const isOverlay = (pack.lists || []).includes('overlay');
+        const badge = isOverlay ? '<span class="overlay-badge">OVERLAY</span>' : '';
+        return `
         <a class="pack-card" href="/p/${pack.name}/">
           <img class="cover" src="${pack.cover}" alt="${pack.displayName}" style="visibility:hidden">
+          ${badge}
           <div class="info">
             <img class="pack-icon" src="${pack.packPng}" alt="">
             <div class="name">${pack.coloredName || pack.displayName}</div>
           </div>
         </a>
-      `)
+      `;
+      })
       .join('');
 
     this.resultsContainer.querySelectorAll('.cover').forEach(img => {

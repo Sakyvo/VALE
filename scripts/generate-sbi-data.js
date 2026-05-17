@@ -6,7 +6,7 @@ const { sanitizePreviewPngBuffer } = require('./thumbnail-preview-utils');
 const THUMB_DIR = path.join(__dirname, '..', 'thumbnails');
 const OUT_FILE = path.join(__dirname, '..', 'data', 'sbi-fingerprints.json');
 const SHARD_DIR = path.join(__dirname, '..', 'data', 'sbi-fp');
-const SBI_FINGERPRINT_VERSION = 13;
+const SBI_FINGERPRINT_VERSION = 14;
 
 // Note: crosshair removed — MC renders it via XOR blending, making screenshot comparison meaningless
 const TEXTURES = [
@@ -452,11 +452,22 @@ async function processHudIcons(iconsPath) {
   return out;
 }
 
+function loadOverlayPacks() {
+  const listsPath = path.join(__dirname, '..', 'l', 'lists.json');
+  if (!fs.existsSync(listsPath)) return new Set();
+  const lists = JSON.parse(fs.readFileSync(listsPath, 'utf-8'));
+  const overlay = lists.find(l => l.name === 'overlay');
+  return new Set(overlay ? overlay.packs : []);
+}
+
 async function main() {
-  const dirs = fs.readdirSync(THUMB_DIR).filter(d =>
+  const overlaySet = loadOverlayPacks();
+  const allDirs = fs.readdirSync(THUMB_DIR).filter(d =>
     fs.statSync(path.join(THUMB_DIR, d)).isDirectory()
   );
-  console.log(`Processing ${dirs.length} packs...`);
+  const dirs = allDirs.filter(d => !overlaySet.has(d));
+  const skipped = allDirs.length - dirs.length;
+  console.log(`Processing ${dirs.length} packs${skipped ? ` (skipped ${skipped} overlay)` : ''}...`);
   const packs = {};
   let done = 0;
   for (const dir of dirs) {

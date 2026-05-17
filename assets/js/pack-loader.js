@@ -12,7 +12,10 @@ class PackLoader {
   }
 
   async init() {
-    this.index = await fetch('data/index.json?t=' + Date.now()).then(r => r.json());
+    const raw = await fetch('data/index.json?t=' + Date.now()).then(r => r.json());
+    this.allItems = raw.items;
+    const displayItems = raw.items.filter(it => !(it.lists || []).includes('overlay'));
+    this.index = { ...raw, items: displayItems };
     this.renderPlaceholders();
     this.observeItems();
   }
@@ -53,13 +56,17 @@ class PackLoader {
 
       const el = entry.target;
       const index = parseInt(el.dataset.index);
-      const page = Math.floor(index / this.pageSize) + 1;
+      const items = this.getItems();
+      const item = items[index];
+      if (!item) continue;
+      const origIndex = this.allItems.indexOf(item);
+      const page = Math.floor(origIndex / this.pageSize) + 1;
 
       if (!this.loadedPages.has(page)) {
         await this.loadPage(page);
       }
 
-      const pack = this.getPackByIndex(index);
+      const pack = this.pagesData[page]?.find(p => p.name === item.name);
       if (pack) this.renderCard(el, pack);
 
       el.dataset.loaded = 'true';
