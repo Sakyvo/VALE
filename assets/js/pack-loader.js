@@ -14,7 +14,7 @@ class PackLoader {
   async init() {
     const raw = await fetch('data/index.json?t=' + Date.now()).then(r => r.json());
     this.allItems = raw.items;
-    const displayItems = raw.items.filter(it => !(it.lists || []).includes('overlay'));
+    const displayItems = raw.items.filter(it => !(it.lists || []).includes('Overlay'));
     this.index = { ...raw, items: displayItems };
     this.renderPlaceholders();
     this.observeItems();

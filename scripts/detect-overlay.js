@@ -8,7 +8,7 @@ const ROOT = path.join(__dirname, '..');
 const THUMB_DIR = path.join(ROOT, 'thumbnails');
 const LISTS_PATH = path.join(ROOT, 'l', 'lists.json');
 const DEFAULT_TEXTURE_DIR = path.join(ROOT, 'Default_Texture');
-const OVERLAY_LIST_NAME = 'overlay';
+const OVERLAY_LIST_NAME = 'Overlay';
 
 const SEED_PACKS = [
   'Cases_Block_Overlaywhite_fire',

@@ -456,7 +456,7 @@ function loadOverlayPacks() {
   const listsPath = path.join(__dirname, '..', 'l', 'lists.json');
   if (!fs.existsSync(listsPath)) return new Set();
   const lists = JSON.parse(fs.readFileSync(listsPath, 'utf-8'));
-  const overlay = lists.find(l => l.name === 'overlay');
+  const overlay = lists.find(l => l.name === 'Overlay');
   return new Set(overlay ? overlay.packs : []);
 }
 

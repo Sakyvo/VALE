@@ -277,14 +277,20 @@ document.addEventListener('DOMContentLoaded', async () => {
   const sortBtn = document.getElementById('sort-btn');
 
   window.renderLists = function(query = '') {
+    const q = query.toLowerCase();
+    const overlay = listsData.find(l => l.name === 'Overlay');
     let filtered = listsData.filter(l =>
-      l.name.toLowerCase().includes(query.toLowerCase())
+      l.name !== 'Overlay' && l.name.toLowerCase().includes(q)
     );
 
     if (sortByDate) {
       filtered = [...filtered].reverse();
     } else {
       filtered = [...filtered].sort((a, b) => a.name.localeCompare(b.name));
+    }
+
+    if (overlay && overlay.name.toLowerCase().includes(q)) {
+      filtered = [overlay, ...filtered];
     }
 
     if (filtered.length === 0) {
@@ -294,11 +300,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     grid.innerHTML = filtered.map(list => {
       const safeName = sanitizeName(list.name);
+      const isOverlay = list.name === 'Overlay';
       return `
-        <a class="list-item" href="/l/${safeName}/">
-          <div class="cover">
-            ${list.cover ? `<img src="${list.cover}">` : `<span style="font-size:24px;font-weight:bold;">${list.name}</span>`}
-          </div>
+        <a class="list-item${isOverlay ? ' overlay-list' : ''}" href="/l/${safeName}/">
           <div class="info">
             <div class="name">${list.name}</div>
             <div class="meta">${list.packs.length} packs</div>

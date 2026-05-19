@@ -58,6 +58,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const lists = JSON.parse(localStorage.getItem('vale_lists') || '[]');
     const inLists = lists.filter(l => l.packs.includes(packName)).map(l => l.name);
+    inLists.sort((a, b) => {
+      if (a === 'Overlay') return -1;
+      if (b === 'Overlay') return 1;
+      return 0;
+    });
 
     document.getElementById('pack-content').innerHTML = `
       <div class="pack-cards">
@@ -73,7 +78,8 @@ document.addEventListener('DOMContentLoaded', async () => {
           <p class="file-size">${pack.fileSize}</p>
           ${inLists.length ? `<p class="in-lists">${inLists.map(name => {
             const listId = name.replace(/^#/, '').trim().replace(/\s+/g, '_').replace(/[^a-zA-Z0-9_-]/g, '');
-            return `<a href="/l/${listId}/">[${name}]</a>`;
+            const cls = name === 'Overlay' ? ' class="overlay-link"' : '';
+            return `<a href="/l/${listId}/"${cls}>[${name}]</a>`;
           }).join(' ')}</p>` : ''}
         </div>
       </div>

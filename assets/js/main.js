@@ -40,7 +40,7 @@ class PackSearch {
   renderResults(results) {
     this.resultsContainer.innerHTML = results
       .map(pack => {
-        const isOverlay = (pack.lists || []).includes('overlay');
+        const isOverlay = (pack.lists || []).includes('Overlay');
         const badge = isOverlay ? '<span class="overlay-badge">OVERLAY</span>' : '';
         return `
         <a class="pack-card" href="/p/${pack.name}/">

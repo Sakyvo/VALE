@@ -361,6 +361,10 @@ footer {
   text-decoration: underline;
 }
 
+.sub-card .in-lists a.overlay-link {
+  color: #E53935;
+}
+
 .download-section { margin-bottom: 32px; }
 
 .download-section h2, .preview-section h2 {
@@ -802,10 +806,10 @@ footer {
   color: var(--text-secondary);
 }
 
-/* List grid - same as pack-grid */
+/* List grid - compact text-only cards */
 .list-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 12px;
 }
 
@@ -823,34 +827,31 @@ footer {
   border-color: var(--border-dark);
 }
 
-.list-grid .list-item .cover {
-  aspect-ratio: 2;
-  background: #f0f0f0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 2px solid var(--border);
-  overflow: hidden;
-}
-
-.list-grid .list-item .cover img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 .list-grid .list-item .info {
-  padding: 4px 8px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
 }
 
 .list-grid .list-item .name {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .list-grid .list-item .meta {
   font-size: 12px;
   color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.list-grid .list-item.overlay-list .name,
+.list-grid .list-item.overlay-list .meta {
+  color: #E53935;
 }
 
 @media (max-width: 900px) { .list-grid { grid-template-columns: repeat(2, 1fr); } }
