@@ -1,0 +1,60 @@
+{
+  "id": "Chqllenged 3k Blue - By Hrguy",
+  "name": "Chqllenged_3k_Blue_-_By_Hrguy",
+  "displayName": "Chqllenged 3k Blue - By Hrguy",
+  "coloredName": "Chqllenged 3k Blue - By Hrguy",
+  "description": "Chqllenged's 3k by @Zrynxx",
+  "cover": "/thumbnails/Chqllenged_3k_Blue_-_By_Hrguy/cover.png",
+  "packPng": "/thumbnails/Chqllenged_3k_Blue_-_By_Hrguy/pack.png",
+  "icon": null,
+  "file": "resourcepacks/Chqllenged 3k Blue - By Hrguy.zip",
+  "fileSize": "28.5MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/Chqllenged%203k%20Blue%20-%20By%20Hrguy.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/Chqllenged%203k%20Blue%20-%20By%20Hrguy.zip"
+  }
+}

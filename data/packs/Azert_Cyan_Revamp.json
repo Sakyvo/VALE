@@ -1,0 +1,60 @@
+{
+  "id": "!     §bAzert (Cyan) [Revamp]",
+  "name": "Azert_Cyan_Revamp",
+  "displayName": "Azert (Cyan) [Revamp]",
+  "coloredName": "<span style=\"color:#55FFFF\">A</span><span style=\"color:#55FFFF\">z</span><span style=\"color:#55FFFF\">e</span><span style=\"color:#55FFFF\">r</span><span style=\"color:#55FFFF\">t</span><span style=\"color:#55FFFF\"> </span><span style=\"color:#55FFFF\">(</span><span style=\"color:#55FFFF\">C</span><span style=\"color:#55FFFF\">y</span><span style=\"color:#55FFFF\">a</span><span style=\"color:#55FFFF\">n</span><span style=\"color:#55FFFF\">)</span><span style=\"color:#55FFFF\"> </span><span style=\"color:#55FFFF\">[</span><span style=\"color:#55FFFF\">R</span><span style=\"color:#55FFFF\">e</span><span style=\"color:#55FFFF\">v</span><span style=\"color:#55FFFF\">a</span><span style=\"color:#55FFFF\">m</span><span style=\"color:#55FFFF\">p</span><span style=\"color:#55FFFF\">]</span>",
+  "description": "By Kalulthan",
+  "cover": "/thumbnails/Azert_Cyan_Revamp/cover.png",
+  "packPng": "/thumbnails/Azert_Cyan_Revamp/pack.png",
+  "icon": null,
+  "file": "resourcepacks/!     §bAzert (Cyan) [Revamp].zip",
+  "fileSize": "20.1MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%20%20%20%20%C2%A7bAzert%20(Cyan)%20%5BRevamp%5D.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%20%20%20%20%C2%A7bAzert%20(Cyan)%20%5BRevamp%5D.zip"
+  }
+}

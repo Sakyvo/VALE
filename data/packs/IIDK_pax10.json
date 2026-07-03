@@ -1,0 +1,60 @@
+{
+  "id": "IIDK pax10",
+  "name": "IIDK_pax10",
+  "displayName": "IIDK pax10",
+  "coloredName": "IIDK pax10",
+  "description": "",
+  "cover": "/thumbnails/IIDK_pax10/cover.png",
+  "packPng": "/thumbnails/IIDK_pax10/pack.png",
+  "icon": null,
+  "file": "resourcepacks/IIDK pax10.zip",
+  "fileSize": "16.7MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/IIDK%20pax10.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/IIDK%20pax10.zip"
+  }
+}

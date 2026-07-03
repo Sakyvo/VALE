@@ -1,0 +1,60 @@
+{
+  "id": "! §4Zonix (Crosshair 1)§8[§464x§8]",
+  "name": "Zonix_Crosshair_164x",
+  "displayName": "Zonix (Crosshair 1)[64x]",
+  "coloredName": "<span style=\"color:#AA0000\">Z</span><span style=\"color:#AA0000\">o</span><span style=\"color:#AA0000\">n</span><span style=\"color:#AA0000\">i</span><span style=\"color:#AA0000\">x</span><span style=\"color:#AA0000\"> </span><span style=\"color:#AA0000\">(</span><span style=\"color:#AA0000\">C</span><span style=\"color:#AA0000\">r</span><span style=\"color:#AA0000\">o</span><span style=\"color:#AA0000\">s</span><span style=\"color:#AA0000\">s</span><span style=\"color:#AA0000\">h</span><span style=\"color:#AA0000\">a</span><span style=\"color:#AA0000\">i</span><span style=\"color:#AA0000\">r</span><span style=\"color:#AA0000\"> </span><span style=\"color:#AA0000\">1</span><span style=\"color:#AA0000\">)</span><span style=\"color:#555555\">[</span><span style=\"color:#AA0000\">6</span><span style=\"color:#AA0000\">4</span><span style=\"color:#AA0000\">x</span><span style=\"color:#555555\">]</span>",
+  "description": "By Adviser",
+  "cover": "/thumbnails/Zonix_Crosshair_164x/cover.png",
+  "packPng": "/thumbnails/Zonix_Crosshair_164x/pack.png",
+  "icon": null,
+  "file": "resourcepacks/! §4Zonix (Crosshair 1)§8[§464x§8].zip",
+  "fileSize": "74.6MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%20%C2%A74Zonix%20(Crosshair%201)%C2%A78%5B%C2%A7464x%C2%A78%5D.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%20%C2%A74Zonix%20(Crosshair%201)%C2%A78%5B%C2%A7464x%C2%A78%5D.zip"
+  }
+}

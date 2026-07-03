@@ -1,0 +1,60 @@
+{
+  "id": "Faith edit by Scolded",
+  "name": "Faith_edit_by_Scolded",
+  "displayName": "Faith edit by Scolded",
+  "coloredName": "Faith edit by Scolded",
+  "description": "by Scolded.",
+  "cover": "/thumbnails/Faith_edit_by_Scolded/cover.png",
+  "packPng": "/thumbnails/Faith_edit_by_Scolded/pack.png",
+  "icon": null,
+  "file": "resourcepacks/Faith edit by Scolded.zip",
+  "fileSize": "4.7MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/Faith%20edit%20by%20Scolded.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/Faith%20edit%20by%20Scolded.zip"
+  }
+}

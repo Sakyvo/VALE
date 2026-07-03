@@ -1,0 +1,60 @@
+{
+  "id": "! Â§3Seno Â§7[256x]",
+  "name": "Seno_Â256x",
+  "displayName": "Seno Â[256x]",
+  "coloredName": "<span style=\"color:#00AAAA\">S</span><span style=\"color:#00AAAA\">e</span><span style=\"color:#00AAAA\">n</span><span style=\"color:#00AAAA\">o</span><span style=\"color:#00AAAA\"> </span><span style=\"color:#00AAAA\">Â</span><span style=\"color:#AAAAAA\">[</span><span style=\"color:#AAAAAA\">2</span><span style=\"color:#AAAAAA\">5</span><span style=\"color:#AAAAAA\">6</span><span style=\"color:#AAAAAA\">x</span><span style=\"color:#AAAAAA\">]</span>",
+  "description": "by Airbus",
+  "cover": "/thumbnails/Seno_Â256x/cover.png",
+  "packPng": "/thumbnails/Seno_Â256x/pack.png",
+  "icon": null,
+  "file": "resourcepacks/! Â§3Seno Â§7[256x].zip",
+  "fileSize": "51.6MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%C3%82%C2%A73Seno%20%C3%82%C2%A77%5B256x%5D.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%C3%82%C2%A73Seno%20%C3%82%C2%A77%5B256x%5D.zip"
+  }
+}

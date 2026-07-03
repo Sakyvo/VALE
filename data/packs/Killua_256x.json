@@ -1,0 +1,60 @@
+{
+  "id": "§9Killua §8[§f256x§8]",
+  "name": "Killua_256x",
+  "displayName": "Killua [256x]",
+  "coloredName": "<span style=\"color:#5555FF\">K</span><span style=\"color:#5555FF\">i</span><span style=\"color:#5555FF\">l</span><span style=\"color:#5555FF\">l</span><span style=\"color:#5555FF\">u</span><span style=\"color:#5555FF\">a</span><span style=\"color:#5555FF\"> </span><span style=\"color:#555555\">[</span><span style=\"color:#FFFFFF\">2</span><span style=\"color:#FFFFFF\">5</span><span style=\"color:#FFFFFF\">6</span><span style=\"color:#FFFFFF\">x</span><span style=\"color:#555555\">]</span>",
+  "description": "",
+  "cover": "/thumbnails/Killua_256x/cover.png",
+  "packPng": "/thumbnails/Killua_256x/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§9Killua §8[§f256x§8].zip",
+  "fileSize": "23.4MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/%C2%A79Killua%20%C2%A78%5B%C2%A7f256x%C2%A78%5D.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/%C2%A79Killua%20%C2%A78%5B%C2%A7f256x%C2%A78%5D.zip"
+  }
+}

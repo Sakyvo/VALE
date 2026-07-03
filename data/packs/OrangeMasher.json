@@ -1,0 +1,60 @@
+{
+  "id": "! §6OrangeMasher",
+  "name": "OrangeMasher",
+  "displayName": "OrangeMasher",
+  "coloredName": "<span style=\"color:#FFAA00\">O</span><span style=\"color:#FFAA00\">r</span><span style=\"color:#FFAA00\">a</span><span style=\"color:#FFAA00\">n</span><span style=\"color:#FFAA00\">g</span><span style=\"color:#FFAA00\">e</span><span style=\"color:#FFAA00\">M</span><span style=\"color:#FFAA00\">a</span><span style=\"color:#FFAA00\">s</span><span style=\"color:#FFAA00\">h</span><span style=\"color:#FFAA00\">e</span><span style=\"color:#FFAA00\">r</span>",
+  "description": "(cheatmashered)",
+  "cover": "/thumbnails/OrangeMasher/cover.png",
+  "packPng": "/thumbnails/OrangeMasher/pack.png",
+  "icon": null,
+  "file": "resourcepacks/! §6OrangeMasher.zip",
+  "fileSize": "17.9MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%20%C2%A76OrangeMasher.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%20%C2%A76OrangeMasher.zip"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "id": "§9§lWeirdEUM3IdeaV2",
+  "name": "WeirdEUM3IdeaV2",
+  "displayName": "WeirdEUM3IdeaV2",
+  "coloredName": "<span style=\"color:#5555FF\">W</span><span style=\"color:#5555FF\">e</span><span style=\"color:#5555FF\">i</span><span style=\"color:#5555FF\">r</span><span style=\"color:#5555FF\">d</span><span style=\"color:#5555FF\">E</span><span style=\"color:#5555FF\">U</span><span style=\"color:#5555FF\">M</span><span style=\"color:#5555FF\">3</span><span style=\"color:#5555FF\">I</span><span style=\"color:#5555FF\">d</span><span style=\"color:#5555FF\">e</span><span style=\"color:#5555FF\">a</span><span style=\"color:#5555FF\">V</span><span style=\"color:#5555FF\">2</span>",
+  "description": "Weird EUM3 Idea - By:BabyMarcel",
+  "cover": "/thumbnails/WeirdEUM3IdeaV2/cover.png",
+  "packPng": "/thumbnails/WeirdEUM3IdeaV2/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§9§lWeirdEUM3IdeaV2.zip",
+  "fileSize": "12.4MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/%C2%A79%C2%A7lWeirdEUM3IdeaV2.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/%C2%A79%C2%A7lWeirdEUM3IdeaV2.zip"
+  }
+}

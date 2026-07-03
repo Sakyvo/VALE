@@ -1,0 +1,60 @@
+{
+  "id": "§cMars Pack §7(Map 2)",
+  "name": "Mars_Pack_Map_2",
+  "displayName": "Mars Pack (Map 2)",
+  "coloredName": "<span style=\"color:#FF5555\">M</span><span style=\"color:#FF5555\">a</span><span style=\"color:#FF5555\">r</span><span style=\"color:#FF5555\">s</span><span style=\"color:#FF5555\"> </span><span style=\"color:#FF5555\">P</span><span style=\"color:#FF5555\">a</span><span style=\"color:#FF5555\">c</span><span style=\"color:#FF5555\">k</span><span style=\"color:#FF5555\"> </span><span style=\"color:#AAAAAA\">(</span><span style=\"color:#AAAAAA\">M</span><span style=\"color:#AAAAAA\">a</span><span style=\"color:#AAAAAA\">p</span><span style=\"color:#AAAAAA\"> </span><span style=\"color:#AAAAAA\">2</span><span style=\"color:#AAAAAA\">)</span>",
+  "description": "Mars Map 2 Pack",
+  "cover": "/thumbnails/Mars_Pack_Map_2/cover.png",
+  "packPng": "/thumbnails/Mars_Pack_Map_2/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§cMars Pack §7(Map 2).zip",
+  "fileSize": "25.1MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/%C2%A7cMars%20Pack%20%C2%A77(Map%202).zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/%C2%A7cMars%20Pack%20%C2%A77(Map%202).zip"
+  }
+}

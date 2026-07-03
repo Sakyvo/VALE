@@ -1,0 +1,60 @@
+{
+  "id": "! §5Sherlord §f[Revamp]",
+  "name": "Sherlord_Revamp",
+  "displayName": "Sherlord [Revamp]",
+  "coloredName": "<span style=\"color:#AA00AA\">S</span><span style=\"color:#AA00AA\">h</span><span style=\"color:#AA00AA\">e</span><span style=\"color:#AA00AA\">r</span><span style=\"color:#AA00AA\">l</span><span style=\"color:#AA00AA\">o</span><span style=\"color:#AA00AA\">r</span><span style=\"color:#AA00AA\">d</span><span style=\"color:#AA00AA\"> </span><span style=\"color:#FFFFFF\">[</span><span style=\"color:#FFFFFF\">R</span><span style=\"color:#FFFFFF\">e</span><span style=\"color:#FFFFFF\">v</span><span style=\"color:#FFFFFF\">a</span><span style=\"color:#FFFFFF\">m</span><span style=\"color:#FFFFFF\">p</span><span style=\"color:#FFFFFF\">]</span>",
+  "description": "[Skr] --- [Revamp by Timon]",
+  "cover": "/thumbnails/Sherlord_Revamp/cover.png",
+  "packPng": "/thumbnails/Sherlord_Revamp/pack.png",
+  "icon": null,
+  "file": "resourcepacks/! §5Sherlord §f[Revamp].zip",
+  "fileSize": "22.1MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%20%C2%A75Sherlord%20%C2%A7f%5BRevamp%5D.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%20%C2%A75Sherlord%20%C2%A7f%5BRevamp%5D.zip"
+  }
+}

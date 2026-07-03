@@ -1,0 +1,60 @@
+{
+  "id": "§cKawaiiGangPack",
+  "name": "KawaiiGangPack",
+  "displayName": "KawaiiGangPack",
+  "coloredName": "<span style=\"color:#FF5555\">K</span><span style=\"color:#FF5555\">a</span><span style=\"color:#FF5555\">w</span><span style=\"color:#FF5555\">a</span><span style=\"color:#FF5555\">i</span><span style=\"color:#FF5555\">i</span><span style=\"color:#FF5555\">G</span><span style=\"color:#FF5555\">a</span><span style=\"color:#FF5555\">n</span><span style=\"color:#FF5555\">g</span><span style=\"color:#FF5555\">P</span><span style=\"color:#FF5555\">a</span><span style=\"color:#FF5555\">c</span><span style=\"color:#FF5555\">k</span>",
+  "description": "~Dorper",
+  "cover": "/thumbnails/KawaiiGangPack/cover.png",
+  "packPng": "/thumbnails/KawaiiGangPack/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§cKawaiiGangPack.zip",
+  "fileSize": "27.9MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/%C2%A7cKawaiiGangPack.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/%C2%A7cKawaiiGangPack.zip"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "id": "§5Au7ismZ Pack V2 §4[Long Sword]",
+  "name": "Au7ismZ_Pack_V2_Long_Sword",
+  "displayName": "Au7ismZ Pack V2 [Long Sword]",
+  "coloredName": "<span style=\"color:#AA00AA\">A</span><span style=\"color:#AA00AA\">u</span><span style=\"color:#AA00AA\">7</span><span style=\"color:#AA00AA\">i</span><span style=\"color:#AA00AA\">s</span><span style=\"color:#AA00AA\">m</span><span style=\"color:#AA00AA\">Z</span><span style=\"color:#AA00AA\"> </span><span style=\"color:#AA00AA\">P</span><span style=\"color:#AA00AA\">a</span><span style=\"color:#AA00AA\">c</span><span style=\"color:#AA00AA\">k</span><span style=\"color:#AA00AA\"> </span><span style=\"color:#AA00AA\">V</span><span style=\"color:#AA00AA\">2</span><span style=\"color:#AA00AA\"> </span><span style=\"color:#AA0000\">[</span><span style=\"color:#AA0000\">L</span><span style=\"color:#AA0000\">o</span><span style=\"color:#AA0000\">n</span><span style=\"color:#AA0000\">g</span><span style=\"color:#AA0000\"> </span><span style=\"color:#AA0000\">S</span><span style=\"color:#AA0000\">w</span><span style=\"color:#AA0000\">o</span><span style=\"color:#AA0000\">r</span><span style=\"color:#AA0000\">d</span><span style=\"color:#AA0000\">]</span>",
+  "description": "....  By Au7ismZ ....",
+  "cover": "/thumbnails/Au7ismZ_Pack_V2_Long_Sword/cover.png",
+  "packPng": "/thumbnails/Au7ismZ_Pack_V2_Long_Sword/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§5Au7ismZ Pack V2 §4[Long Sword].zip",
+  "fileSize": "41.1MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/%C2%A75Au7ismZ%20Pack%20V2%20%C2%A74%5BLong%20Sword%5D.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/%C2%A75Au7ismZ%20Pack%20V2%20%C2%A74%5BLong%20Sword%5D.zip"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "id": "!    §f§l§oCyclone §k§f[§9Blue§k§f]",
+  "name": "Cyclone_Blue",
+  "displayName": "Cyclone [Blue]",
+  "coloredName": "<span style=\"color:#FFFFFF\">C</span><span style=\"color:#FFFFFF\">y</span><span style=\"color:#FFFFFF\">c</span><span style=\"color:#FFFFFF\">l</span><span style=\"color:#FFFFFF\">o</span><span style=\"color:#FFFFFF\">n</span><span style=\"color:#FFFFFF\">e</span><span style=\"color:#FFFFFF\"> </span><span style=\"color:#FFFFFF\">[</span><span style=\"color:#5555FF\">B</span><span style=\"color:#5555FF\">l</span><span style=\"color:#5555FF\">u</span><span style=\"color:#5555FF\">e</span><span style=\"color:#FFFFFF\">]</span>",
+  "description": "Cottage's Private Pack -denqy",
+  "cover": "/thumbnails/Cyclone_Blue/cover.png",
+  "packPng": "/thumbnails/Cyclone_Blue/pack.png",
+  "icon": null,
+  "file": "resourcepacks/!    §f§l§oCyclone §k§f[§9Blue§k§f].zip",
+  "fileSize": "27.3MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%20%20%20%C2%A7f%C2%A7l%C2%A7oCyclone%20%C2%A7k%C2%A7f%5B%C2%A79Blue%C2%A7k%C2%A7f%5D.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%20%20%20%C2%A7f%C2%A7l%C2%A7oCyclone%20%C2%A7k%C2%A7f%5B%C2%A79Blue%C2%A7k%C2%A7f%5D.zip"
+  }
+}

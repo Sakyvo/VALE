@@ -1,0 +1,60 @@
+{
+  "id": "§4Aphotic Eum3",
+  "name": "Aphotic_Eum3",
+  "displayName": "Aphotic Eum3",
+  "coloredName": "<span style=\"color:#AA0000\">A</span><span style=\"color:#AA0000\">p</span><span style=\"color:#AA0000\">h</span><span style=\"color:#AA0000\">o</span><span style=\"color:#AA0000\">t</span><span style=\"color:#AA0000\">i</span><span style=\"color:#AA0000\">c</span><span style=\"color:#AA0000\"> </span><span style=\"color:#AA0000\">E</span><span style=\"color:#AA0000\">u</span><span style=\"color:#AA0000\">m</span><span style=\"color:#AA0000\">3</span>",
+  "description": "~mashiu",
+  "cover": "/thumbnails/Aphotic_Eum3/cover.png",
+  "packPng": "/thumbnails/Aphotic_Eum3/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§4Aphotic Eum3.zip",
+  "fileSize": "21.2MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/%C2%A74Aphotic%20Eum3.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/%C2%A74Aphotic%20Eum3.zip"
+  }
+}

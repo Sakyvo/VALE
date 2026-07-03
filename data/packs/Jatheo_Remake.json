@@ -1,0 +1,60 @@
+{
+  "id": "!§7! §eJatheo §8Remake",
+  "name": "Jatheo_Remake",
+  "displayName": "Jatheo Remake",
+  "coloredName": "<span style=\"color:#AAAAAA\">!</span><span style=\"color:#AAAAAA\"> </span><span style=\"color:#FFFF55\">J</span><span style=\"color:#FFFF55\">a</span><span style=\"color:#FFFF55\">t</span><span style=\"color:#FFFF55\">h</span><span style=\"color:#FFFF55\">e</span><span style=\"color:#FFFF55\">o</span><span style=\"color:#FFFF55\"> </span><span style=\"color:#555555\">R</span><span style=\"color:#555555\">e</span><span style=\"color:#555555\">m</span><span style=\"color:#555555\">a</span><span style=\"color:#555555\">k</span><span style=\"color:#555555\">e</span>",
+  "description": "Zef",
+  "cover": "/thumbnails/Jatheo_Remake/cover.png",
+  "packPng": "/thumbnails/Jatheo_Remake/pack.png",
+  "icon": null,
+  "file": "resourcepacks/!§7! §eJatheo §8Remake.zip",
+  "fileSize": "14.9MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%C2%A77!%20%C2%A7eJatheo%20%C2%A78Remake.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%C2%A77!%20%C2%A7eJatheo%20%C2%A78Remake.zip"
+  }
+}

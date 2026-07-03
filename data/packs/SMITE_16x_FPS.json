@@ -1,0 +1,60 @@
+{
+  "id": "!      §bS§3M§bI§3T§bE §8[16x] FPS",
+  "name": "SMITE_16x_FPS",
+  "displayName": "SMITE [16x] FPS",
+  "coloredName": "<span style=\"color:#55FFFF\">S</span><span style=\"color:#00AAAA\">M</span><span style=\"color:#55FFFF\">I</span><span style=\"color:#00AAAA\">T</span><span style=\"color:#55FFFF\">E</span><span style=\"color:#55FFFF\"> </span><span style=\"color:#555555\">[</span><span style=\"color:#555555\">1</span><span style=\"color:#555555\">6</span><span style=\"color:#555555\">x</span><span style=\"color:#555555\">]</span><span style=\"color:#555555\"> </span><span style=\"color:#555555\">F</span><span style=\"color:#555555\">P</span><span style=\"color:#555555\">S</span>",
+  "description": "by Mellor",
+  "cover": "/thumbnails/SMITE_16x_FPS/cover.png",
+  "packPng": "/thumbnails/SMITE_16x_FPS/pack.png",
+  "icon": null,
+  "file": "resourcepacks/!      §bS§3M§bI§3T§bE §8[16x] FPS.zip",
+  "fileSize": "11.8MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%20%20%20%20%20%C2%A7bS%C2%A73M%C2%A7bI%C2%A73T%C2%A7bE%20%C2%A78%5B16x%5D%20FPS.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%20%20%20%20%20%C2%A7bS%C2%A73M%C2%A7bI%C2%A73T%C2%A7bE%20%C2%A78%5B16x%5D%20FPS.zip"
+  }
+}

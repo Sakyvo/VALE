@@ -1,0 +1,60 @@
+{
+  "id": "!§9Eum3BlueRevamp[128x]",
+  "name": "Eum3BlueRevamp128x",
+  "displayName": "Eum3BlueRevamp[128x]",
+  "coloredName": "<span style=\"color:#5555FF\">E</span><span style=\"color:#5555FF\">u</span><span style=\"color:#5555FF\">m</span><span style=\"color:#5555FF\">3</span><span style=\"color:#5555FF\">B</span><span style=\"color:#5555FF\">l</span><span style=\"color:#5555FF\">u</span><span style=\"color:#5555FF\">e</span><span style=\"color:#5555FF\">R</span><span style=\"color:#5555FF\">e</span><span style=\"color:#5555FF\">v</span><span style=\"color:#5555FF\">a</span><span style=\"color:#5555FF\">m</span><span style=\"color:#5555FF\">p</span><span style=\"color:#5555FF\">[</span><span style=\"color:#5555FF\">1</span><span style=\"color:#5555FF\">2</span><span style=\"color:#5555FF\">8</span><span style=\"color:#5555FF\">x</span><span style=\"color:#5555FF\">]</span>",
+  "description": "Made by Kelsty",
+  "cover": "/thumbnails/Eum3BlueRevamp128x/cover.png",
+  "packPng": "/thumbnails/Eum3BlueRevamp128x/pack.png",
+  "icon": null,
+  "file": "resourcepacks/!§9Eum3BlueRevamp[128x].zip",
+  "fileSize": "14.9MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!%C2%A79Eum3BlueRevamp%5B128x%5D.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!%C2%A79Eum3BlueRevamp%5B128x%5D.zip"
+  }
+}

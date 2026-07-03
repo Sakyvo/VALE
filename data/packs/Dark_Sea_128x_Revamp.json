@@ -1,0 +1,60 @@
+{
+  "id": "§3Dark Sea §8[§f128x§8] §8[§7Revamp§8]",
+  "name": "Dark_Sea_128x_Revamp",
+  "displayName": "Dark Sea [128x] [Revamp]",
+  "coloredName": "<span style=\"color:#00AAAA\">D</span><span style=\"color:#00AAAA\">a</span><span style=\"color:#00AAAA\">r</span><span style=\"color:#00AAAA\">k</span><span style=\"color:#00AAAA\"> </span><span style=\"color:#00AAAA\">S</span><span style=\"color:#00AAAA\">e</span><span style=\"color:#00AAAA\">a</span><span style=\"color:#00AAAA\"> </span><span style=\"color:#555555\">[</span><span style=\"color:#FFFFFF\">1</span><span style=\"color:#FFFFFF\">2</span><span style=\"color:#FFFFFF\">8</span><span style=\"color:#FFFFFF\">x</span><span style=\"color:#555555\">]</span><span style=\"color:#555555\"> </span><span style=\"color:#555555\">[</span><span style=\"color:#AAAAAA\">R</span><span style=\"color:#AAAAAA\">e</span><span style=\"color:#AAAAAA\">v</span><span style=\"color:#AAAAAA\">a</span><span style=\"color:#AAAAAA\">m</span><span style=\"color:#AAAAAA\">p</span><span style=\"color:#555555\">]</span>",
+  "description": "By iSparkton",
+  "cover": "/thumbnails/Dark_Sea_128x_Revamp/cover.png",
+  "packPng": "/thumbnails/Dark_Sea_128x_Revamp/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§3Dark Sea §8[§f128x§8] §8[§7Revamp§8].zip",
+  "fileSize": "19.1MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/%C2%A73Dark%20Sea%20%C2%A78%5B%C2%A7f128x%C2%A78%5D%20%C2%A78%5B%C2%A77Revamp%C2%A78%5D.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/%C2%A73Dark%20Sea%20%C2%A78%5B%C2%A7f128x%C2%A78%5D%20%C2%A78%5B%C2%A77Revamp%C2%A78%5D.zip"
+  }
+}

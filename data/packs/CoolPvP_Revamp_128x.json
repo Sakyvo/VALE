@@ -1,0 +1,60 @@
+{
+  "id": "§7#§5Cool§6PvP §7Revamp §8[§f128x§8]",
+  "name": "CoolPvP_Revamp_128x",
+  "displayName": "CoolPvP Revamp [128x]",
+  "coloredName": "<span style=\"color:#AA00AA\">C</span><span style=\"color:#AA00AA\">o</span><span style=\"color:#AA00AA\">o</span><span style=\"color:#AA00AA\">l</span><span style=\"color:#FFAA00\">P</span><span style=\"color:#FFAA00\">v</span><span style=\"color:#FFAA00\">P</span><span style=\"color:#FFAA00\"> </span><span style=\"color:#AAAAAA\">R</span><span style=\"color:#AAAAAA\">e</span><span style=\"color:#AAAAAA\">v</span><span style=\"color:#AAAAAA\">a</span><span style=\"color:#AAAAAA\">m</span><span style=\"color:#AAAAAA\">p</span><span style=\"color:#AAAAAA\"> </span><span style=\"color:#555555\">[</span><span style=\"color:#FFFFFF\">1</span><span style=\"color:#FFFFFF\">2</span><span style=\"color:#FFFFFF\">8</span><span style=\"color:#FFFFFF\">x</span><span style=\"color:#555555\">]</span>",
+  "description": "by Mellor",
+  "cover": "/thumbnails/CoolPvP_Revamp_128x/cover.png",
+  "packPng": "/thumbnails/CoolPvP_Revamp_128x/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§7#§5Cool§6PvP §7Revamp §8[§f128x§8].zip",
+  "fileSize": "28.5MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/%C2%A77%23%C2%A75Cool%C2%A76PvP%20%C2%A77Revamp%20%C2%A78%5B%C2%A7f128x%C2%A78%5D.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/%C2%A77%23%C2%A75Cool%C2%A76PvP%20%C2%A77Revamp%20%C2%A78%5B%C2%A7f128x%C2%A78%5D.zip"
+  }
+}

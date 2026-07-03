@@ -1,0 +1,60 @@
+{
+  "id": "§4Fezzo 0,5k",
+  "name": "Fezzo_05k",
+  "displayName": "Fezzo 0,5k",
+  "coloredName": "<span style=\"color:#AA0000\">F</span><span style=\"color:#AA0000\">e</span><span style=\"color:#AA0000\">z</span><span style=\"color:#AA0000\">z</span><span style=\"color:#AA0000\">o</span><span style=\"color:#AA0000\"> </span><span style=\"color:#AA0000\">0</span><span style=\"color:#AA0000\">,</span><span style=\"color:#AA0000\">5</span><span style=\"color:#AA0000\">k</span>",
+  "description": "by Zefew",
+  "cover": "/thumbnails/Fezzo_05k/cover.png",
+  "packPng": "/thumbnails/Fezzo_05k/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§4Fezzo 0,5k.zip",
+  "fileSize": "24.8MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/%C2%A74Fezzo%200%2C5k.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/%C2%A74Fezzo%200%2C5k.zip"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "id": "!  §dPink §fRecolored §8[§5128x§8]",
+  "name": "Pink_Recolored_128x",
+  "displayName": "Pink Recolored [128x]",
+  "coloredName": "<span style=\"color:#FF55FF\">P</span><span style=\"color:#FF55FF\">i</span><span style=\"color:#FF55FF\">n</span><span style=\"color:#FF55FF\">k</span><span style=\"color:#FF55FF\"> </span><span style=\"color:#FFFFFF\">R</span><span style=\"color:#FFFFFF\">e</span><span style=\"color:#FFFFFF\">c</span><span style=\"color:#FFFFFF\">o</span><span style=\"color:#FFFFFF\">l</span><span style=\"color:#FFFFFF\">o</span><span style=\"color:#FFFFFF\">r</span><span style=\"color:#FFFFFF\">e</span><span style=\"color:#FFFFFF\">d</span><span style=\"color:#FFFFFF\"> </span><span style=\"color:#555555\">[</span><span style=\"color:#AA00AA\">1</span><span style=\"color:#AA00AA\">2</span><span style=\"color:#AA00AA\">8</span><span style=\"color:#AA00AA\">x</span><span style=\"color:#555555\">]</span>",
+  "description": "哦",
+  "cover": "/thumbnails/Pink_Recolored_128x/cover.png",
+  "packPng": "/thumbnails/Pink_Recolored_128x/pack.png",
+  "icon": null,
+  "file": "resourcepacks/!  §dPink §fRecolored §8[§5128x§8].zip",
+  "fileSize": "41.0MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!%20%20%C2%A7dPink%20%C2%A7fRecolored%20%C2%A78%5B%C2%A75128x%C2%A78%5D.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!%20%20%C2%A7dPink%20%C2%A7fRecolored%20%C2%A78%5B%C2%A75128x%C2%A78%5D.zip"
+  }
+}

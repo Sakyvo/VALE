@@ -1,0 +1,60 @@
+{
+  "id": "!    §4ZefewMD Red ",
+  "name": "ZefewMD_Red",
+  "displayName": "ZefewMD Red",
+  "coloredName": "<span style=\"color:#AA0000\">Z</span><span style=\"color:#AA0000\">e</span><span style=\"color:#AA0000\">f</span><span style=\"color:#AA0000\">e</span><span style=\"color:#AA0000\">w</span><span style=\"color:#AA0000\">M</span><span style=\"color:#AA0000\">D</span><span style=\"color:#AA0000\"> </span><span style=\"color:#AA0000\">R</span><span style=\"color:#AA0000\">e</span><span style=\"color:#AA0000\">d</span>",
+  "description": "galgame god",
+  "cover": "/thumbnails/ZefewMD_Red/cover.png",
+  "packPng": "/thumbnails/ZefewMD_Red/pack.png",
+  "icon": null,
+  "file": "resourcepacks/!    §4ZefewMD Red .zip",
+  "fileSize": "29.6MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%20%20%20%20%C2%A74ZefewMD%20Red%20.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%20%20%20%20%C2%A74ZefewMD%20Red%20.zip"
+  }
+}

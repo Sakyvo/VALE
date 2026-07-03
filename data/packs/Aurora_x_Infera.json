@@ -1,0 +1,60 @@
+{
+  "id": "§d§lAurora §7x §a§lInfera§8",
+  "name": "Aurora_x_Infera",
+  "displayName": "Aurora x Infera",
+  "coloredName": "<span style=\"color:#FF55FF\">A</span><span style=\"color:#FF55FF\">u</span><span style=\"color:#FF55FF\">r</span><span style=\"color:#FF55FF\">o</span><span style=\"color:#FF55FF\">r</span><span style=\"color:#FF55FF\">a</span><span style=\"color:#FF55FF\"> </span><span style=\"color:#AAAAAA\">x</span><span style=\"color:#AAAAAA\"> </span><span style=\"color:#55FF55\">I</span><span style=\"color:#55FF55\">n</span><span style=\"color:#55FF55\">f</span><span style=\"color:#55FF55\">e</span><span style=\"color:#55FF55\">r</span><span style=\"color:#55FF55\">a</span>",
+  "description": "by Mellor",
+  "cover": "/thumbnails/Aurora_x_Infera/cover.png",
+  "packPng": "/thumbnails/Aurora_x_Infera/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§d§lAurora §7x §a§lInfera§8.zip",
+  "fileSize": "21.7MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/%C2%A7d%C2%A7lAurora%20%C2%A77x%20%C2%A7a%C2%A7lInfera%C2%A78.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/%C2%A7d%C2%A7lAurora%20%C2%A77x%20%C2%A7a%C2%A7lInfera%C2%A78.zip"
+  }
+}

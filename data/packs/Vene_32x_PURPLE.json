@@ -1,0 +1,60 @@
+{
+  "id": "! §eVene 32x §f[PURPLE]",
+  "name": "Vene_32x_PURPLE",
+  "displayName": "Vene 32x [PURPLE]",
+  "coloredName": "<span style=\"color:#FFFF55\">V</span><span style=\"color:#FFFF55\">e</span><span style=\"color:#FFFF55\">n</span><span style=\"color:#FFFF55\">e</span><span style=\"color:#FFFF55\"> </span><span style=\"color:#FFFF55\">3</span><span style=\"color:#FFFF55\">2</span><span style=\"color:#FFFF55\">x</span><span style=\"color:#FFFF55\"> </span><span style=\"color:#FFFFFF\">[</span><span style=\"color:#FFFFFF\">P</span><span style=\"color:#FFFFFF\">U</span><span style=\"color:#FFFFFF\">R</span><span style=\"color:#FFFFFF\">P</span><span style=\"color:#FFFFFF\">L</span><span style=\"color:#FFFFFF\">E</span><span style=\"color:#FFFFFF\">]</span>",
+  "description": "by pceout",
+  "cover": "/thumbnails/Vene_32x_PURPLE/cover.png",
+  "packPng": "/thumbnails/Vene_32x_PURPLE/pack.png",
+  "icon": null,
+  "file": "resourcepacks/! §eVene 32x §f[PURPLE].zip",
+  "fileSize": "14.0MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%C2%A7eVene%2032x%20%C2%A7f%5BPURPLE%5D.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%C2%A7eVene%2032x%20%C2%A7f%5BPURPLE%5D.zip"
+  }
+}

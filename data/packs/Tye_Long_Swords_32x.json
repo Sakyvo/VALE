@@ -1,0 +1,60 @@
+{
+  "id": "! Tye Long Swords [32x]",
+  "name": "Tye_Long_Swords_32x",
+  "displayName": "Tye Long Swords [32x]",
+  "coloredName": "Tye Long Swords [32x]",
+  "description": "Tye3315 Sucks Arissi is cooler",
+  "cover": "/thumbnails/Tye_Long_Swords_32x/cover.png",
+  "packPng": "/thumbnails/Tye_Long_Swords_32x/pack.png",
+  "icon": null,
+  "file": "resourcepacks/! Tye Long Swords [32x].zip",
+  "fileSize": "12.4MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20Tye%20Long%20Swords%20%5B32x%5D.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20Tye%20Long%20Swords%20%5B32x%5D.zip"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "id": "!     §5Azert (Purple) [Revamp]",
+  "name": "Azert_Purple_Revamp",
+  "displayName": "Azert (Purple) [Revamp]",
+  "coloredName": "<span style=\"color:#AA00AA\">A</span><span style=\"color:#AA00AA\">z</span><span style=\"color:#AA00AA\">e</span><span style=\"color:#AA00AA\">r</span><span style=\"color:#AA00AA\">t</span><span style=\"color:#AA00AA\"> </span><span style=\"color:#AA00AA\">(</span><span style=\"color:#AA00AA\">P</span><span style=\"color:#AA00AA\">u</span><span style=\"color:#AA00AA\">r</span><span style=\"color:#AA00AA\">p</span><span style=\"color:#AA00AA\">l</span><span style=\"color:#AA00AA\">e</span><span style=\"color:#AA00AA\">)</span><span style=\"color:#AA00AA\"> </span><span style=\"color:#AA00AA\">[</span><span style=\"color:#AA00AA\">R</span><span style=\"color:#AA00AA\">e</span><span style=\"color:#AA00AA\">v</span><span style=\"color:#AA00AA\">a</span><span style=\"color:#AA00AA\">m</span><span style=\"color:#AA00AA\">p</span><span style=\"color:#AA00AA\">]</span>",
+  "description": "By Kalulthan",
+  "cover": "/thumbnails/Azert_Purple_Revamp/cover.png",
+  "packPng": "/thumbnails/Azert_Purple_Revamp/pack.png",
+  "icon": null,
+  "file": "resourcepacks/!     §5Azert (Purple) [Revamp].zip",
+  "fileSize": "20.2MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%20%20%20%20%C2%A75Azert%20(Purple)%20%5BRevamp%5D.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%20%20%20%20%C2%A75Azert%20(Purple)%20%5BRevamp%5D.zip"
+  }
+}

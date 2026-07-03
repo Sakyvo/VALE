@@ -1,0 +1,60 @@
+{
+  "id": "! Eum3 Blue edit by DefeatBoy",
+  "name": "Eum3_Blue_edit_by_DefeatBoy",
+  "displayName": "Eum3 Blue edit by DefeatBoy",
+  "coloredName": "Eum3 Blue edit by DefeatBoy",
+  "description": "-Latenci",
+  "cover": "/thumbnails/Eum3_Blue_edit_by_DefeatBoy/cover.png",
+  "packPng": "/thumbnails/Eum3_Blue_edit_by_DefeatBoy/pack.png",
+  "icon": null,
+  "file": "resourcepacks/! Eum3 Blue edit by DefeatBoy.zip",
+  "fileSize": "41.7MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!%20Eum3%20Blue%20edit%20by%20DefeatBoy.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!%20Eum3%20Blue%20edit%20by%20DefeatBoy.zip"
+  }
+}

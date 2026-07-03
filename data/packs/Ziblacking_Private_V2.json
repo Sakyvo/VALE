@@ -1,0 +1,60 @@
+{
+  "id": "! §5Ziblacking §7§oPrivate [V2]",
+  "name": "Ziblacking_Private_V2",
+  "displayName": "Ziblacking Private [V2]",
+  "coloredName": "<span style=\"color:#AA00AA\">Z</span><span style=\"color:#AA00AA\">i</span><span style=\"color:#AA00AA\">b</span><span style=\"color:#AA00AA\">l</span><span style=\"color:#AA00AA\">a</span><span style=\"color:#AA00AA\">c</span><span style=\"color:#AA00AA\">k</span><span style=\"color:#AA00AA\">i</span><span style=\"color:#AA00AA\">n</span><span style=\"color:#AA00AA\">g</span><span style=\"color:#AA00AA\"> </span><span style=\"color:#AAAAAA\">P</span><span style=\"color:#AAAAAA\">r</span><span style=\"color:#AAAAAA\">i</span><span style=\"color:#AAAAAA\">v</span><span style=\"color:#AAAAAA\">a</span><span style=\"color:#AAAAAA\">t</span><span style=\"color:#AAAAAA\">e</span><span style=\"color:#AAAAAA\"> </span><span style=\"color:#AAAAAA\">[</span><span style=\"color:#AAAAAA\">V</span><span style=\"color:#AAAAAA\">2</span><span style=\"color:#AAAAAA\">]</span>",
+  "description": "by Tory",
+  "cover": "/thumbnails/Ziblacking_Private_V2/cover.png",
+  "packPng": "/thumbnails/Ziblacking_Private_V2/pack.png",
+  "icon": null,
+  "file": "resourcepacks/! §5Ziblacking §7§oPrivate [V2].zip",
+  "fileSize": "13.4MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!%20%C2%A75Ziblacking%20%C2%A77%C2%A7oPrivate%20%5BV2%5D.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!%20%C2%A75Ziblacking%20%C2%A77%C2%A7oPrivate%20%5BV2%5D.zip"
+  }
+}

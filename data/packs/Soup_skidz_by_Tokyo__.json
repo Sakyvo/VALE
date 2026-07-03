@@ -1,0 +1,60 @@
+{
+  "id": "Soup skidz by Tokyo__",
+  "name": "Soup_skidz_by_Tokyo__",
+  "displayName": "Soup skidz by Tokyo__",
+  "coloredName": "Soup skidz by Tokyo__",
+  "description": "A remake and edit by Tokyo__",
+  "cover": "/thumbnails/Soup_skidz_by_Tokyo__/cover.png",
+  "packPng": "/thumbnails/Soup_skidz_by_Tokyo__/pack.png",
+  "icon": null,
+  "file": "resourcepacks/Soup skidz by Tokyo__.zip",
+  "fileSize": "4.5MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/Soup%20skidz%20by%20Tokyo__.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/Soup%20skidz%20by%20Tokyo__.zip"
+  }
+}

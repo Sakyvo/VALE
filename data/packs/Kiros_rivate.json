@@ -1,0 +1,60 @@
+{
+  "id": "! §6Kiros §1rivate",
+  "name": "Kiros_rivate",
+  "displayName": "Kiros rivate",
+  "coloredName": "<span style=\"color:#FFAA00\">K</span><span style=\"color:#FFAA00\">i</span><span style=\"color:#FFAA00\">r</span><span style=\"color:#FFAA00\">o</span><span style=\"color:#FFAA00\">s</span><span style=\"color:#FFAA00\"> </span><span style=\"color:#0000AA\">r</span><span style=\"color:#0000AA\">i</span><span style=\"color:#0000AA\">v</span><span style=\"color:#0000AA\">a</span><span style=\"color:#0000AA\">t</span><span style=\"color:#0000AA\">e</span>",
+  "description": "Sulla Lunar!  -Zefew",
+  "cover": "/thumbnails/Kiros_rivate/cover.png",
+  "packPng": "/thumbnails/Kiros_rivate/pack.png",
+  "icon": null,
+  "file": "resourcepacks/! §6Kiros §1rivate.zip",
+  "fileSize": "27.3MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%20%C2%A76Kiros%20%C2%A71rivate.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%20%C2%A76Kiros%20%C2%A71rivate.zip"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "id": "Ardores §81k §fPack",
+  "name": "Ardores_1k_Pack",
+  "displayName": "Ardores 1k Pack",
+  "coloredName": "Ardores <span style=\"color:#555555\">1</span><span style=\"color:#555555\">k</span><span style=\"color:#555555\"> </span><span style=\"color:#FFFFFF\">P</span><span style=\"color:#FFFFFF\">a</span><span style=\"color:#FFFFFF\">c</span><span style=\"color:#FFFFFF\">k</span>",
+  "description": "/Ardore  [Thanks for 1k <3]",
+  "cover": "/thumbnails/Ardores_1k_Pack/cover.png",
+  "packPng": "/thumbnails/Ardores_1k_Pack/pack.png",
+  "icon": null,
+  "file": "resourcepacks/Ardores §81k §fPack.zip",
+  "fileSize": "34.7MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/Ardores%20%C2%A781k%20%C2%A7fPack.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/Ardores%20%C2%A781k%20%C2%A7fPack.zip"
+  }
+}

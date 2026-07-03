@@ -1,0 +1,60 @@
+{
+  "id": "§8! §fDynamic Duo §8V2 [§4Red§5&§1Blue]",
+  "name": "Dynamic_Duo_V2_RedBlue",
+  "displayName": "Dynamic Duo V2 [Red&Blue]",
+  "coloredName": "<span style=\"color:#FFFFFF\">D</span><span style=\"color:#FFFFFF\">y</span><span style=\"color:#FFFFFF\">n</span><span style=\"color:#FFFFFF\">a</span><span style=\"color:#FFFFFF\">m</span><span style=\"color:#FFFFFF\">i</span><span style=\"color:#FFFFFF\">c</span><span style=\"color:#FFFFFF\"> </span><span style=\"color:#FFFFFF\">D</span><span style=\"color:#FFFFFF\">u</span><span style=\"color:#FFFFFF\">o</span><span style=\"color:#FFFFFF\"> </span><span style=\"color:#555555\">V</span><span style=\"color:#555555\">2</span><span style=\"color:#555555\"> </span><span style=\"color:#555555\">[</span><span style=\"color:#AA0000\">R</span><span style=\"color:#AA0000\">e</span><span style=\"color:#AA0000\">d</span><span style=\"color:#AA00AA\">&</span><span style=\"color:#0000AA\">B</span><span style=\"color:#0000AA\">l</span><span style=\"color:#0000AA\">u</span><span style=\"color:#0000AA\">e</span><span style=\"color:#0000AA\">]</span>",
+  "description": "Revamp by iSparkton - Recolor byRick/xandur",
+  "cover": "/thumbnails/Dynamic_Duo_V2_RedBlue/cover.png",
+  "packPng": "/thumbnails/Dynamic_Duo_V2_RedBlue/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§8! §fDynamic Duo §8V2 [§4Red§5&§1Blue].zip",
+  "fileSize": "18.0MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/%C2%A78!%20%C2%A7fDynamic%20Duo%20%C2%A78V2%20%5B%C2%A74Red%C2%A75%26%C2%A71Blue%5D.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/%C2%A78!%20%C2%A7fDynamic%20Duo%20%C2%A78V2%20%5B%C2%A74Red%C2%A75%26%C2%A71Blue%5D.zip"
+  }
+}

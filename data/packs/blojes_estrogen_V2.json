@@ -1,0 +1,60 @@
+{
+  "id": "! §4§l blojes estrogen V2",
+  "name": "blojes_estrogen_V2",
+  "displayName": "blojes estrogen V2",
+  "coloredName": "<span style=\"color:#AA0000\"> </span><span style=\"color:#AA0000\">b</span><span style=\"color:#AA0000\">l</span><span style=\"color:#AA0000\">o</span><span style=\"color:#AA0000\">j</span><span style=\"color:#AA0000\">e</span><span style=\"color:#AA0000\">s</span><span style=\"color:#AA0000\"> </span><span style=\"color:#AA0000\">e</span><span style=\"color:#AA0000\">s</span><span style=\"color:#AA0000\">t</span><span style=\"color:#AA0000\">r</span><span style=\"color:#AA0000\">o</span><span style=\"color:#AA0000\">g</span><span style=\"color:#AA0000\">e</span><span style=\"color:#AA0000\">n</span><span style=\"color:#AA0000\"> </span><span style=\"color:#AA0000\">V</span><span style=\"color:#AA0000\">2</span>",
+  "description": "revamp by andy",
+  "cover": "/thumbnails/blojes_estrogen_V2/cover.png",
+  "packPng": "/thumbnails/blojes_estrogen_V2/pack.png",
+  "icon": null,
+  "file": "resourcepacks/! §4§l blojes estrogen V2.zip",
+  "fileSize": "16.6MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%20%C2%A74%C2%A7l%20blojes%20estrogen%20V2.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%20%C2%A74%C2%A7l%20blojes%20estrogen%20V2.zip"
+  }
+}

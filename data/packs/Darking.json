@@ -1,0 +1,60 @@
+{
+  "id": "§7! §5Darking",
+  "name": "Darking",
+  "displayName": "Darking",
+  "coloredName": "<span style=\"color:#AA00AA\">D</span><span style=\"color:#AA00AA\">a</span><span style=\"color:#AA00AA\">r</span><span style=\"color:#AA00AA\">k</span><span style=\"color:#AA00AA\">i</span><span style=\"color:#AA00AA\">n</span><span style=\"color:#AA00AA\">g</span>",
+  "description": "",
+  "cover": "/thumbnails/Darking/cover.png",
+  "packPng": "/thumbnails/Darking/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§7! §5Darking.zip",
+  "fileSize": "37.1MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/%C2%A77!%20%C2%A75Darking.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/%C2%A77!%20%C2%A75Darking.zip"
+  }
+}

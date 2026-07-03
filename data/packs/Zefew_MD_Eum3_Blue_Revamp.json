@@ -1,0 +1,60 @@
+{
+  "id": "! Zefew MD Eum3 Blue Revamp",
+  "name": "Zefew_MD_Eum3_Blue_Revamp",
+  "displayName": "Zefew MD Eum3 Blue Revamp",
+  "coloredName": "Zefew MD Eum3 Blue Revamp",
+  "description": "- Yazan",
+  "cover": "/thumbnails/Zefew_MD_Eum3_Blue_Revamp/cover.png",
+  "packPng": "/thumbnails/Zefew_MD_Eum3_Blue_Revamp/pack.png",
+  "icon": null,
+  "file": "resourcepacks/! Zefew MD Eum3 Blue Revamp.zip",
+  "fileSize": "41.4MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20Zefew%20MD%20Eum3%20Blue%20Revamp.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20Zefew%20MD%20Eum3%20Blue%20Revamp.zip"
+  }
+}

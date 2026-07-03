@@ -1,0 +1,60 @@
+{
+  "id": "! §3Eum3§bOcean",
+  "name": "Eum3Ocean",
+  "displayName": "Eum3Ocean",
+  "coloredName": "<span style=\"color:#00AAAA\">E</span><span style=\"color:#00AAAA\">u</span><span style=\"color:#00AAAA\">m</span><span style=\"color:#00AAAA\">3</span><span style=\"color:#55FFFF\">O</span><span style=\"color:#55FFFF\">c</span><span style=\"color:#55FFFF\">e</span><span style=\"color:#55FFFF\">a</span><span style=\"color:#55FFFF\">n</span>",
+  "description": "by ByRez",
+  "cover": "/thumbnails/Eum3Ocean/cover.png",
+  "packPng": "/thumbnails/Eum3Ocean/pack.png",
+  "icon": null,
+  "file": "resourcepacks/! §3Eum3§bOcean.zip",
+  "fileSize": "29.9MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%C2%A73Eum3%C2%A7bOcean.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%C2%A73Eum3%C2%A7bOcean.zip"
+  }
+}

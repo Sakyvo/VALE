@@ -1,0 +1,60 @@
+{
+  "id": "! §5Duxo §7Private",
+  "name": "Duxo_Private",
+  "displayName": "Duxo Private",
+  "coloredName": "<span style=\"color:#AA00AA\">D</span><span style=\"color:#AA00AA\">u</span><span style=\"color:#AA00AA\">x</span><span style=\"color:#AA00AA\">o</span><span style=\"color:#AA00AA\"> </span><span style=\"color:#AAAAAA\">P</span><span style=\"color:#AAAAAA\">r</span><span style=\"color:#AAAAAA\">i</span><span style=\"color:#AAAAAA\">v</span><span style=\"color:#AAAAAA\">a</span><span style=\"color:#AAAAAA\">t</span><span style=\"color:#AAAAAA\">e</span>",
+  "description": "By iSparkton",
+  "cover": "/thumbnails/Duxo_Private/cover.png",
+  "packPng": "/thumbnails/Duxo_Private/pack.png",
+  "icon": null,
+  "file": "resourcepacks/! §5Duxo §7Private.zip",
+  "fileSize": "33.9MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%20%C2%A75Duxo%20%C2%A77Private.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%20%C2%A75Duxo%20%C2%A77Private.zip"
+  }
+}

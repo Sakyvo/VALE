@@ -1,0 +1,60 @@
+{
+  "id": "! §4Tokyoou §8 0,5k",
+  "name": "Tokyoou_05k",
+  "displayName": "Tokyoou  0,5k",
+  "coloredName": "<span style=\"color:#AA0000\">T</span><span style=\"color:#AA0000\">o</span><span style=\"color:#AA0000\">k</span><span style=\"color:#AA0000\">y</span><span style=\"color:#AA0000\">o</span><span style=\"color:#AA0000\">o</span><span style=\"color:#AA0000\">u</span><span style=\"color:#AA0000\"> </span><span style=\"color:#555555\"> </span><span style=\"color:#555555\">0</span><span style=\"color:#555555\">,</span><span style=\"color:#555555\">5</span><span style=\"color:#555555\">k</span>",
+  "description": "I love dick -Jep (jk)",
+  "cover": "/thumbnails/Tokyoou_05k/cover.png",
+  "packPng": "/thumbnails/Tokyoou_05k/pack.png",
+  "icon": null,
+  "file": "resourcepacks/! §4Tokyoou §8 0,5k.zip",
+  "fileSize": "13.7MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%C2%A74Tokyoou%20%C2%A78%200%2C5k.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%C2%A74Tokyoou%20%C2%A78%200%2C5k.zip"
+  }
+}

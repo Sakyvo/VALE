@@ -1,0 +1,60 @@
+{
+  "id": "!   OCN §3Revamp §8[§764x§8]",
+  "name": "OCN_Revamp_64x",
+  "displayName": "OCN Revamp [64x]",
+  "coloredName": "OCN <span style=\"color:#00AAAA\">R</span><span style=\"color:#00AAAA\">e</span><span style=\"color:#00AAAA\">v</span><span style=\"color:#00AAAA\">a</span><span style=\"color:#00AAAA\">m</span><span style=\"color:#00AAAA\">p</span><span style=\"color:#00AAAA\"> </span><span style=\"color:#555555\">[</span><span style=\"color:#AAAAAA\">6</span><span style=\"color:#AAAAAA\">4</span><span style=\"color:#AAAAAA\">x</span><span style=\"color:#555555\">]</span>",
+  "description": "by Mellor",
+  "cover": "/thumbnails/OCN_Revamp_64x/cover.png",
+  "packPng": "/thumbnails/OCN_Revamp_64x/pack.png",
+  "icon": null,
+  "file": "resourcepacks/!   OCN §3Revamp §8[§764x§8].zip",
+  "fileSize": "11.1MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%20%20OCN%20%C2%A73Revamp%20%C2%A78%5B%C2%A7764x%C2%A78%5D.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%20%20OCN%20%C2%A73Revamp%20%C2%A78%5B%C2%A7764x%C2%A78%5D.zip"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "id": "§1Deep §9Abyss §7128x",
+  "name": "Deep_Abyss_128x",
+  "displayName": "Deep Abyss 128x",
+  "coloredName": "<span style=\"color:#0000AA\">D</span><span style=\"color:#0000AA\">e</span><span style=\"color:#0000AA\">e</span><span style=\"color:#0000AA\">p</span><span style=\"color:#0000AA\"> </span><span style=\"color:#5555FF\">A</span><span style=\"color:#5555FF\">b</span><span style=\"color:#5555FF\">y</span><span style=\"color:#5555FF\">s</span><span style=\"color:#5555FF\">s</span><span style=\"color:#5555FF\"> </span><span style=\"color:#AAAAAA\">1</span><span style=\"color:#AAAAAA\">2</span><span style=\"color:#AAAAAA\">8</span><span style=\"color:#AAAAAA\">x</span>",
+  "description": "by MattePacks",
+  "cover": "/thumbnails/Deep_Abyss_128x/cover.png",
+  "packPng": "/thumbnails/Deep_Abyss_128x/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§1Deep §9Abyss §7128x.zip",
+  "fileSize": "48.8MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/%C2%A71Deep%20%C2%A79Abyss%20%C2%A77128x.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/%C2%A71Deep%20%C2%A79Abyss%20%C2%A77128x.zip"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "id": "! §cRose §6Gold §8[32X]",
+  "name": "Rose_Gold_32X",
+  "displayName": "Rose Gold [32X]",
+  "coloredName": "<span style=\"color:#FF5555\">R</span><span style=\"color:#FF5555\">o</span><span style=\"color:#FF5555\">s</span><span style=\"color:#FF5555\">e</span><span style=\"color:#FF5555\"> </span><span style=\"color:#FFAA00\">G</span><span style=\"color:#FFAA00\">o</span><span style=\"color:#FFAA00\">l</span><span style=\"color:#FFAA00\">d</span><span style=\"color:#FFAA00\"> </span><span style=\"color:#555555\">[</span><span style=\"color:#555555\">3</span><span style=\"color:#555555\">2</span><span style=\"color:#555555\">X</span><span style=\"color:#555555\">]</span>",
+  "description": "by Tory",
+  "cover": "/thumbnails/Rose_Gold_32X/cover.png",
+  "packPng": "/thumbnails/Rose_Gold_32X/pack.png",
+  "icon": null,
+  "file": "resourcepacks/! §cRose §6Gold §8[32X].zip",
+  "fileSize": "14.6MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!%20%C2%A7cRose%20%C2%A76Gold%20%C2%A78%5B32X%5D.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!%20%C2%A7cRose%20%C2%A76Gold%20%C2%A78%5B32X%5D.zip"
+  }
+}

@@ -8,6 +8,7 @@ const {
   sanitizePreviewPngBuffer,
   generateCoverFromOutputDir,
 } = require('./thumbnail-preview-utils');
+const { PACK_ID_OVERRIDES, sanitizeName } = require('./pack-utils');
 
 // 粒子图集裁剪映射 (16x16 网格, index = x + y * 16)
 const PARTICLE_TILES = {
@@ -83,25 +84,17 @@ function parseDescription(desc) {
   return '';
 }
 
-const PACK_ID_OVERRIDES = {
-  'AMARANTH': { check: name => name === '#§3AMARANTH', id: 'AMARANTH_v2' },
-  'SoupSkidz4LIFE': { check: name => name === '§4SoupSkidz4LIFE', id: 'SoupSkidz4LIFE_v2' },
-  '1_1Infera_Blue': { check: () => true, id: 'Infera_Blue' },
-};
-
-function sanitizeName(name) {
-  let r = name.replace(/^(?:§[0-9a-fk-or])*[!#]+\s*/gi, '');
-  if (name.includes('§')) r = r.replace(/_([0-9a-fk-or])/gi, '§$1');
-  r = r.replace(/§[0-9a-fk-or]/gi, '');
-  let trail = '';
-  r = r.replace(/\((\d+)\)\s*$/, (_, n) => { trail = `(${n})`; return ''; });
-  r = r.replace(/[!@#%^&*()+=\[\]{}|\\:;"'<>,?\/~`§]/g, '').replace(/^[^0-9a-zA-Z\u4e00-\u9fff$]+/, '').trim().replace(/\s+/g, '_');
-  return r + trail;
-}
-
 const JUNK_FILES = /(?:^|\/)(thumbs\.db|\.ds_store|desktop\.ini)$/i;
 
 function isJunk(name) { return JUNK_FILES.test(name); }
+
+function addZipEntryIfReadable(zip, entry, rel = entry.entryName) {
+  try {
+    zip.addFile(rel, entry.getData());
+  } catch (err) {
+    console.warn(`  Skipped unreadable zip entry: ${entry.entryName} (${err.message})`);
+  }
+}
 
 function fixNestedArchive(zipPath) {
   const zip = new AdmZip(zipPath);
@@ -175,7 +168,7 @@ function fixNestedArchive(zipPath) {
         } else {
           if (!['pack.mcmeta', 'pack.png'].includes(rel.toLowerCase()) && top !== 'assets') continue;
         }
-        newZip.addFile(rel, e.getData());
+        addZipEntryIfReadable(newZip, e, rel);
       }
       newZip.writeZip(zipPath);
       console.log(`  Rebuilt from nested folder: ${path.basename(zipPath)}`);
@@ -204,7 +197,7 @@ function fixNestedArchive(zipPath) {
       const parts = e.entryName.split('/');
       if (parts.length === 1 && !['pack.mcmeta', 'pack.png'].includes(parts[0].toLowerCase())) continue;
       if (parts.length > 1 && parts[0] !== 'assets') continue;
-      newZip.addFile(e.entryName, e.getData());
+      addZipEntryIfReadable(newZip, e);
     }
     newZip.writeZip(zipPath);
     console.log(`  Cleaned junk from: ${path.basename(zipPath)}`);
@@ -246,8 +239,9 @@ function convertRarToZip(rarPath) {
 }
 
 async function extractPack(zipPath) {
+  const sourceOriginalName = path.basename(zipPath, path.extname(zipPath));
   zipPath = fixNestedArchive(zipPath);
-  const originalName = path.basename(zipPath, '.zip');
+  const originalName = sourceOriginalName;
   let packId = sanitizeName(originalName);
   const override = PACK_ID_OVERRIDES[packId];
   if (override && override.check(originalName)) {
@@ -703,15 +697,29 @@ async function generateCover(packId, textures, outputDir) {
 }
 
 async function main() {
-  const packsDir = 'resourcepacks';
+  const args = process.argv.slice(2);
+  let packsDir = 'resourcepacks';
+  let merge = false;
+  let manifestPath = null;
+  for (let i = 0; i < args.length; i++) {
+    if (args[i] === '--input') packsDir = args[++i];
+    else if (args[i] === '--merge') merge = true;
+    else if (args[i] === '--manifest') manifestPath = args[++i];
+  }
   if (!fs.existsSync(packsDir)) {
-    console.log('No resourcepacks directory found');
+    console.log(`No input directory found: ${packsDir}`);
     return;
   }
 
   const files = fs.readdirSync(packsDir).filter(f => f.endsWith('.zip') || f.endsWith('.rar'));
-  const results = [];
-  const usedIds = new Set();
+  const existingResults = merge && fs.existsSync('data/extracted.json')
+    ? JSON.parse(fs.readFileSync('data/extracted.json', 'utf-8'))
+    : [];
+  const results = [...existingResults];
+  const usedIds = new Set(existingResults.map(r => r.packId));
+  const allowedIds = manifestPath
+    ? new Set(JSON.parse(fs.readFileSync(manifestPath, 'utf-8')).extractPackIds || [])
+    : null;
 
   for (const file of files) {
     console.log(`Processing: ${file}`);
@@ -726,6 +734,10 @@ async function main() {
       const override = PACK_ID_OVERRIDES[packId];
       if (override && override.check(originalName)) {
         packId = override.id;
+      }
+      if (allowedIds && !allowedIds.has(packId)) {
+        console.log(`  Skipped: ${packId} (not in manifest extract set)`);
+        continue;
       }
       if (usedIds.has(packId)) {
         console.log(`  Skipped: ${packId} (duplicate of existing)`);

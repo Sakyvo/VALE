@@ -1,0 +1,60 @@
+{
+  "id": "#§bPvpmen§3 Revamp",
+  "name": "Pvpmen_Revamp",
+  "displayName": "Pvpmen Revamp",
+  "coloredName": "<span style=\"color:#55FFFF\">P</span><span style=\"color:#55FFFF\">v</span><span style=\"color:#55FFFF\">p</span><span style=\"color:#55FFFF\">m</span><span style=\"color:#55FFFF\">e</span><span style=\"color:#55FFFF\">n</span><span style=\"color:#00AAAA\"> </span><span style=\"color:#00AAAA\">R</span><span style=\"color:#00AAAA\">e</span><span style=\"color:#00AAAA\">v</span><span style=\"color:#00AAAA\">a</span><span style=\"color:#00AAAA\">m</span><span style=\"color:#00AAAA\">p</span>",
+  "description": "By Warriohh",
+  "cover": "/thumbnails/Pvpmen_Revamp/cover.png",
+  "packPng": "/thumbnails/Pvpmen_Revamp/pack.png",
+  "icon": null,
+  "file": "resourcepacks/#§bPvpmen§3 Revamp.zip",
+  "fileSize": "34.9MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/%23%C2%A7bPvpmen%C2%A73%20Revamp.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/%23%C2%A7bPvpmen%C2%A73%20Revamp.zip"
+  }
+}

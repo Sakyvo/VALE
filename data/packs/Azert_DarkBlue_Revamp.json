@@ -1,0 +1,60 @@
+{
+  "id": "!     §1Azert (DarkBlue) [Revamp]",
+  "name": "Azert_DarkBlue_Revamp",
+  "displayName": "Azert (DarkBlue) [Revamp]",
+  "coloredName": "<span style=\"color:#0000AA\">A</span><span style=\"color:#0000AA\">z</span><span style=\"color:#0000AA\">e</span><span style=\"color:#0000AA\">r</span><span style=\"color:#0000AA\">t</span><span style=\"color:#0000AA\"> </span><span style=\"color:#0000AA\">(</span><span style=\"color:#0000AA\">D</span><span style=\"color:#0000AA\">a</span><span style=\"color:#0000AA\">r</span><span style=\"color:#0000AA\">k</span><span style=\"color:#0000AA\">B</span><span style=\"color:#0000AA\">l</span><span style=\"color:#0000AA\">u</span><span style=\"color:#0000AA\">e</span><span style=\"color:#0000AA\">)</span><span style=\"color:#0000AA\"> </span><span style=\"color:#0000AA\">[</span><span style=\"color:#0000AA\">R</span><span style=\"color:#0000AA\">e</span><span style=\"color:#0000AA\">v</span><span style=\"color:#0000AA\">a</span><span style=\"color:#0000AA\">m</span><span style=\"color:#0000AA\">p</span><span style=\"color:#0000AA\">]</span>",
+  "description": "By Kalulthan",
+  "cover": "/thumbnails/Azert_DarkBlue_Revamp/cover.png",
+  "packPng": "/thumbnails/Azert_DarkBlue_Revamp/pack.png",
+  "icon": null,
+  "file": "resourcepacks/!     §1Azert (DarkBlue) [Revamp].zip",
+  "fileSize": "20.1MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%20%20%20%20%C2%A71Azert%20(DarkBlue)%20%5BRevamp%5D.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%20%20%20%20%C2%A71Azert%20(DarkBlue)%20%5BRevamp%5D.zip"
+  }
+}

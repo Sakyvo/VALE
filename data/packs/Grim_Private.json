@@ -1,0 +1,60 @@
+{
+  "id": "! §4Grim §l§fPrivate",
+  "name": "Grim_Private",
+  "displayName": "Grim Private",
+  "coloredName": "<span style=\"color:#AA0000\">G</span><span style=\"color:#AA0000\">r</span><span style=\"color:#AA0000\">i</span><span style=\"color:#AA0000\">m</span><span style=\"color:#AA0000\"> </span><span style=\"color:#FFFFFF\">P</span><span style=\"color:#FFFFFF\">r</span><span style=\"color:#FFFFFF\">i</span><span style=\"color:#FFFFFF\">v</span><span style=\"color:#FFFFFF\">a</span><span style=\"color:#FFFFFF\">t</span><span style=\"color:#FFFFFF\">e</span>",
+  "description": "Zef",
+  "cover": "/thumbnails/Grim_Private/cover.png",
+  "packPng": "/thumbnails/Grim_Private/pack.png",
+  "icon": null,
+  "file": "resourcepacks/! §4Grim §l§fPrivate.zip",
+  "fileSize": "27.4MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%20%C2%A74Grim%20%C2%A7l%C2%A7fPrivate.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%20%C2%A74Grim%20%C2%A7l%C2%A7fPrivate.zip"
+  }
+}

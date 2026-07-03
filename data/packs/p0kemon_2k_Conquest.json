@@ -1,0 +1,60 @@
+{
+  "id": "!§6p0kemon §d2k Conquest",
+  "name": "p0kemon_2k_Conquest",
+  "displayName": "p0kemon 2k Conquest",
+  "coloredName": "<span style=\"color:#FFAA00\">p</span><span style=\"color:#FFAA00\">0</span><span style=\"color:#FFAA00\">k</span><span style=\"color:#FFAA00\">e</span><span style=\"color:#FFAA00\">m</span><span style=\"color:#FFAA00\">o</span><span style=\"color:#FFAA00\">n</span><span style=\"color:#FFAA00\"> </span><span style=\"color:#FF55FF\">2</span><span style=\"color:#FF55FF\">k</span><span style=\"color:#FF55FF\"> </span><span style=\"color:#FF55FF\">C</span><span style=\"color:#FF55FF\">o</span><span style=\"color:#FF55FF\">n</span><span style=\"color:#FF55FF\">q</span><span style=\"color:#FF55FF\">u</span><span style=\"color:#FF55FF\">e</span><span style=\"color:#FF55FF\">s</span><span style=\"color:#FF55FF\">t</span>",
+  "description": "By Zefew",
+  "cover": "/thumbnails/p0kemon_2k_Conquest/cover.png",
+  "packPng": "/thumbnails/p0kemon_2k_Conquest/pack.png",
+  "icon": null,
+  "file": "resourcepacks/!§6p0kemon §d2k Conquest.zip",
+  "fileSize": "15.9MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%C2%A76p0kemon%20%C2%A7d2k%20Conquest.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%C2%A76p0kemon%20%C2%A7d2k%20Conquest.zip"
+  }
+}

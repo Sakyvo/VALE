@@ -1,0 +1,60 @@
+{
+  "id": "§3CL0CK §7eum3 private §8beta",
+  "name": "CL0CK_eum3_private_beta",
+  "displayName": "CL0CK eum3 private beta",
+  "coloredName": "<span style=\"color:#00AAAA\">C</span><span style=\"color:#00AAAA\">L</span><span style=\"color:#00AAAA\">0</span><span style=\"color:#00AAAA\">C</span><span style=\"color:#00AAAA\">K</span><span style=\"color:#00AAAA\"> </span><span style=\"color:#AAAAAA\">e</span><span style=\"color:#AAAAAA\">u</span><span style=\"color:#AAAAAA\">m</span><span style=\"color:#AAAAAA\">3</span><span style=\"color:#AAAAAA\"> </span><span style=\"color:#AAAAAA\">p</span><span style=\"color:#AAAAAA\">r</span><span style=\"color:#AAAAAA\">i</span><span style=\"color:#AAAAAA\">v</span><span style=\"color:#AAAAAA\">a</span><span style=\"color:#AAAAAA\">t</span><span style=\"color:#AAAAAA\">e</span><span style=\"color:#AAAAAA\"> </span><span style=\"color:#555555\">b</span><span style=\"color:#555555\">e</span><span style=\"color:#555555\">t</span><span style=\"color:#555555\">a</span>",
+  "description": "By Mellor",
+  "cover": "/thumbnails/CL0CK_eum3_private_beta/cover.png",
+  "packPng": "/thumbnails/CL0CK_eum3_private_beta/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§3CL0CK §7eum3 private §8beta.zip",
+  "fileSize": "13.3MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/%C2%A73CL0CK%20%C2%A77eum3%20private%20%C2%A78beta.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/%C2%A73CL0CK%20%C2%A77eum3%20private%20%C2%A78beta.zip"
+  }
+}

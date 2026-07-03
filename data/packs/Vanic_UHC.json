@@ -1,0 +1,60 @@
+{
+  "id": "§8! §2Vanic §8UHC",
+  "name": "Vanic_UHC",
+  "displayName": "Vanic UHC",
+  "coloredName": "<span style=\"color:#00AA00\">V</span><span style=\"color:#00AA00\">a</span><span style=\"color:#00AA00\">n</span><span style=\"color:#00AA00\">i</span><span style=\"color:#00AA00\">c</span><span style=\"color:#00AA00\"> </span><span style=\"color:#555555\">U</span><span style=\"color:#555555\">H</span><span style=\"color:#555555\">C</span>",
+  "description": "By iSparkton",
+  "cover": "/thumbnails/Vanic_UHC/cover.png",
+  "packPng": "/thumbnails/Vanic_UHC/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§8! §2Vanic §8UHC.zip",
+  "fileSize": "17.5MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/%C2%A78!%20%C2%A72Vanic%20%C2%A78UHC.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/%C2%A78!%20%C2%A72Vanic%20%C2%A78UHC.zip"
+  }
+}

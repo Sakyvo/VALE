@@ -1,0 +1,60 @@
+{
+  "id": "silent Aim Pack v1",
+  "name": "silent_Aim_Pack_v1",
+  "displayName": "silent Aim Pack v1",
+  "coloredName": "silent Aim Pack v1",
+  "description": "use this pack for the best aim possible!",
+  "cover": "/thumbnails/silent_Aim_Pack_v1/cover.png",
+  "packPng": "/thumbnails/silent_Aim_Pack_v1/pack.png",
+  "icon": null,
+  "file": "resourcepacks/silent Aim Pack v1.zip",
+  "fileSize": "2.5MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/silent%20Aim%20Pack%20v1.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/silent%20Aim%20Pack%20v1.zip"
+  }
+}

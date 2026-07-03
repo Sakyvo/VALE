@@ -1,0 +1,60 @@
+{
+  "id": "! KOTH Sword Overlay v13",
+  "name": "KOTH_Sword_Overlay_v13",
+  "displayName": "KOTH Sword Overlay v13",
+  "coloredName": "KOTH Sword Overlay v13",
+  "description": "Merci Sofiane :D",
+  "cover": "/thumbnails/KOTH_Sword_Overlay_v13/cover.png",
+  "packPng": "/thumbnails/KOTH_Sword_Overlay_v13/pack.png",
+  "icon": null,
+  "file": "resourcepacks/! KOTH Sword Overlay v13.zip",
+  "fileSize": "3KB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%20KOTH%20Sword%20Overlay%20v13.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%20KOTH%20Sword%20Overlay%20v13.zip"
+  }
+}

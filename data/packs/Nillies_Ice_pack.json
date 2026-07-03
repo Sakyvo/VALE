@@ -1,0 +1,60 @@
+{
+  "id": "§8! §bNillies Ice pack",
+  "name": "Nillies_Ice_pack",
+  "displayName": "Nillies Ice pack",
+  "coloredName": "<span style=\"color:#55FFFF\">N</span><span style=\"color:#55FFFF\">i</span><span style=\"color:#55FFFF\">l</span><span style=\"color:#55FFFF\">l</span><span style=\"color:#55FFFF\">i</span><span style=\"color:#55FFFF\">e</span><span style=\"color:#55FFFF\">s</span><span style=\"color:#55FFFF\"> </span><span style=\"color:#55FFFF\">I</span><span style=\"color:#55FFFF\">c</span><span style=\"color:#55FFFF\">e</span><span style=\"color:#55FFFF\"> </span><span style=\"color:#55FFFF\">p</span><span style=\"color:#55FFFF\">a</span><span style=\"color:#55FFFF\">c</span><span style=\"color:#55FFFF\">k</span>",
+  "description": "by Newd",
+  "cover": "/thumbnails/Nillies_Ice_pack/cover.png",
+  "packPng": "/thumbnails/Nillies_Ice_pack/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§8! §bNillies Ice pack.zip",
+  "fileSize": "17.3MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/%C2%A78!%20%C2%A7bNillies%20Ice%20pack.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/%C2%A78!%20%C2%A7bNillies%20Ice%20pack.zip"
+  }
+}

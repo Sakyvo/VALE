@@ -1,0 +1,60 @@
+{
+  "id": "!      §8pax§710 §dRose",
+  "name": "pax10_Rose",
+  "displayName": "pax10 Rose",
+  "coloredName": "<span style=\"color:#555555\">p</span><span style=\"color:#555555\">a</span><span style=\"color:#555555\">x</span><span style=\"color:#AAAAAA\">1</span><span style=\"color:#AAAAAA\">0</span><span style=\"color:#AAAAAA\"> </span><span style=\"color:#FF55FF\">R</span><span style=\"color:#FF55FF\">o</span><span style=\"color:#FF55FF\">s</span><span style=\"color:#FF55FF\">e</span>",
+  "description": "by @ItsAdyLaLoz",
+  "cover": "/thumbnails/pax10_Rose/cover.png",
+  "packPng": "/thumbnails/pax10_Rose/pack.png",
+  "icon": null,
+  "file": "resourcepacks/!      §8pax§710 §dRose.zip",
+  "fileSize": "16.7MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%20%20%20%20%20%C2%A78pax%C2%A7710%20%C2%A7dRose.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%20%20%20%20%20%C2%A78pax%C2%A7710%20%C2%A7dRose.zip"
+  }
+}

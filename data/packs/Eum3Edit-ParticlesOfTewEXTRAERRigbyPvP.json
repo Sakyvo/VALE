@@ -1,0 +1,60 @@
+{
+  "id": "Eum3Edit-ParticlesOfTew[EXTRAER]RigbyPvP",
+  "name": "Eum3Edit-ParticlesOfTewEXTRAERRigbyPvP",
+  "displayName": "Eum3Edit-ParticlesOfTew[EXTRAER]RigbyPvP",
+  "coloredName": "Eum3Edit-ParticlesOfTew[EXTRAER]RigbyPvP",
+  "description": "iFlowin's Faithful Edit",
+  "cover": "/thumbnails/Eum3Edit-ParticlesOfTewEXTRAERRigbyPvP/cover.png",
+  "packPng": "/thumbnails/Eum3Edit-ParticlesOfTewEXTRAERRigbyPvP/pack.png",
+  "icon": null,
+  "file": "resourcepacks/Eum3Edit-ParticlesOfTew[EXTRAER]RigbyPvP.zip",
+  "fileSize": "11.0MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/Eum3Edit-ParticlesOfTew%5BEXTRAER%5DRigbyPvP.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/Eum3Edit-ParticlesOfTew%5BEXTRAER%5DRigbyPvP.zip"
+  }
+}

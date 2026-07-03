@@ -1,0 +1,60 @@
+{
+  "id": "!  §aOCN §3Shcool's §fShort Swords",
+  "name": "OCN_Shcools_Short_Swords",
+  "displayName": "OCN Shcool's Short Swords",
+  "coloredName": "<span style=\"color:#55FF55\">O</span><span style=\"color:#55FF55\">C</span><span style=\"color:#55FF55\">N</span><span style=\"color:#55FF55\"> </span><span style=\"color:#00AAAA\">S</span><span style=\"color:#00AAAA\">h</span><span style=\"color:#00AAAA\">c</span><span style=\"color:#00AAAA\">o</span><span style=\"color:#00AAAA\">o</span><span style=\"color:#00AAAA\">l</span><span style=\"color:#00AAAA\">'</span><span style=\"color:#00AAAA\">s</span><span style=\"color:#00AAAA\"> </span><span style=\"color:#FFFFFF\">S</span><span style=\"color:#FFFFFF\">h</span><span style=\"color:#FFFFFF\">o</span><span style=\"color:#FFFFFF\">r</span><span style=\"color:#FFFFFF\">t</span><span style=\"color:#FFFFFF\"> </span><span style=\"color:#FFFFFF\">S</span><span style=\"color:#FFFFFF\">w</span><span style=\"color:#FFFFFF\">o</span><span style=\"color:#FFFFFF\">r</span><span style=\"color:#FFFFFF\">d</span><span style=\"color:#FFFFFF\">s</span>",
+  "description": "Shcool's OCN 32x Revamp for UHC",
+  "cover": "/thumbnails/OCN_Shcools_Short_Swords/cover.png",
+  "packPng": "/thumbnails/OCN_Shcools_Short_Swords/pack.png",
+  "icon": null,
+  "file": "resourcepacks/!  §aOCN §3Shcool's §fShort Swords.zip",
+  "fileSize": "6.8MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%20%20%C2%A7aOCN%20%C2%A73Shcool's%20%C2%A7fShort%20Swords.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%20%20%C2%A7aOCN%20%C2%A73Shcool's%20%C2%A7fShort%20Swords.zip"
+  }
+}

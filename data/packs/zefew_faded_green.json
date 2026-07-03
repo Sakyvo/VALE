@@ -1,0 +1,60 @@
+{
+  "id": "! §6zefew §bfad§aed §2green",
+  "name": "zefew_faded_green",
+  "displayName": "zefew faded green",
+  "coloredName": "<span style=\"color:#FFAA00\">z</span><span style=\"color:#FFAA00\">e</span><span style=\"color:#FFAA00\">f</span><span style=\"color:#FFAA00\">e</span><span style=\"color:#FFAA00\">w</span><span style=\"color:#FFAA00\"> </span><span style=\"color:#55FFFF\">f</span><span style=\"color:#55FFFF\">a</span><span style=\"color:#55FFFF\">d</span><span style=\"color:#55FF55\">e</span><span style=\"color:#55FF55\">d</span><span style=\"color:#55FF55\"> </span><span style=\"color:#00AA00\">g</span><span style=\"color:#00AA00\">r</span><span style=\"color:#00AA00\">e</span><span style=\"color:#00AA00\">e</span><span style=\"color:#00AA00\">n</span>",
+  "description": "@thejavi16",
+  "cover": "/thumbnails/zefew_faded_green/cover.png",
+  "packPng": "/thumbnails/zefew_faded_green/pack.png",
+  "icon": null,
+  "file": "resourcepacks/! §6zefew §bfad§aed §2green.zip",
+  "fileSize": "8.4MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%C2%A76zefew%20%C2%A7bfad%C2%A7aed%20%C2%A72green.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%C2%A76zefew%20%C2%A7bfad%C2%A7aed%20%C2%A72green.zip"
+  }
+}

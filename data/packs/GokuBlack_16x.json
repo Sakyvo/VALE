@@ -1,0 +1,60 @@
+{
+  "id": "!    Â§dGokuBlack 16x",
+  "name": "GokuBlack_16x",
+  "displayName": "GokuBlack 16x",
+  "coloredName": "<span style=\"color:#FF55FF\">G</span><span style=\"color:#FF55FF\">o</span><span style=\"color:#FF55FF\">k</span><span style=\"color:#FF55FF\">u</span><span style=\"color:#FF55FF\">B</span><span style=\"color:#FF55FF\">l</span><span style=\"color:#FF55FF\">a</span><span style=\"color:#FF55FF\">c</span><span style=\"color:#FF55FF\">k</span><span style=\"color:#FF55FF\"> </span><span style=\"color:#FF55FF\">1</span><span style=\"color:#FF55FF\">6</span><span style=\"color:#FF55FF\">x</span>",
+  "description": "by Shirogan",
+  "cover": "/thumbnails/GokuBlack_16x/cover.png",
+  "packPng": "/thumbnails/GokuBlack_16x/pack.png",
+  "icon": null,
+  "file": "resourcepacks/!    Â§dGokuBlack 16x.zip",
+  "fileSize": "16.0MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!%20%20%20%20%C3%82%C2%A7dGokuBlack%2016x.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!%20%20%20%20%C3%82%C2%A7dGokuBlack%2016x.zip"
+  }
+}

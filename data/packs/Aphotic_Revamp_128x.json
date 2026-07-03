@@ -1,0 +1,60 @@
+{
+  "id": "!   §4Aphotic §8Revamp §8[§7128x§8]",
+  "name": "Aphotic_Revamp_128x",
+  "displayName": "Aphotic Revamp [128x]",
+  "coloredName": "<span style=\"color:#AA0000\">A</span><span style=\"color:#AA0000\">p</span><span style=\"color:#AA0000\">h</span><span style=\"color:#AA0000\">o</span><span style=\"color:#AA0000\">t</span><span style=\"color:#AA0000\">i</span><span style=\"color:#AA0000\">c</span><span style=\"color:#AA0000\"> </span><span style=\"color:#555555\">R</span><span style=\"color:#555555\">e</span><span style=\"color:#555555\">v</span><span style=\"color:#555555\">a</span><span style=\"color:#555555\">m</span><span style=\"color:#555555\">p</span><span style=\"color:#555555\"> </span><span style=\"color:#555555\">[</span><span style=\"color:#AAAAAA\">1</span><span style=\"color:#AAAAAA\">2</span><span style=\"color:#AAAAAA\">8</span><span style=\"color:#AAAAAA\">x</span><span style=\"color:#555555\">]</span>",
+  "description": "Revamp by iSparkton, Original by Aerick",
+  "cover": "/thumbnails/Aphotic_Revamp_128x/cover.png",
+  "packPng": "/thumbnails/Aphotic_Revamp_128x/pack.png",
+  "icon": null,
+  "file": "resourcepacks/!   §4Aphotic §8Revamp §8[§7128x§8].zip",
+  "fileSize": "18.0MB",
+  "uploadDate": "2026-07-03",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%20%20%20%C2%A74Aphotic%20%C2%A78Revamp%20%C2%A78%5B%C2%A77128x%C2%A78%5D.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%20%20%20%C2%A74Aphotic%20%C2%A78Revamp%20%C2%A78%5B%C2%A77128x%C2%A78%5D.zip"
+  }
+}
