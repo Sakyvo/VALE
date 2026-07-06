@@ -2,126 +2,6 @@
   "page": 7,
   "items": [
     {
-      "id": "FPS PACK!",
-      "name": "FPS_PACK",
-      "displayName": "FPS PACK!",
-      "coloredName": "FPS PACK!",
-      "description": "FPS PACK BY TOKYO",
-      "cover": "/thumbnails/FPS_PACK/cover.png",
-      "packPng": "/thumbnails/FPS_PACK/pack.png",
-      "icon": null,
-      "file": "resourcepacks/FPS PACK!.zip",
-      "fileSize": "7.7MB",
-      "uploadDate": "2026-07-03",
-      "lists": [
-        "Sakyvo"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/FPS%20PACK!.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/FPS%20PACK!.zip"
-      }
-    },
-    {
-      "id": "FPS_ONE_PACK_-_Palmita",
-      "name": "FPS_ONE_PACK_-_Palmita",
-      "displayName": "FPS_ONE_PACK_-_Palmita",
-      "coloredName": "FPS_ONE_PACK_-_Palmita",
-      "description": "Made by xOneMC_YT",
-      "cover": "/thumbnails/FPS_ONE_PACK_-_Palmita/cover.png",
-      "packPng": "/thumbnails/FPS_ONE_PACK_-_Palmita/pack.png",
-      "icon": null,
-      "file": "resourcepacks/FPS_ONE_PACK_-_Palmita.zip",
-      "fileSize": "1.1MB",
-      "uploadDate": "2026-07-03",
-      "lists": [
-        "Sakyvo"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/FPS_ONE_PACK_-_Palmita.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/FPS_ONE_PACK_-_Palmita.zip"
-      }
-    },
-    {
       "id": "! ! §c§lFuchsia 128",
       "name": "Fuchsia_128",
       "displayName": "Fuchsia 128",
@@ -3006,6 +2886,127 @@
       "downloads": {
         "github": "https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/%C2%A7aInfera%20%C2%A78%5B%C2%A7764x%C2%A78%5D.zip",
         "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/%C2%A7aInfera%20%C2%A78%5B%C2%A7764x%C2%A78%5D.zip"
+      }
+    },
+    {
+      "id": "§8! §aInfera §8V2",
+      "name": "Infera_V2",
+      "displayName": "Infera V2",
+      "coloredName": "<span style=\"color:#55FF55\">I</span><span style=\"color:#55FF55\">n</span><span style=\"color:#55FF55\">f</span><span style=\"color:#55FF55\">e</span><span style=\"color:#55FF55\">r</span><span style=\"color:#55FF55\">a</span><span style=\"color:#55FF55\"> </span><span style=\"color:#555555\">V</span><span style=\"color:#555555\">2</span>",
+      "description": "By iSparkton",
+      "cover": "/thumbnails/Infera_V2/cover.png",
+      "packPng": "/thumbnails/Infera_V2/pack.png",
+      "icon": null,
+      "file": "resourcepacks/§8! §aInfera §8V2.zip",
+      "fileSize": "13.3MB",
+      "uploadDate": "2026-04-09",
+      "lists": [
+        "Jewdah pf",
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/%C2%A78!%20%C2%A7aInfera%20%C2%A78V2.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/%C2%A78!%20%C2%A7aInfera%20%C2%A78V2.zip"
+      }
+    },
+    {
+      "id": "iProComboClient",
+      "name": "iProComboClient",
+      "displayName": "iProComboClient",
+      "coloredName": "iProComboClient",
+      "description": "",
+      "cover": "/thumbnails/iProComboClient/cover.png",
+      "packPng": "/thumbnails/iProComboClient/pack.png",
+      "icon": null,
+      "file": "resourcepacks/iProComboClient.zip",
+      "fileSize": "34.0MB",
+      "uploadDate": "2026-07-03",
+      "lists": [
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/iProComboClient.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/iProComboClient.zip"
       }
     }
   ]
