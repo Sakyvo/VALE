@@ -325,6 +325,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     window.renderLists(listSearchQuery);
   }
 
+  function resetListSearchWhenCleared() {
+    if (searchInput.value.trim() !== '' || listSearchQuery === '') return;
+    listSearchQuery = '';
+    window.renderLists(listSearchQuery);
+  }
+
   function updateUI() {
     const isAdmin = window.AUTH?.isLoggedIn();
     document.getElementById('manage-btn').style.display = isAdmin ? 'inline-block' : 'none';
@@ -337,6 +343,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     e.preventDefault();
     submitListSearch();
   });
+  searchInput?.addEventListener('input', resetListSearchWhenCleared);
 
   document.getElementById('manage-btn').onclick = showManageModal;
 
@@ -527,11 +534,17 @@ async function loadListDetail(listId) {
       render();
     }
 
+    const packSearchInput = document.getElementById('list-pack-search');
     document.getElementById('list-pack-search-btn')?.addEventListener('click', submitPackSearch);
-    document.getElementById('list-pack-search')?.addEventListener('keydown', e => {
+    packSearchInput?.addEventListener('keydown', e => {
       if (e.key !== 'Enter') return;
       e.preventDefault();
       submitPackSearch();
+    });
+    packSearchInput?.addEventListener('input', () => {
+      if (packSearchInput.value.trim() !== '' || searchQuery === '') return;
+      searchQuery = '';
+      render();
     });
 
     if (isAdmin) {

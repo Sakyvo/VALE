@@ -12,7 +12,13 @@ class PackSearch {
       e.preventDefault();
       this.search();
     });
+    this.searchInput?.addEventListener('input', () => this.resetWhenCleared());
     this.sortBtn?.addEventListener('click', () => this.toggleSort());
+  }
+
+  resetWhenCleared() {
+    if (this.searchInput.value.trim() !== '') return;
+    this.search();
   }
 
   toggleSort() {
