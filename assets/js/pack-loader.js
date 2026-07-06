@@ -35,7 +35,7 @@ class PackLoader {
     const items = this.getItems();
     grid.innerHTML = items
       .map((item, i) => `
-        <a class="pack-card" data-index="${i}" data-id="${item.name}" data-loaded="false" href="p/${item.name}/">
+        <a class="pack-card" data-index="${i}" data-id="${item.name}" data-loaded="false" href="p/${item.name}/" target="_blank" rel="noopener noreferrer">
           <div class="placeholder"></div>
           <div class="info">
             <div class="name">${item.coloredName || item.displayName}</div>

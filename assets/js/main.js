@@ -2,10 +2,16 @@ class PackSearch {
   constructor(loader) {
     this.loader = loader;
     this.searchInput = document.querySelector('#search-input');
+    this.searchBtn = document.querySelector('.search-btn');
     this.resultsContainer = document.querySelector('.pack-grid');
     this.sortBtn = document.getElementById('sort-btn');
     this.sortByDate = false;
-    this.searchInput.addEventListener('input', this.debounce(() => this.search(), 300));
+    this.searchBtn?.addEventListener('click', () => this.search());
+    this.searchInput?.addEventListener('keydown', e => {
+      if (e.key !== 'Enter') return;
+      e.preventDefault();
+      this.search();
+    });
     this.sortBtn?.addEventListener('click', () => this.toggleSort());
   }
 
@@ -43,7 +49,7 @@ class PackSearch {
         const isOverlay = (pack.lists || []).includes('Overlay');
         const badge = isOverlay ? '<span class="overlay-badge">OVERLAY</span>' : '';
         return `
-        <a class="pack-card" href="/p/${pack.name}/">
+        <a class="pack-card" href="/p/${pack.name}/" target="_blank" rel="noopener noreferrer">
           <img class="cover" src="${pack.cover}" alt="${pack.displayName}" style="visibility:hidden">
           ${badge}
           <div class="info">
@@ -76,14 +82,6 @@ class PackSearch {
         this.style.visibility = 'visible';
       };
     });
-  }
-
-  debounce(fn, delay) {
-    let timer;
-    return (...args) => {
-      clearTimeout(timer);
-      timer = setTimeout(() => fn.apply(this, args), delay);
-    };
   }
 }
 

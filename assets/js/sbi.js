@@ -55,10 +55,14 @@ function initClipWorker() {
 }
 
 let _lastHashResults = [], _lastAllScores = {};
-const SBI_FINGERPRINT_VERSION = 14;
+const SBI_FINGERPRINT_VERSION = 15;
 const SBI_BASE_FINGERPRINT_SHARDS = ['widget', 'health', 'hunger', 'armor', 'diamond_sword', 'ender_pearl', 'splash_potion'];
 const SBI_FOOD_FINGERPRINT_SHARD = 'food';
 const SBI_FINGERPRINT_SHARD_PATH = '/data/sbi-fp/';
+const SBI_ANCHOR_ITEM_TYPES = ['diamond_sword', 'ender_pearl', 'splash_potion'];
+const SBI_CANDIDATE_MIN_PACKS = 24;
+const SBI_CANDIDATE_FALLBACK_MARGIN = 0.006;
+const SBI_CANDIDATE_FALLBACK_MIN_SCORE = 0.30;
 const _fingerprintShardPromises = {};
 // AI (CLIP) is used as a rerank signal. We normalize CLIP scores per-query and
 // apply it as a multiplicative factor on top of the hash score, so a weak CLIP
@@ -70,6 +74,7 @@ let _lastMatchDetails = {};
 let _lastClipScores = {};
 let _lastVisibleScores = {};
 let _lastTestTimings = {};
+let _lastMatchMetrics = {};
 let _lastRankedResults = [];
 let _lastSlotFeatures = [];
 let _lastSearchPhase = 'hash';
@@ -216,6 +221,23 @@ function getAdjacentBucketKeys(bucketKey) {
   return out;
 }
 
+function nowMs() {
+  return (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now();
+}
+
+function byteHex(byte) {
+  return Number(byte || 0).toString(16).padStart(2, '0');
+}
+
+function getDHashSegmentKeysFromBytes(bytes) {
+  if (!bytes || bytes.length < 24) return [];
+  const keys = [];
+  for (let offset = 0; offset + 4 <= 24; offset += 4) {
+    keys.push((offset / 4) + ':' + byteHex(bytes[offset]) + byteHex(bytes[offset + 1]) + byteHex(bytes[offset + 2]) + byteHex(bytes[offset + 3]));
+  }
+  return keys;
+}
+
 function getShardNameForType(type) {
   if (type === 'steak' || type === 'golden_carrot') return SBI_FOOD_FINGERPRINT_SHARD;
   return type;
@@ -235,31 +257,73 @@ function getIndexCandidateNames(type, sig) {
   return names;
 }
 
-function getSignaturePrefilterCandidates(slots, slotTypes) {
-  if (!fingerprints || !fingerprints.packs || !fingerprints._shardIndexes) return null;
+function getHashIndexCandidateNames(type, features) {
+  const shardName = getShardNameForType(type);
+  const index = fingerprints && fingerprints._shardIndexes && fingerprints._shardIndexes[shardName];
+  const typeIndex = index && index._hash && index._hash[type];
+  if (!typeIndex || !features || !features.dhash) return null;
+  const names = new Set();
+  for (const key of getDHashSegmentKeysFromBytes(features.dhash)) {
+    const segmentNames = typeIndex[key];
+    if (!segmentNames) continue;
+    for (const name of segmentNames) names.add(name);
+  }
+  return names;
+}
+
+function getAnchorSlotsByType(slots, slotTypes) {
   const byType = {};
   for (const slot of (slots || [])) {
     const type = slotTypes && slotTypes[slot.index];
-    if (!type || type === 'none' || !SLOT_ITEM_TYPES.includes(type)) continue;
+    if (!type || !SBI_ANCHOR_ITEM_TYPES.includes(type)) continue;
     const sig = slot.features && slot.features.sig;
     if (!sig || !sig.n) continue;
+    const activity = clamp01(slot.activity || 0);
+    if (activity < 0.18) continue;
+    const quality = slot.quality || 0;
+    const strength = activity * 2 + Math.min(1, quality / 18) + (slot.index <= 1 ? 0.4 : 0);
     const current = byType[type];
-    if (!current || (slot.activity || 0) > (current.activity || 0)) byType[type] = slot;
+    if (!current || strength > current.strength) byType[type] = { type, slot, strength };
   }
+  return Object.values(byType).sort((a, b) => b.strength - a.strength);
+}
 
+function getSignaturePrefilterCandidates(slots, slotTypes) {
+  if (!fingerprints || !fingerprints.packs || !fingerprints._shardIndexes) return null;
+  const anchors = getAnchorSlotsByType(slots, slotTypes);
+  if (!anchors.length) return null;
   const votes = {};
   let signalCount = 0;
-  for (const [type, slot] of Object.entries(byType)) {
-    const names = getIndexCandidateNames(type, slot.features && slot.features.sig);
-    if (!names || names.size < 5) continue;
+  const byType = {};
+  for (const anchor of anchors) {
+    const type = anchor.type;
+    const slot = anchor.slot;
+    const bucketNames = getIndexCandidateNames(type, slot.features && slot.features.sig);
+    const hashNames = getHashIndexCandidateNames(type, slot.features);
+    const names = new Set();
+    if (bucketNames) for (const name of bucketNames) names.add(name);
+    if (hashNames) for (const name of hashNames) names.add(name);
+    byType[type] = {
+      bucketCount: bucketNames ? bucketNames.size : 0,
+      hashCount: hashNames ? hashNames.size : 0,
+      totalCount: names.size,
+    };
+    if (names.size < 5) continue;
     signalCount++;
     for (const name of names) votes[name] = (votes[name] || 0) + 1;
   }
   if (!signalCount) return null;
 
-  const threshold = signalCount >= 3 ? 2 : 1;
+  const threshold = 1;
   const candidates = Object.keys(votes).filter(name => votes[name] >= threshold);
-  return candidates.length >= 5 ? new Set(candidates) : null;
+  if (candidates.length < SBI_CANDIDATE_MIN_PACKS) return null;
+  return {
+    names: new Set(candidates),
+    votes,
+    signalCount,
+    byType,
+    anchorSlots: anchors,
+  };
 }
 
 function clamp01(v) {
@@ -743,8 +807,12 @@ function renderDebugPanel(results, phase) {
   const rect = formatWidgetRect(d.widgetRect);
   const s = d.searchInfo || null;
   const search = formatSearchInfo(s);
+  const m = _lastMatchMetrics || {};
+  const matchInfo = m.packCount
+    ? ` | match=${m.fullScoreMode || m.candidateMode || 'all'} pre=${m.candidatePrefilterCount == null ? '-' : m.candidatePrefilterCount}/${m.packCount} coarse=${m.coarseScoreCount || 0}->${m.coarseSelectedCount || m.fullScoreCount || 0} full=${m.fullScoreCount || 0}${m.fallback ? ' fallback' : ''}`
+    : '';
   meta.textContent =
-    `phase=${phase} | slots=${d.slotCount || 0} | hud(heart/hunger/armor)=${d.heartCount || 0}/${d.hungerCount || 0}/${d.armorCount || 0} | widget=${rect} | search=${search}` +
+    `phase=${phase} | slots=${d.slotCount || 0} | hud(heart/hunger/armor)=${d.heartCount || 0}/${d.hungerCount || 0}/${d.armorCount || 0} | widget=${rect} | search=${search}${matchInfo}` +
     (s && s.preTop ? `\npre=${s.preTop}` : '') +
     (s && s.autoCandidates ? `\nauto=${s.autoCandidates}` : '');
   slotTypesEl.textContent = `Slot Types: ${getCurrentSlotTypesSummary()}`;
@@ -3052,281 +3120,362 @@ function inferDisplaySlotTypes(slots) {
 }
 
 // --- Matching ---
+
+function getCandidateFullScoreLimit(packCount) {
+  return Math.max(140, Math.min(260, Math.ceil((packCount || 0) * 0.20)));
+}
+
+function scoreCoarseAnchorMatch(packData, anchorSlots) {
+  let weighted = 0, weights = 0;
+  for (const anchor of (anchorSlots || [])) {
+    const type = anchor.type;
+    const tex = packData && packData[type];
+    if (!tex) continue;
+    const slot = anchor.slot;
+    const activity = clamp01(slot.activity || 0);
+    const quality = clamp01((slot.quality || 0) / 18);
+    const positionBonus = slot.index <= 1 ? 1.35 : 1.0;
+    const w = (SBI_SCORE_WEIGHTS.type[type] || 1) * positionBonus * (0.55 + activity) * (0.70 + quality * 0.40);
+    weighted += compareSlotToType(slot, tex, type) * w;
+    weights += w;
+  }
+  return weights ? weighted / weights : 0;
+}
+
+function selectCandidateFullScoreEntries(allEntries, candidatePlan, metrics) {
+  if (!candidatePlan || !candidatePlan.names || !candidatePlan.names.size) return allEntries;
+  const candidateEntries = allEntries.filter(([name]) => candidatePlan.names.has(name));
+  const packCount = allEntries.length;
+  metrics.candidatePrefilterCount = candidateEntries.length;
+  metrics.candidateSignalCount = candidatePlan.signalCount || 0;
+  metrics.candidateByType = candidatePlan.byType || {};
+  metrics.candidateMode = 'prefilter';
+  if (!candidateEntries.length) return allEntries;
+
+  const limit = getCandidateFullScoreLimit(packCount);
+  if (candidateEntries.length <= limit) {
+    metrics.coarseScoreCount = 0;
+    return candidateEntries;
+  }
+
+  const coarseStart = nowMs();
+  const rows = candidateEntries.map(entry => {
+    const name = entry[0];
+    const vote = candidatePlan.votes && candidatePlan.votes[name] ? candidatePlan.votes[name] : 0;
+    return { entry, vote, score: scoreCoarseAnchorMatch(entry[1], candidatePlan.anchorSlots) };
+  }).sort((a, b) => b.score - a.score || b.vote - a.vote || a.entry[0].localeCompare(b.entry[0]));
+
+  const selected = new Set();
+  for (const row of rows.slice(0, limit)) selected.add(row.entry[0]);
+  for (const row of [...rows].sort((a, b) => b.vote - a.vote || b.score - a.score).slice(0, Math.min(48, rows.length))) selected.add(row.entry[0]);
+
+  metrics.coarseScoreCount = rows.length;
+  metrics.coarseSelectedCount = selected.size;
+  metrics.coarseMs = nowMs() - coarseStart;
+  return allEntries.filter(([name]) => selected.has(name));
+}
+
+function shouldRunFullScoreFallback(results, metrics, totalPackCount) {
+  if (!metrics || metrics.candidateMode !== 'prefilter') return false;
+  if ((metrics.fullScoreCount || 0) >= totalPackCount) return false;
+  const ranked = results || [];
+  if (ranked.length < 10) return true;
+  const top1 = ranked[0] && isFinite(ranked[0].score) ? ranked[0].score : 0;
+  const top2 = ranked[1] && isFinite(ranked[1].score) ? ranked[1].score : 0;
+  if (top1 < SBI_CANDIDATE_FALLBACK_MIN_SCORE) return true;
+  return (top1 - top2) < SBI_CANDIDATE_FALLBACK_MARGIN;
+}
 function matchPacks(slots, widgetFeatures, hudFeatures) {
   if (!slots.length) return { results: [], slotTypes: [], details: {} };
+  const matchStart = nowMs();
   const displaySlotTypes = inferDisplaySlotTypes(slots);
   const displayTypeCounts = countDisplaySlotTypes(displaySlotTypes);
-  const ITEM_TYPES = SLOT_ITEM_TYPES;
-  const TYPE_WEIGHT = SBI_SCORE_WEIGHTS.type;
-  const packEntries = Object.entries(fingerprints.packs);
-  const results = [];
-  const details = {};
-  const scoredRows = [];
-  const hasPearlAnchor = !!displayTypeCounts.ender_pearl;
-  const candidateNames = getSignaturePrefilterCandidates(slots, displaySlotTypes);
+  const allPackEntries = Object.entries(fingerprints.packs);
+  const metrics = {
+    packCount: allPackEntries.length,
+    candidateMode: 'all',
+    candidatePrefilterCount: null,
+    candidateSignalCount: 0,
+    candidateByType: {},
+    coarseScoreCount: 0,
+    coarseSelectedCount: 0,
+    coarseMs: 0,
+    fullScoreCount: allPackEntries.length,
+    fallback: false,
+    runs: [],
+  };
 
-  // Quick pre-scan: if some packs nail the widget (custom hotbar), penalize
-  // packs with near-default widgets to avoid default edits dominating via
-  // generic slot textures.
-  let maxWidgetSim = 0;
-  const widgetSimCache = {};
-  if (widgetFeatures) {
+  const candidatePlan = getSignaturePrefilterCandidates(slots, displaySlotTypes);
+  const fullScoreEntries = selectCandidateFullScoreEntries(allPackEntries, candidatePlan, metrics);
+
+  const runFullScore = (packEntries, label) => {
+    const runStart = nowMs();
+    const ITEM_TYPES = SLOT_ITEM_TYPES;
+    const TYPE_WEIGHT = SBI_SCORE_WEIGHTS.type;
+    const results = [];
+    const details = {};
+    const scoredRows = [];
+    const hasPearlAnchor = !!displayTypeCounts.ender_pearl;
+    const runMetrics = { label, packCount: packEntries.length, widgetMs: 0, scoreMs: 0, rankMs: 0, totalMs: 0 };
+    metrics.runs.push(runMetrics);
+    metrics.fullScoreCount = packEntries.length;
+    metrics.fullScoreMode = label;
+
+    let maxWidgetSim = 0;
+    const widgetSimCache = {};
+    const widgetStart = nowMs();
+    if (widgetFeatures) {
+      for (const [packName, packData] of packEntries) {
+        if (!packData.hotbar_widget) continue;
+        const sim = compareWidget(widgetFeatures, packData.hotbar_widget);
+        widgetSimCache[packName] = sim;
+        if (sim > maxWidgetSim) maxWidgetSim = sim;
+      }
+    }
+    runMetrics.widgetMs = nowMs() - widgetStart;
+
+    const scoreStart = nowMs();
     for (const [packName, packData] of packEntries) {
-      if (!packData.hotbar_widget) continue;
-      const sim = compareWidget(widgetFeatures, packData.hotbar_widget);
-      widgetSimCache[packName] = sim;
-      if (sim > maxWidgetSim) maxWidgetSim = sim;
-    }
-  }
+      let slotWeighted = 0, slotWeights = 0;
+      let slotPenalty = 0, certaintySum = 0;
+      let activeSlots = 0, strongSlots = 0;
+      let widgetSim = 0, healthSim = 0, hungerSim = 0, armorSim = 0;
+      const perTypeScores = {};
+      const slotBreakdown = new Array(9).fill(null);
+      const topSlotContribs = [];
 
-  for (const [packName, packData] of packEntries) {
-    if (candidateNames && !candidateNames.has(packName)) continue;
-    let slotWeighted = 0, slotWeights = 0;
-    let slotPenalty = 0, certaintySum = 0;
-    let activeSlots = 0, strongSlots = 0;
-    let widgetSim = 0, healthSim = 0, hungerSim = 0, armorSim = 0;
-    const perTypeScores = {};
-    const slotBreakdown = new Array(9).fill(null);
-    const topSlotContribs = [];
+      for (const slot of slots) {
+        const activity = clamp01(slot.activity || 0);
+        const targetType = displaySlotTypes[slot.index] || 'none';
+        const baseEntry = {
+          index: slot.index,
+          inferredType: targetType,
+          activity,
+          quality: slot.quality || 0,
+          variance: slot.variance || 0,
+          score: null,
+          altBest: null,
+          certainty: null,
+        };
+        slotBreakdown[slot.index] = baseEntry;
 
-    for (const slot of slots) {
-      const activity = clamp01(slot.activity || 0);
-      const targetType = displaySlotTypes[slot.index] || 'none';
-      const baseEntry = {
-        index: slot.index,
-        inferredType: targetType,
-        activity,
-        quality: slot.quality || 0,
-        variance: slot.variance || 0,
-        score: null,
-        altBest: null,
-        certainty: null,
-      };
-      slotBreakdown[slot.index] = baseEntry;
-
-      if (activity < 0.18) continue;
-      // For slots the classifier couldn't type (custom art), scan all item
-      // types the pack has. A good dHash+color match still carries signal.
-      let forceType = null, forceTypeW = 0;
-      let forceSim = 0;
-      if (targetType === 'none' && activity >= 0.60) {
-        let best = 0;
-        for (const t of ITEM_TYPES) {
-          const tw = TYPE_WEIGHT[t] || 0;
-          if (tw <= 0 || !packData[t]) continue;
-          const s = compareSlotToType(slot, packData[t], t);
-          const score = s * tw;
-          if (score > best) { best = score; forceType = t; forceTypeW = tw; forceSim = s; }
+        if (activity < 0.18) continue;
+        let forceType = null, forceTypeW = 0;
+        let forceSim = 0;
+        if (targetType === 'none' && activity >= 0.60) {
+          let best = 0;
+          for (const t of ITEM_TYPES) {
+            const tw = TYPE_WEIGHT[t] || 0;
+            if (tw <= 0 || !packData[t]) continue;
+            const s = compareSlotToType(slot, packData[t], t);
+            const score = s * tw;
+            if (score > best) { best = score; forceType = t; forceTypeW = tw; forceSim = s; }
+          }
+          if (best < 0.02 || forceSim < 0.08) { forceType = null; forceTypeW = 0; forceSim = 0; }
         }
-        if (best < 0.02 || forceSim < 0.08) { forceType = null; forceTypeW = 0; forceSim = 0; }
-      }
-      const effectiveType = targetType !== 'none' ? targetType : forceType;
-      if (!effectiveType) continue;
-      const isFallback = !!(forceType && targetType === 'none');
-      const typeW = isFallback ? forceTypeW * 0.75 : (TYPE_WEIGHT[effectiveType] || 0);
-      if (typeW <= 0) continue;
-      const targetTex = packData[effectiveType];
-      if (!targetTex) continue;
+        const effectiveType = targetType !== 'none' ? targetType : forceType;
+        if (!effectiveType) continue;
+        const isFallback = !!(forceType && targetType === 'none');
+        const typeW = isFallback ? forceTypeW * 0.75 : (TYPE_WEIGHT[effectiveType] || 0);
+        if (typeW <= 0) continue;
+        const targetTex = packData[effectiveType];
+        if (!targetTex) continue;
 
-      const sim = compareSlotToType(slot, targetTex, effectiveType);
-      const shortKey = effectiveType === 'steak' || effectiveType === 'golden_carrot' ? 'SK/GC' :
-        effectiveType === 'diamond_sword' ? 'DS' : effectiveType === 'ender_pearl' ? 'EP' :
-        effectiveType === 'splash_potion' ? 'HL' : null;
-      if (shortKey && (!perTypeScores[shortKey] || sim > perTypeScores[shortKey])) perTypeScores[shortKey] = sim;
-      let altBest = 0;
-      for (const type of ITEM_TYPES) {
-        if (type === effectiveType) continue;
-        if ((TYPE_WEIGHT[type] || 0) <= 0) continue;
-        if (!packData[type]) continue;
-        altBest = Math.max(altBest, compareSlotToType(slot, packData[type], type));
+        const sim = compareSlotToType(slot, targetTex, effectiveType);
+        const shortKey = effectiveType === 'steak' || effectiveType === 'golden_carrot' ? 'SK/GC' :
+          effectiveType === 'diamond_sword' ? 'DS' : effectiveType === 'ender_pearl' ? 'EP' :
+          effectiveType === 'splash_potion' ? 'HL' : null;
+        if (shortKey && (!perTypeScores[shortKey] || sim > perTypeScores[shortKey])) perTypeScores[shortKey] = sim;
+        let altBest = 0;
+        for (const type of ITEM_TYPES) {
+          if (type === effectiveType) continue;
+          if ((TYPE_WEIGHT[type] || 0) <= 0) continue;
+          if (!packData[type]) continue;
+          altBest = Math.max(altBest, compareSlotToType(slot, packData[type], type));
+        }
+
+        activeSlots++;
+        const certainty = Math.max(0, sim - altBest);
+        slotBreakdown[slot.index] = {
+          index: slot.index,
+          inferredType: effectiveType,
+          activity,
+          quality: slot.quality || 0,
+          variance: slot.variance || 0,
+          score: sim,
+          altBest,
+          certainty,
+        };
+        const qualityNorm = clamp01((slot.quality || 0) / 13);
+        const repeatedTypeScale = getRepeatedTypeScale(effectiveType, displayTypeCounts);
+        const positionBonus = (slot.index === 0 || slot.index === 1) ? 1.8 : 1.0;
+        const w = typeW * repeatedTypeScale * positionBonus * (0.45 + 0.9 * activity) * (0.6 + 0.6 * qualityNorm);
+        slotWeighted += sim * w;
+        slotWeights += w;
+        const contrib = { sim, w, value: sim * w };
+        let insertAt = topSlotContribs.length;
+        while (insertAt > 0 && contrib.value > topSlotContribs[insertAt - 1].value) insertAt--;
+        if (insertAt < 3) {
+          topSlotContribs.splice(insertAt, 0, contrib);
+          if (topSlotContribs.length > 3) topSlotContribs.length = 3;
+        }
+        certaintySum += certainty;
+        const strongThreshold = getStrongMatchThreshold(effectiveType);
+        if (sim >= strongThreshold) strongSlots++;
+        else slotPenalty += (strongThreshold - sim) * (0.8 + activity * 0.7);
+      }
+      const slotScore = slotWeights ? (slotWeighted / slotWeights) : 0;
+      let topSlotScore = 0;
+      if (topSlotContribs.length) {
+        const k = topSlotContribs.length;
+        let tw = 0, tsum = 0;
+        for (let i = 0; i < k; i++) { tsum += topSlotContribs[i].sim * topSlotContribs[i].w; tw += topSlotContribs[i].w; }
+        topSlotScore = tw ? (tsum / tw) : 0;
+      }
+      const slotCoverage = activeSlots ? (strongSlots / activeSlots) : 0;
+      const slotPenaltyNorm = activeSlots ? (slotPenalty / activeSlots) : 0;
+      const slotCertainty = activeSlots ? (certaintySum / activeSlots) : 0;
+      const blendedSlot = slotScore * 0.55 + topSlotScore * 0.45;
+      let slotComposite = blendedSlot * (0.78 + 0.22 * slotCoverage) + Math.min(0.10, slotCertainty * 0.55);
+      slotComposite -= slotPenaltyNorm * 0.30;
+      slotComposite = clamp01(slotComposite);
+      if (slotComposite < 0.15) {
+        const reliability = clamp01(slotComposite / 0.20);
+        slotComposite = slotComposite * reliability + 0.20 * (1 - reliability);
       }
 
-      activeSlots++;
-      const certainty = Math.max(0, sim - altBest);
-      slotBreakdown[slot.index] = {
-        index: slot.index,
-        inferredType: effectiveType,
-        activity,
-        quality: slot.quality || 0,
-        variance: slot.variance || 0,
-        score: sim,
-        altBest,
-        certainty,
+      if (widgetFeatures && packData.hotbar_widget) widgetSim = widgetSimCache[packName] || 0;
+
+      let hudWeighted = 0, hudWeights = 0;
+      if (hudFeatures) {
+        healthSim = compareHudCells(hudFeatures.hearts, [packData.health_empty, packData.health_half, packData.health_full], 'health');
+        hungerSim = compareHudCells(hudFeatures.hunger, [packData.hunger_empty, packData.hunger_half, packData.hunger_full], 'hunger');
+        armorSim = compareHudCells(hudFeatures.armor, [packData.armor_empty, packData.armor_half, packData.armor_full], 'armor');
+
+        if (healthSim > 0) { hudWeighted += healthSim * SBI_SCORE_WEIGHTS.hud.health; hudWeights += SBI_SCORE_WEIGHTS.hud.health; }
+        if (hungerSim > 0) { hudWeighted += hungerSim * SBI_SCORE_WEIGHTS.hud.hunger; hudWeights += SBI_SCORE_WEIGHTS.hud.hunger; }
+        if (armorSim > 0) { hudWeighted += armorSim * SBI_SCORE_WEIGHTS.hud.armor; hudWeights += SBI_SCORE_WEIGHTS.hud.armor; }
+      }
+
+      const hudComposite = hudWeights ? (hudWeighted / hudWeights) : 0;
+      let canRank = !!slotWeights && activeSlots >= 3;
+      if (!canRank && slotWeights && activeSlots >= 2 && slotComposite >= 0.24 && (widgetSim >= 0.22 || hudComposite >= 0.40)) canRank = true;
+      const criticalTypeMetrics = getCriticalTypeMetrics(perTypeScores, displayTypeCounts);
+      let rawScore;
+      if (hudWeights > 0) rawScore = slotComposite * SBI_SCORE_WEIGHTS.mix.slot + hudComposite * SBI_SCORE_WEIGHTS.mix.hud + widgetSim * SBI_SCORE_WEIGHTS.mix.widget;
+      else rawScore = slotComposite * SBI_SCORE_WEIGHTS.mix.slotNoHud + widgetSim * SBI_SCORE_WEIGHTS.mix.widgetNoHud;
+
+      rawScore += criticalTypeMetrics.score * 0.16;
+      rawScore += slotCoverage * 0.08 + Math.min(0.04, slotCertainty * 0.65);
+      rawScore -= criticalTypeMetrics.shortfall * 0.16;
+      rawScore -= slotPenaltyNorm * 0.14;
+      rawScore = clamp01(rawScore);
+
+      if (maxWidgetSim > 0.75 && widgetSim < 0.55) rawScore -= 0.075;
+      rawScore = clamp01(rawScore);
+
+      const info = {
+        finalScore: 0,
+        rawScore,
+        slotScore: slotComposite,
+        widgetScore: widgetSim,
+        healthScore: healthSim,
+        hungerScore: hungerSim,
+        armorScore: armorSim,
+        slotCoverage,
+        slotCertainty,
+        criticalTypeScore: criticalTypeMetrics.score,
+        criticalTypeShortfall: criticalTypeMetrics.shortfall,
+        slotTypes: displaySlotTypes,
+        perTypeScores,
+        slotBreakdown,
       };
-      const qualityNorm = clamp01((slot.quality || 0) / 13);
-      const repeatedTypeScale = getRepeatedTypeScale(effectiveType, displayTypeCounts);
-      // Slot 0 (diamond sword) and slot 1 (ender pearl) are the standout
-      // per-pack signals in PvP screenshots — most customization lives there.
-      // The middle/trailing slots are often near-identical across packs
-      // (shared potion / steak art), so give 0/1 a position bonus.
-      const positionBonus = (slot.index === 0 || slot.index === 1) ? 1.8 : 1.0;
-      const w = typeW * repeatedTypeScale * positionBonus * (0.45 + 0.9 * activity) * (0.6 + 0.6 * qualityNorm);
-      slotWeighted += sim * w;
-      slotWeights += w;
-      const contrib = { sim, w, value: sim * w };
-      let insertAt = topSlotContribs.length;
-      while (insertAt > 0 && contrib.value > topSlotContribs[insertAt - 1].value) insertAt--;
-      if (insertAt < 3) {
-        topSlotContribs.splice(insertAt, 0, contrib);
-        if (topSlotContribs.length > 3) topSlotContribs.length = 3;
+      details[packName] = info;
+      if (canRank) scoredRows.push({ name: packName, info });
+    }
+    runMetrics.scoreMs = nowMs() - scoreStart;
+
+    const rankStart = nowMs();
+    const bestEP = hasPearlAnchor
+      ? scoredRows.reduce((best, row) => Math.max(best, (row.info.perTypeScores && row.info.perTypeScores.EP) || 0), 0)
+      : 0;
+    const bestDS = displayTypeCounts.diamond_sword
+      ? scoredRows.reduce((best, row) => Math.max(best, (row.info.perTypeScores && row.info.perTypeScores.DS) || 0), 0)
+      : 0;
+    const bestHP = scoredRows.reduce((best, row) => Math.max(best, row.info.healthScore || 0), 0);
+    const bestAnchors = { ds: bestDS, ep: bestEP, hp: bestHP, widget: maxWidgetSim };
+    const enableEPGate = bestEP >= 0.58;
+    const enableDSGate = bestDS >= 0.50;
+    const enableWeakDSDiscriminator = displayTypeCounts.diamond_sword && bestDS >= 0.30 && bestDS < 0.50 && maxWidgetSim >= 0.75;
+    for (const row of scoredRows) {
+      const info = row.info;
+      let gatedRawScore = info.rawScore;
+      const anchorDiagnostics = buildAnchorDiagnostics(info, bestAnchors);
+      info.anchorGaps = anchorDiagnostics.anchorGaps;
+      info.sharedness = anchorDiagnostics.sharedness;
+      info.strongAnchorCount = anchorDiagnostics.strongAnchorCount;
+      info.anchorPenalty = anchorDiagnostics.anchorPenalty;
+      info.distinguishability = anchorDiagnostics.distinguishability;
+      if (enableEPGate) {
+        const ep = (info.perTypeScores && info.perTypeScores.EP) || 0;
+        let cap = null;
+        if (ep < bestEP - 0.14) cap = 0.38;
+        else if (ep < bestEP - 0.08) cap = 0.46;
+        if (cap != null && gatedRawScore > cap) {
+          gatedRawScore = cap;
+          info.epGate = { bestEP, ep, cap };
+        }
       }
-      certaintySum += certainty;
-      const strongThreshold = getStrongMatchThreshold(effectiveType);
-      if (sim >= strongThreshold) strongSlots++;
-      else slotPenalty += (strongThreshold - sim) * (0.8 + activity * 0.7);
-    }
-    const slotScore = slotWeights ? (slotWeighted / slotWeights) : 0;
-    // Top-K slot average: resilient to packs where half the slots share generic
-    // potion / steak art. Keeps the pack's best-matching slots as the primary
-    // signal when the rest are noisy.
-    let topSlotScore = 0;
-    if (topSlotContribs.length) {
-      const k = topSlotContribs.length;
-      let tw = 0, tsum = 0;
-      for (let i = 0; i < k; i++) { tsum += topSlotContribs[i].sim * topSlotContribs[i].w; tw += topSlotContribs[i].w; }
-      topSlotScore = tw ? (tsum / tw) : 0;
-    }
-    const slotCoverage = activeSlots ? (strongSlots / activeSlots) : 0;
-    const slotPenaltyNorm = activeSlots ? (slotPenalty / activeSlots) : 0;
-    const slotCertainty = activeSlots ? (certaintySum / activeSlots) : 0;
-    // Blend full-average slot score with top-3 slot score.
-    const blendedSlot = slotScore * 0.55 + topSlotScore * 0.45;
-    let slotComposite = blendedSlot * (0.78 + 0.22 * slotCoverage) + Math.min(0.10, slotCertainty * 0.55);
-    slotComposite -= slotPenaltyNorm * 0.30;
-    slotComposite = clamp01(slotComposite);
-    // When slot matching is unreliable (custom logos, NN slots), blend toward neutral
-    if (slotComposite < 0.15) {
-      const reliability = clamp01(slotComposite / 0.20);
-      slotComposite = slotComposite * reliability + 0.20 * (1 - reliability);
-    }
-
-    if (widgetFeatures && packData.hotbar_widget) {
-      widgetSim = widgetSimCache[packName] || 0;
-    }
-
-    let hudWeighted = 0, hudWeights = 0;
-    if (hudFeatures) {
-      healthSim = compareHudCells(hudFeatures.hearts, [packData.health_empty, packData.health_half, packData.health_full], 'health');
-      hungerSim = compareHudCells(hudFeatures.hunger, [packData.hunger_empty, packData.hunger_half, packData.hunger_full], 'hunger');
-      armorSim = compareHudCells(hudFeatures.armor, [packData.armor_empty, packData.armor_half, packData.armor_full], 'armor');
-
-      if (healthSim > 0) { hudWeighted += healthSim * SBI_SCORE_WEIGHTS.hud.health; hudWeights += SBI_SCORE_WEIGHTS.hud.health; }
-      if (hungerSim > 0) { hudWeighted += hungerSim * SBI_SCORE_WEIGHTS.hud.hunger; hudWeights += SBI_SCORE_WEIGHTS.hud.hunger; }
-      if (armorSim > 0) { hudWeighted += armorSim * SBI_SCORE_WEIGHTS.hud.armor; hudWeights += SBI_SCORE_WEIGHTS.hud.armor; }
-    }
-
-    const hudComposite = hudWeights ? (hudWeighted / hudWeights) : 0;
-    let canRank = !!slotWeights && activeSlots >= 3;
-    if (!canRank && slotWeights && activeSlots >= 2 && slotComposite >= 0.24 && (widgetSim >= 0.22 || hudComposite >= 0.40)) {
-      canRank = true;
-    }
-    const criticalTypeMetrics = getCriticalTypeMetrics(perTypeScores, displayTypeCounts);
-    let rawScore;
-    if (hudWeights > 0) rawScore = slotComposite * SBI_SCORE_WEIGHTS.mix.slot + hudComposite * SBI_SCORE_WEIGHTS.mix.hud + widgetSim * SBI_SCORE_WEIGHTS.mix.widget;
-    else rawScore = slotComposite * SBI_SCORE_WEIGHTS.mix.slotNoHud + widgetSim * SBI_SCORE_WEIGHTS.mix.widgetNoHud;
-
-    rawScore += criticalTypeMetrics.score * 0.16;
-    rawScore += slotCoverage * 0.08 + Math.min(0.04, slotCertainty * 0.65);
-    rawScore -= criticalTypeMetrics.shortfall * 0.16;
-    rawScore -= slotPenaltyNorm * 0.14;
-    rawScore = clamp01(rawScore);
-
-    // Default-edit packs can have high slot scores (generic textures match
-    // many screenshots) but near-vanilla widgets. When custom-widget packs
-    // exist, penalize default-looking widgets so they don't win on slot alone.
-    if (maxWidgetSim > 0.75 && widgetSim < 0.55) {
-      rawScore -= 0.075;
-    }
-    rawScore = clamp01(rawScore);
-
-    const info = {
-      finalScore: 0,
-      rawScore,
-      slotScore: slotComposite,
-      widgetScore: widgetSim,
-      healthScore: healthSim,
-      hungerScore: hungerSim,
-      armorScore: armorSim,
-      slotCoverage,
-      slotCertainty,
-      criticalTypeScore: criticalTypeMetrics.score,
-      criticalTypeShortfall: criticalTypeMetrics.shortfall,
-      slotTypes: displaySlotTypes,
-      perTypeScores,
-      slotBreakdown,
-    };
-    details[packName] = info;
-    if (canRank) scoredRows.push({ name: packName, info });
-  }
-
-  const bestEP = hasPearlAnchor
-    ? scoredRows.reduce((best, row) => Math.max(best, (row.info.perTypeScores && row.info.perTypeScores.EP) || 0), 0)
-    : 0;
-  const bestDS = displayTypeCounts.diamond_sword
-    ? scoredRows.reduce((best, row) => Math.max(best, (row.info.perTypeScores && row.info.perTypeScores.DS) || 0), 0)
-    : 0;
-  const bestHP = scoredRows.reduce((best, row) => Math.max(best, row.info.healthScore || 0), 0);
-  const bestAnchors = { ds: bestDS, ep: bestEP, hp: bestHP, widget: maxWidgetSim };
-  const enableEPGate = bestEP >= 0.58;
-  const enableDSGate = bestDS >= 0.50;
-  const enableWeakDSDiscriminator = displayTypeCounts.diamond_sword && bestDS >= 0.30 && bestDS < 0.50 && maxWidgetSim >= 0.75;
-  for (const row of scoredRows) {
-    const info = row.info;
-    let gatedRawScore = info.rawScore;
-    const anchorDiagnostics = buildAnchorDiagnostics(info, bestAnchors);
-    info.anchorGaps = anchorDiagnostics.anchorGaps;
-    info.sharedness = anchorDiagnostics.sharedness;
-    info.strongAnchorCount = anchorDiagnostics.strongAnchorCount;
-    info.anchorPenalty = anchorDiagnostics.anchorPenalty;
-    info.distinguishability = anchorDiagnostics.distinguishability;
-    if (enableEPGate) {
-      const ep = (info.perTypeScores && info.perTypeScores.EP) || 0;
-      let cap = null;
-      if (ep < bestEP - 0.14) cap = 0.38;
-      else if (ep < bestEP - 0.08) cap = 0.46;
-      if (cap != null && gatedRawScore > cap) {
-        gatedRawScore = cap;
-        info.epGate = { bestEP, ep, cap };
+      if (enableDSGate) {
+        const ds = (info.perTypeScores && info.perTypeScores.DS) || 0;
+        let cap = null;
+        if (ds < bestDS - 0.14) cap = 0.38;
+        else if (ds < bestDS - 0.10) cap = 0.41;
+        if (cap != null && gatedRawScore > cap) {
+          gatedRawScore = cap;
+          info.dsGate = { bestDS, ds, cap };
+        }
       }
-    }
-    if (enableDSGate) {
-      const ds = (info.perTypeScores && info.perTypeScores.DS) || 0;
-      let cap = null;
-      if (ds < bestDS - 0.14) cap = 0.38;
-      else if (ds < bestDS - 0.10) cap = 0.41;
-      if (cap != null && gatedRawScore > cap) {
-        gatedRawScore = cap;
-        info.dsGate = { bestDS, ds, cap };
+      if (enableWeakDSDiscriminator) {
+        const ds = (info.perTypeScores && info.perTypeScores.DS) || 0;
+        const dsGap = bestDS - ds;
+        const widgetGap = maxWidgetSim - (info.widgetScore || 0);
+        if (dsGap > 0.045 && widgetGap > 0.10) {
+          const penalty = Math.min(0.025, 0.012 + Math.min(0.013, (dsGap - 0.045) * 0.12 + (widgetGap - 0.10) * 0.05));
+          gatedRawScore = Math.max(0, gatedRawScore - penalty);
+          info.weakDsPenalty = { bestDS, ds, maxWidgetSim, widget: info.widgetScore || 0, penalty };
+        }
       }
-    }
-    if (enableWeakDSDiscriminator) {
-      const ds = (info.perTypeScores && info.perTypeScores.DS) || 0;
-      const dsGap = bestDS - ds;
-      const widgetGap = maxWidgetSim - (info.widgetScore || 0);
-      if (dsGap > 0.045 && widgetGap > 0.10) {
-        const penalty = Math.min(0.025, 0.012 + Math.min(0.013, (dsGap - 0.045) * 0.12 + (widgetGap - 0.10) * 0.05));
+      if (anchorDiagnostics.anchorPenalty > 0) {
+        const penalty = Math.min(0.035, anchorDiagnostics.anchorPenalty * (0.55 + anchorDiagnostics.sharedness * 0.65));
         gatedRawScore = Math.max(0, gatedRawScore - penalty);
-        info.weakDsPenalty = { bestDS, ds, maxWidgetSim, widget: info.widgetScore || 0, penalty };
+        info.anchorPenaltyApplied = penalty;
       }
+      if (anchorDiagnostics.sharedness >= 0.34 && anchorDiagnostics.strongAnchorCount <= 1) {
+        const penalty = Math.min(0.018, (anchorDiagnostics.sharedness - 0.30) * 0.05);
+        gatedRawScore = Math.max(0, gatedRawScore - penalty);
+        info.sharednessPenalty = penalty;
+      }
+      info.rawScore = gatedRawScore;
+      info.finalScore = gatedRawScore;
+      results.push({ name: row.name, score: gatedRawScore });
     }
-    if (anchorDiagnostics.anchorPenalty > 0) {
-      const penalty = Math.min(0.035, anchorDiagnostics.anchorPenalty * (0.55 + anchorDiagnostics.sharedness * 0.65));
-      gatedRawScore = Math.max(0, gatedRawScore - penalty);
-      info.anchorPenaltyApplied = penalty;
-    }
-    if (anchorDiagnostics.sharedness >= 0.34 && anchorDiagnostics.strongAnchorCount <= 1) {
-      const penalty = Math.min(0.018, (anchorDiagnostics.sharedness - 0.30) * 0.05);
-      gatedRawScore = Math.max(0, gatedRawScore - penalty);
-      info.sharednessPenalty = penalty;
-    }
-    info.rawScore = gatedRawScore;
-    info.finalScore = gatedRawScore;
-    results.push({ name: row.name, score: gatedRawScore });
-  }
 
-  results.sort((a, b) => b.score - a.score);
-  assignDisplayScores(results, details);
-  return { results: results.slice(0, 80), slotTypes: displaySlotTypes, details };
+    results.sort((a, b) => b.score - a.score);
+    assignDisplayScores(results, details);
+    runMetrics.rankMs = nowMs() - rankStart;
+    runMetrics.totalMs = nowMs() - runStart;
+    return { results: results.slice(0, 80), slotTypes: displaySlotTypes, details };
+  };
+
+  let output = runFullScore(fullScoreEntries, metrics.candidateMode === 'prefilter' ? 'candidate' : 'all');
+  if (shouldRunFullScoreFallback(output.results, metrics, allPackEntries.length)) {
+    metrics.fallback = true;
+    output = runFullScore(allPackEntries, 'fallback');
+  }
+  metrics.totalMs = nowMs() - matchStart;
+  _lastMatchMetrics = metrics;
+  return output;
 }
 
 function getPresetUnit(imgW, imgH, preset) {
@@ -3550,6 +3699,7 @@ async function processImage(file) {
   _lastMatchDetails = {};
   _lastAllScores = {};
   _lastVisibleScores = {};
+  _lastMatchMetrics = {};
   _lastRankedResults = [];
   _lastSearchPhase = 'hash';
   renderPackScoreSearch();
@@ -3940,6 +4090,8 @@ window.__sbiTest = {
         rankedCount: (_lastRankedResults || []).length,
         hasFingerprints: !!fingerprints,
         fingerprintPackCount: fingerprints ? Object.keys(fingerprints.packs || {}).length : 0,
+        loadedShardCount: fingerprints ? Object.keys(fingerprints._loadedShards || {}).length : 0,
+        matchMetrics: _lastMatchMetrics || {},
       },
     };
     if (detail !== 'compact') {

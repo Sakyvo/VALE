@@ -2,6 +2,126 @@
   "page": 6,
   "items": [
     {
+      "id": "eum3antonyo",
+      "name": "eum3antonyo",
+      "displayName": "eum3antonyo",
+      "coloredName": "eum3antonyo",
+      "description": "",
+      "cover": "/thumbnails/eum3antonyo/cover.png",
+      "packPng": "/thumbnails/eum3antonyo/pack.png",
+      "icon": null,
+      "file": "resourcepacks/eum3antonyo.zip",
+      "fileSize": "11.2MB",
+      "uploadDate": "2026-07-03",
+      "lists": [
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/eum3antonyo.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/eum3antonyo.zip"
+      }
+    },
+    {
+      "id": "#eum3blue",
+      "name": "eum3blue",
+      "displayName": "eum3blue",
+      "coloredName": "eum3blue",
+      "description": "Eum3 Edited by Charlyy",
+      "cover": "/thumbnails/eum3blue/cover.png",
+      "packPng": "/thumbnails/eum3blue/pack.png",
+      "icon": null,
+      "file": "resourcepacks/#eum3blue.zip",
+      "fileSize": "17.0MB",
+      "uploadDate": "2026-07-03",
+      "lists": [
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/%23eum3blue.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/%23eum3blue.zip"
+      }
+    },
+    {
       "id": "§8Eum§73§9Blue §8[§fV2§8]",
       "name": "Eum3Blue_V2",
       "displayName": "Eum3Blue [V2]",
@@ -196,7 +316,8 @@
       "fileSize": "10.7MB",
       "uploadDate": "2026-04-09",
       "lists": [
-        "iil pf v1"
+        "iil pf v1",
+        "Sakyvo"
       ],
       "textures": {
         "items": [
@@ -256,7 +377,8 @@
       "fileSize": "15.5MB",
       "uploadDate": "2026-04-09",
       "lists": [
-        "Jewdah pf"
+        "Jewdah pf",
+        "Sakyvo"
       ],
       "textures": {
         "items": [
@@ -497,7 +619,8 @@
       "fileSize": "13.2MB",
       "uploadDate": "2026-04-09",
       "lists": [
-        "Jewdah pf"
+        "Jewdah pf",
+        "Sakyvo"
       ],
       "textures": {
         "items": [
@@ -557,7 +680,8 @@
       "fileSize": "16.0MB",
       "uploadDate": "2026-04-09",
       "lists": [
-        "Jewdah pf"
+        "Jewdah pf",
+        "Sakyvo"
       ],
       "textures": {
         "items": [
@@ -1817,7 +1941,8 @@
       "fileSize": "16.8MB",
       "uploadDate": "2026-04-09",
       "lists": [
-        "iil pf v2"
+        "iil pf v2",
+        "Sakyvo"
       ],
       "textures": {
         "items": [
@@ -2885,126 +3010,6 @@
       "downloads": {
         "github": "https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/Fowards%20Private%20Pack.zip",
         "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/Fowards%20Private%20Pack.zip"
-      }
-    },
-    {
-      "id": "FPS PACK!",
-      "name": "FPS_PACK",
-      "displayName": "FPS PACK!",
-      "coloredName": "FPS PACK!",
-      "description": "FPS PACK BY TOKYO",
-      "cover": "/thumbnails/FPS_PACK/cover.png",
-      "packPng": "/thumbnails/FPS_PACK/pack.png",
-      "icon": null,
-      "file": "resourcepacks/FPS PACK!.zip",
-      "fileSize": "7.7MB",
-      "uploadDate": "2026-07-03",
-      "lists": [
-        "Sakyvo"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/FPS%20PACK!.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/FPS%20PACK!.zip"
-      }
-    },
-    {
-      "id": "FPS_ONE_PACK_-_Palmita",
-      "name": "FPS_ONE_PACK_-_Palmita",
-      "displayName": "FPS_ONE_PACK_-_Palmita",
-      "coloredName": "FPS_ONE_PACK_-_Palmita",
-      "description": "Made by xOneMC_YT",
-      "cover": "/thumbnails/FPS_ONE_PACK_-_Palmita/cover.png",
-      "packPng": "/thumbnails/FPS_ONE_PACK_-_Palmita/pack.png",
-      "icon": null,
-      "file": "resourcepacks/FPS_ONE_PACK_-_Palmita.zip",
-      "fileSize": "1.1MB",
-      "uploadDate": "2026-07-03",
-      "lists": [
-        "Sakyvo"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/FPS_ONE_PACK_-_Palmita.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/FPS_ONE_PACK_-_Palmita.zip"
       }
     }
   ]

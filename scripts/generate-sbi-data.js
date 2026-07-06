@@ -6,7 +6,8 @@ const { sanitizePreviewPngBuffer } = require('./thumbnail-preview-utils');
 const THUMB_DIR = path.join(__dirname, '..', 'thumbnails');
 const OUT_FILE = path.join(__dirname, '..', 'data', 'sbi-fingerprints.json');
 const SHARD_DIR = path.join(__dirname, '..', 'data', 'sbi-fp');
-const SBI_FINGERPRINT_VERSION = 14;
+const SBI_FINGERPRINT_VERSION = 15;
+const ANCHOR_INDEX_KEYS = new Set(['diamond_sword', 'ender_pearl', 'splash_potion']);
 
 // Note: crosshair removed — MC renders it via XOR blending, making screenshot comparison meaningless
 const TEXTURES = [
@@ -41,6 +42,28 @@ const SHARDS = [
   { name: 'hunger', keys: ['hunger_empty', 'hunger_half', 'hunger_full'] },
   { name: 'armor', keys: ['armor_empty', 'armor_half', 'armor_full'] },
 ];
+
+function parseArgs(argv) {
+  const args = { packList: null };
+  for (let i = 0; i < argv.length; i++) {
+    const arg = argv[i];
+    if (arg === '--pack-list') {
+      args.packList = argv[++i] || null;
+    } else if (arg.startsWith('--pack-list=')) {
+      args.packList = arg.slice('--pack-list='.length);
+    }
+  }
+  return args;
+}
+
+function loadPackAllowlist(filePath) {
+  if (!filePath) return null;
+  const resolved = path.resolve(filePath);
+  const data = JSON.parse(fs.readFileSync(resolved, 'utf-8'));
+  if (Array.isArray(data)) return new Set(data);
+  if (data && data.packs && typeof data.packs === 'object') return new Set(Object.keys(data.packs));
+  throw new Error(`Unsupported pack list format: ${resolved}`);
+}
 
 function clamp01(v) {
   return Math.max(0, Math.min(1, v));
@@ -409,6 +432,29 @@ function addIndexEntry(index, key, bucketKey, packName) {
   index[key][bucketKey].push(packName);
 }
 
+function getDHashSegmentKeys(dhash) {
+  if (!dhash) return [];
+  const bytes = Buffer.from(dhash, 'base64');
+  if (bytes.length < 24) return [];
+  const keys = [];
+  for (let offset = 0; offset + 4 <= 24; offset += 4) {
+    keys.push(`${offset / 4}:${bytes.subarray(offset, offset + 4).toString('hex')}`);
+  }
+  return keys;
+}
+
+function addHashIndexEntries(index, key, dhash, packName) {
+  if (!ANCHOR_INDEX_KEYS.has(key)) return;
+  const segmentKeys = getDHashSegmentKeys(dhash);
+  if (!segmentKeys.length) return;
+  if (!index._hash) index._hash = {};
+  if (!index._hash[key]) index._hash[key] = {};
+  for (const segmentKey of segmentKeys) {
+    if (!index._hash[key][segmentKey]) index._hash[key][segmentKey] = [];
+    index._hash[key][segmentKey].push(packName);
+  }
+}
+
 function buildShardPacks(packs, keys) {
   const shardPacks = {};
   const index = {};
@@ -418,6 +464,7 @@ function buildShardPacks(packs, keys) {
       if (!packData[key]) continue;
       entry[key] = packData[key];
       addIndexEntry(index, key, getBucketKey(packData[key].sig), packName);
+      addHashIndexEntries(index, key, packData[key].dhash, packName);
     }
     if (Object.keys(entry).length) shardPacks[packName] = entry;
   }
@@ -461,13 +508,17 @@ function loadOverlayPacks() {
 }
 
 async function main() {
+  const args = parseArgs(process.argv.slice(2));
+  const packAllowlist = loadPackAllowlist(args.packList);
   const overlaySet = loadOverlayPacks();
   const allDirs = fs.readdirSync(THUMB_DIR).filter(d =>
     fs.statSync(path.join(THUMB_DIR, d)).isDirectory()
   );
-  const dirs = allDirs.filter(d => !overlaySet.has(d));
+  const nonOverlayDirs = allDirs.filter(d => !overlaySet.has(d));
+  const dirs = packAllowlist ? nonOverlayDirs.filter(d => packAllowlist.has(d)) : nonOverlayDirs;
   const skipped = allDirs.length - dirs.length;
-  console.log(`Processing ${dirs.length} packs${skipped ? ` (skipped ${skipped} overlay)` : ''}...`);
+  const allowlistNote = packAllowlist ? `, allowlist ${packAllowlist.size}` : '';
+  console.log(`Processing ${dirs.length} packs${skipped ? ` (skipped ${skipped} overlay/unlisted${allowlistNote})` : ''}...`);
   const packs = {};
   let done = 0;
   for (const dir of dirs) {

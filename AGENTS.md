@@ -12,6 +12,9 @@
 - 仓库满时，根目录创建 `!  FULL  !` 标记文件
 - 新包上传到**第一个没有 FULL 标记**的仓库
 - 所有仓库用完时，自动创建新仓库（编号递增）
+- `K:\Projects\website\.vale-pack-upload` 只能作为上传过程中的临时克隆/中转目录，不得长期保留材质包或 `packs-NNN` 本地副本
+- 材质包 `.zip` 只应长期存在于对应的远端 GitHub 仓库 `Sakyvo/packs-NNN`；本地上传完成并推送后应清理临时克隆/缓存
+- 远端现有 `packs-NNN` 容量不足时，在 GitHub 远端新建下一个编号仓库继续上传，不要用本地目录扩容或长期存储
 
 ## Git 工作流
 
@@ -22,7 +25,13 @@
 
 - 主仓库下**不得**出现任何材质包 `.zip` 文件
 - 主仓库下**不得**存在 `resourcepacks/` 目录
+- 不得把 `K:\Projects\website\.vale-pack-upload` 当作本地材质包仓库；若发现其中有上传后残留的材质包，应确认远端已推送后清理
 - 若发现上述文件/目录，应提醒用户清理而非提交
+
+## 前端交互规则
+
+- 主页类页面（Explore 主页、List 首页、List 详情页等）打开 pack 详情时必须使用新标签页：pack 链接加 `target="_blank"` 和 `rel="noopener noreferrer"`。
+- 主页类搜索框不得在输入过程中立即重渲染大结果集；应在用户点击搜索按钮或按 Enter 后提交查询并显示结果。
 
 ## 以图搜图 (SBI)
 
@@ -102,7 +111,7 @@ DS 和 EP 是区分度最高的类型（权重 8.0+），HL 次之；SK/GC 权�
 
 - 上传脚本会自动更新 `pack-registry.json`
 - 每次添加新包后必须重新运行 `generate-index.js` 更新下载链接
-- 本地**不需要**保留 packs-NNN 仓库文件夹，上传脚本会按需临时克隆
+- 本地**不需要**保留 packs-NNN 仓库文件夹；上传脚本可按需临时克隆到 `.vale-pack-upload`，但完成远端 push 后应删除这些临时克隆
 - `fileSize` 从 `pack-registry.json` 的 `size` 字段读取（字节）
 - Windows 文件名大小写不敏感，注意 git 大小写冲突
 - 包名中的特殊字符（§、!、#）在 URL 中需要 encodeURIComponent

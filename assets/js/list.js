@@ -27,8 +27,8 @@ const LIST_PAGE_HTML = `<!DOCTYPE html>
     <div class="list-grid" id="list-grid"></div>
   </section>
   <footer><p>VALE Project</p></footer>
-  <script src="/assets/js/auth.js"></script>
-  <script src="/assets/js/list.js"></script>
+  <script src="/assets/js/auth.js?v=2"></script>
+  <script src="/assets/js/list.js?v=4"></script>
 </body>
 </html>`;
 
@@ -274,7 +274,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const grid = document.getElementById('list-grid');
   const searchInput = document.getElementById('list-search');
+  const searchBtn = document.querySelector('.search-btn');
   const sortBtn = document.getElementById('sort-btn');
+  let listSearchQuery = '';
 
   window.renderLists = function(query = '') {
     const q = query.toLowerCase();
@@ -315,16 +317,26 @@ document.addEventListener('DOMContentLoaded', async () => {
   sortBtn?.addEventListener('click', () => {
     sortByDate = !sortByDate;
     sortBtn.textContent = sortByDate ? 'DATE' : 'A-Z';
-    window.renderLists(searchInput.value);
+    window.renderLists(listSearchQuery);
   });
+
+  function submitListSearch() {
+    listSearchQuery = searchInput.value;
+    window.renderLists(listSearchQuery);
+  }
 
   function updateUI() {
     const isAdmin = window.AUTH?.isLoggedIn();
     document.getElementById('manage-btn').style.display = isAdmin ? 'inline-block' : 'none';
-    window.renderLists(searchInput.value);
+    window.renderLists(listSearchQuery);
   }
 
-  searchInput.oninput = () => window.renderLists(searchInput.value);
+  searchBtn?.addEventListener('click', submitListSearch);
+  searchInput?.addEventListener('keydown', e => {
+    if (e.key !== 'Enter') return;
+    e.preventDefault();
+    submitListSearch();
+  });
 
   document.getElementById('manage-btn').onclick = showManageModal;
 
@@ -460,7 +472,7 @@ async function loadListDetail(listId) {
       </div>
       <div class="search-box" style="margin:0 0 24px;max-width:calc((100% - 48px) / 3);justify-content:stretch;">
         <input type="text" id="list-pack-search" placeholder="Search packs..." value="${searchQuery}" style="flex:1;padding:12px 16px;border:2px solid #000;font-size:14px;outline:none;">
-        <button class="search-btn">🔍</button>
+        <button class="search-btn" id="list-pack-search-btn">🔍</button>
       </div>
       ${isAdmin ? `
         <div style="margin-bottom:24px;">
@@ -471,7 +483,7 @@ async function loadListDetail(listId) {
       <div class="pack-grid">
         ${packsInList.length === 0 ? '<p>No packs found.</p>' : packsInList.map(pack => `
           <div class="pack-card-wrapper">
-            <a class="pack-card" href="/p/${pack.name}/">
+            <a class="pack-card" href="/p/${pack.name}/" target="_blank" rel="noopener noreferrer">
               <img class="cover" src="${pack.cover}" alt="${pack.displayName}">
               <div class="info">
                 <img class="pack-icon" src="${pack.packPng}" alt="">
@@ -509,12 +521,17 @@ async function loadListDetail(listId) {
       render();
     });
 
-    document.getElementById('list-pack-search')?.addEventListener('input', (e) => {
-      const pos = e.target.selectionStart;
-      searchQuery = e.target.value.toLowerCase();
-      render();
+    function submitPackSearch() {
       const input = document.getElementById('list-pack-search');
-      if (input) { input.focus(); input.setSelectionRange(pos, pos); }
+      searchQuery = (input?.value || '').toLowerCase();
+      render();
+    }
+
+    document.getElementById('list-pack-search-btn')?.addEventListener('click', submitPackSearch);
+    document.getElementById('list-pack-search')?.addEventListener('keydown', e => {
+      if (e.key !== 'Enter') return;
+      e.preventDefault();
+      submitPackSearch();
     });
 
     if (isAdmin) {

@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       <div class="pack-grid">
         ${packsInList.length === 0 ? '<p>No packs in this list.</p>' : packsInList.map(pack => `
           <div class="pack-card-wrapper">
-            <a class="pack-card" href="/p/${pack.name}/">
+            <a class="pack-card" href="/p/${pack.name}/" target="_blank" rel="noopener noreferrer">
               <img class="cover" src="${pack.cover}" alt="${pack.displayName}">
               <div class="info">
                 <img class="pack-icon" src="${pack.packPng}" alt="">
