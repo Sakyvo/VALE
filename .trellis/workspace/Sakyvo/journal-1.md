@@ -72,3 +72,36 @@ Batch frontend improvements (no task per user): added style-consistency principl
 ### Next Steps
 
 - None - task complete
+
+
+## Session 3: Switch repo references to Sakyvo/VALE
+
+**Date**: 2026-07-07
+**Task**: Switch repo references to Sakyvo/VALE
+**Branch**: `main`
+
+### Summary
+
+Repo was renamed Sakyvo/Sakyvo.github.io -> Sakyvo/VALE with custom domain vale.cc.cd (CNAME present, old user site 404s, new raw URLs verified 200). Updated all hardcoded references: auth.js REPO_NAME (maintenance fetch), admin.js REPO_NAME (git data API), pack-detail.js delete API URLs, generate-index.js fallback download URLs, AGENTS.md repo doc, design.md (repo/deploy URLs). Updated local git remote origin. Bumped auth.js->v5, pack-detail.js->v5, admin.js->v3 and regenerated 741 p/* pages. data/ had no old references (all packs resolve via registry to packs-NNN).
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `5b0d2d88` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete

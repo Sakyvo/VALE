@@ -8,7 +8,7 @@
 
 <!-- @@@auto:current-status -->
 - **Active File**: `journal-1.md`
-- **Total Sessions**: 2
+- **Total Sessions**: 3
 - **Last Active**: 2026-07-07
 <!-- @@@/auto:current-status -->
 
@@ -19,7 +19,7 @@
 <!-- @@@auto:active-documents -->
 | File | Lines | Status |
 |------|-------|--------|
-| `journal-1.md` | ~74 | Active |
+| `journal-1.md` | ~107 | Active |
 <!-- @@@/auto:active-documents -->
 
 ---
@@ -29,6 +29,7 @@
 <!-- @@@auto:session-history -->
 | # | Date | Title | Commits | Branch |
 |---|------|-------|---------|--------|
+| 3 | 2026-07-07 | Switch repo references to Sakyvo/VALE | `5b0d2d88` | `main` |
 | 2 | 2026-07-07 | Frontend polish: nav icons and detail page fixes | `fadb2d90` | `main` |
 | 1 | 2026-07-03 | Upload Sakyvo pack collection | `2348f37a`, `f498bccf` | `main` |
 <!-- @@@/auto:session-history -->
