@@ -1,8 +1,8 @@
 ```markdown
 # Minecraft 1.7/1.8 材质包分享网站 - 设计文档
 
-> 仓库地址: https://github.com/Sakyvo/Sakyvo.github.io  
-> 部署地址: https://sakyvo.github.io
+> 仓库地址: https://github.com/Sakyvo/VALE  
+> 部署地址: https://vale.cc.cd
 
 ---
 
@@ -56,7 +56,7 @@
 ## 三、目录结构
 
 ```
-Sakyvo.github.io/
+VALE/
 ├── .github/
 │   ├── ISSUE_TEMPLATE/
 │   │   └── pack-submission.yml       # 材质包提交模板
@@ -230,8 +230,8 @@ Sakyvo.github.io/
       "particles.png"
   },
   "downloads": {
-    "github": "https://raw.githubusercontent.com/Sakyvo/Sakyvo.github.io/main/resourcepacks/Xenon_16x.zip",
-    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/Sakyvo.github.io/main/resourcepacks/Xenon_16x.zip"
+    "github": "https://raw.githubusercontent.com/Sakyvo/VALE/main/resourcepacks/Xenon_16x.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/VALE/main/resourcepacks/Xenon_16x.zip"
   }
 }
 ```
@@ -571,7 +571,7 @@ document.addEventListener('DOMContentLoaded', () => {
 ```javascript
 // 下载链接生成
 function getDownloadLinks(packId) {
-  const base = `https://raw.githubusercontent.com/Sakyvo/Sakyvo.github.io/main/packs/${packId}.zip`;
+  const base = `https://raw.githubusercontent.com/Sakyvo/VALE/main/packs/${packId}.zip`;
   return {
     github: base,
     mirror: `https://ghfast.top/${base}`
@@ -819,7 +819,7 @@ class PackSearch {
 ```javascript
 // src/js/admin.js
 class GitHubAdmin {
-  constructor(token, repo = 'Sakyvo/Sakyvo.github.io') {
+  constructor(token, repo = 'Sakyvo/VALE') {
     this.token = token;
     this.repo = repo;
     this.api = 'https://api.github.com';

@@ -2,7 +2,7 @@
 
 ## 仓库结构
 
-- **主站** `Sakyvo/Sakyvo.github.io` — 仅存放网站前后端代码、缩略图、数据索引
+- **主站** `Sakyvo/VALE`（原 `Sakyvo/Sakyvo.github.io`，自定义域名 `vale.cc.cd`）— 仅存放网站前后端代码、缩略图、数据索引
 - **材质包库** `Sakyvo/packs-001` ~ `packs-NNN` — 存放 .zip 材质包文件
 
 ## 材质包仓库规则

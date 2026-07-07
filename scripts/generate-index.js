@@ -103,8 +103,8 @@ function main() {
       githubUrl = `https://raw.githubusercontent.com/Sakyvo/${repo}/main/resourcepacks/${encodedName}.zip`;
       mirrorUrl = `https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/${repo}/main/resourcepacks/${encodedName}.zip`;
     } else {
-      githubUrl = `https://raw.githubusercontent.com/Sakyvo/Sakyvo.github.io/main/resourcepacks/${encodedName}.zip`;
-      mirrorUrl = `https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/Sakyvo.github.io/main/resourcepacks/${encodedName}.zip`;
+      githubUrl = `https://raw.githubusercontent.com/Sakyvo/VALE/main/resourcepacks/${encodedName}.zip`;
+      mirrorUrl = `https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/VALE/main/resourcepacks/${encodedName}.zip`;
     }
     return {
       id: e.originalName,

@@ -219,14 +219,14 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       try {
         const path = `resourcepacks/${pack.id}.zip`;
-        const fileRes = await fetch(`https://api.github.com/repos/Sakyvo/Sakyvo.github.io/contents/${path}`, {
+        const fileRes = await fetch(`https://api.github.com/repos/Sakyvo/VALE/contents/${path}`, {
           headers: { Authorization: `token ${token}` }
         });
 
         if (!fileRes.ok) return alert('File not found');
 
         const fileData = await fileRes.json();
-        const res = await fetch(`https://api.github.com/repos/Sakyvo/Sakyvo.github.io/contents/${path}`, {
+        const res = await fetch(`https://api.github.com/repos/Sakyvo/VALE/contents/${path}`, {
           method: 'DELETE',
           headers: { Authorization: `token ${token}`, 'Content-Type': 'application/json' },
           body: JSON.stringify({ message: `Delete ${pack.id}`, sha: fileData.sha })

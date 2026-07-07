@@ -1,5 +1,5 @@
 const REPO_OWNER = 'Sakyvo';
-const REPO_NAME = 'Sakyvo.github.io';
+const REPO_NAME = 'VALE';
 
 class Admin {
   constructor() {

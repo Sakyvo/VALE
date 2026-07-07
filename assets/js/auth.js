@@ -5,7 +5,7 @@ const NAV_ICONS = {
 
 const AUTH = {
   REPO_OWNER: 'Sakyvo',
-  REPO_NAME: 'Sakyvo.github.io',
+  REPO_NAME: 'VALE',
   ADMIN_USER: 'Sakyvo',
 
   isLoggedIn() {
