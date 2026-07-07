@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       <div class="admin-actions" id="admin-actions" style="display:none;">
         <h3>ADMIN</h3>
         <button class="btn btn-primary" id="add-to-list-btn">ADD TO LIST</button>
-        <button class="btn btn-secondary" id="delete-pack-btn">DELETE PACK</button>
+        <button class="btn btn-danger" id="delete-pack-btn">DELETE PACK</button>
       </div>
     `;
 
