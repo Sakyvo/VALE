@@ -117,3 +117,4 @@ DS 和 EP 是区分度最高的类型（权重 8.0+），HL 次之；SK/GC 权�
 - `fileSize` 从 `pack-registry.json` 的 `size` 字段读取（字节）
 - Windows 文件名大小写不敏感，注意 git 大小写冲突
 - 包名中的特殊字符（§、!、#）在 URL 中需要 encodeURIComponent
+- 卡片/List 名称使用像素字体 `assets/fonts/minecraft-ae.woff2`（子集）；新增的包名/List 名含此前未出现的非拉丁字符时，重跑 `python scripts/subset-font.py` 重新子集（源字体在本机 `C:\Users\ASUS\AppData\Local\Microsoft\Windows\Fonts\Minecraft-AE.ttf`）
