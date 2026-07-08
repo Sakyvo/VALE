@@ -138,3 +138,36 @@ Third frontend batch (no task): LOGOUT on admin page now uses log-out SVG icon; 
 ### Next Steps
 
 - None - task complete
+
+
+## Session 5: Pixel font for names, pdir font stack for UI
+
+**Date**: 2026-07-08
+**Task**: Pixel font for names, pdir font stack for UI
+**Branch**: `main`
+
+### Summary
+
+Font polish (no task): subset local Minecraft-AE.ttf (16MB, includes CJK pixel glyphs) to 18.5KB woff2 covering Basic Latin + Latin-1 + every character actually used in pack/list names (extracted from data/index.json + l/lists.json); added scripts/subset-font.py for regeneration and noted the workflow in AGENTS.md. Applied 'Minecraft AE' via --font-mc CSS var to .pack-card .name, .list-grid .list-item .name, .sbi-result-name, .main-card-info h1, .detail-info h1 (weight normal to avoid synthetic-bold blur). Body font switched to pdir stack (--font-ui, adds 'Noto Sans SC'). Bumped sbi style.css to v28.
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `c67aa024` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete
