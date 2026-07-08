@@ -35,6 +35,22 @@ class ArmorViewer {
 
     this.setupControls();
     this.loadTextures();
+
+    this.resize = this.resize.bind(this);
+    if (window.ResizeObserver) {
+      new ResizeObserver(this.resize).observe(this.container);
+    } else {
+      window.addEventListener('resize', this.resize);
+    }
+  }
+
+  resize() {
+    const w = this.container.clientWidth;
+    const h = this.container.clientHeight;
+    if (!w || !h) return;
+    this.camera.aspect = w / h;
+    this.camera.updateProjectionMatrix();
+    this.renderer.setSize(w, h);
   }
 
   setupControls() {

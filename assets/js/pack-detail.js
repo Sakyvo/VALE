@@ -211,37 +211,54 @@ document.addEventListener('DOMContentLoaded', async () => {
       };
     };
 
-    document.getElementById('delete-pack-btn').onclick = async () => {
-      if (!confirm(`Delete ${pack.displayName}?`)) return;
+    document.getElementById('delete-pack-btn').onclick = () => {
+      const modal = document.createElement('div');
+      modal.className = 'modal-overlay';
+      modal.innerHTML = `
+        <div class="modal-content" style="max-width:350px;text-align:center;">
+          <p style="margin-bottom:24px;">Delete <strong>${pack.displayName}</strong>?</p>
+          <div class="modal-buttons">
+            <button class="btn btn-danger" id="delete-yes">DELETE</button>
+            <button class="btn btn-secondary" id="delete-no">CANCEL</button>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(modal);
+      modal.querySelector('#delete-no').onclick = () => modal.remove();
+      modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
 
-      const token = window.AUTH?.getToken();
-      if (!token) return alert('Please login first');
+      modal.querySelector('#delete-yes').onclick = async () => {
+        modal.remove();
 
-      try {
-        const path = `resourcepacks/${pack.id}.zip`;
-        const fileRes = await fetch(`https://api.github.com/repos/Sakyvo/VALE/contents/${path}`, {
-          headers: { Authorization: `token ${token}` }
-        });
+        const token = window.AUTH?.getToken();
+        if (!token) return alert('Please login first');
 
-        if (!fileRes.ok) return alert('File not found');
+        try {
+          const path = `resourcepacks/${pack.id}.zip`;
+          const fileRes = await fetch(`https://api.github.com/repos/Sakyvo/VALE/contents/${path}`, {
+            headers: { Authorization: `token ${token}` }
+          });
 
-        const fileData = await fileRes.json();
-        const res = await fetch(`https://api.github.com/repos/Sakyvo/VALE/contents/${path}`, {
-          method: 'DELETE',
-          headers: { Authorization: `token ${token}`, 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message: `Delete ${pack.id}`, sha: fileData.sha })
-        });
+          if (!fileRes.ok) return alert('File not found');
 
-        if (res.ok) {
-          alert('Deleted! Run build to update site.');
-          window.location.href = '/';
-        } else {
-          const err = await res.json();
-          alert(`Delete failed: ${err.message}`);
+          const fileData = await fileRes.json();
+          const res = await fetch(`https://api.github.com/repos/Sakyvo/VALE/contents/${path}`, {
+            method: 'DELETE',
+            headers: { Authorization: `token ${token}`, 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: `Delete ${pack.id}`, sha: fileData.sha })
+          });
+
+          if (res.ok) {
+            alert('Deleted! Run build to update site.');
+            window.location.href = '/';
+          } else {
+            const err = await res.json();
+            alert(`Delete failed: ${err.message}`);
+          }
+        } catch (e) {
+          alert(`Error: ${e.message}`);
         }
-      } catch (e) {
-        alert(`Error: ${e.message}`);
-      }
+      };
     };
 
     // Setup animated textures - hide until loaded to prevent flash
