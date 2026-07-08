@@ -105,3 +105,36 @@ Repo was renamed Sakyvo/Sakyvo.github.io -> Sakyvo/VALE with custom domain vale.
 ### Next Steps
 
 - None - task complete
+
+
+## Session 4: Header alignment, armor viewer fix, button and border polish
+
+**Date**: 2026-07-08
+**Task**: Header alignment, armor viewer fix, button and border polish
+**Branch**: `main`
+
+### Summary
+
+Third frontend batch (no task): LOGOUT on admin page now uses log-out SVG icon; pack detail pages gained the SBI nav icon (pack.html template + 741 regenerated); removed all .sbi-page header/nav CSS overrides so VALE logo and nav buttons align identically across home and SBI pages; fixed armor viewer drifting to top-left on fast first load by adding ResizeObserver-driven resize() (initial clientWidth/Height could be 0 before layout settled, leaving a 200x280 canvas stuck top-left); thinned card border lines 2px -> 1.5px across pack/detail/preview/list/admin/SBI cards (controls keep 2px); buttons got cursor:pointer, hover shades and translateY(2px) press feel; DELETE PACK confirm() replaced with in-site modal (btn-danger DELETE / CANCEL). Versions: auth.js v6, pack-detail.js v6, armor-viewer.js v3, sbi style.css v27.
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `007c8d1b` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete
