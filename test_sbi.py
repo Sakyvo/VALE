@@ -154,7 +154,8 @@ def wait_for_http(url, timeout=10):
     t0 = time.monotonic()
     while time.monotonic() - t0 < timeout:
         try:
-            with urllib.request.urlopen(url, timeout=1) as resp:
+            request = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 VALE-SBI-Test"})
+            with urllib.request.urlopen(request, timeout=2) as resp:
                 if resp.status < 500:
                     return True
         except Exception:
