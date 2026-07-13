@@ -55,15 +55,17 @@ function initClipWorker() {
 }
 
 let _lastHashResults = [], _lastAllScores = {};
-const SBI_FINGERPRINT_VERSION = 15;
+const SBI_FINGERPRINT_VERSION = 16;
 const SBI_BASE_FINGERPRINT_SHARDS = ['widget', 'health', 'hunger', 'armor', 'diamond_sword', 'ender_pearl', 'splash_potion'];
 const SBI_FOOD_FINGERPRINT_SHARD = 'food';
 const SBI_FINGERPRINT_SHARD_PATH = '/data/sbi-fp/';
+const SBI_FINGERPRINT_META_FILE = 'meta.json';
 const SBI_ANCHOR_ITEM_TYPES = ['diamond_sword', 'ender_pearl', 'splash_potion'];
 const SBI_CANDIDATE_MIN_PACKS = 24;
 const SBI_CANDIDATE_FALLBACK_MARGIN = 0.006;
 const SBI_CANDIDATE_FALLBACK_MIN_SCORE = 0.30;
 const _fingerprintShardPromises = {};
+let _fingerprintMetaPromise = null;
 // AI (CLIP) is used as a rerank signal. We normalize CLIP scores per-query and
 // apply it as a multiplicative factor on top of the hash score, so a weak CLIP
 // match won't incorrectly drag down a strong hash match when the crop is correct.
@@ -79,6 +81,9 @@ let _lastRankedResults = [];
 let _lastSlotFeatures = [];
 let _lastSearchPhase = 'hash';
 let _lastDetectionMeta = null;
+let _forceGlobalFallbackForTest = false;
+let _benchmarkGroupTarget = 0;
+let _benchmarkExcludedPacks = new Set();
 let _previewImageUrl = '';
 let _currentPreset = 'large';
 let _pendingFile = null;
@@ -127,6 +132,17 @@ const SBI_SCORE_WEIGHTS = {
   hud: { health: 6.4, hunger: 5.4, armor: 5.2 },
   mix: { slot: 0.44, hud: 0.36, widget: 0.20, slotNoHud: 0.74, widgetNoHud: 0.26 },
 };
+const SBI_REFINEMENT_RESULT_LIMIT = 28;
+const SBI_FALLBACK_RETAINED_RESULT_LIMIT = 14;
+const SBI_FULL_SCORE_LIMIT = 48;
+const SBI_REFINEMENT_FEATURES = [
+  { key: 'current', weight: 0.031304799 },
+  { key: 'epHamming', type: 'ender_pearl', metric: 'hamming', weight: 0.022984414 },
+  { key: 'epColor', type: 'ender_pearl', metric: 'color', weight: 0.042373585 },
+  { key: 'potionColor', type: 'splash_potion', metric: 'color', weight: 0.034377795 },
+  { key: 'carrotEdge', type: 'golden_carrot', metric: 'edge', weight: 0.040250787 },
+  { key: 'dsColor', type: 'diamond_sword', metric: 'color', weight: 0.034571759 },
+];
 const SLOT_STRONG_MATCH_THRESHOLDS = {
   diamond_sword: 0.56,
   ender_pearl: 0.60,
@@ -136,7 +152,39 @@ const SLOT_STRONG_MATCH_THRESHOLDS = {
 };
 
 function createFingerprintStore() {
-  return { version: SBI_FINGERPRINT_VERSION, packs: {}, _loadedShards: {}, _shardIndexes: {} };
+  return {
+    version: SBI_FINGERPRINT_VERSION,
+    packs: {},
+    _loadedShards: {},
+    _shardIndexes: {},
+    _meta: null,
+    _packToGroup: {},
+  };
+}
+
+function applyFingerprintMetadata(meta) {
+  if (!meta || meta.version !== SBI_FINGERPRINT_VERSION || !meta.groups || !meta.rarity) {
+    throw new Error('Fingerprint metadata is missing or incompatible');
+  }
+  if (!fingerprints) fingerprints = createFingerprintStore();
+  fingerprints._meta = meta;
+  fingerprints._packToGroup = {};
+  for (const [groupId, group] of Object.entries(meta.groups)) {
+    for (const member of (group.members || [])) fingerprints._packToGroup[member] = groupId;
+  }
+}
+
+async function loadFingerprintMetadata() {
+  if (!fingerprints) fingerprints = createFingerprintStore();
+  if (fingerprints._meta) return;
+  if (!_fingerprintMetaPromise) {
+    _fingerprintMetaPromise = (async () => {
+      const resp = await fetch(`${SBI_FINGERPRINT_SHARD_PATH}${SBI_FINGERPRINT_META_FILE}?v=${SBI_FINGERPRINT_VERSION}`);
+      if (!resp.ok) throw new Error('Failed to load fingerprint metadata (' + resp.status + ')');
+      applyFingerprintMetadata(await resp.json());
+    })();
+  }
+  await _fingerprintMetaPromise;
 }
 
 function mergeFingerprintShard(shardName, shard) {
@@ -157,7 +205,9 @@ async function loadFingerprintShard(shardName) {
     _fingerprintShardPromises[shardName] = (async () => {
       const resp = await fetch(`${SBI_FINGERPRINT_SHARD_PATH}${shardName}.json?v=${SBI_FINGERPRINT_VERSION}`);
       if (!resp.ok) throw new Error('Failed to load fingerprint shard: ' + shardName + ' (' + resp.status + ')');
-      mergeFingerprintShard(shardName, await resp.json());
+      const shard = await resp.json();
+      if (shard.version !== SBI_FINGERPRINT_VERSION) throw new Error('Fingerprint shard version mismatch: ' + shardName);
+      mergeFingerprintShard(shardName, shard);
     })();
   }
   await _fingerprintShardPromises[shardName];
@@ -165,7 +215,63 @@ async function loadFingerprintShard(shardName) {
 
 async function ensureFingerprints(shardNames) {
   const names = shardNames && shardNames.length ? shardNames : SBI_BASE_FINGERPRINT_SHARDS;
+  await loadFingerprintMetadata();
   await Promise.all(names.map(loadFingerprintShard));
+}
+
+function getGroupInfo(groupId) {
+  return fingerprints && fingerprints._meta && fingerprints._meta.groups
+    ? fingerprints._meta.groups[groupId]
+    : null;
+}
+
+function getGroupMembers(groupId) {
+  const info = getGroupInfo(groupId);
+  return info && Array.isArray(info.members) && info.members.length ? info.members : [groupId];
+}
+
+function inflateFingerprintCorpusForBenchmark() {
+  if (!_benchmarkGroupTarget || !fingerprints || !fingerprints._meta) return 0;
+  const currentCount = Object.keys(fingerprints.packs || {}).length;
+  if (currentCount >= _benchmarkGroupTarget) return 0;
+  const sourceIds = Object.keys(fingerprints.packs).filter(groupId =>
+    !groupId.startsWith('bench:') && !getGroupMembers(groupId).some(name => _benchmarkExcludedPacks.has(name))
+  );
+  if (!sourceIds.length) throw new Error('No source groups are available for benchmark inflation');
+  const started = nowMs();
+  let added = 0;
+  while (currentCount + added < _benchmarkGroupTarget) {
+    const sourceId = sourceIds[added % sourceIds.length];
+    const groupId = `bench:${String(added + 1).padStart(6, '0')}:${sourceId.slice(-16)}`;
+    const member = `__benchmark_${String(added + 1).padStart(6, '0')}`;
+    fingerprints.packs[groupId] = JSON.parse(JSON.stringify(fingerprints.packs[sourceId]));
+    fingerprints._meta.groups[groupId] = { representative: member, members: [member] };
+    fingerprints._meta.rarity[groupId] = JSON.parse(JSON.stringify(fingerprints._meta.rarity[sourceId] || {}));
+    fingerprints._packToGroup[member] = groupId;
+    added++;
+  }
+  fingerprints._meta.groupCount = currentCount + added;
+  fingerprints._meta.packCount += added;
+  return nowMs() - started;
+}
+
+function getSurfaceRarity(groupId, keys) {
+  const rows = fingerprints && fingerprints._meta && fingerprints._meta.rarity
+    ? fingerprints._meta.rarity[groupId]
+    : null;
+  if (!rows) return 1;
+  const values = (Array.isArray(keys) ? keys : [keys])
+    .map(key => rows[key] && rows[key].weight)
+    .filter(value => typeof value === 'number' && isFinite(value));
+  if (!values.length) return 1;
+  return values.reduce((sum, value) => sum + value, 0) / values.length;
+}
+
+function applyRarityToSimilarity(similarity, groupId, keys) {
+  const similarityValue = clamp01(similarity || 0);
+  const rarity = getSurfaceRarity(groupId, keys);
+  const strongEvidence = clamp01((similarityValue - 0.86) / 0.10);
+  return similarityValue * (1 - (1 - rarity) * 0.12 * strongEvidence);
 }
 
 function shouldLoadFoodFingerprintShard(slots, slotTypes) {
@@ -487,7 +593,10 @@ function buildAnchorDiagnostics(info, bestAnchors) {
     (info.slotCoverage <= 0.12 ? 0.16 : 0) +
     (info.slotCertainty <= 0.03 ? 0.16 : 0);
   const sharedness = clamp01(weakShared - strongCount * 0.08);
-  const dsPenaltyGap = (bestAnchors.ds >= 0.50 || anchorGaps.widget > 0.10) ? Math.max(0, anchorGaps.ds - 0.045) : 0;
+  const strongPearl = bestAnchors.ep >= 0.50 && ep >= bestAnchors.ep - 0.07;
+  const dsPenaltyGap = !strongPearl && (bestAnchors.ds >= 0.50 || anchorGaps.widget > 0.10)
+    ? Math.max(0, anchorGaps.ds - 0.045)
+    : 0;
   const epPenaltyGap = bestAnchors.ep >= 0.58 ? Math.max(0, anchorGaps.ep - 0.08) : Math.max(0, anchorGaps.ep - 0.16) * 0.5;
   const hpPenaltyGap = bestAnchors.hp >= 0.52 ? Math.max(0, anchorGaps.hp - 0.12) : 0;
   const anchorPenalty = Math.min(0.045,
@@ -1252,6 +1361,116 @@ function colorMomentSim(a, b) {
   return 1 - Math.sqrt(d / 6);
 }
 
+function compareSpatialMetrics(extracted, packTex) {
+  if (!extracted || !extracted.pix || !packTex || !packTex.pix) return null;
+  const a = extracted.pix;
+  const b = packTex.__pixBytes || (packTex.__pixBytes = base64ToBytes(packTex.pix));
+  if (a.length !== b.length) return null;
+  const size = Math.sqrt(a.length / 4);
+  if (!Number.isInteger(size) || size < 4) return null;
+  let best = null;
+  const shift = 1;
+  for (let dy = -shift; dy <= shift; dy++) {
+    for (let dx = -shift; dx <= shift; dx++) {
+      let intersection = 0, union = 0, overlap = 0;
+      let colorDistance = 0, direction = 0;
+      for (let y = 0; y < size; y++) {
+        const by = y - dy;
+        for (let x = 0; x < size; x++) {
+          const bx = x - dx;
+          const ai = (y * size + x) * 4;
+          const aOn = a[ai + 3] >= 128;
+          const bIn = bx >= 0 && by >= 0 && bx < size && by < size;
+          const bi = bIn ? (by * size + bx) * 4 : 0;
+          const bOn = bIn && b[bi + 3] >= 128;
+          if (aOn || bOn) union++;
+          if (!aOn || !bOn) continue;
+          intersection++;
+          overlap++;
+          const ar = a[ai], ag = a[ai + 1], ab = a[ai + 2];
+          const br = b[bi], bg = b[bi + 1], bb = b[bi + 2];
+          colorDistance += Math.abs(ar - br) + Math.abs(ag - bg) + Math.abs(ab - bb);
+          const an = Math.sqrt(ar * ar + ag * ag + ab * ab);
+          const bn = Math.sqrt(br * br + bg * bg + bb * bb);
+          if (an && bn) direction += (ar * br + ag * bg + ab * bb) / (an * bn);
+        }
+      }
+      if (!union || !overlap) continue;
+      const shape = intersection / union;
+      const color = clamp01(1 - colorDistance / (overlap * 3 * 255));
+      const colorDirection = clamp01(direction / overlap);
+      const score = shape * 0.62 + colorDirection * 0.25 + color * 0.13;
+      if (!best || score > best.score) best = { score, shape, colorDirection, color, dx, dy };
+    }
+  }
+  return best;
+}
+
+function compareSpatial(extracted, packTex) {
+  const metrics = compareSpatialMetrics(extracted, packTex);
+  return metrics ? metrics.score : null;
+}
+
+function getOpaqueSpatialPositions(owner, pixels, size) {
+  if (owner.__opaqueSpatialPositions && owner.__opaqueSpatialPositions.size === size) {
+    return owner.__opaqueSpatialPositions.positions;
+  }
+  const positions = [];
+  for (let position = 0; position < size * size; position++) {
+    if (pixels[position * 4 + 3] >= 128) positions.push(position);
+  }
+  owner.__opaqueSpatialPositions = { size, positions };
+  return positions;
+}
+
+function compareSpatialColor(extracted, packTex) {
+  if (!extracted || !extracted.pix || !packTex || !packTex.pix) return null;
+  const a = extracted.pix;
+  const b = packTex.__pixBytes || (packTex.__pixBytes = base64ToBytes(packTex.pix));
+  if (a.length !== b.length) return null;
+  const size = Math.sqrt(a.length / 4);
+  if (!Number.isInteger(size) || size < 4) return null;
+  const aPositions = getOpaqueSpatialPositions(extracted, a, size);
+  const bPositions = getOpaqueSpatialPositions(packTex, b, size);
+  if (!aPositions.length || !bPositions.length) return null;
+  let bestAlignment = -1;
+  let bestColor = 0;
+  for (let dy = -1; dy <= 1; dy++) {
+    for (let dx = -1; dx <= 1; dx++) {
+      let intersection = 0;
+      let visibleB = 0;
+      let colorDistance = 0;
+      for (const position of bPositions) {
+        const bx = position % size;
+        const by = (position / size) | 0;
+        if (bx + dx >= 0 && by + dy >= 0 && bx + dx < size && by + dy < size) visibleB++;
+      }
+      for (const position of aPositions) {
+        const x = position % size;
+        const y = (position / size) | 0;
+        const bx = x - dx;
+        const by = y - dy;
+        if (bx < 0 || by < 0 || bx >= size || by >= size) continue;
+        const bi = (by * size + bx) * 4;
+        if (b[bi + 3] < 128) continue;
+        const ai = position * 4;
+        intersection++;
+        colorDistance += Math.abs(a[ai] - b[bi]) + Math.abs(a[ai + 1] - b[bi + 1]) + Math.abs(a[ai + 2] - b[bi + 2]);
+      }
+      const union = aPositions.length + visibleB - intersection;
+      if (!intersection || !union) continue;
+      const shape = intersection / union;
+      const color = clamp01(1 - colorDistance / (intersection * 3 * 255));
+      const alignment = shape * 0.82 + color * 0.18;
+      if (alignment > bestAlignment) {
+        bestAlignment = alignment;
+        bestColor = color;
+      }
+    }
+  }
+  return bestAlignment >= 0 ? bestColor : null;
+}
+
 function normalizePackHist(hist) {
   if (!hist || !hist.length) return hist;
   if (hist.__sbiNormalized) return hist;
@@ -1271,7 +1490,8 @@ function compare(extracted, packTex) {
   const histSim = cosineSimilarity(extracted.hist, packTex.__histFloat || (packTex.__histFloat = normalizePackHist(packTex.hist)));
   const momentSim = colorMomentSim(extracted.moments, packTex.moments);
   const edgeSim = 1 - Math.abs(extracted.edge - packTex.edge);
-  return 0.30 * hammingSim + 0.35 * histSim + 0.20 * momentSim + 0.15 * edgeSim;
+  const base = 0.30 * hammingSim + 0.35 * histSim + 0.20 * momentSim + 0.15 * edgeSim;
+  return base;
 }
 
 function compareWidget(extracted, packWidget) {
@@ -1415,7 +1635,7 @@ function computeWidgetGridScore(data, w, h) {
   return clamp01((ratio - 1) / 2) * (0.65 + 0.35 * coverage);
 }
 
-function maskSlotNoise(data, w, h) {
+function maskSlotNoise(data, w, h, preserveBottom) {
   const out = new Uint8ClampedArray(data);
   const durabilityY = Math.floor(h * 0.78);
   const countX = Math.floor(w * 0.58);
@@ -1423,7 +1643,7 @@ function maskSlotNoise(data, w, h) {
   for (let y = 0; y < h; y++) {
     for (let x = 0; x < w; x++) {
       const i = (y * w + x) * 4;
-      if (y >= durabilityY || (x >= countX && y >= countY)) out[i + 3] = 0;
+      if ((!preserveBottom && y >= durabilityY) || (x >= countX && y >= countY)) out[i + 3] = 0;
     }
   }
   return out;
@@ -1501,7 +1721,7 @@ function suppressSlotBackground(data, w, h) {
   return out;
 }
 
-function buildSlotVariants(ctx, x, y, sz, imgW, imgH) {
+function buildSlotVariants(ctx, x, y, sz, imgW, imgH, options = {}) {
   const variants = [];
   const offsets = [
     [0, 0],
@@ -1515,12 +1735,13 @@ function buildSlotVariants(ctx, x, y, sz, imgW, imgH) {
   const iw = Math.max(4, sz - inset * 2);
   const ih = Math.max(4, sz - inset * 2);
   const shiftPx = Math.max(1, Math.round(sz * 0.1));
+  const targetSize = options.spatialSize || 16;
   for (const [ox, oy] of offsets) {
     const sx = x + inset + Math.round(ox * shiftPx);
     const sy = y + inset + Math.round(oy * shiftPx);
     if (sx < 0 || sy < 0 || sx + iw > imgW || sy + ih > imgH) continue;
-    const region = extractRegion(ctx, sx, sy, iw, ih, 16, 16);
-    variants.push(computeFeatures(region, 16, 16, true, 'slot'));
+    const region = extractRegion(ctx, sx, sy, iw, ih, targetSize, targetSize);
+    variants.push(computeFeatures(region, targetSize, targetSize, true, 'slot', options));
   }
   return variants;
 }
@@ -1672,10 +1893,10 @@ function computeItemSignature(imageData, w, h) {
   };
 }
 
-function computeFeatures(imageData, w, h, isScreenshot, mode) {
+function computeFeatures(imageData, w, h, isScreenshot, mode, options = {}) {
   const BG_THRESHOLD = isScreenshot ? 50 : 0;
   let effectiveData = (isScreenshot && mode === 'slot')
-    ? maskSlotNoise(imageData.data, w, h)
+    ? maskSlotNoise(imageData.data, w, h, options.preserveBottom)
     : imageData.data;
   if (isScreenshot && mode === 'slot') {
     effectiveData = suppressSlotBackground(effectiveData, w, h);
@@ -1702,7 +1923,11 @@ function computeFeatures(imageData, w, h, isScreenshot, mode) {
   const hist = computeHistogram(effectiveData, w * h, BG_THRESHOLD);
   const moments = computeColorMoments(effectiveData, w * h, BG_THRESHOLD);
   const edge = computeEdgeDensity(effectiveData, w, h);
-  return { dhash, hist, moments, edge, sig };
+  const spatialSize = options.spatialSize || 16;
+  const pix = mode === 'slot'
+    ? new Uint8Array(resizeImageDataNearest(effectiveImage, w, h, spatialSize, spatialSize).data)
+    : null;
+  return { dhash, hist, moments, edge, sig, pix };
 }
 
 function tryExtractFeature(ctx, x, y, w, h, imgW, imgH, targetW, targetH) {
@@ -1954,6 +2179,9 @@ function hydrateSlotVariants(ctx, slots, imgW, imgH) {
     if (!slot || slot.variants) continue;
     slot.variants = buildSlotVariants(ctx, slot.x, slot.y, slot.sz, imgW, imgH);
     if (!slot.variants.length && slot.features) slot.variants.push(slot.features);
+    if (slot.index === 0 || slot.index === 1) {
+      slot.refineVariants = buildSlotVariants(ctx, slot.x, slot.y, slot.sz, imgW, imgH, { preserveBottom: true, spatialSize: 32 });
+    }
   }
   return slots;
 }
@@ -2690,6 +2918,7 @@ function signatureBlueGreenBias(sig) {
 
 function compareSlotVariant(extracted, packTex, targetType) {
   let sim = compare(extracted, packTex);
+  const genericSim = sim;
   if (targetType === 'diamond_sword') {
     const dir = clamp01(meanRgbDirSim(extracted.moments, packTex.moments));
     const rbSim = metricSimilarity(colorRatio(extracted.moments, 0, 2), colorRatio(packTex.moments, 0, 2), 0.22);
@@ -2778,7 +3007,10 @@ function compareSlotVariant(extracted, packTex, targetType) {
   }
   if ((targetType === 'diamond_sword' || targetType === 'ender_pearl' || targetType === 'splash_potion') && extracted.sig && packTex.sig) {
     const sigSim = signatureSimilarity(extracted.sig, packTex.sig, targetType);
-    if (targetType === 'diamond_sword') sim = sim * 0.46 + sigSim * 0.54;
+    if (targetType === 'diamond_sword') {
+      sim = sim * 0.46 + sigSim * 0.54;
+      sim = genericSim * 0.85 + sim * 0.15;
+    }
     else if (targetType === 'ender_pearl') {
       sim = sim * 0.36 + sigSim * 0.64;
       // Cyan EP match bonus: screenshot EP was classified via the cyan/teal
@@ -2811,12 +3043,158 @@ function compareSlotToType(slot, packTex, targetType) {
   return best;
 }
 
+function getSlotAnchorEvidence(slot, packTex, targetType, spatialMode = 'full') {
+  if (!slot || !packTex) return null;
+  const refineVariants = (targetType === 'diamond_sword' || targetType === 'ender_pearl')
+    ? slot.refineVariants
+    : null;
+  const variants = refineVariants && refineVariants.length
+    ? refineVariants
+    : (slot.variants && slot.variants.length ? slot.variants : (slot.features ? [slot.features] : []));
+  const packHash = packTex.__dhashBytes || (packTex.__dhashBytes = base64ToBytes(packTex.dhash));
+  let bestVariant = null;
+  let bestFinal = -Infinity;
+  for (const variant of variants) {
+    const final = compareSlotVariant(variant, packTex, targetType);
+    if (final > bestFinal) {
+      bestFinal = final;
+      bestVariant = variant;
+    }
+  }
+  if (!bestVariant) return null;
+  const spatial = spatialMode === 'full'
+    ? compareSpatialMetrics(bestVariant, packTex)
+    : (spatialMode === 'color' ? { color: compareSpatialColor(bestVariant, packTex) } : null);
+  if (spatialMode !== 'none' && (!spatial || typeof spatial.color !== 'number' || !isFinite(spatial.color))) return null;
+  return {
+    final: bestFinal,
+    base: compare(bestVariant, packTex),
+    hamming: 1 - hammingDistance(bestVariant.dhash, packHash) / 192,
+    histogram: cosineSimilarity(bestVariant.hist, packTex.__histFloat || (packTex.__histFloat = normalizePackHist(packTex.hist))),
+    moments: colorMomentSim(bestVariant.moments, packTex.moments),
+    edge: 1 - Math.abs(bestVariant.edge - packTex.edge),
+    spatial: spatial ? spatial.score : null,
+    shape: spatial ? spatial.shape : null,
+    direction: spatial ? spatial.colorDirection : null,
+    color: spatial ? spatial.color : null,
+    signature: signatureSimilarity(bestVariant.sig, packTex.sig, targetType),
+  };
+}
+
+function groupObservedSlotsByType(slots, slotTypes) {
+  const grouped = {};
+  for (const slot of (slots || [])) {
+    const type = slotTypes && slotTypes[slot.index];
+    if (!SLOT_ITEM_TYPES.includes(type)) continue;
+    if (!grouped[type]) grouped[type] = [];
+    grouped[type].push(slot);
+  }
+  return grouped;
+}
+
+function getBestTypeRefinementEvidence(typeSlots, packTex, type, spatialMode) {
+  let best = null;
+  for (const slot of (typeSlots || [])) {
+    const evidence = getSlotAnchorEvidence(slot, packTex, type, spatialMode);
+    if (evidence && (!best || evidence.final > best.final)) best = evidence;
+  }
+  return best;
+}
+
+function buildRefinementValues(currentScore, packData, slotsByType, cachedEvidence) {
+  const evidence = cachedEvidence || {};
+  const values = [];
+  for (const feature of SBI_REFINEMENT_FEATURES) {
+    if (!feature.type) {
+      values.push(currentScore || 0);
+      continue;
+    }
+    if (!Object.prototype.hasOwnProperty.call(evidence, feature.type)) {
+      const includeColor = SBI_REFINEMENT_FEATURES.some(row =>
+        row.type === feature.type && ['color', 'spatial', 'shape', 'direction'].includes(row.metric)
+      );
+      evidence[feature.type] = packData && packData[feature.type]
+        ? getBestTypeRefinementEvidence(slotsByType[feature.type], packData[feature.type], feature.type, includeColor ? 'color' : 'none')
+        : null;
+    }
+    const row = evidence[feature.type];
+    values.push(row && isFinite(row[feature.metric]) ? row[feature.metric] : 0);
+  }
+  return { evidence, values };
+}
+
+function applyBoundedTextureRefinement(results, packEntries, slots, slotTypes, details, runMetrics, evidenceCache) {
+  if (!results || results.length < 2 || !packEntries || !packEntries.length) return results;
+  const started = nowMs();
+  const currentRows = [...results].sort((a, b) => b.score - a.score || a.name.localeCompare(b.name));
+  const finalistRows = currentRows.slice(0, SBI_REFINEMENT_RESULT_LIMIT);
+  const finalists = new Set(finalistRows.map(row => row.name));
+  const currentScores = new Map(currentRows.map(row => [row.name, row.score]));
+  const slotsByType = groupObservedSlotsByType(slots, slotTypes);
+  const packsById = new Map(packEntries);
+  const rows = finalistRows.map(({ name: groupId }) => {
+    const packData = packsById.get(groupId) || {};
+    const currentScore = currentScores.get(groupId) || 0;
+    const cachedEvidence = evidenceCache && evidenceCache.get(groupId);
+    const refinement = buildRefinementValues(currentScore, packData, slotsByType, cachedEvidence);
+    if (evidenceCache && !cachedEvidence) evidenceCache.set(groupId, refinement.evidence);
+    return { groupId, ...refinement };
+  });
+
+  const means = new Array(SBI_REFINEMENT_FEATURES.length).fill(0);
+  const deviations = new Array(SBI_REFINEMENT_FEATURES.length).fill(1);
+  for (let i = 0; i < means.length; i++) {
+    for (const row of rows) means[i] += row.values[i];
+    means[i] /= rows.length;
+    let variance = 0;
+    for (const row of rows) variance += (row.values[i] - means[i]) ** 2;
+    deviations[i] = Math.sqrt(variance / rows.length) || 1;
+  }
+
+  const rankScores = new Map();
+  for (const row of rows) {
+    let rankScore = 0;
+    for (let i = 0; i < SBI_REFINEMENT_FEATURES.length; i++) {
+      rankScore += ((row.values[i] - means[i]) / deviations[i]) * SBI_REFINEMENT_FEATURES[i].weight;
+    }
+    rankScores.set(row.groupId, rankScore);
+  }
+
+  const refined = currentRows.filter(row => finalists.has(row.name));
+  for (const row of refined) {
+    const info = details[row.name];
+    const rankScore = rankScores.get(row.name) || 0;
+    if (info) {
+      info.preRefinementScore = row.score;
+      info.refinementScore = rankScore;
+      info.finalScore = clamp01(0.5 + rankScore);
+    }
+    row.score = clamp01(0.5 + rankScore);
+  }
+  refined.sort((a, b) => {
+    const scoreDiff = (rankScores.get(b.name) || 0) - (rankScores.get(a.name) || 0);
+    return scoreDiff || a.name.localeCompare(b.name);
+  });
+  runMetrics.refinementCorpusCount = rows.length;
+  runMetrics.refinementResultCount = refined.length;
+  runMetrics.refinementMs = nowMs() - started;
+  return refined;
+}
+
 function getBestFingerprintSlotSimilarity(slot, targetType, cache) {
   if (!slot || !targetType || !fingerprints || !fingerprints.packs) return 0;
   const key = `${slot.index}:${targetType}`;
   if (cache && Object.prototype.hasOwnProperty.call(cache, key)) return cache[key];
+  const indexedNames = new Set();
+  const bucketNames = getIndexCandidateNames(targetType, slot.features && slot.features.sig);
+  const hashNames = getHashIndexCandidateNames(targetType, slot.features);
+  if (bucketNames) for (const name of bucketNames) indexedNames.add(name);
+  if (hashNames) for (const name of hashNames) indexedNames.add(name);
+  const packRows = indexedNames.size >= 8
+    ? [...indexedNames].map(name => fingerprints.packs[name]).filter(Boolean)
+    : Object.values(fingerprints.packs);
   let best = 0;
-  for (const packData of Object.values(fingerprints.packs)) {
+  for (const packData of packRows) {
     if (!packData || !packData[targetType]) continue;
     const sim = compareSlotToType(slot, packData[targetType], targetType);
     if (sim > best) best = sim;
@@ -3047,6 +3425,29 @@ function inferDisplaySlotTypes(slots) {
       continue;
     }
 
+    if (slot.index >= 2 && sig.redFrac >= 0.09 && sig.yellowFrac < 0.10) {
+      out[slot.index] = 'splash_potion';
+      continue;
+    }
+
+    if (slot.index === 0 && compactBlue) {
+      out[slot.index] = 'diamond_sword';
+      continue;
+    }
+
+    if (slot.index !== 0 && sig.redFrac < 0.05 && sig.yellowFrac < 0.08 && sig.n >= 24 &&
+        sig.meanB > sig.meanR + 60 && sig.meanG > sig.meanR + 60 &&
+        Math.abs(sig.meanG - sig.meanB) <= 40 && sig.meanG >= 110 && sig.meanB >= 110) {
+      out[slot.index] = 'ender_pearl';
+      continue;
+    }
+
+    if (slot.index !== 0 && sig.redFrac < 0.05 && sig.yellowFrac < 0.08 && (sig.n >= 70 || sig.coverage >= 0.22) &&
+        (sig.meanLum < 80 || (sig.meanB > sig.meanR + 40 && sig.meanG > sig.meanR + 20))) {
+      out[slot.index] = 'ender_pearl';
+      continue;
+    }
+
     const primaryWeaponType = inferPrimaryWeaponSlotType(slot, sig, fingerprintScoreCache);
     if (primaryWeaponType) {
       out[slot.index] = primaryWeaponType;
@@ -3072,13 +3473,13 @@ function inferDisplaySlotTypes(slots) {
     }
 
     // Health potions: red-heavy.
-    if (sig.redFrac >= 0.09 && sig.yellowFrac < 0.10) {
+    if (slot.index < 2 && sig.redFrac >= 0.09 && sig.yellowFrac < 0.10) {
       out[slot.index] = 'splash_potion';
       continue;
     }
 
     // Small blue silhouettes are swords far more often than pearls.
-    if (compactBlue) {
+    if (slot.index !== 0 && compactBlue) {
       out[slot.index] = 'diamond_sword';
       continue;
     }
@@ -3086,7 +3487,7 @@ function inferDisplaySlotTypes(slots) {
     // Bright cyan/teal ender pearls with a small footprint (custom packs like
     // Tory v1 Revamp): R clearly below G and B, G ≈ B, both bright. Colour
     // signal alone is strong enough — no n/coverage gate.
-    if (sig.redFrac < 0.05 && sig.yellowFrac < 0.08 && sig.n >= 24 &&
+    if (slot.index === 0 && sig.redFrac < 0.05 && sig.yellowFrac < 0.08 && sig.n >= 24 &&
         sig.meanB > sig.meanR + 60 && sig.meanG > sig.meanR + 60 &&
         Math.abs(sig.meanG - sig.meanB) <= 40 &&
         sig.meanG >= 110 && sig.meanB >= 110) {
@@ -3095,7 +3496,7 @@ function inferDisplaySlotTypes(slots) {
     }
 
     // Ender pearl: dark + low warm colors, OR bright cyan/teal orb
-    if (sig.redFrac < 0.05 && sig.yellowFrac < 0.08 && (sig.n >= 70 || sig.coverage >= 0.22) &&
+    if (slot.index === 0 && sig.redFrac < 0.05 && sig.yellowFrac < 0.08 && (sig.n >= 70 || sig.coverage >= 0.22) &&
         (sig.meanLum < 80 || (sig.meanB > sig.meanR + 40 && sig.meanG > sig.meanR + 20))) {
       out[slot.index] = 'ender_pearl';
       continue;
@@ -3112,9 +3513,13 @@ function inferDisplaySlotTypes(slots) {
 
   const slot0 = ordered.find(slot => slot && slot.index === 0);
   const slot0Sig = slot0 && slot0.features ? slot0.features.sig : null;
-  applyCanonicalMiddlePotionSlots(ordered, out, fingerprintScoreCache);
-  const canonicalWeaponType = inferCanonicalPvPWeaponSlotType(slot0, slot0Sig, out, fingerprintScoreCache);
-  if (canonicalWeaponType) out[0] = canonicalWeaponType;
+  if (out.slice(2, 8).filter(type => type === 'splash_potion').length < 3) {
+    applyCanonicalMiddlePotionSlots(ordered, out, fingerprintScoreCache);
+  }
+  if (out[0] === 'none') {
+    const canonicalWeaponType = inferCanonicalPvPWeaponSlotType(slot0, slot0Sig, out, fingerprintScoreCache);
+    if (canonicalWeaponType) out[0] = canonicalWeaponType;
+  }
 
   return out;
 }
@@ -3122,7 +3527,7 @@ function inferDisplaySlotTypes(slots) {
 // --- Matching ---
 
 function getCandidateFullScoreLimit(packCount) {
-  return Math.max(140, Math.min(260, Math.ceil((packCount || 0) * 0.20)));
+  return Math.min(SBI_FULL_SCORE_LIMIT, Math.max(1, packCount || 0));
 }
 
 function scoreCoarseAnchorMatch(packData, anchorSlots) {
@@ -3166,8 +3571,12 @@ function selectCandidateFullScoreEntries(allEntries, candidatePlan, metrics) {
   }).sort((a, b) => b.score - a.score || b.vote - a.vote || a.entry[0].localeCompare(b.entry[0]));
 
   const selected = new Set();
-  for (const row of rows.slice(0, limit)) selected.add(row.entry[0]);
-  for (const row of [...rows].sort((a, b) => b.vote - a.vote || b.score - a.score).slice(0, Math.min(48, rows.length))) selected.add(row.entry[0]);
+  const voteRows = [...rows].sort((a, b) => b.vote - a.vote || b.score - a.score);
+  for (const row of voteRows.slice(0, Math.min(32, limit))) selected.add(row.entry[0]);
+  for (const row of rows) {
+    if (selected.size >= limit) break;
+    selected.add(row.entry[0]);
+  }
 
   metrics.coarseScoreCount = rows.length;
   metrics.coarseSelectedCount = selected.size;
@@ -3175,24 +3584,114 @@ function selectCandidateFullScoreEntries(allEntries, candidatePlan, metrics) {
   return allEntries.filter(([name]) => selected.has(name));
 }
 
-function shouldRunFullScoreFallback(results, metrics, totalPackCount) {
-  if (!metrics || metrics.candidateMode !== 'prefilter') return false;
+function scoreGlobalCoarseMatch(groupId, packData, anchorSlots, widgetFeatures, hudFeatures) {
+  let weighted = 0, weights = 0;
+  for (const anchor of (anchorSlots || [])) {
+    const extracted = anchor.slot && anchor.slot.features;
+    const packTex = packData && packData[anchor.type];
+    if (!extracted || !packTex || !extracted.dhash || !packTex.dhash) continue;
+    const packHash = packTex.__dhashBytes || (packTex.__dhashBytes = base64ToBytes(packTex.dhash));
+    const hashBits = Math.max(1, Math.min(extracted.dhash.length, packHash.length) * 8);
+    const hashSim = clamp01(1 - hammingDistance(extracted.dhash, packHash) / hashBits);
+    const sigSim = signatureSimilarity(extracted.sig, packTex.sig, anchor.type);
+    const colorSim = extracted.moments && packTex.moments
+      ? clamp01(colorMomentSim(extracted.moments, packTex.moments))
+      : 0;
+    const rarity = getSurfaceRarity(groupId, anchor.type);
+    const strength = anchor.strength || 1;
+    weighted += (hashSim * 0.46 + sigSim * 0.34 + colorSim * 0.20) * rarity * strength;
+    weights += strength;
+  }
+  return weights ? weighted / weights : null;
+}
+
+function selectGlobalCoarseEntries(allEntries, anchorSlots, widgetFeatures, hudFeatures, previousResults, metrics, mode) {
+  const hasSignals = anchorSlots && anchorSlots.length;
+  if (!hasSignals) return allEntries;
+  const started = nowMs();
+  const hasPreviousResults = previousResults && previousResults.length;
+  const limit = hasPreviousResults ? SBI_REFINEMENT_RESULT_LIMIT : getCandidateFullScoreLimit(allEntries.length);
+  const selected = new Set();
+  const retainedLimit = hasPreviousResults ? Math.min(SBI_FALLBACK_RETAINED_RESULT_LIMIT, limit) : 0;
+  for (const row of (previousResults || []).slice(0, retainedLimit)) selected.add(row.name);
+
+  const needed = Math.max(0, limit - selected.size);
+  const topRows = [];
+  const compareRows = (a, b) => (b.score || 0) - (a.score || 0) || a.entry[0].localeCompare(b.entry[0]);
+  for (const entry of allEntries) {
+    const row = {
+      entry,
+      score: scoreGlobalCoarseMatch(entry[0], entry[1], anchorSlots, widgetFeatures, hudFeatures),
+    };
+    if (!needed || selected.has(entry[0])) continue;
+    let low = 0;
+    let high = topRows.length;
+    while (low < high) {
+      const middle = (low + high) >> 1;
+      if (compareRows(row, topRows[middle]) < 0) high = middle;
+      else low = middle + 1;
+    }
+    if (low >= needed) continue;
+    topRows.splice(low, 0, row);
+    if (topRows.length > needed) topRows.pop();
+  }
+  for (const row of topRows) selected.add(row.entry[0]);
+  metrics.candidateMode = mode;
+  metrics.globalCoarseCount = allEntries.length;
+  metrics.globalCoarseSelectedCount = selected.size;
+  metrics.globalCoarseMs = (metrics.globalCoarseMs || 0) + (nowMs() - started);
+  return allEntries.filter(([groupId]) => selected.has(groupId));
+}
+
+function shouldRunFullScoreFallback(results, metrics, totalPackCount, details) {
+  if (_forceGlobalFallbackForTest) return (metrics.fullScoreCount || 0) < totalPackCount;
+  if (!metrics || metrics.candidateMode === 'all') return false;
   if ((metrics.fullScoreCount || 0) >= totalPackCount) return false;
-  const ranked = results || [];
+  const ranked = [...(results || [])].sort((a, b) => {
+    const aInfo = details && details[a.name];
+    const bInfo = details && details[b.name];
+    const aScore = aInfo && isFinite(aInfo.preRefinementScore) ? aInfo.preRefinementScore : a.score;
+    const bScore = bInfo && isFinite(bInfo.preRefinementScore) ? bInfo.preRefinementScore : b.score;
+    return bScore - aScore;
+  });
   if (ranked.length < 10) return true;
-  const top1 = ranked[0] && isFinite(ranked[0].score) ? ranked[0].score : 0;
-  const top2 = ranked[1] && isFinite(ranked[1].score) ? ranked[1].score : 0;
+  const getScore = row => {
+    const info = row && details && details[row.name];
+    return info && isFinite(info.preRefinementScore) ? info.preRefinementScore : (row && isFinite(row.score) ? row.score : 0);
+  };
+  const top1 = getScore(ranked[0]);
+  const top2 = getScore(ranked[1]);
   if (top1 < SBI_CANDIDATE_FALLBACK_MIN_SCORE) return true;
   return (top1 - top2) < SBI_CANDIDATE_FALLBACK_MARGIN;
 }
+
+function expandGroupedOutput(output, metrics) {
+  const results = [];
+  const details = {};
+  for (const row of (output.results || [])) {
+    const groupId = row.name;
+    const members = getGroupMembers(groupId);
+    const groupDetails = output.details[groupId] || {};
+    for (const member of members) {
+      results.push({ ...row, name: member, groupId });
+      details[member] = { ...groupDetails, groupId, groupMembers: members };
+    }
+  }
+  metrics.expandedResultCount = results.length;
+  return { results, slotTypes: output.slotTypes, details };
+}
+
 function matchPacks(slots, widgetFeatures, hudFeatures) {
   if (!slots.length) return { results: [], slotTypes: [], details: {} };
   const matchStart = nowMs();
+  const inferenceStart = nowMs();
   const displaySlotTypes = inferDisplaySlotTypes(slots);
   const displayTypeCounts = countDisplaySlotTypes(displaySlotTypes);
+  const inferenceMs = nowMs() - inferenceStart;
   const allPackEntries = Object.entries(fingerprints.packs);
   const metrics = {
-    packCount: allPackEntries.length,
+    packCount: fingerprints && fingerprints._meta ? fingerprints._meta.packCount : allPackEntries.length,
+    groupCount: allPackEntries.length,
     candidateMode: 'all',
     candidatePrefilterCount: null,
     candidateSignalCount: 0,
@@ -3200,14 +3699,28 @@ function matchPacks(slots, widgetFeatures, hudFeatures) {
     coarseScoreCount: 0,
     coarseSelectedCount: 0,
     coarseMs: 0,
+    globalCoarseCount: 0,
+    globalCoarseSelectedCount: 0,
+    globalCoarseMs: 0,
     fullScoreCount: allPackEntries.length,
     fallback: false,
+    inferenceMs,
     runs: [],
   };
 
+  const candidateStart = nowMs();
   const candidatePlan = getSignaturePrefilterCandidates(slots, displaySlotTypes);
-  const fullScoreEntries = selectCandidateFullScoreEntries(allPackEntries, candidatePlan, metrics);
+  const anchorSlots = candidatePlan && candidatePlan.anchorSlots
+    ? candidatePlan.anchorSlots
+    : getAnchorSlotsByType(slots, displaySlotTypes);
+  const fullScoreEntries = candidatePlan
+    ? selectCandidateFullScoreEntries(allPackEntries, candidatePlan, metrics)
+    : selectGlobalCoarseEntries(allPackEntries, anchorSlots, widgetFeatures, hudFeatures, [], metrics, 'global-initial');
+  metrics.candidatePlanningMs = nowMs() - candidateStart;
 
+  const fullScoreBaseCache = new Map();
+  const refinementEvidenceCache = new Map();
+  const widgetScoreCache = new Map();
   const runFullScore = (packEntries, label) => {
     const runStart = nowMs();
     const ITEM_TYPES = SLOT_ITEM_TYPES;
@@ -3216,10 +3729,22 @@ function matchPacks(slots, widgetFeatures, hudFeatures) {
     const details = {};
     const scoredRows = [];
     const hasPearlAnchor = !!displayTypeCounts.ender_pearl;
-    const runMetrics = { label, packCount: packEntries.length, widgetMs: 0, scoreMs: 0, rankMs: 0, totalMs: 0 };
+    const runMetrics = {
+      label,
+      packCount: packEntries.length,
+      scoreEvaluations: 0,
+      scoreCacheHits: 0,
+      widgetMs: 0,
+      scoreMs: 0,
+      rankMs: 0,
+      totalMs: 0,
+    };
     metrics.runs.push(runMetrics);
-    metrics.fullScoreCount = packEntries.length;
     metrics.fullScoreMode = label;
+    const runGroupIds = packEntries.map(entry => entry[0]);
+    metrics.fullScoreGroupIds = [...new Set([...(metrics.fullScoreGroupIds || []), ...runGroupIds])];
+    metrics.fullScoreCount = metrics.fullScoreGroupIds.length;
+    metrics.fullScoreMembers = metrics.fullScoreGroupIds.flatMap(getGroupMembers);
 
     let maxWidgetSim = 0;
     const widgetSimCache = {};
@@ -3227,7 +3752,11 @@ function matchPacks(slots, widgetFeatures, hudFeatures) {
     if (widgetFeatures) {
       for (const [packName, packData] of packEntries) {
         if (!packData.hotbar_widget) continue;
-        const sim = compareWidget(widgetFeatures, packData.hotbar_widget);
+        let sim = widgetScoreCache.get(packName);
+        if (sim == null) {
+          sim = compareWidget(widgetFeatures, packData.hotbar_widget);
+          widgetScoreCache.set(packName, sim);
+        }
         widgetSimCache[packName] = sim;
         if (sim > maxWidgetSim) maxWidgetSim = sim;
       }
@@ -3236,6 +3765,18 @@ function matchPacks(slots, widgetFeatures, hudFeatures) {
 
     const scoreStart = nowMs();
     for (const [packName, packData] of packEntries) {
+      const cachedBase = fullScoreBaseCache.get(packName);
+      if (cachedBase) {
+        runMetrics.scoreCacheHits++;
+        const info = { ...cachedBase.info };
+        if (maxWidgetSim > 0.75 && info.widgetScore < 0.55) {
+          info.rawScore = clamp01(info.rawScore - 0.075);
+        }
+        details[packName] = info;
+        if (cachedBase.canRank) scoredRows.push({ name: packName, info });
+        continue;
+      }
+      runMetrics.scoreEvaluations++;
       let slotWeighted = 0, slotWeights = 0;
       let slotPenalty = 0, certaintySum = 0;
       let activeSlots = 0, strongSlots = 0;
@@ -3310,9 +3851,10 @@ function matchPacks(slots, widgetFeatures, hudFeatures) {
         const repeatedTypeScale = getRepeatedTypeScale(effectiveType, displayTypeCounts);
         const positionBonus = (slot.index === 0 || slot.index === 1) ? 1.8 : 1.0;
         const w = typeW * repeatedTypeScale * positionBonus * (0.45 + 0.9 * activity) * (0.6 + 0.6 * qualityNorm);
-        slotWeighted += sim * w;
+        const evidenceSim = applyRarityToSimilarity(sim, packName, effectiveType);
+        slotWeighted += evidenceSim * w;
         slotWeights += w;
-        const contrib = { sim, w, value: sim * w };
+        const contrib = { sim: evidenceSim, w, value: evidenceSim * w };
         let insertAt = topSlotContribs.length;
         while (insertAt > 0 && contrib.value > topSlotContribs[insertAt - 1].value) insertAt--;
         if (insertAt < 3) {
@@ -3344,13 +3886,27 @@ function matchPacks(slots, widgetFeatures, hudFeatures) {
         slotComposite = slotComposite * reliability + 0.20 * (1 - reliability);
       }
 
-      if (widgetFeatures && packData.hotbar_widget) widgetSim = widgetSimCache[packName] || 0;
+      if (widgetFeatures && packData.hotbar_widget) {
+        widgetSim = applyRarityToSimilarity(widgetSimCache[packName] || 0, packName, 'hotbar_widget');
+      }
 
       let hudWeighted = 0, hudWeights = 0;
       if (hudFeatures) {
-        healthSim = compareHudCells(hudFeatures.hearts, [packData.health_empty, packData.health_half, packData.health_full], 'health');
-        hungerSim = compareHudCells(hudFeatures.hunger, [packData.hunger_empty, packData.hunger_half, packData.hunger_full], 'hunger');
-        armorSim = compareHudCells(hudFeatures.armor, [packData.armor_empty, packData.armor_half, packData.armor_full], 'armor');
+        healthSim = applyRarityToSimilarity(
+          compareHudCells(hudFeatures.hearts, [packData.health_empty, packData.health_half, packData.health_full], 'health'),
+          packName,
+          ['health_empty', 'health_half', 'health_full']
+        );
+        hungerSim = applyRarityToSimilarity(
+          compareHudCells(hudFeatures.hunger, [packData.hunger_empty, packData.hunger_half, packData.hunger_full], 'hunger'),
+          packName,
+          ['hunger_empty', 'hunger_half', 'hunger_full']
+        );
+        armorSim = applyRarityToSimilarity(
+          compareHudCells(hudFeatures.armor, [packData.armor_empty, packData.armor_half, packData.armor_full], 'armor'),
+          packName,
+          ['armor_empty', 'armor_half', 'armor_full']
+        );
 
         if (healthSim > 0) { hudWeighted += healthSim * SBI_SCORE_WEIGHTS.hud.health; hudWeights += SBI_SCORE_WEIGHTS.hud.health; }
         if (hungerSim > 0) { hudWeighted += hungerSim * SBI_SCORE_WEIGHTS.hud.hunger; hudWeights += SBI_SCORE_WEIGHTS.hud.hunger; }
@@ -3371,10 +3927,7 @@ function matchPacks(slots, widgetFeatures, hudFeatures) {
       rawScore -= slotPenaltyNorm * 0.14;
       rawScore = clamp01(rawScore);
 
-      if (maxWidgetSim > 0.75 && widgetSim < 0.55) rawScore -= 0.075;
-      rawScore = clamp01(rawScore);
-
-      const info = {
+      const baseInfo = {
         finalScore: 0,
         rawScore,
         slotScore: slotComposite,
@@ -3390,10 +3943,17 @@ function matchPacks(slots, widgetFeatures, hudFeatures) {
         perTypeScores,
         slotBreakdown,
       };
+      fullScoreBaseCache.set(packName, { canRank, info: baseInfo });
+      const info = { ...baseInfo };
+      if (maxWidgetSim > 0.75 && widgetSim < 0.55) {
+        info.rawScore = clamp01(info.rawScore - 0.075);
+      }
       details[packName] = info;
       if (canRank) scoredRows.push({ name: packName, info });
     }
     runMetrics.scoreMs = nowMs() - scoreStart;
+    metrics.fullScoreEvaluations = (metrics.fullScoreEvaluations || 0) + runMetrics.scoreEvaluations;
+    metrics.fullScoreCacheHits = (metrics.fullScoreCacheHits || 0) + runMetrics.scoreCacheHits;
 
     const rankStart = nowMs();
     const bestEP = hasPearlAnchor
@@ -3428,9 +3988,11 @@ function matchPacks(slots, widgetFeatures, hudFeatures) {
       }
       if (enableDSGate) {
         const ds = (info.perTypeScores && info.perTypeScores.DS) || 0;
+        const ep = (info.perTypeScores && info.perTypeScores.EP) || 0;
+        const pearlProtectsSword = hasPearlAnchor && bestEP >= 0.50 && ep >= bestEP - 0.07;
         let cap = null;
-        if (ds < bestDS - 0.14) cap = 0.38;
-        else if (ds < bestDS - 0.10) cap = 0.41;
+        if (!pearlProtectsSword && ds < bestDS - 0.14) cap = 0.38;
+        else if (!pearlProtectsSword && ds < bestDS - 0.10) cap = 0.41;
         if (cap != null && gatedRawScore > cap) {
           gatedRawScore = cap;
           info.dsGate = { bestDS, ds, cap };
@@ -3438,9 +4000,11 @@ function matchPacks(slots, widgetFeatures, hudFeatures) {
       }
       if (enableWeakDSDiscriminator) {
         const ds = (info.perTypeScores && info.perTypeScores.DS) || 0;
+        const ep = (info.perTypeScores && info.perTypeScores.EP) || 0;
         const dsGap = bestDS - ds;
         const widgetGap = maxWidgetSim - (info.widgetScore || 0);
-        if (dsGap > 0.045 && widgetGap > 0.10) {
+        const pearlProtectsSword = hasPearlAnchor && bestEP >= 0.50 && ep >= bestEP - 0.07;
+        if (!pearlProtectsSword && dsGap > 0.045 && widgetGap > 0.10) {
           const penalty = Math.min(0.025, 0.012 + Math.min(0.013, (dsGap - 0.045) * 0.12 + (widgetGap - 0.10) * 0.05));
           gatedRawScore = Math.max(0, gatedRawScore - penalty);
           info.weakDsPenalty = { bestDS, ds, maxWidgetSim, widget: info.widgetScore || 0, penalty };
@@ -3461,21 +4025,49 @@ function matchPacks(slots, widgetFeatures, hudFeatures) {
       results.push({ name: row.name, score: gatedRawScore });
     }
 
-    results.sort((a, b) => b.score - a.score);
-    assignDisplayScores(results, details);
+    results.sort((a, b) => b.score - a.score || a.name.localeCompare(b.name));
+    const refinedResults = applyBoundedTextureRefinement(
+      results,
+      packEntries,
+      slots,
+      displaySlotTypes,
+      details,
+      runMetrics,
+      refinementEvidenceCache
+    );
+    assignDisplayScores(refinedResults, details);
     runMetrics.rankMs = nowMs() - rankStart;
     runMetrics.totalMs = nowMs() - runStart;
-    return { results: results.slice(0, 80), slotTypes: displaySlotTypes, details };
+    return { results: refinedResults.slice(0, SBI_REFINEMENT_RESULT_LIMIT), slotTypes: displaySlotTypes, details };
   };
 
-  let output = runFullScore(fullScoreEntries, metrics.candidateMode === 'prefilter' ? 'candidate' : 'all');
-  if (shouldRunFullScoreFallback(output.results, metrics, allPackEntries.length)) {
+  const initialMode = metrics.candidateMode === 'prefilter' ? 'candidate'
+    : metrics.candidateMode === 'global-initial' ? 'global'
+      : 'all';
+  let output = runFullScore(fullScoreEntries, initialMode);
+  if (shouldRunFullScoreFallback(output.results, metrics, allPackEntries.length, output.details)) {
     metrics.fallback = true;
-    output = runFullScore(allPackEntries, 'fallback');
+    const initiallyScored = new Set(fullScoreEntries.map(([groupId]) => groupId));
+    const fallbackEntries = selectGlobalCoarseEntries(
+      allPackEntries,
+      anchorSlots,
+      widgetFeatures,
+      hudFeatures,
+      output.results,
+      metrics,
+      'global-fallback'
+    );
+    const fallbackOutput = runFullScore(fallbackEntries, 'fallback');
+    const fallbackWinner = fallbackOutput.results[0] && fallbackOutput.results[0].name;
+    metrics.fallbackPromotedNewGroup = !!fallbackWinner && !initiallyScored.has(fallbackWinner);
+    if (metrics.fallbackPromotedNewGroup) output = fallbackOutput;
   }
+  const expansionStart = nowMs();
+  const expanded = expandGroupedOutput(output, metrics);
+  metrics.expansionMs = nowMs() - expansionStart;
   metrics.totalMs = nowMs() - matchStart;
   _lastMatchMetrics = metrics;
-  return output;
+  return expanded;
 }
 
 function getPresetUnit(imgW, imgH, preset) {
@@ -3997,6 +4589,99 @@ function init() {
 
 window.__sbiTest = {
   handleImageInput,
+  setForceGlobalFallback(value) {
+    _forceGlobalFallbackForTest = !!value;
+  },
+  setBenchmarkCorpusSize(target, excludedPacks = []) {
+    _benchmarkGroupTarget = Math.max(0, Number(target) || 0);
+    _benchmarkExcludedPacks = new Set(Array.isArray(excludedPacks) ? excludedPacks : []);
+  },
+  getGroupId(packName) {
+    return fingerprints && fingerprints._packToGroup ? fingerprints._packToGroup[packName] || null : null;
+  },
+  getPackResult(packName) {
+    const rowIndex = (_lastRankedResults || []).findIndex(row => row && row.name === packName);
+    const groupId = fingerprints && fingerprints._packToGroup ? fingerprints._packToGroup[packName] || null : null;
+    const fullScored = !!(groupId && _lastMatchMetrics && Array.isArray(_lastMatchMetrics.fullScoreGroupIds)
+      && _lastMatchMetrics.fullScoreGroupIds.includes(groupId));
+    return {
+      groupId,
+      groupMembers: groupId ? getGroupMembers(groupId) : [],
+      rank: rowIndex >= 0 ? rowIndex + 1 : null,
+      fullScored,
+      result: rowIndex >= 0 ? _lastRankedResults[rowIndex] : null,
+      details: _lastMatchDetails && _lastMatchDetails[packName] ? _lastMatchDetails[packName] : null,
+    };
+  },
+  getAnchorEvidence() {
+    if (!fingerprints || !fingerprints.packs) return [];
+    const slotTypes = inferDisplaySlotTypes(_lastSlotFeatures || []);
+    const slotsByType = {};
+    for (const slot of (_lastSlotFeatures || [])) {
+      const type = slotTypes[slot.index];
+      if (!SLOT_ITEM_TYPES.includes(type)) continue;
+      if (!slotsByType[type]) slotsByType[type] = [];
+      slotsByType[type].push(slot);
+    }
+    const groupIds = _lastMatchMetrics && Array.isArray(_lastMatchMetrics.fullScoreGroupIds)
+      ? _lastMatchMetrics.fullScoreGroupIds
+      : Object.keys(fingerprints.packs);
+    return groupIds.map(groupId => {
+      const packData = fingerprints.packs[groupId] || {};
+      const members = getGroupMembers(groupId);
+      const info = members.length && _lastMatchDetails ? _lastMatchDetails[members[0]] : null;
+      const currentScore = info && isFinite(info.preRefinementScore)
+        ? info.preRefinementScore
+        : (info && isFinite(info.finalScore) ? info.finalScore : null);
+      const types = {};
+      for (const [type, typeSlots] of Object.entries(slotsByType)) {
+        if (!packData[type]) continue;
+        for (const slot of typeSlots) {
+          const evidence = getSlotAnchorEvidence(slot, packData[type], type);
+          if (evidence && (!types[type] || evidence.final > types[type].final)) types[type] = evidence;
+        }
+      }
+      return {
+        groupId,
+        members,
+        currentScore,
+        productionRefinement: buildRefinementValues(currentScore, packData, slotsByType).values,
+        types,
+        ds: types.diamond_sword || null,
+        ep: types.ender_pearl || null,
+      };
+    });
+  },
+  getSlotVariantImages(slotIndex) {
+    const slot = (_lastSlotFeatures || []).find(row => row && row.index === slotIndex);
+    if (!slot) return [];
+    const variants = slot.variants && slot.variants.length ? slot.variants : [slot.features];
+    return variants.filter(variant => variant && variant.pix).map(variant => {
+      const canvas = document.createElement('canvas');
+      canvas.width = 16;
+      canvas.height = 16;
+      canvas.getContext('2d').putImageData(new ImageData(new Uint8ClampedArray(variant.pix), 16, 16), 0, 0);
+      return canvas.toDataURL('image/png');
+    });
+  },
+  comparePackSlot(packName, slotIndex, type) {
+    const groupId = fingerprints && fingerprints._packToGroup ? fingerprints._packToGroup[packName] : null;
+    const packData = groupId && fingerprints.packs[groupId];
+    const slot = (_lastSlotFeatures || []).find(row => row && row.index === slotIndex);
+    const packTex = packData && packData[type];
+    if (!groupId || !slot || !packTex) return null;
+    const evidence = getSlotAnchorEvidence(slot, packTex, type, 'full');
+    return {
+      groupId,
+      rarity: getSurfaceRarity(groupId, type),
+      variants: evidence ? [{
+        ...evidence,
+        spatialShape: evidence.shape,
+        spatialDirection: evidence.direction,
+        spatialColor: evidence.color,
+      }] : [],
+    };
+  },
   async processImage(file, preset) {
     if (preset) _currentPreset = preset;
     const timings = {};
@@ -4031,6 +4716,12 @@ window.__sbiTest = {
     t = mark();
     await ensureFingerprintsForSlots(slots);
     timings.food = mark() - t;
+    timings.inflate = inflateFingerprintCorpusForBenchmark();
+    if (timings.inflate > 0) {
+      t = mark();
+      await new Promise(resolve => setTimeout(resolve, 20));
+      timings.inflateSettle = mark() - t;
+    }
     t = mark();
     const { results, slotTypes, details } = matchPacks(slots, widgetFeatures, hudFeatures);
     timings.match = mark() - t;
@@ -4046,6 +4737,9 @@ window.__sbiTest = {
     for (const [name, info] of Object.entries(details)) _lastVisibleScores[name] = getDisplayScoreValue(null, info);
     _lastRankedResults = results.slice();
     _lastSearchPhase = 'hash';
+    t = mark();
+    if (document.getElementById('sbi-results')) renderResults(results.slice(0, 50));
+    timings.render = mark() - t;
     _lastTestTimings = timings;
     URL.revokeObjectURL(url);
   },
@@ -4058,6 +4752,7 @@ window.__sbiTest = {
         const info = _lastMatchDetails[r.name] || {};
         return {
           name: r.name,
+          groupId: r.groupId || info.groupId || null,
           score: getDisplayScoreValue(r, info),
           slotComposite: info.slotScore,
           hudComposite: (info.healthScore != null || info.hungerScore != null || info.armorScore != null) ? ((info.healthScore||0)+(info.hungerScore||0)+(info.armorScore||0))/3 : null,
@@ -4089,7 +4784,8 @@ window.__sbiTest = {
         detailCount: Object.keys(_lastMatchDetails || {}).length,
         rankedCount: (_lastRankedResults || []).length,
         hasFingerprints: !!fingerprints,
-        fingerprintPackCount: fingerprints ? Object.keys(fingerprints.packs || {}).length : 0,
+        fingerprintPackCount: fingerprints && fingerprints._meta ? fingerprints._meta.packCount : 0,
+        fingerprintGroupCount: fingerprints ? Object.keys(fingerprints.packs || {}).length : 0,
         loadedShardCount: fingerprints ? Object.keys(fingerprints._loadedShards || {}).length : 0,
         matchMetrics: _lastMatchMetrics || {},
       },

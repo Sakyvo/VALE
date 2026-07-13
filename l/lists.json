@@ -239,14 +239,31 @@
   {
     "name": "Overlay",
     "cover": "",
-    "description": "Default-equivalent overlays (auto-detected)",
+    "description": "Overlay packs for selective visual changes. Excluded from Search by Image because they are not uniquely identifiable as full packs.",
     "packs": [
+      "Advisers_Block_Overlay",
+      "Arissi_Block_Overlay_V2",
+      "Better_Blockhit",
+      "Cases_Block_Overlay(1)",
       "Cases_Block_Overlaywhite_fire",
+      "Clear_Glass_Overlay",
+      "Clouds_and_Planets",
+      "cloudy_sky",
+      "Colorful_Potion_Font",
+      "Elab_Clearglass",
+      "fancy_sky",
+      "Font_2",
+      "GDrive",
       "Idiol_Snow_v4",
+      "Kahzuk_overlay_gray",
       "LightMap_Clear_Walls",
+      "Lunar_Themes_Overlay",
+      "monochrom_overlay",
       "no_color_purple_sky_and_glint_overlay",
       "no_color_red_sky_and_glint_overlay",
-      "sky_glint_overlay"
+      "Sakura_Theme",
+      "sky_glint_overlay",
+      "Tory_block_overlay"
     ]
   },
   {
@@ -1307,6 +1324,35 @@
       "Au7ismZ_Pack_V1",
       "pokemon_shamm",
       "lol_sky"
+    ]
+  },
+  {
+    "name": "Conquest",
+    "cover": "",
+    "description": "Packs with matching stone, iron, or diamond sword textures. Excluded from Search by Image because the held sword tier cannot be inferred reliably.",
+    "packs": [
+      "clare_plast_conquest",
+      "Crash_Rasta",
+      "KOTH_Sword_Overlay_v13",
+      "KOTH_Sword_Overlay_v14",
+      "KOTH_Sword_Overlay_v17",
+      "KOTH_Sword_Overlay_v2",
+      "KOTH_Sword_Overlay_v23",
+      "KOTH_Sword_Overlay_v24",
+      "KOTH_Sword_Overlay_v25",
+      "KOTH_Sword_Overlay_v26",
+      "KOTH_Sword_Overlay_v27",
+      "KOTH_Sword_Overlay_v28",
+      "KOTH_Sword_Overlay_v29",
+      "KOTH_Sword_Overlay_v3",
+      "KOTH_Sword_Overlay_v45",
+      "KOTH_Sword_Overlay_v6",
+      "KOTH_Sword_Overlay_v7",
+      "KOTH_Sword_Overlay_v8",
+      "OTB_FPS_Conquest",
+      "p0kemon_2k_Conquest",
+      "Silency_Stratus",
+      "White_128x_Conquest"
     ]
   }
 ]

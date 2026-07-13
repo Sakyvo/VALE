@@ -34,8 +34,11 @@ const CORE_TEXTURES = [
 ];
 
 async function pixelHash(filePath) {
-  const { data } = await sharp(filePath).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
-  return crypto.createHash('sha256').update(data).digest('hex');
+  const { data, info } = await sharp(filePath).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  return crypto.createHash('sha256')
+    .update(`${info.width}x${info.height}x${info.channels}\0`)
+    .update(data)
+    .digest('hex');
 }
 
 async function buildReferenceSet() {
@@ -107,17 +110,23 @@ function bumpSbiVersion() {
   console.log(`  SBI_FINGERPRINT_VERSION ${oldVer} -> ${newVer}`);
 }
 
-function updateListsJson(overlays) {
-  const lists = JSON.parse(fs.readFileSync(LISTS_PATH, 'utf-8'));
+function updateListsJson(overlays, listsPath = LISTS_PATH) {
+  const lists = JSON.parse(fs.readFileSync(listsPath, 'utf-8'));
   let entry = lists.find(l => l.name === OVERLAY_LIST_NAME);
   const sorted = [...overlays].sort();
   if (!entry) {
-    entry = { name: OVERLAY_LIST_NAME, cover: '', description: 'Default-equivalent overlays (auto-detected)', packs: sorted };
+    entry = {
+      name: OVERLAY_LIST_NAME,
+      cover: '',
+      description: 'Overlay packs for selective visual changes. Excluded from Search by Image because they are not uniquely identifiable as full packs.',
+      packs: sorted,
+    };
     lists.push(entry);
   } else {
     entry.packs = sorted;
+    entry.description = 'Overlay packs for selective visual changes. Excluded from Search by Image because they are not uniquely identifiable as full packs.';
   }
-  fs.writeFileSync(LISTS_PATH, JSON.stringify(lists, null, 2));
+  fs.writeFileSync(listsPath, JSON.stringify(lists, null, 2));
 }
 
 function runStep(label, cmd) {
@@ -125,7 +134,7 @@ function runStep(label, cmd) {
   execSync(cmd, { cwd: ROOT, stdio: 'inherit' });
 }
 
-async function main() {
+async function main(argv = process.argv.slice(2)) {
   console.log('Building reference set...');
   const refSet = await buildReferenceSet();
   for (const [f, s] of Object.entries(refSet)) console.log(`  ${f}: ${s.size} sources`);
@@ -135,7 +144,7 @@ async function main() {
   console.log(`\nDetected ${overlays.length} overlay pack(s):`);
   overlays.forEach(o => console.log(`  - ${o}`));
 
-  if (process.argv.includes('--dry-run')) {
+  if (argv.includes('--dry-run')) {
     console.log('\nDry-run: skipping writes.');
     return;
   }
@@ -143,12 +152,24 @@ async function main() {
   console.log('\nUpdating l/lists.json...');
   updateListsJson(overlays);
 
-  runStep('index', 'node scripts/generate-index.js');
-  console.log('\nBumping SBI version...');
-  bumpSbiVersion();
-  runStep('sbi:data', 'node scripts/generate-sbi-data.js');
+  if (argv.includes('--rebuild')) {
+    runStep('index', 'node scripts/generate-index.js');
+    console.log('\nBumping SBI version...');
+    bumpSbiVersion();
+    runStep('sbi:data', 'node scripts/generate-sbi-data.js');
+  }
 
-  console.log('\nDone. Remember to run: python test_sbi.py');
+  console.log('\nDone. SBI data and versions were not changed unless --rebuild was supplied.');
 }
 
-main().catch(e => { console.error(e); process.exit(1); });
+if (require.main === module) {
+  main().catch(e => { console.error(e); process.exit(1); });
+}
+
+module.exports = {
+  buildReferenceSet,
+  detectOverlays,
+  main,
+  pixelHash,
+  updateListsJson,
+};

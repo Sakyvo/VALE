@@ -128,7 +128,7 @@ function main() {
   });
 
   // Sort by displayName for A-Z
-  packs.sort((a, b) => a.displayName.localeCompare(b.displayName));
+  packs.sort((a, b) => a.displayName.localeCompare(b.displayName, 'en'));
 
   // Write individual pack JSON
   fs.mkdirSync('data/packs', { recursive: true });

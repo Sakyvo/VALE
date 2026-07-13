@@ -1,13 +1,18 @@
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 const sharp = require('sharp');
 const { sanitizePreviewPngBuffer } = require('./thumbnail-preview-utils');
+const { stableStringify } = require('./lib/pack-content-fingerprint');
 
 const THUMB_DIR = path.join(__dirname, '..', 'thumbnails');
 const OUT_FILE = path.join(__dirname, '..', 'data', 'sbi-fingerprints.json');
 const SHARD_DIR = path.join(__dirname, '..', 'data', 'sbi-fp');
-const SBI_FINGERPRINT_VERSION = 15;
+const META_FILE = path.join(SHARD_DIR, 'meta.json');
+const SBI_FINGERPRINT_VERSION = 16;
+const SBI_GROUP_SCHEMA_VERSION = 1;
 const ANCHOR_INDEX_KEYS = new Set(['diamond_sword', 'ender_pearl', 'splash_potion']);
+const EXCLUDED_LIST_NAMES = ['Overlay', 'Conquest'];
 
 // Note: crosshair removed — MC renders it via XOR blending, making screenshot comparison meaningless
 const TEXTURES = [
@@ -156,6 +161,23 @@ function computeEdgeDensity(pixels, w, h) {
     }
   }
   return count ? +(sum / (count * 3 * 255)).toFixed(5) : 0;
+}
+
+function computeSpatialPixels(pixels, w, h, targetSize = 16) {
+  const out = Buffer.alloc(targetSize * targetSize * 4);
+  for (let y = 0; y < targetSize; y++) {
+    const sy = Math.min(h - 1, Math.floor((y + 0.5) * h / targetSize));
+    for (let x = 0; x < targetSize; x++) {
+      const sx = Math.min(w - 1, Math.floor((x + 0.5) * w / targetSize));
+      const source = (sy * w + sx) * 4;
+      const target = (y * targetSize + x) * 4;
+      out[target] = pixels[source];
+      out[target + 1] = pixels[source + 1];
+      out[target + 2] = pixels[source + 2];
+      out[target + 3] = pixels[source + 3];
+    }
+  }
+  return out.toString('base64');
 }
 
 function computeItemSignature(pixels, w, h) {
@@ -350,14 +372,14 @@ function suppressWidgetHighlights(pixels, w, h) {
   return out;
 }
 
-async function processTexture(filePath) {
+async function processTexture(filePath, spatialSize = 16) {
   const sanitized = await sanitizePreviewPngBuffer(await fs.promises.readFile(filePath));
   const img = sharp(sanitized.buffer);
   const meta = await img.metadata();
   const normalized = meta.height > meta.width && meta.height % meta.width === 0
     ? img.extract({ left: 0, top: 0, width: meta.width, height: meta.width })
     : img;
-  return processSharpImage(normalized, 16, 16);
+  return processSharpImage(normalized, 16, 16, true, spatialSize);
 }
 
 function scaleRegion(meta, region) {
@@ -371,7 +393,7 @@ function scaleRegion(meta, region) {
   return { left, top, width: safeWidth, height: safeHeight };
 }
 
-async function processSharpImage(img, featureW, featureH) {
+async function processSharpImage(img, featureW, featureH, includePixels = true, spatialSize = 16) {
   const hashBuf = await img.clone().resize(9, 8, { fit: 'fill', kernel: 'nearest' }).raw().ensureAlpha().toBuffer();
   const dhash = computeDHash(hashBuf);
   const featBuf = await img.clone().resize(featureW, featureH, { fit: 'fill', kernel: 'nearest' }).raw().ensureAlpha().toBuffer();
@@ -380,7 +402,14 @@ async function processSharpImage(img, featureW, featureH) {
   const moments = computeColorMoments(featBuf, count);
   const edge = computeEdgeDensity(featBuf, featureW, featureH);
   const sig = computeItemSignature(featBuf, featureW, featureH);
-  return { dhash, hist, moments, edge, sig };
+  const result = { dhash, hist, moments, edge, sig };
+  if (includePixels) {
+    const spatialBuf = spatialSize === featureW && spatialSize === featureH
+      ? featBuf
+      : await img.clone().resize(spatialSize, spatialSize, { fit: 'fill', kernel: 'nearest' }).raw().ensureAlpha().toBuffer();
+    result.pix = computeSpatialPixels(spatialBuf, spatialSize, spatialSize, spatialSize);
+  }
+  return result;
 }
 
 async function processHotbarWidget(widgetsPath) {
@@ -471,7 +500,80 @@ function buildShardPacks(packs, keys) {
   return { shardPacks, index };
 }
 
-function writeShards(packs) {
+function sha256Text(value) {
+  return crypto.createHash('sha256').update(value).digest('hex');
+}
+
+function surfaceKey(value) {
+  return sha256Text(stableStringify(value));
+}
+
+function buildGroupedData(packs, exclusionSummary = {}) {
+  const surfaceKeys = [...new Set(SHARDS.flatMap(shard => shard.keys))].sort();
+  const grouped = new Map();
+  for (const packName of Object.keys(packs).sort((a, b) => a.localeCompare(b))) {
+    const packData = packs[packName];
+    const record = {};
+    for (const key of surfaceKeys) record[key] = packData[key] || null;
+    const digest = sha256Text(stableStringify(record));
+    const groupId = `g:${digest}`;
+    if (!grouped.has(groupId)) grouped.set(groupId, { representative: packName, members: [], packData });
+    grouped.get(groupId).members.push(packName);
+  }
+
+  const groupPacks = {};
+  const groups = {};
+  for (const [groupId, group] of [...grouped.entries()].sort((a, b) => a[0].localeCompare(b[0]))) {
+    group.members.sort((a, b) => a.localeCompare(b));
+    group.representative = group.members[0];
+    groupPacks[groupId] = group.packData;
+    groups[groupId] = { representative: group.representative, members: group.members };
+  }
+
+  const frequencies = {};
+  const groupSurfaceKeys = {};
+  for (const [groupId, packData] of Object.entries(groupPacks)) {
+    const keys = {};
+    for (const key of surfaceKeys) {
+      if (!packData[key]) continue;
+      const exactKey = surfaceKey(packData[key]);
+      keys[key] = exactKey;
+      if (!frequencies[key]) frequencies[key] = {};
+      frequencies[key][exactKey] = (frequencies[key][exactKey] || 0) + 1;
+    }
+    groupSurfaceKeys[groupId] = keys;
+  }
+
+  const groupCount = Object.keys(groupPacks).length;
+  const maxIdf = Math.log((groupCount + 1) / 2) || 1;
+  const rarity = {};
+  for (const groupId of Object.keys(groupPacks)) {
+    const values = {};
+    for (const [key, exactKey] of Object.entries(groupSurfaceKeys[groupId])) {
+      const count = frequencies[key][exactKey];
+      const normalized = Math.max(0, Math.min(1, Math.log((groupCount + 1) / (count + 1)) / maxIdf));
+      values[key] = {
+        count,
+        weight: +(0.35 + normalized * 0.65).toFixed(4),
+      };
+    }
+    rarity[groupId] = values;
+  }
+
+  const meta = {
+    version: SBI_FINGERPRINT_VERSION,
+    schemaVersion: SBI_GROUP_SCHEMA_VERSION,
+    packCount: Object.keys(packs).length,
+    groupCount,
+    excludedLists: EXCLUDED_LIST_NAMES,
+    excludedCounts: exclusionSummary,
+    groups,
+    rarity,
+  };
+  return { groupPacks, meta };
+}
+
+function writeShards(packs, meta) {
   fs.mkdirSync(SHARD_DIR, { recursive: true });
   for (const shard of SHARDS) {
     const { shardPacks, index } = buildShardPacks(packs, shard.keys);
@@ -484,6 +586,7 @@ function writeShards(packs) {
     };
     fs.writeFileSync(path.join(SHARD_DIR, `${shard.name}.json`), JSON.stringify(payload));
   }
+  fs.writeFileSync(META_FILE, JSON.stringify(meta));
 }
 
 async function processHudIcons(iconsPath) {
@@ -494,28 +597,38 @@ async function processHudIcons(iconsPath) {
     const img = sharp(iconsPath).extract(crop);
     const fw = region.fw || 16;
     const fh = region.fh || 16;
-    out[key] = await processSharpImage(img, fw, fh);
+    out[key] = await processSharpImage(img, fw, fh, false);
   }
   return out;
 }
 
-function loadOverlayPacks() {
-  const listsPath = path.join(__dirname, '..', 'l', 'lists.json');
-  if (!fs.existsSync(listsPath)) return new Set();
-  const lists = JSON.parse(fs.readFileSync(listsPath, 'utf-8'));
-  const overlay = lists.find(l => l.name === 'Overlay');
-  return new Set(overlay ? overlay.packs : []);
+function buildExclusionSet(lists) {
+  const packs = new Set();
+  const counts = {};
+  for (const name of EXCLUDED_LIST_NAMES) {
+    const list = lists.find(row => row.name === name);
+    const members = list && Array.isArray(list.packs) ? list.packs : [];
+    counts[name] = members.length;
+    for (const packName of members) packs.add(packName);
+  }
+  return { packs, counts };
 }
 
-async function main() {
-  const args = parseArgs(process.argv.slice(2));
+function loadExcludedPacks() {
+  const listsPath = path.join(__dirname, '..', 'l', 'lists.json');
+  if (!fs.existsSync(listsPath)) return { packs: new Set(), counts: {} };
+  return buildExclusionSet(JSON.parse(fs.readFileSync(listsPath, 'utf-8')));
+}
+
+async function main(argv = process.argv.slice(2)) {
+  const args = parseArgs(argv);
   const packAllowlist = loadPackAllowlist(args.packList);
-  const overlaySet = loadOverlayPacks();
+  const excluded = loadExcludedPacks();
   const allDirs = fs.readdirSync(THUMB_DIR).filter(d =>
     fs.statSync(path.join(THUMB_DIR, d)).isDirectory()
-  );
-  const nonOverlayDirs = allDirs.filter(d => !overlaySet.has(d));
-  const dirs = packAllowlist ? nonOverlayDirs.filter(d => packAllowlist.has(d)) : nonOverlayDirs;
+  ).sort((a, b) => a.localeCompare(b));
+  const eligibleDirs = allDirs.filter(d => !excluded.packs.has(d));
+  const dirs = packAllowlist ? eligibleDirs.filter(d => packAllowlist.has(d)) : eligibleDirs;
   const skipped = allDirs.length - dirs.length;
   const allowlistNote = packAllowlist ? `, allowlist ${packAllowlist.size}` : '';
   console.log(`Processing ${dirs.length} packs${skipped ? ` (skipped ${skipped} overlay/unlisted${allowlistNote})` : ''}...`);
@@ -533,7 +646,8 @@ async function main() {
       }
       if (!filePath) continue;
       try {
-        packData[tex.key] = await processTexture(filePath);
+        const spatialSize = tex.key === 'diamond_sword' || tex.key === 'ender_pearl' ? 32 : 16;
+        packData[tex.key] = await processTexture(filePath, spatialSize);
       } catch { /* skip broken */ }
     }
     // Process hotbar widget from widgets.png
@@ -553,11 +667,25 @@ async function main() {
     done++;
     if (done % 20 === 0) console.log(`  ${done}/${dirs.length}`);
   }
-  const result = { version: SBI_FINGERPRINT_VERSION, packs };
+  const { groupPacks, meta } = buildGroupedData(packs, excluded.counts);
+  const result = { version: SBI_FINGERPRINT_VERSION, schemaVersion: SBI_GROUP_SCHEMA_VERSION, packs: groupPacks, meta };
   fs.mkdirSync(path.dirname(OUT_FILE), { recursive: true });
   fs.writeFileSync(OUT_FILE, JSON.stringify(result));
-  writeShards(packs);
-  console.log(`Done. ${Object.keys(packs).length} packs → ${OUT_FILE}`);
+  writeShards(groupPacks, meta);
+  console.log(`Done. ${Object.keys(packs).length} packs in ${meta.groupCount} exact groups -> ${OUT_FILE}`);
+  return result;
 }
 
-main().catch(e => { console.error(e); process.exit(1); });
+if (require.main === module) {
+  main().catch(e => { console.error(e); process.exit(1); });
+}
+
+module.exports = {
+  EXCLUDED_LIST_NAMES,
+  SBI_GROUP_SCHEMA_VERSION,
+  buildExclusionSet,
+  buildGroupedData,
+  loadExcludedPacks,
+  main,
+  surfaceKey,
+};

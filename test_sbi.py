@@ -20,9 +20,9 @@ if sys.platform == "win32":
         pass
 
 DEFAULT_BROWSER_CANDIDATES = [
+    r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
     r"C:\Program Files\Google\Chrome\Application\chrome.exe",
     r"C:\Program Files\chrome-win\chrome.exe",
-    r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
 ]
 DEFAULT_PORT = 9880
 DEFAULT_DEBUG_PORT = 9337
@@ -65,10 +65,17 @@ def parse_args():
     parser.add_argument("--fail-fast", action="store_true", help="Stop after the first failed test.")
     parser.add_argument("--quiet", action="store_true", help="Only print compact per-image results and summary.")
     parser.add_argument("--verbose", action="store_true", help="Print slot features and top-10 rows.")
+    parser.add_argument("--diagnostics-json", help="Write full candidate diagnostics for offline scoring analysis.")
     parser.add_argument("--no-timings", action="store_true", help="Hide per-image timing output.")
+    parser.add_argument("--base-url", help="Test a deployed site instead of starting the local HTTP server.")
+    parser.add_argument("--benchmark", choices=("warm", "cold"), help="Run repeated warm- or cold-cache measurements.")
+    parser.add_argument("--runs", type=int, default=5, help="Runs per image in benchmark mode (default: 5).")
+    parser.add_argument("--force-fallback", action="store_true", help="Force the global coarse fallback path.")
+    parser.add_argument("--benchmark-groups", type=int, help="Inflate the browser corpus to this many groups for performance testing.")
+    parser.add_argument("--enforce-budgets", action="store_true", help="Fail when benchmark p95 exceeds SBI budgets.")
     parser.add_argument("--port", type=int, default=DEFAULT_PORT, help="HTTP server port.")
     parser.add_argument("--debug-port", type=int, default=DEFAULT_DEBUG_PORT, help="Browser CDP port.")
-    parser.add_argument("--browser", help="Browser executable path. Defaults to Chrome if available, then Edge.")
+    parser.add_argument("--browser", help="Browser executable path. Defaults to Edge if available, then Chrome.")
     parser.add_argument("--headless", default="--headless", help="Browser headless flag, e.g. --headless or --headless=new.")
     return parser.parse_args()
 
@@ -86,6 +93,14 @@ def filter_tests(tests, args):
 
 def fmt_seconds(value):
     return f"{value:.2f}s"
+
+
+def percentile(values, quantile):
+    ordered = sorted(value for value in values if isinstance(value, (int, float)))
+    if not ordered:
+        return None
+    index = max(0, min(len(ordered) - 1, int((len(ordered) * quantile + 0.999999)) - 1))
+    return ordered[index]
 
 
 def resolve_browser_path(path):
@@ -176,21 +191,27 @@ def get_sbi_ws_url(debug_port):
 
 
 def match_name(expected, got):
-    n = lambda s: re.sub(r"[^a-z0-9]", "", s.lower())
-    return n(expected) == n(got)
+    return expected == got
 
 
 async def main():
     import websockets
 
     args = parse_args()
-    base = f"http://127.0.0.1:{args.port}"
+    if args.runs <= 0:
+        print("ERROR: --runs must be positive")
+        return 1
+    if args.benchmark_groups is not None and (args.benchmark_groups <= 0 or not args.benchmark):
+        print("ERROR: --benchmark-groups requires --benchmark and a positive group count")
+        return 1
+    base = args.base_url.rstrip("/") if args.base_url else f"http://127.0.0.1:{args.port}"
     sbi_url = f"{base}/sbi/"
     try:
         browser_path = resolve_browser_path(args.browser)
     except FileNotFoundError as exc:
         print(f"ERROR: {exc}")
         return 1
+    print(f"Browser: {browser_path}\n", flush=True)
     tests = filter_tests(parse_test_images(), args)
     if not tests:
         print("No test images found in", TEST_DIR)
@@ -199,15 +220,17 @@ async def main():
     print(f"Found {len(tests)} test image(s)\n", flush=True)
     suite_t0 = time.monotonic()
 
-    # Start HTTP server
-    server_proc = subprocess.Popen(
-        [sys.executable, "-m", "http.server", str(args.port), "--bind", "127.0.0.1"],
-        cwd=os.path.dirname(os.path.abspath(__file__)),
-        stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
-    )
+    server_proc = None
+    if not args.base_url:
+        server_proc = subprocess.Popen(
+            [sys.executable, "-m", "http.server", str(args.port), "--bind", "127.0.0.1"],
+            cwd=os.path.dirname(os.path.abspath(__file__)),
+            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+        )
     if not wait_for_http(sbi_url):
-        print(f"ERROR: HTTP server did not become ready at {sbi_url}")
-        server_proc.terminate()
+        print(f"ERROR: SBI URL did not become ready at {sbi_url}")
+        if server_proc:
+            server_proc.terminate()
         return 1
 
     # Start browser with remote debugging
@@ -231,6 +254,9 @@ async def main():
     ], stdout=edge_log, stderr=edge_log)
 
     results = []
+    diagnostics = []
+    candidate_recalls = []
+    benchmark_samples = []
     try:
         # Wait for CDP
         ws_url = None
@@ -261,6 +287,8 @@ async def main():
                 ws = await websockets.connect(ws_url, max_size=50_000_000, proxy=None)
                 await cdp_call(ws, "Runtime.enable")
                 await cdp_call(ws, "Page.enable")
+                if args.benchmark == "cold":
+                    await cdp_call(ws, "Network.enable")
                 break
             except Exception:
                 if ws:
@@ -297,7 +325,20 @@ async def main():
 
             print("SBI page ready\n", flush=True)
 
-            for img_name, preset, expected in tests:
+            test_runs = []
+            if args.benchmark == "warm":
+                test_runs.append((*tests[0], True, 0))
+            run_count = args.runs if args.benchmark else 1
+            benchmark_exclusions = sorted({test[2] for test in tests})
+            for run_index in range(run_count):
+                for test in tests:
+                    test_runs.append((*test, False, run_index + 1))
+
+            for img_name, preset, expected, is_warmup, run_index in test_runs:
+                if args.benchmark == "cold":
+                    await cdp_call(ws, "Network.setCacheDisabled", {"cacheDisabled": True})
+                    await cdp_call(ws, "Page.reload", {"ignoreCache": True})
+                    await wait_for(ws, "!!window.__sbiTest && !!document.getElementById('sbi-results')", timeout=30)
                 test_t0 = time.monotonic()
                 try:
                     img_url = f"{base}/test_img/{urllib.parse.quote(img_name)}"
@@ -305,6 +346,7 @@ async def main():
                     js_preset = json.dumps(preset)
                     js_img_url = json.dumps(img_url)
                     js_detail = json.dumps("verbose" if args.verbose else "compact")
+                    js_expected = json.dumps(expected)
                     js = f"""
                     (async () => {{
                       const timings = {{}};
@@ -314,16 +356,36 @@ async def main():
                       const blob = await resp.blob();
                       timings.fetch = performance.now() - t0;
                       const file = new File([blob], {js_img_name}, {{ type: blob.type }});
+                      window.__sbiTest.setForceGlobalFallback({str(bool(args.force_fallback)).lower()});
+                      window.__sbiTest.setBenchmarkCorpusSize({args.benchmark_groups or 0}, {json.dumps(benchmark_exclusions)});
                       try {{
                         const p0 = performance.now();
                         await window.__sbiTest.processImage(file, {js_preset});
                         timings.process = performance.now() - p0;
                       }} catch(e) {{
                         return JSON.stringify({{ error: e.message || String(e) }});
+                      }} finally {{
+                        window.__sbiTest.setForceGlobalFallback(false);
                       }}
                       const errEl = document.querySelector('.sbi-no-results');
                       if (errEl) return JSON.stringify({{ error: errEl.textContent }});
                       const s = window.__sbiTest.getSummary({{ detail: {js_detail} }});
+                      s.expectedResult = window.__sbiTest.getPackResult({js_expected});
+                      if ({str(True if (args.verbose or args.diagnostics_json) else False).lower()}) {{
+                        s.anchorEvidence = window.__sbiTest.getAnchorEvidence();
+                        s.slotVariantImages = {{
+                          ds: window.__sbiTest.getSlotVariantImages(0),
+                          ep: window.__sbiTest.getSlotVariantImages(1),
+                        }};
+                        s.comparisons = {{}};
+                        const names = Array.from(new Set([{js_expected}, ...s.ranked.slice(0, 3).map(row => row.name)]));
+                        for (const name of names) {{
+                          s.comparisons[name] = {{
+                            DS: window.__sbiTest.comparePackSlot(name, 0, 'diamond_sword'),
+                            EP: window.__sbiTest.comparePackSlot(name, 1, 'ender_pearl'),
+                          }};
+                        }}
+                      }}
                       s.timings = Object.assign(timings, s.timings || {{}});
                       return JSON.stringify(s);
                     }})()
@@ -331,9 +393,16 @@ async def main():
                     raw = await cdp_eval(ws, js, timeout=90)
                     summary = json.loads(raw) if isinstance(raw, str) else raw
 
+                    if is_warmup:
+                        if "error" in summary:
+                            raise RuntimeError(f"Warm-up failed: {summary['error']}")
+                        print("Warm cache ready\n", flush=True)
+                        continue
+
                     if "error" in summary:
                         elapsed = time.monotonic() - test_t0
                         results.append((img_name, expected, f"ERROR: {summary['error']}", False, elapsed))
+                        candidate_recalls.append(False)
                         print(f"  [ERROR] {img_name}: {summary['error']} ({fmt_seconds(elapsed)})\n")
                         if args.fail_fast:
                             break
@@ -343,13 +412,34 @@ async def main():
                     debug = summary.get("debug", {})
                     timings = summary.get("timings", {})
                     top1 = ranked[0]["name"] if ranked else "(none)"
+                    top_group = ranked[0].get("groupId") if ranked else None
+                    expected_result = summary.get("expectedResult") or {}
+                    expected_group = expected_result.get("groupId")
+                    expected_member_exists = expected in (expected_result.get("groupMembers") or [])
+                    recall_ok = bool(expected_group and expected_result.get("fullScored"))
+                    candidate_recalls.append(recall_ok)
                     margin = None
                     if len(ranked) >= 2:
                         margin = ranked[0].get("score", 0) - ranked[1].get("score", 0)
-                    ok = match_name(expected, top1)
+                    ok = expected_member_exists and recall_ok and expected_group == top_group
                     status = "PASS" if ok else "FAIL"
                     elapsed = time.monotonic() - test_t0
                     results.append((img_name, expected, top1, ok, elapsed))
+                    if args.benchmark:
+                        benchmark_samples.append({
+                            "mode": args.benchmark,
+                            "image": img_name,
+                            "run": run_index,
+                            "timings": timings,
+                            "matchMetrics": debug.get("matchMetrics") or {},
+                        })
+                    if args.diagnostics_json:
+                        diagnostics.append({
+                            "image": img_name,
+                            "preset": preset,
+                            "expected": expected,
+                            "summary": summary,
+                        })
                     def fmt_row(r):
                         parts = [f"{r['name']}={r['score']:.4f}"]
                         if r.get('slotComposite') is not None:
@@ -393,7 +483,7 @@ async def main():
                         return "[" + " ".join(parts) + "]"
                     timing_parts = []
                     if not args.no_timings:
-                        for key in ("fetch", "decode", "fingerprints", "extract", "food", "match", "process"):
+                        for key in ("fetch", "decode", "fingerprints", "extract", "food", "inflate", "inflateSettle", "match", "render", "process"):
                             value = timings.get(key)
                             if isinstance(value, (int, float)):
                                 timing_parts.append(f"{key}={value / 1000:.2f}s")
@@ -401,13 +491,20 @@ async def main():
                     timing_text = (" | " + ", ".join(timing_parts)) if timing_parts else ""
 
                     margin_text = f" | margin={margin:.4f}" if isinstance(margin, (int, float)) else ""
-                    print(f"  [{status}] {img_name} -> {top1}{margin_text}{timing_text}")
+                    run_text = f" [run {run_index}]" if args.benchmark else ""
+                    print(f"  [{status}]{run_text} {img_name} -> {top1}{margin_text}{timing_text}")
                     if not args.quiet:
                         print(f"    Expected: {expected}")
+                        print(f"    Group:    expected={expected_group or '-'}, top={top_group or '-'}, recalled={recall_ok}")
                         if debug:
                             print(f"    Debug:    slots={debug.get('slotCount')}, hearts={debug.get('heartCount')}, hunger={debug.get('hungerCount')}, armor={debug.get('armorCount')}, ranked={debug.get('rankedCount')}")
                         print(f"    SlotTypes: {summary.get('slotTypes', '-')}")
                     if args.verbose:
+                        expected_result = summary.get('expectedResult') or {}
+                        print(
+                            f"    ExpectedState: rank={expected_result.get('rank')} "
+                            f"fullScored={expected_result.get('fullScored')} group={expected_result.get('groupId')}"
+                        )
                         sfs = summary.get('slotFeatures', [])
                         for sf in sfs:
                             if sf is None: continue
@@ -415,6 +512,24 @@ async def main():
                             print(f"    Slot[{sf['index']}]: act={sf.get('activity',0):.2f} var={sf.get('variance',0):.0f} n={sig.get('n','?')} cov={sig.get('coverage',0):.2f} lum={sig.get('meanLum',0):.0f} R={sig.get('meanR',0):.0f} G={sig.get('meanG',0):.0f} B={sig.get('meanB',0):.0f} redF={sig.get('redFrac',0):.3f} yF={sig.get('yellowFrac',0):.3f} blueF={sig.get('blueFrac',0):.3f}")
                         for r in ranked[:10]:
                             print(f"    #  {fmt_row(r)}")
+                        for pack_name, types in (summary.get('comparisons') or {}).items():
+                            parts = []
+                            for type_name in ('DS', 'EP'):
+                                comparison = types.get(type_name) if isinstance(types, dict) else None
+                                variants = (comparison or {}).get('variants') or []
+                                if not variants:
+                                    continue
+                                best = max(variants, key=lambda row: row.get('final') or 0)
+                                parts.append(
+                                    f"{type_name}:final={best.get('final', 0):.3f} "
+                                    f"base={best.get('base', 0):.3f} spatial={best.get('spatial', 0):.3f} "
+                                    f"shape={best.get('spatialShape', 0):.3f} dir={best.get('spatialDirection', 0):.3f} "
+                                    f"color={best.get('spatialColor', 0):.3f} "
+                                    f"sig={best.get('signature', 0):.3f} hash={best.get('hamming', 0):.3f} "
+                                    f"hist={best.get('histogram', 0):.3f} mom={best.get('moments', 0):.3f} edge={best.get('edge', 0):.3f}"
+                                )
+                            if parts:
+                                print(f"    Compare {pack_name}: " + " | ".join(parts))
                     if not ok:
                         for idx, r in enumerate(ranked):
                             if match_name(expected, r['name']):
@@ -426,21 +541,24 @@ async def main():
                 except Exception as e:
                     elapsed = time.monotonic() - test_t0
                     results.append((img_name, expected, f"ERROR: {e}", False, elapsed))
+                    candidate_recalls.append(False)
                     print(f"  [ERROR] {img_name}: {e} ({fmt_seconds(elapsed)})\n")
                     if args.fail_fast:
                         break
 
     finally:
         edge_proc.terminate()
-        server_proc.terminate()
+        if server_proc:
+            server_proc.terminate()
         try:
             edge_proc.wait(timeout=5)
         except Exception:
             edge_proc.kill()
-        try:
-            server_proc.wait(timeout=3)
-        except Exception:
-            server_proc.kill()
+        if server_proc:
+            try:
+                server_proc.wait(timeout=3)
+            except Exception:
+                server_proc.kill()
         await asyncio.sleep(0.5)
         try:
             edge_log.close()
@@ -454,10 +572,72 @@ async def main():
     suite_elapsed = time.monotonic() - suite_t0
     print("=" * 50)
     print(f"Results: {passed}/{total} passed in {fmt_seconds(suite_elapsed)}")
+    print(f"Candidate recall: {sum(candidate_recalls)}/{len(candidate_recalls)}")
     for name, expected, got, ok, elapsed in results:
         print(f"  {'PASS' if ok else 'FAIL'}: {name} -> {got} (expected {expected}, {fmt_seconds(elapsed)})")
 
-    return 0 if passed == total else 1
+    budget_ok = True
+    if benchmark_samples:
+        print("\nBenchmark:")
+        percentiles = {}
+        timing_metrics = (
+            ("total", lambda sample: sample["timings"].get("process")),
+            ("match", lambda sample: sample["timings"].get("match")),
+            ("load", lambda sample: sample["timings"].get("fingerprints")),
+            ("extract", lambda sample: sample["timings"].get("extract")),
+            ("inflate", lambda sample: sample["timings"].get("inflate")),
+            ("inflate settle", lambda sample: sample["timings"].get("inflateSettle")),
+            ("candidate", lambda sample: sample["matchMetrics"].get("candidatePlanningMs")),
+            ("coarse", lambda sample: sum(
+                sample["matchMetrics"].get(key) or 0 for key in ("coarseMs", "globalCoarseMs")
+            )),
+            ("full", lambda sample: sum(
+                run.get("totalMs") or 0 for run in sample["matchMetrics"].get("runs", [])
+            )),
+            ("refine", lambda sample: sum(
+                run.get("refinementMs") or 0 for run in sample["matchMetrics"].get("runs", [])
+            )),
+            ("expand", lambda sample: sample["matchMetrics"].get("expansionMs")),
+            ("render", lambda sample: sample["timings"].get("render")),
+        )
+        for label, getter in timing_metrics:
+            values = [getter(sample) for sample in benchmark_samples]
+            p50 = percentile(values, 0.50)
+            p95 = percentile(values, 0.95)
+            percentiles[label] = p95
+            if p50 is not None and p95 is not None:
+                print(f"  {label}: p50={p50:.1f}ms p95={p95:.1f}ms")
+        count_metrics = (
+            ("prefilter", "candidatePrefilterCount"),
+            ("full unique", "fullScoreCount"),
+            ("full evaluations", "fullScoreEvaluations"),
+            ("global coarse", "globalCoarseCount"),
+        )
+        for label, key in count_metrics:
+            values = [sample["matchMetrics"].get(key) for sample in benchmark_samples]
+            p50 = percentile(values, 0.50)
+            p95 = percentile(values, 0.95)
+            if p50 is not None and p95 is not None:
+                print(f"  {label}: p50={p50:.0f} p95={p95:.0f}")
+        fallback_count = sum(1 for sample in benchmark_samples if sample["matchMetrics"].get("fallback"))
+        print(f"  samples={len(benchmark_samples)} fallback={fallback_count}/{len(benchmark_samples)}")
+        if args.enforce_budgets:
+            total_limit = 2000 if args.benchmark == "cold" else 1200
+            total_p95 = percentiles.get("total")
+            match_p95 = percentiles.get("match")
+            budget_ok = bool(
+                total_p95 is not None and total_p95 <= total_limit and
+                match_p95 is not None and match_p95 <= 150
+            )
+            print(f"  budget={'PASS' if budget_ok else 'FAIL'} total<={total_limit}ms match<=150ms")
+
+    if args.diagnostics_json:
+        output_path = os.path.abspath(args.diagnostics_json)
+        with open(output_path, "w", encoding="utf-8") as fh:
+            json.dump(diagnostics, fh, ensure_ascii=False)
+        print(f"Diagnostics: {output_path}")
+
+    return 0 if passed == total and budget_ok else 1
 
 
 if __name__ == "__main__":

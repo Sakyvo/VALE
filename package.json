@@ -5,6 +5,10 @@
     "build": "node scripts/extract-textures.js && node scripts/generate-index.js && node scripts/build.js",
     "extract": "node scripts/extract-textures.js",
     "index": "node scripts/generate-index.js",
+    "test": "node --test \"tests/*.test.js\"",
+    "packs:scan-content": "node scripts/scan-pack-content.js",
+    "packs:detect-special": "node scripts/detect-special-packs.js",
+    "packs:finalize-replacements": "node scripts/finalize-pack-replacements.js",
     "fix:preview-alpha": "node scripts/fix-thumbnail-preview-alpha.js",
     "sbi:data": "node scripts/generate-sbi-data.js",
     "overlay:detect": "node scripts/detect-overlay.js"

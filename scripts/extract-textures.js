@@ -30,6 +30,7 @@ const KEY_TEXTURES = {
     { composite: 'potion', bottle: 'assets/minecraft/textures/items/potion_bottle_splash.png', overlay: 'assets/minecraft/textures/items/potion_overlay.png', color: [248, 36, 35] },
     ['assets/minecraft/textures/items/steak.png', 'assets/minecraft/textures/items/beef_cooked.png'],
     ['assets/minecraft/textures/items/iron_sword.png'],
+    ['assets/minecraft/textures/items/stone_sword.png'],
     ['assets/minecraft/textures/items/fishing_rod_uncast.png'],
     ['assets/minecraft/textures/items/apple_golden.png'],
     ['assets/minecraft/textures/items/golden_carrot.png', 'assets/minecraft/textures/items/carrot_golden.png'],
