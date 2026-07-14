@@ -17,14 +17,26 @@ Upload all acceptable zip resource packs from `C:\Users\ASUS\AppData\Roaming\.mi
 
 ## Acceptance Criteria
 
-- [ ] Accepted packs from the source folder are represented in the `Sakyvo` List.
-- [ ] New uploaded packs are recorded in `data/pack-registry.json`.
-- [ ] `data/index.json` is regenerated and uses registry-backed download links.
-- [ ] Oversize/blocked packs are documented under `docs/`.
-- [ ] No SBI fingerprint files are changed.
-- [ ] Upload staging clones/caches are cleaned after successful push.
-- [ ] Verification confirms no `.zip` files or `resourcepacks/` directories were added to the main repository.
+- [x] Accepted packs from the source folder are represented in the `Sakyvo` List.
+- [x] New uploaded packs are recorded in `data/pack-registry.json`.
+- [x] `data/index.json` is regenerated and uses registry-backed download links.
+- [x] Oversize/blocked packs are documented under `docs/`.
+- [x] No SBI fingerprint files are changed.
+- [x] Upload staging clones/caches are cleaned after successful push.
+- [x] Verification confirms no `.zip` files or `resourcepacks/` directories were added to the main repository.
 
 ## Notes
 
 - Prior dry-run estimate: 1103 zip files, 370 upload-new files, 677 existing pack IDs skipped for upload, 51 duplicate source files skipped, 5 oversize blockers, about 8.45 GiB new upload bytes.
+
+## Completion Evidence
+
+- The original 1103-file snapshot was re-audited after content-identity enforcement: 970 same-name archives were byte-identical to registry entries, and 58 renamed byte-identical copies resolve to retained packs already in `Sakyvo`.
+- Full visual review of the remaining 75 files found 16 exact same-ID matches, 11 duplicate source files, 35 same-ID/different-content hard blockers, 4 canonical oversize blockers, one renamed exact-content decision, and 8 safe new uploads.
+- The 8 safe files (169,209,488 bytes) were pushed to `Sakyvo/packs-005` in commit `2c3a8a6`; the upload command verified each remote archive before updating the main-repository data.
+- Registry and content index both contain 1121 entries, with zero scan failures and registry digest `ec12ec112c33197ea9c14a8d2e2f48eeb35a797111a2d9ccef87394090d90109`.
+- The `Sakyvo` List contains 1055 unique pack IDs, including all 8 follow-up uploads. Existing accepted/duplicate-retained source identities have zero missing List memberships.
+- `node scripts/generate-index.js` regenerated 741 public packs; all 741 generated download records resolve to their matching registry repository with zero fallback or mismatch.
+- Per the approved upload-only scope, the 8 follow-up archives were not texture-extracted and no SBI fingerprint was generated.
+- Blocked content is recorded in `docs/SAKYVO_MINECRAFT_RESOURCEPACKS_CONTENT_BLOCKERS.md`; oversize files remain recorded in `docs/SAKYVO_MINECRAFT_RESOURCEPACKS_OVERSIZE_PACKS.md`.
+- No tracked zip, no tracked `resourcepacks/`, and no `.vale-pack-upload` directory remain in the main workspace.

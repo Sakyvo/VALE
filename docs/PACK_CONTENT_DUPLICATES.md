@@ -1,7 +1,7 @@
 # Pack Content Duplicate Scan
 
-Registry entries: 1113
-Indexed entries: 1113
+Registry entries: 1121
+Indexed entries: 1121
 Complete: yes
 Failures: 0
 Exact duplicate groups: 22
