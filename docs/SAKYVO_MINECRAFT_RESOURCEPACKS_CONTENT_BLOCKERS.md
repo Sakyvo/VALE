@@ -17,7 +17,7 @@ Audited: 2026-07-14
 - Newly uploaded files: 8 files / 169,209,488 bytes to `packs-005` commit `2c3a8a6`.
 - Oversize blockers: 4 canonical files; see [SAKYVO_MINECRAFT_RESOURCEPACKS_OVERSIZE_PACKS.md](./SAKYVO_MINECRAFT_RESOURCEPACKS_OVERSIZE_PACKS.md).
 - Same-pack-ID content conflicts: 35. These are hard blockers and were not uploaded.
-- Renamed exact-content duplicates awaiting a retain decision: 1. No automatic change was made.
+- Renamed exact-content duplicates awaiting a retain decision: 0. The one reviewed duplicate was resolved by retaining the existing Azert pack.
 
 Four `ZZZ TEST *.zip` identity fixtures created after the original 1103-file task snapshot were excluded from upload.
 
@@ -76,10 +76,10 @@ These source files resolve to a public pack ID that already belongs to different
 | `§6Vene §4§l[32x].zip` | `Vene_32x` |
 | `!  §4§lFight§f§lClub v2+.zip` | `FightClub_v2` |
 
-## Renamed Exact-Content Decision
+## Resolved Renamed Exact-Content Duplicate
 
 | Incoming file | Incoming pack ID | Existing retained candidate | Status |
 | --- | --- | --- | --- |
-| `!       §1TEST.zip` | `TEST` | `!     §1Azert (DarkBlue) [Revamp].zip` / `Azert_DarkBlue_Revamp` in `packs-003` | Retention decision required |
+| `!       §1TEST.zip` | `TEST` | `!     §1Azert (DarkBlue) [Revamp].zip` / `Azert_DarkBlue_Revamp` in `packs-003` | Existing Azert retained; alias recorded; local `TEST` deleted |
 
-The existing `Azert_DarkBlue_Revamp` pack is already in the `Sakyvo` List. No alias or remote deletion is recorded until a reviewed decision is supplied.
+The existing `Azert_DarkBlue_Revamp` pack remains in the `Sakyvo` List. The discarded `TEST` archive SHA-256 and visual identity are recorded in `data/internal/pack-content-aliases.json` so the renamed copy is not proposed again.
