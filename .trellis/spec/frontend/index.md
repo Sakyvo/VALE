@@ -1,12 +1,12 @@
 # Frontend Development Guidelines
 
-> Best practices for frontend development in this project.
+> Executable conventions for VALE's static HTML/CSS/JavaScript frontend and Node.js data tooling.
 
 ---
 
 ## Overview
 
-This directory contains guidelines for frontend development. Fill in each file with your project's specific conventions.
+VALE is a static multi-page site with plain browser JavaScript, one shared CSS file, generated JSON/HTML, CommonJS build scripts, and Node/Edge tests. These guides document the repository's current patterns rather than a framework architecture it does not use.
 
 ---
 
@@ -14,26 +14,27 @@ This directory contains guidelines for frontend development. Fill in each file w
 
 | Guide | Description | Status |
 |-------|-------------|--------|
-| [Directory Structure](./directory-structure.md) | Module organization and file layout | To fill |
-| [Component Guidelines](./component-guidelines.md) | Component patterns, props, composition | To fill |
-| [Hook Guidelines](./hook-guidelines.md) | Custom hooks, data fetching patterns | To fill |
-| [State Management](./state-management.md) | Local state, global state, server state | To fill |
-| [Quality Guidelines](./quality-guidelines.md) | Code standards, forbidden patterns | To fill |
-| [Type Safety](./type-safety.md) | Type patterns, validation | To fill |
+| [Directory Structure](./directory-structure.md) | Hand-edited sources, generators, and generated outputs | Active |
+| [Component Guidelines](./component-guidelines.md) | Native DOM/template/class conventions and shared styling | Active |
+| [Hook Guidelines](./hook-guidelines.md) | Framework-free lifecycle and data-fetching patterns | Active |
+| [State Management](./state-management.md) | Page, browser-storage, URL, and repository JSON state | Active |
+| [Quality Guidelines](./quality-guidelines.md) | Actual test/build/review and repository-safety gates | Active |
+| [Type Safety](./type-safety.md) | Plain-JavaScript runtime validation contracts | Active |
 | [Pack Ingestion](./pack-ingestion.md) | Resource-pack upload, registry, list, and extraction contracts | Active |
 
 ---
 
-## How to Fill These Guidelines
+## Pre-Development Checklist
 
-For each guideline file:
+- Always read [Directory Structure](./directory-structure.md) and [Quality Guidelines](./quality-guidelines.md).
+- For browser UI work, also read [Component Guidelines](./component-guidelines.md), [State Management](./state-management.md), and [Hook Guidelines](./hook-guidelines.md).
+- For JavaScript/JSON contract work, read [Type Safety](./type-safety.md).
+- For scanning, uploading, extracting, replacing, or indexing resource packs, read [Pack Ingestion](./pack-ingestion.md) and `docs/PACK_CONTENT_IDENTITY.md`.
+- For SBI work, also follow the versioning and regression rules in the root `AGENTS.md`.
 
-1. Document your project's **actual conventions** (not ideals)
-2. Include **code examples** from your codebase
-3. List **forbidden patterns** and why
-4. Add **common mistakes** your team has made
+## Maintenance Rule
 
-The goal is to help AI assistants and new team members understand how YOUR project works.
+Update these files when a task establishes a reusable implementation contract or exposes a recurring failure mode. Keep one-off execution evidence in the task or operational report instead.
 
 ---
 

@@ -21,8 +21,8 @@ the rest conversationally.
 
 ## Status (update the checkboxes as you complete each item)
 
-- [ ] Fill frontend guidelines
-- [ ] Add code examples
+- [x] Fill frontend guidelines
+- [x] Add code examples
 
 ---
 
@@ -115,6 +115,13 @@ python ./.trellis/scripts/task.py archive 00-bootstrap-guidelines
 
 After archive, every new developer who joins this project will get a
 `00-join-<slug>` onboarding task instead of this bootstrap task.
+
+## Completion Evidence
+
+- All six frontend guideline templates now describe the repository's actual static HTML/CSS/JavaScript and CommonJS structure.
+- Each guide cites real files and includes executable snippets or concrete examples from `index.html`, `assets/js/main.js`, `assets/js/list.js`, `scripts/scan-pack-content.js`, and the Node test suite.
+- The docs explicitly record absent tooling (no framework hooks/components, TypeScript, linter, or bundler) so future agents do not invent unsupported conventions.
+- The frontend index marks every guide active and routes tasks through a concrete pre-development checklist.
 
 ---
 
