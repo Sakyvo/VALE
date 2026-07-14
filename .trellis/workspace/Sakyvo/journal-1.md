@@ -171,3 +171,38 @@ Font polish (no task): subset local Minecraft-AE.ttf (16MB, includes CJK pixel g
 ### Next Steps
 
 - None - task complete
+
+
+## Session 6: Full-corpus SBI release
+
+**Date**: 2026-07-14
+**Task**: Full-corpus SBI release
+**Branch**: `main`
+
+### Summary
+
+Released deterministic full-corpus SBI, exact observable groups, Overlay/Conquest exclusions, content-identity safeguards, and verified local/deployed 9-image accuracy plus 1000-group performance budgets.
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `db7e11e9` | (see git log) |
+| `7a40f470` | (see git log) |
+| `f397ae57` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete
