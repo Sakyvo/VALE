@@ -241,3 +241,36 @@ Completed the 1103-pack upload audit, pushed 8 safe missed archives to packs-005
 ### Next Steps
 
 - None - task complete
+
+
+## Session 8: Bootstrap VALE frontend guidelines
+
+**Date**: 2026-07-14
+**Task**: Bootstrap VALE frontend guidelines
+**Branch**: `main`
+
+### Summary
+
+Replaced six frontend spec templates with current static HTML/CSS/JavaScript, CommonJS, state, validation, testing, generation, and repository-safety conventions backed by real project examples.
+
+### Main Changes
+
+(Add details)
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `52fb760e` | (see git log) |
+
+### Testing
+
+- [OK] (Add test results)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- None - task complete

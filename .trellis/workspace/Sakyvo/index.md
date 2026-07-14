@@ -8,7 +8,7 @@
 
 <!-- @@@auto:current-status -->
 - **Active File**: `journal-1.md`
-- **Total Sessions**: 7
+- **Total Sessions**: 8
 - **Last Active**: 2026-07-14
 <!-- @@@/auto:current-status -->
 
@@ -19,7 +19,7 @@
 <!-- @@@auto:active-documents -->
 | File | Lines | Status |
 |------|-------|--------|
-| `journal-1.md` | ~243 | Active |
+| `journal-1.md` | ~276 | Active |
 <!-- @@@/auto:active-documents -->
 
 ---
@@ -29,6 +29,7 @@
 <!-- @@@auto:session-history -->
 | # | Date | Title | Commits | Branch |
 |---|------|-------|---------|--------|
+| 8 | 2026-07-14 | Bootstrap VALE frontend guidelines | `52fb760e` | `main` |
 | 7 | 2026-07-14 | Complete Sakyvo resource pack upload | `2348f37a`, `91c2471b`, `f5561e4e` | `main` |
 | 6 | 2026-07-14 | Full-corpus SBI release | `db7e11e9`, `7a40f470`, `f397ae57` | `main` |
 | 5 | 2026-07-08 | Pixel font for names, pdir font stack for UI | `c67aa024` | `main` |
