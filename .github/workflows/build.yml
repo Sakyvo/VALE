@@ -8,7 +8,7 @@ on:
       - '.github/workflows/build.yml'
       - 'assets/**'
       - 'data/**'
-      - 'docs/**'
+      - '.docs/**'
       - 'index.html'
       - 'l/**'
       - 'resourcepacks/**'
