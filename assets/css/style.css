@@ -218,6 +218,7 @@ nav { display: flex; gap: 12px; align-items: center; }
   color: inherit;
   text-decoration: none;
   position: relative;
+  background: var(--bg-alt);
 }
 
 .overlay-badge {
@@ -252,7 +253,7 @@ nav { display: flex; gap: 12px; align-items: center; }
 
 .pack-card .placeholder {
   aspect-ratio: 2;
-  background: #eee;
+  background: var(--bg);
   border-bottom: 1.5px solid var(--border);
 }
 
@@ -261,6 +262,7 @@ nav { display: flex; gap: 12px; align-items: center; }
   display: flex;
   align-items: center;
   gap: 8px;
+  background: var(--bg-alt);
 }
 
 .pack-card .pack-icon {
@@ -321,6 +323,7 @@ footer {
   padding: 16px;
   margin-bottom: 16px;
   align-items: stretch;
+  background: var(--bg-alt);
 }
 
 .main-card-icon {
@@ -360,6 +363,7 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  background: var(--bg-alt);
 }
 
 .sub-card .original-name {
@@ -867,6 +871,7 @@ footer {
   text-decoration: none;
   color: inherit;
   display: block;
+  background: var(--bg-alt);
   transition: transform .2s, box-shadow .2s;
 }
 
