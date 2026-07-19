@@ -466,8 +466,45 @@ function fmtRaw(v, digits) {
   return Number(v).toFixed(digits || 4);
 }
 
+let _packNameIndex = null;
+let _packNameIndexPromise = null;
+
+async function ensurePackNameIndex() {
+  if (_packNameIndex) return _packNameIndex;
+  if (_packNameIndexPromise) return _packNameIndexPromise;
+  _packNameIndexPromise = (async () => {
+    const map = Object.create(null);
+    try {
+      const raw = await fetch(`/data/index.json?v=${SBI_FINGERPRINT_VERSION}`).then(r => r.json());
+      for (const it of raw.items || []) {
+        if (!it || !it.name) continue;
+        const fallback = String(it.name).replace(/_/g, ' ');
+        map[it.name] = {
+          displayName: it.displayName || fallback,
+          coloredName: it.coloredName || it.displayName || fallback,
+        };
+      }
+    } catch (_) { /* keep empty map; fall back to slug names */ }
+    _packNameIndex = map;
+    return map;
+  })();
+  try {
+    return await _packNameIndexPromise;
+  } finally {
+    _packNameIndexPromise = null;
+  }
+}
+
 function getPackDisplayName(name) {
+  const meta = _packNameIndex && _packNameIndex[name];
+  if (meta && meta.displayName) return meta.displayName;
   return String(name || '').replace(/_/g, ' ');
+}
+
+function getPackColoredName(name) {
+  const meta = _packNameIndex && _packNameIndex[name];
+  if (meta && meta.coloredName) return meta.coloredName;
+  return getPackDisplayName(name);
 }
 
 function normalizePackSearchTerm(value) {
@@ -4194,7 +4231,7 @@ function renderResultCard(r, i, mode) {
   const color = scoreColor(pct);
   const coverUrl = '/thumbnails/' + encodeURIComponent(r.name) + '/cover.png';
   const packPng = '/thumbnails/' + encodeURIComponent(r.name) + '/pack.png';
-  const displayName = getPackDisplayName(r.name);
+  const nameHtml = getPackColoredName(r.name);
   const rightContent = mode === 'lite'
     ? `<span class="sbi-lite-items">${[
         'diamond_sword.png',
@@ -4210,7 +4247,7 @@ function renderResultCard(r, i, mode) {
       <span class="sbi-score" style="color:${color}">${pct}%</span>
       <span class="sbi-divider"></span>
       <img class="sbi-pack-icon" src="${packPng}" onerror="this.style.display='none'">
-      <span class="sbi-result-name">${displayName}</span>
+      <span class="sbi-result-name">${nameHtml}</span>
       ${rightContent}
     </a>`;
 }
@@ -4483,6 +4520,11 @@ function setPreset(preset) {
 function init() {
   const uploadEl = document.getElementById('sbi-upload');
   const fileInput = document.getElementById('sbi-file');
+
+  // Load pack display/colored names for result rows (same source as homepage).
+  ensurePackNameIndex().then(() => {
+    if (_lastRankedResults.length > 0) renderResults(_lastRankedResults.slice(0, 50));
+  });
 
   // Restore preset from localStorage
   try { _currentPreset = localStorage.getItem('sbi-preset') || 'large'; } catch {}
