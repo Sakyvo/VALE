@@ -11,8 +11,6 @@
   --danger: #c00;
   --font-ui: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
   --font-mc: 'Minecraft AE', var(--font-ui);
-  --mc-outline: 0.125em 0 #000, -0.125em 0 #000, 0 0.125em #000, 0 -0.125em #000,
-    0.125em 0.125em #000, -0.125em -0.125em #000, 0.125em -0.125em #000, -0.125em 0.125em #000;
 }
 
 @font-face {
@@ -282,7 +280,7 @@ nav { display: flex; gap: 12px; align-items: center; }
   font-family: var(--font-mc);
   font-size: 16px;
   font-weight: normal;
-  text-shadow: var(--mc-outline);
+  text-shadow: 1px 0 0 #000;
 }
 
 footer {
@@ -355,7 +353,7 @@ footer {
   font-size: 24px;
   font-weight: normal;
   margin: 0;
-  text-shadow: var(--mc-outline);
+  text-shadow: 1px 0 0 #000;
 }
 
 .main-card-info .description {
@@ -1119,7 +1117,7 @@ footer {
 .sbi-divider { width: 1px; background: var(--border); align-self: stretch; flex-shrink: 0; }
 .sbi-score { min-width: 48px; text-align: center; font-size: 16px; font-weight: bold; flex-shrink: 0; padding: 0 4px; }
 .sbi-pack-icon { width: 48px; height: 48px; image-rendering: pixelated; flex-shrink: 0; margin: 0 4px 0 0; object-fit: contain; }
-.sbi-result-name { flex: 1; font-family: var(--font-mc); font-size: 16px; font-weight: normal; padding: 0 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-shadow: var(--mc-outline); }
+.sbi-result-name { flex: 1; font-family: var(--font-mc); font-size: 16px; font-weight: normal; padding: 0 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-shadow: 1px 0 0 #000; }
 .sbi-result-cover { width: 96px; height: 48px; object-fit: cover; image-rendering: pixelated; flex-shrink: 0; display: block; }
 .sbi-mode-toggle { display: flex; border: 2px solid var(--border); width: fit-content; margin: 0 0 4px; }
 .sbi-mode-btn { padding: 3px 14px; font-size: 11px; font-weight: 700; letter-spacing: .06em; background: transparent; color: var(--text-secondary); border: none; cursor: pointer; text-transform: uppercase; }
