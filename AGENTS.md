@@ -36,6 +36,7 @@ SBI 是项目核心能力，必须同时维持准确率、响应速度和静态�
 - 新增或修改页面时沿用共享 CSS 变量、边框、字体、间距、顶栏和控件样式。
 - 主页类 pack 链接使用新标签页及 `noopener noreferrer`；搜索只在提交后渲染，清空输入时立即恢复全部结果。
 - 修改 SBI 匹配器或指纹数据时同步版本常量和 HTML cache buster，并运行 `python test_sbi.py`。
+- 站点经 Cloudflare 缓存（静态资源 4 小时）：修改 `style.css` 或共享 JS 后，必须统一 bump 全站 HTML 引用的 `?v=` 版本号（含重新生成 `p/*`），否则线上长时间不生效。
 - 不得根据扫描结果直接删除或替换远端包；必须执行完整内容判定、人工保留决策和两阶段清理。
 - pack/List 名新增非拉丁字符后，运行 `python scripts/subset-font.py` 更新像素字体子集。
 
