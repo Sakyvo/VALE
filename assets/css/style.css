@@ -122,31 +122,14 @@ nav { display: flex; gap: 12px; align-items: center; }
   margin: 0 auto;
 }
 
-#search-input {
+#search-input,
+#list-search {
   flex: 1;
   padding: 8px 12px;
   border: 2px solid var(--border);
   font-size: 14px;
   outline: none;
   background: var(--bg-alt);
-}
-
-.sbi-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 40px;
-  background: var(--bg-alt);
-  border: 2px solid var(--border);
-  border-left: none;
-  cursor: pointer;
-  font-size: 16px;
-  text-decoration: none;
-  transition: background .15s;
-}
-
-.sbi-btn:hover {
-  background: var(--bg);
 }
 
 .search-btn {
@@ -167,6 +150,12 @@ nav { display: flex; gap: 12px; align-items: center; }
 
 .search-btn:active {
   background: #444;
+}
+
+.search-btn svg {
+  width: 18px;
+  height: 18px;
+  display: block;
 }
 
 .explore-section {
