@@ -11,6 +11,8 @@
   --danger: #c00;
   --font-ui: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
   --font-mc: 'Minecraft AE', var(--font-ui);
+  --mc-outline: 0.125em 0 #000, -0.125em 0 #000, 0 0.125em #000, 0 -0.125em #000,
+    0.125em 0.125em #000, -0.125em -0.125em #000, 0.125em -0.125em #000, -0.125em 0.125em #000;
 }
 
 @font-face {
@@ -249,11 +251,16 @@ nav { display: flex; gap: 12px; align-items: center; }
   image-rendering: pixelated;
   display: block;
   border-bottom: 1.5px solid var(--border);
+  background-color: #dde7f1;
+}
+
+.pack-card .animated-cover {
+  background-color: #dde7f1;
 }
 
 .pack-card .placeholder {
   aspect-ratio: 2;
-  background: var(--bg);
+  background: #dde7f1;
   border-bottom: 1.5px solid var(--border);
 }
 
@@ -262,7 +269,7 @@ nav { display: flex; gap: 12px; align-items: center; }
   display: flex;
   align-items: center;
   gap: 8px;
-  background: var(--bg-alt);
+  background: #b9cadd;
 }
 
 .pack-card .pack-icon {
@@ -273,9 +280,9 @@ nav { display: flex; gap: 12px; align-items: center; }
 
 .pack-card .name {
   font-family: var(--font-mc);
-  font-size: 13px;
+  font-size: 16px;
   font-weight: normal;
-  text-shadow: 1px 0 0 #000;
+  text-shadow: var(--mc-outline);
 }
 
 footer {
@@ -348,7 +355,7 @@ footer {
   font-size: 24px;
   font-weight: normal;
   margin: 0;
-  text-shadow: 1px 0 0 #000;
+  text-shadow: var(--mc-outline);
 }
 
 .main-card-info .description {
@@ -891,7 +898,7 @@ footer {
 
 .list-grid .list-item .name {
   font-family: var(--font-mc);
-  font-size: 14px;
+  font-size: 16px;
   font-weight: normal;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1112,7 +1119,7 @@ footer {
 .sbi-divider { width: 1px; background: var(--border); align-self: stretch; flex-shrink: 0; }
 .sbi-score { min-width: 48px; text-align: center; font-size: 16px; font-weight: bold; flex-shrink: 0; padding: 0 4px; }
 .sbi-pack-icon { width: 48px; height: 48px; image-rendering: pixelated; flex-shrink: 0; margin: 0 4px 0 0; object-fit: contain; }
-.sbi-result-name { flex: 1; font-family: var(--font-mc); font-size: 13px; font-weight: normal; padding: 0 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-shadow: 1px 0 0 #000; }
+.sbi-result-name { flex: 1; font-family: var(--font-mc); font-size: 16px; font-weight: normal; padding: 0 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-shadow: var(--mc-outline); }
 .sbi-result-cover { width: 96px; height: 48px; object-fit: cover; image-rendering: pixelated; flex-shrink: 0; display: block; }
 .sbi-mode-toggle { display: flex; border: 2px solid var(--border); width: fit-content; margin: 0 0 4px; }
 .sbi-mode-btn { padding: 3px 14px; font-size: 11px; font-weight: 700; letter-spacing: .06em; background: transparent; color: var(--text-secondary); border: none; cursor: pointer; text-transform: uppercase; }
@@ -1213,7 +1220,7 @@ footer {
   .sbi-rank { min-width: 22px; font-size: 10px; }
   .sbi-score { min-width: 38px; font-size: 13px; padding: 0 2px; }
   .sbi-pack-icon { width: 36px; height: 36px; margin: 0 2px 0 0; }
-  .sbi-result-name { font-size: 11px; padding: 0 4px; }
+  .sbi-result-name { font-size: 16px; padding: 0 4px; }
   .sbi-result-cover { width: 72px; height: 36px; }
   .sbi-lite-item,
   .sbi-lite-item-anim { width: 24px; height: 24px; }
