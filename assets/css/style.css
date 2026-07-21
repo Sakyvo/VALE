@@ -176,6 +176,20 @@ nav { display: flex; gap: 12px; align-items: center; }
   display: block;
 }
 
+/* Signature: Minecraft inventory-slot search box.
+   Rollback: remove search-box--slot from index.html and l/index.html, delete this block. */
+.search-box--slot #search-input,
+.search-box--slot #list-search {
+  border-color: #7d90a5 #f4f8fc #f4f8fc #7d90a5;
+  border-radius: 0;
+  background: var(--surface-deep);
+}
+
+.search-box--slot #search-input::placeholder,
+.search-box--slot #list-search::placeholder {
+  color: #5f6f84;
+}
+
 .explore-section {
   padding: 40px 24px;
 }

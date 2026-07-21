@@ -89,6 +89,25 @@ test('SBI tools buttons separate with a gap instead of negative-margin border fu
   assert.match(block(source, '\n.sbi-tools-actions {'), /gap: 8px/);
 });
 
+test('slot signature: home and List search boxes carry the isolated modifier', () => {
+  for (const page of ['index.html', 'l/index.html']) {
+    const html = fs.readFileSync(path.join(ROOT, page), 'utf-8');
+    assert.match(html, /class="search-box search-box--slot"/, `${page} search box uses the slot modifier`);
+  }
+});
+
+test('slot signature: bevel rule is isolated under the modifier and square', () => {
+  const source = css();
+  const body = block(source, '.search-box--slot #search-input');
+  assert.match(body, /border-color:[^;]+;/, 'bevel sets a four-value border-color');
+  const colors = (body.match(/border-color:([^;]+);/) || [])[1] || '';
+  assert.ok(colors.trim().split(/\s+/).length === 4, 'bevel border-color has four sides (dark top/left, light bottom/right)');
+  assert.match(body, /border-radius: 0;/, 'slot cells are square like the game inventory');
+  for (const m of source.matchAll(/^[^@\n][^{]*--slot[^{]*\{/gm)) {
+    assert.match(m[0], /\.search-box--slot/, `slot rules stay behind the modifier: ${m[0].trim()}`);
+  }
+});
+
 test('global focus-visible outline is defined with the accent', () => {
   const source = css();
   const m = source.match(/:focus-visible[^{]*\{([^}]*)\}/);
