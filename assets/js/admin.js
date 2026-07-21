@@ -220,7 +220,7 @@ class Admin {
 
   async batchDelete() {
     if (this.selected.size === 0) return;
-    if (!await this.confirm(`Delete ${this.selected.size} packs?`)) return;
+    if (!await confirmDialog(`Delete ${this.selected.size} packs?`, { confirmText: 'DELETE', danger: true })) return;
 
     const token = AUTH.getToken();
     if (!token) { this.showMessage('Please login first', 'error'); return; }
@@ -639,7 +639,7 @@ class Admin {
   async deletePack(name) {
     const pack = this.packs.find(p => p.name === name);
     if (!pack) return;
-    if (!await this.confirm(`Delete "${pack.displayName}"?`)) return;
+    if (!await confirmDialog(`Delete "${pack.displayName}"?`, { confirmText: 'DELETE', danger: true })) return;
 
     const token = AUTH.getToken();
     if (!token) { this.showMessage('Please login first', 'error'); return; }
@@ -767,7 +767,7 @@ class Admin {
   async manualBuild() {
     const token = AUTH.getToken();
     if (!token) { this.showMessage('Please login first', 'error'); return; }
-    if (!await this.confirm('Run build to refresh packs?')) return;
+    if (!await confirmDialog('Run build to refresh packs?')) return;
 
     try {
       const res = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/actions/workflows/build.yml/dispatches`, {
@@ -803,7 +803,7 @@ class Admin {
     if (!token) { this.showMessage('Please login first', 'error'); return; }
     const next = !this.maintenanceEnabled;
     const action = next ? 'Enable' : 'Disable';
-    if (!await this.confirm(`${action} maintenance mode?`)) return;
+    if (!await confirmDialog(`${action} maintenance mode?`)) return;
 
     try {
       const fileRes = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/data/maintenance.json`, {
@@ -828,25 +828,6 @@ class Admin {
     }
   }
 
-  confirm(message) {
-    return new Promise(resolve => {
-      const modal = document.createElement('div');
-      modal.className = 'modal-overlay';
-      modal.innerHTML = `
-        <div class="modal-content" style="max-width:350px;text-align:center;">
-          <p style="margin-bottom:24px;">${message}</p>
-          <div class="modal-buttons">
-            <button class="btn btn-primary" id="confirm-yes">CONFIRM</button>
-            <button class="btn btn-secondary" id="confirm-no">CANCEL</button>
-          </div>
-        </div>
-      `;
-      document.body.appendChild(modal);
-      modal.querySelector('#confirm-yes').onclick = () => { modal.remove(); resolve(true); };
-      modal.querySelector('#confirm-no').onclick = () => { modal.remove(); resolve(false); };
-      modal.onclick = (e) => { if (e.target === modal) { modal.remove(); resolve(false); } };
-    });
-  }
 
   fileToBase64(file) {
     return new Promise((resolve, reject) => {

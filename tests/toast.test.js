@@ -76,8 +76,37 @@ test('no native alert() call sites remain in site scripts', () => {
     for (const [index, line] of source.split('\n').entries()) {
       const stripped = line.replace(/\/\/.*$/, '');
       assert.doesNotMatch(stripped, /(?<![\w.])alert\(/, `${file}:${index + 1} still calls alert()`);
+      assert.doesNotMatch(stripped, /(?<![\w.])confirm\(/, `${file}:${index + 1} still calls native confirm()`);
     }
   }
+});
+
+function findByClass(node, cls) {
+  if ((node.className || '').split(' ').includes(cls)) return node;
+  for (const child of node.children) {
+    const hit = findByClass(child, cls);
+    if (hit) return hit;
+  }
+  return null;
+}
+
+test('confirmDialog resolves true on confirm, false on cancel, danger styles the confirm button', async () => {
+  const { body } = loadToast();
+  const first = global.window.confirmDialog('Delete "X"?', { confirmText: 'DELETE', danger: true });
+  const overlay = findByClass(body, 'modal-overlay');
+  assert.ok(overlay, 'overlay mounted');
+  assert.equal(findByClass(overlay, 'modal-message').textContent, 'Delete "X"?');
+  const confirmBtn = findByClass(overlay, 'btn-danger');
+  assert.ok(confirmBtn, 'danger option styles the confirm button');
+  assert.equal(confirmBtn.textContent, 'DELETE');
+  confirmBtn.onclick();
+  assert.equal(await first, true);
+  assert.ok(!findByClass(body, 'modal-overlay'), 'overlay removed after confirm');
+
+  const second = global.window.confirmDialog('Run build?');
+  const cancelBtn = findByClass(findByClass(body, 'modal-overlay'), 'btn-secondary');
+  cancelBtn.onclick();
+  assert.equal(await second, false);
 });
 
 test('toast styling uses the token language, bottom-right fixed', () => {

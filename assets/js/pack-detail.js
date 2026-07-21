@@ -211,26 +211,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       };
     };
 
-    document.getElementById('delete-pack-btn').onclick = () => {
-      const modal = document.createElement('div');
-      modal.className = 'modal-overlay';
-      modal.innerHTML = `
-        <div class="modal-content" style="max-width:350px;text-align:center;">
-          <p style="margin-bottom:24px;">Delete <strong>${pack.displayName}</strong>?</p>
-          <div class="modal-buttons">
-            <button class="btn btn-danger" id="delete-yes">DELETE</button>
-            <button class="btn btn-secondary" id="delete-no">CANCEL</button>
-          </div>
-        </div>
-      `;
-      document.body.appendChild(modal);
-      modal.querySelector('#delete-no').onclick = () => modal.remove();
-      modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
+    document.getElementById('delete-pack-btn').onclick = async () => {
+      if (!await confirmDialog(`Delete "${pack.displayName}"?`, { confirmText: 'DELETE', danger: true })) return;
 
-      modal.querySelector('#delete-yes').onclick = async () => {
-        modal.remove();
-
-        const token = window.AUTH?.getToken();
+      const token = window.AUTH?.getToken();
         if (!token) return toast('Please login first', { type: 'error' });
 
         try {
@@ -258,7 +242,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         } catch (e) {
           toast(`Delete failed: ${e.message}`, { type: 'error' });
         }
-      };
     };
 
     // Setup animated textures - hide until loaded to prevent flash

@@ -92,8 +92,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (isAdmin) {
       document.getElementById('add-packs-btn')?.addEventListener('click', showAddPackModal);
-      document.getElementById('delete-list-btn')?.addEventListener('click', () => {
-        if (confirm(`Delete list "${list.name}"?`)) {
+      document.getElementById('delete-list-btn')?.addEventListener('click', async () => {
+        if (await confirmDialog(`Delete list "${list.name}"?`, { confirmText: 'DELETE', danger: true })) {
           const newLists = lists.filter(l => l.name !== list.name);
           saveLists(newLists);
           window.location.href = '/l/';

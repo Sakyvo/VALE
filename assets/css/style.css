@@ -739,19 +739,32 @@ footer {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0,0,0,0.5);
+  background: rgba(15, 23, 32, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  animation: fade-in var(--t-base) ease-out;
 }
 
 .modal-content {
   background: var(--bg);
-  border: 1px solid var(--border);
-  padding: 32px;
+  border: 2px solid var(--border);
+  box-shadow: var(--shadow-lift);
+  padding: 28px 32px;
   width: 100%;
   max-width: 400px;
+  animation: modal-in var(--t-base) ease-out;
+}
+
+.modal-confirm {
+  max-width: 360px;
+}
+
+.modal-message {
+  font-size: 15px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
 }
 
 .modal-content h2 {
@@ -762,8 +775,27 @@ footer {
 
 .modal-buttons {
   display: flex;
+  justify-content: flex-end;
   gap: 12px;
   margin-top: 24px;
+}
+
+.modal-buttons .btn {
+  margin: 0;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modal-in {
+  from { transform: translateY(10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal-overlay, .modal-content { animation: none; }
 }
 
 .login-error {

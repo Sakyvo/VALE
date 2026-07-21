@@ -118,3 +118,17 @@ test('every page references the same style.css cache buster', () => {
   const unique = new Set(versions.values());
   assert.equal(unique.size, 1, `all pages must share one style.css version, found: ${[...unique].join(', ')}`);
 });
+
+test('modals carry the elevated card language with entrance motion', () => {
+  const source = css();
+  const content = block(source, '\n.modal-content {');
+  assert.match(content, /border: 2px solid var\(--border\)/);
+  assert.match(content, /box-shadow: var\(--shadow-lift\)/);
+  assert.match(content, /animation: modal-in/);
+  assert.match(source, /@keyframes modal-in/);
+  const overlay = block(source, '\n.modal-overlay {');
+  assert.match(overlay, /animation: fade-in/);
+  const buttons = block(source, '\n.modal-buttons {');
+  assert.match(buttons, /justify-content: flex-end/);
+  assert.match(block(source, '.modal-buttons .btn {'), /margin: 0;/, 'modal buttons drop the default .btn margins');
+});
