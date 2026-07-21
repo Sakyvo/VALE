@@ -164,7 +164,7 @@ async function doSaveLists() {
     });
     if (lastResponse.ok) return true;
   }
-  alert(`Save failed (${lastResponse?.status || 'network'}). Reloading latest data.`);
+  toast(`Save failed (${lastResponse?.status || 'network'}). Reloading latest data.`, { type: 'error' });
   await resyncListsUI();
   return false;
 }
@@ -391,7 +391,7 @@ function showManageModal() {
             renderManageList();
             window.renderLists?.('');
           } catch (e) {
-            alert('Delete failed: ' + e.message);
+            toast('Delete failed: ' + e.message, { type: 'error' });
           }
         }
       };
@@ -403,7 +403,7 @@ function showManageModal() {
     const name = input.value.trim();
     if (!name) return;
     if (listsData.find(l => l.name === name)) {
-      alert('List already exists');
+      toast('List already exists', { type: 'error' });
       return;
     }
     const listId = sanitizeName(name);
@@ -559,7 +559,7 @@ async function loadListDetail(listId) {
             await saveLists();
             window.location.href = '/l/';
           } catch (e) {
-            alert('Delete failed: ' + e.message);
+            toast('Delete failed: ' + e.message, { type: 'error' });
           }
         }
       });

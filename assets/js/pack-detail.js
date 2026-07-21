@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
         localStorage.setItem('vale_lists', JSON.stringify(modalLists));
         modal.remove();
-        alert('Added to list(s)!');
+        toast('Added to list(s)');
       };
     };
 
@@ -231,7 +231,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         modal.remove();
 
         const token = window.AUTH?.getToken();
-        if (!token) return alert('Please login first');
+        if (!token) return toast('Please login first', { type: 'error' });
 
         try {
           const path = `resourcepacks/${pack.id}.zip`;
@@ -239,7 +239,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             headers: { Authorization: `token ${token}` }
           });
 
-          if (!fileRes.ok) return alert('File not found');
+          if (!fileRes.ok) return toast('Pack file not found in the repository', { type: 'error' });
 
           const fileData = await fileRes.json();
           const res = await fetch(`https://api.github.com/repos/Sakyvo/VALE/contents/${path}`, {
@@ -249,14 +249,14 @@ document.addEventListener('DOMContentLoaded', async () => {
           });
 
           if (res.ok) {
-            alert('Deleted! Run build to update site.');
-            window.location.href = '/';
+            toast('Deleted. Site will update after the next build.');
+            setTimeout(() => { window.location.href = '/'; }, 1200);
           } else {
             const err = await res.json();
-            alert(`Delete failed: ${err.message}`);
+            toast(`Delete failed: ${err.message}`, { type: 'error' });
           }
         } catch (e) {
-          alert(`Error: ${e.message}`);
+          toast(`Delete failed: ${e.message}`, { type: 'error' });
         }
       };
     };

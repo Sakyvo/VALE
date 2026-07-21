@@ -693,6 +693,45 @@ footer {
 .message.error { background: #fee; }
 .message.success { background: #efe; }
 
+/* Toast notifications */
+#toast-stack {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.toast {
+  background: var(--bg);
+  color: var(--text);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-action);
+  box-shadow: var(--shadow-lift);
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  max-width: 320px;
+  animation: toast-in var(--t-base) ease-out;
+}
+
+.toast-error {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+@keyframes toast-in {
+  from { transform: translateY(8px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toast { animation: none; }
+}
+
 /* Modal */
 .modal-overlay {
   position: fixed;

@@ -74,7 +74,7 @@ class Admin {
     if (!name?.trim()) return;
     const lists = JSON.parse(localStorage.getItem('vale_lists') || '[]');
     if (lists.find(l => l.name === name.trim())) {
-      alert('List already exists');
+      toast('List already exists', { type: 'error' });
       return;
     }
     lists.push({ name: name.trim(), cover: '', description: '', packs: [] });
