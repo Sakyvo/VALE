@@ -69,9 +69,24 @@ test('pack card elevation uses the hard shadow pair', () => {
 
 test('containers stay square: no radius on cards, header, thumbnails', () => {
   const source = css();
-  for (const selector of ['\nheader {', '\n.pack-card {', '\n.main-card {', '\n.sub-card {', '\n.preview-card {', '.list-grid .list-item {', '.pack-card .cover {']) {
+  for (const selector of ['\nheader {', '\n.pack-card {', '\n.main-card {', '\n.sub-card {', '\n.preview-card {', '.list-grid .list-item {', '.pack-card .cover {', '\n.sbi-upload {', '\n.sbi-tools-card {', '\n.sbi-crops,']) {
     assert.doesNotMatch(block(source, selector), /border-radius/, `${selector.trim()} must stay square`);
   }
+});
+
+test('SBI controls adopt the action radius', () => {
+  const source = css();
+  for (const selector of ['\n.sbi-preset-btn {', '\n.sbi-action-btn {', '\n.sbi-search-input {', '\n.sbi-mode-toggle {', '\n.sbi-ai-badge {']) {
+    const body = block(source, selector);
+    assert.match(body, /var\(--radius-action\)/, `${selector.trim()} uses --radius-action`);
+    assert.doesNotMatch(body, /border-radius: 0;/, `${selector.trim()} must not override the radius back to 0`);
+  }
+});
+
+test('SBI tools buttons separate with a gap instead of negative-margin border fusion', () => {
+  const source = css();
+  assert.doesNotMatch(source, /\.sbi-tools-actions[^{]*\{[^}]*-2px/, 'no -2px fusion in sbi-tools-actions rules');
+  assert.match(block(source, '\n.sbi-tools-actions {'), /gap: 8px/);
 });
 
 test('global focus-visible outline is defined with the accent', () => {
