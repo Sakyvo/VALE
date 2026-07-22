@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <div class="preview-card inventory-card">${img('inv.png')}</div>
         </div>
       </div>
-      <div class="admin-actions" id="admin-actions" style="display:none;">
+      <div class="admin-actions is-hidden" id="admin-actions">
         <h3>ADMIN</h3>
         <button class="btn btn-primary" id="add-to-list-btn">ADD TO LIST</button>
         <button class="btn btn-danger" id="delete-pack-btn">DELETE PACK</button>
@@ -140,10 +140,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       const modal = document.createElement('div');
       modal.className = 'modal-overlay';
       modal.innerHTML = `
-        <div class="modal-content" style="max-width:400px;">
+        <div class="modal-content">
           <h2>Add to List</h2>
-          <input type="text" id="list-search" placeholder="Search or create list..." style="width:100%;padding:12px;border:2px solid #000;margin-bottom:16px;">
-          <div id="list-options" style="max-height:250px;overflow-y:auto;"></div>
+          <input type="text" id="list-search" class="form-input-lg" placeholder="Search or create list...">
+          <div id="list-options" class="modal-scroll"></div>
           <div class="modal-buttons">
             <button class="btn btn-primary" id="confirm-add-list">ADD</button>
             <button class="btn btn-secondary" id="cancel-add-list">CANCEL</button>
@@ -161,23 +161,23 @@ document.addEventListener('DOMContentLoaded', async () => {
         const filtered = modalLists.filter(l => l.name.toLowerCase().includes(q));
 
         let html = filtered.map(l => `
-          <label style="display:flex;align-items:center;gap:8px;padding:8px;border-bottom:1px solid #eee;cursor:pointer;">
+          <label class="option-row">
             <input type="checkbox" value="${l.name}" ${selected.has(l.name) ? 'checked' : ''} ${alreadyIn.includes(l.name) ? 'disabled' : ''}>
             <span>${l.name}</span>
-            ${alreadyIn.includes(l.name) ? '<span style="color:#999;font-size:12px;">(already added)</span>' : ''}
+            ${alreadyIn.includes(l.name) ? '<span class="option-note">(already added)</span>' : ''}
           </label>
         `).join('');
 
         if (query && !modalLists.find(l => l.name.toLowerCase() === q)) {
           html += `
-            <label style="display:flex;align-items:center;gap:8px;padding:8px;border-bottom:1px solid #eee;cursor:pointer;background:#f0f0f0;">
+            <label class="option-row option-row--create">
               <input type="checkbox" value="__new__${query}" ${selected.has('__new__' + query) ? 'checked' : ''}>
               <span>Create "${query}"</span>
             </label>
           `;
         }
 
-        optionsDiv.innerHTML = html || '<p style="padding:8px;color:#666;">No lists found</p>';
+        optionsDiv.innerHTML = html || '<p class="empty-note">No lists found</p>';
 
         optionsDiv.querySelectorAll('input[type="checkbox"]:not(:disabled)').forEach(cb => {
           cb.onchange = () => {

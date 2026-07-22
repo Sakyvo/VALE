@@ -355,14 +355,14 @@ function showManageModal() {
   const modal = document.createElement('div');
   modal.className = 'modal-overlay';
   modal.innerHTML = `
-    <div class="modal-content" style="max-width:500px;">
+    <div class="modal-content modal-wide">
       <h2>MANAGE LISTS</h2>
-      <div class="tag-input-group" style="margin-bottom:16px;">
+      <div class="tag-input-group">
         <input type="text" id="new-list-name" placeholder="New list name">
         <button class="btn btn-primary" id="create-list-btn">CREATE</button>
       </div>
-      <div id="manage-list" style="max-height:300px;overflow-y:auto;"></div>
-      <div class="modal-buttons" style="margin-top:16px;">
+      <div id="manage-list" class="modal-scroll"></div>
+      <div class="modal-buttons">
         <button class="btn btn-secondary" id="close-manage">CLOSE</button>
       </div>
     </div>
@@ -372,11 +372,11 @@ function showManageModal() {
   function renderManageList() {
     const listEl = modal.querySelector('#manage-list');
     listEl.innerHTML = listsData.map((l, i) => `
-      <div style="display:flex;align-items:center;gap:8px;padding:8px;border-bottom:1px solid #eee;">
-        <span style="flex:1;">${l.name}</span>
-        <button class="btn btn-secondary delete-list-btn" data-index="${i}" style="padding:4px 8px;">DELETE</button>
+      <div class="option-row">
+        <span class="detail-info">${l.name}</span>
+        <button class="btn btn-secondary btn-compact delete-list-btn" data-index="${i}">DELETE</button>
       </div>
-    `).join('') || '<p style="color:#666;">No lists</p>';
+    `).join('') || '<p class="empty-note">No lists</p>';
 
     listEl.querySelectorAll('.delete-list-btn').forEach(btn => {
       btn.onclick = async () => {
@@ -468,21 +468,21 @@ async function loadListDetail(listId) {
         </div>
         <button class="sort-btn" id="detail-sort-btn">${detailSortByDate ? 'DATE' : 'A-Z'}</button>
       </div>
-      <div style="margin-bottom:24px;">
+      <div class="detail-head">
         <a href="/l/" class="back-link">← Back to Lists</a>
-        <div style="display:flex;align-items:center;gap:12px;margin:16px 0 8px;">
-          <h1 style="margin:0;">${list.name}</h1>
-          ${isAdmin ? `<button class="btn btn-secondary" id="edit-list-btn" style="padding:4px 12px;">EDIT</button>` : ''}
+        <div class="detail-title-row">
+          <h1>${list.name}</h1>
+          ${isAdmin ? `<button class="btn btn-secondary btn-compact" id="edit-list-btn">EDIT</button>` : ''}
         </div>
         ${list.description ? `<p class="list-description">${list.description}</p>` : ''}
         <p class="meta">${list.packs.length} packs</p>
       </div>
-      <div class="search-box" style="margin:0 0 24px;max-width:calc((100% - 48px) / 3);justify-content:stretch;">
-        <input type="text" id="list-pack-search" placeholder="Search packs..." value="${searchQuery}" style="flex:1;padding:12px 16px;border:2px solid #000;font-size:14px;outline:none;">
+      <div class="search-box pack-search-box">
+        <input type="text" id="list-pack-search" placeholder="Search packs..." value="${searchQuery}">
         <button class="search-btn" id="list-pack-search-btn" aria-label="Search"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
       </div>
       ${isAdmin ? `
-        <div style="margin-bottom:24px;">
+        <div class="detail-head">
           <button class="btn btn-primary" id="add-packs-btn">ADD PACKS</button>
           <button class="btn btn-secondary" id="delete-list-btn">DELETE LIST</button>
         </div>
@@ -593,7 +593,7 @@ function showEditModal(list, onDone) {
   const modal = document.createElement('div');
   modal.className = 'modal-overlay';
   modal.innerHTML = `
-    <div class="modal-content" style="max-width:400px;">
+    <div class="modal-content">
       <h2>EDIT LIST</h2>
       <div class="form-group">
         <label>NAME</label>
@@ -602,11 +602,11 @@ function showEditModal(list, onDone) {
       <div class="form-group">
         <label>COVER IMAGE</label>
         <input type="file" id="edit-cover-file" accept="image/*">
-        ${list.cover ? `<p style="margin-top:8px;font-size:12px;color:#666;">Current: ${list.cover}</p>` : ''}
+        ${list.cover ? `<p class="field-note">Current: ${list.cover}</p>` : ''}
       </div>
       <div class="form-group">
         <label>DESCRIPTION</label>
-        <textarea id="edit-desc" rows="3" style="width:100%;padding:8px;border:2px solid #000;">${list.description || ''}</textarea>
+        <textarea id="edit-desc" rows="3" class="form-textarea">${list.description || ''}</textarea>
       </div>
       <div class="modal-buttons">
         <button class="btn btn-primary" id="save-edit">SAVE</button>
@@ -668,10 +668,10 @@ function showAddPackModal(list, onDone) {
   const modal = document.createElement('div');
   modal.className = 'modal-overlay';
   modal.innerHTML = `
-    <div class="modal-content" style="max-width:500px;">
+    <div class="modal-content modal-wide">
       <h2>Add Packs</h2>
-      <input type="text" id="pack-search" placeholder="Search packs..." style="width:100%;padding:12px;border:2px solid #000;margin-bottom:16px;">
-      <div id="pack-list" style="max-height:300px;overflow-y:auto;"></div>
+      <input type="text" id="pack-search" class="form-input-lg" placeholder="Search packs...">
+      <div id="pack-list" class="modal-scroll"></div>
       <div class="modal-buttons">
         <button class="btn btn-primary" id="confirm-add-packs">ADD SELECTED</button>
         <button class="btn btn-secondary" id="cancel-add-packs">CANCEL</button>
@@ -691,12 +691,12 @@ function showAddPackModal(list, onDone) {
     );
 
     packList.innerHTML = filtered.map(p => `
-      <label style="display:flex;align-items:center;gap:8px;padding:8px;border-bottom:1px solid #eee;cursor:pointer;">
+      <label class="option-row">
         <input type="checkbox" value="${p.name}" ${selected.has(p.name) ? 'checked' : ''}>
-        <img src="${p.packPng}" style="width:32px;height:32px;image-rendering:pixelated;">
+        <img src="${p.packPng}" class="pixel-icon-32">
         <span>${p.displayName}</span>
       </label>
-    `).join('') || '<p style="padding:8px;color:#666;">No packs found</p>';
+    `).join('') || '<p class="empty-note">No packs found</p>';
 
     packList.querySelectorAll('input[type="checkbox"]').forEach(cb => {
       cb.onchange = () => {
@@ -727,8 +727,8 @@ function showConfirm(message) {
     const modal = document.createElement('div');
     modal.className = 'modal-overlay';
     modal.innerHTML = `
-      <div class="modal-content" style="max-width:350px;text-align:center;">
-        <p style="margin-bottom:24px;">${message}</p>
+      <div class="modal-content modal-confirm">
+        <p class="modal-message">${message}</p>
         <div class="modal-buttons">
           <button class="btn btn-primary" id="confirm-yes">CONFIRM</button>
           <button class="btn btn-secondary" id="confirm-no">CANCEL</button>

@@ -142,3 +142,13 @@ test('UI font is HarmonyOS Sans with the system stack as fallback', () => {
   assert.match(face[0], /font-weight: 100 900;/, 'variable weight range declared');
   assert.match(face[0], /font-display: swap;/);
 });
+
+test('admin/List reusable templates carry no inline style attributes', () => {
+  for (const file of ['admin/index.html', 'l/index.html', 'assets/js/admin.js', 'assets/js/list.js', 'assets/js/list-detail.js', 'assets/js/pack-detail.js']) {
+    const source = fs.readFileSync(path.join(ROOT, file), 'utf-8');
+    for (const [i, line] of source.split('\n').entries()) {
+      if (line.includes('keep-inline:')) continue;
+      assert.doesNotMatch(line, /style="/, `${file}:${i + 1} has an inline style`);
+    }
+  }
+});

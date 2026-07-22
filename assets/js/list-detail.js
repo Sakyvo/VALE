@@ -43,13 +43,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     document.getElementById('list-content').innerHTML = `
       <div class="detail-header">
-        <div class="detail-info" style="flex:1;">
+        <div class="detail-info">
           <h1>${list.name}</h1>
           <p class="meta">${list.packs.length} packs</p>
         </div>
       </div>
       ${isAdmin ? `
-        <div class="admin-actions" style="border-top:none;padding-top:0;margin-top:0;margin-bottom:24px;">
+        <div class="admin-actions admin-actions-plain">
           <button class="btn btn-primary" id="add-packs-btn">ADD PACKS</button>
           <button class="btn btn-secondary" id="delete-list-btn">DELETE LIST</button>
         </div>
@@ -126,9 +126,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       );
 
       packList.innerHTML = filtered.map(p => `
-        <label style="display:flex;align-items:center;gap:8px;padding:8px;border-bottom:1px solid #eee;cursor:pointer;">
+        <label class="option-row">
           <input type="checkbox" value="${p.name}" ${selected.has(p.name) ? 'checked' : ''}>
-          <img src="${p.packPng}" style="width:32px;height:32px;image-rendering:pixelated;">
+          <img src="${p.packPng}" class="pixel-icon-32">
           <span>${p.displayName}</span>
         </label>
       `).join('');

@@ -1,5 +1,6 @@
 const REPO_OWNER = 'Sakyvo';
 const REPO_NAME = 'VALE';
+const ARCHIVE_MUTATIONS_DISABLED = true;
 
 class Admin {
   constructor() {
@@ -14,8 +15,6 @@ class Admin {
     this.checkedLists = new Set();
 
     document.getElementById('show-login-btn')?.addEventListener('click', () => AUTH.showLoginModal());
-    document.getElementById('upload-btn')?.addEventListener('click', () => this.upload());
-    document.getElementById('batch-delete-btn')?.addEventListener('click', () => this.batchDelete());
     document.getElementById('pack-search')?.addEventListener('input', (e) => this.renderPacks(e.target.value));
     document.getElementById('admin-sort-btn')?.addEventListener('click', () => this.toggleSort());
     document.getElementById('create-list-btn')?.addEventListener('click', () => this.createList());
@@ -45,7 +44,7 @@ class Admin {
     }
 
     if (filtered.length === 0) {
-      container.innerHTML = '<div style="padding:12px;color:#666;font-size:12px;">No lists found</div>';
+      container.innerHTML = '<div class="empty-note">No lists found</div>';
       return;
     }
     container.innerHTML = filtered.map(l => `
@@ -135,13 +134,12 @@ class Admin {
     listEl.innerHTML = filtered.map(p => `
       <div class="admin-pack-item" data-name="${p.name}">
         <div class="admin-pack-row1">
-          <img class="admin-pack-icon ${this.selected.has(p.name) ? 'selected' : ''}" data-src="${p.packPng}" data-name="${p.name}" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+          <img class="admin-pack-icon" data-src="${p.packPng}" data-name="${p.name}" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
           <a href="/p/${p.name}/" class="admin-pack-name">${p.displayName}</a>
         </div>
         <div class="admin-pack-row2">
-          <img class="admin-texture" data-src="/thumbnails/${p.name}/diamond_sword.png" onerror="this.style.display='none'" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" style="visibility:hidden">
-          <img class="admin-texture" data-src="/thumbnails/${p.name}/ender_pearl.png" onerror="this.style.display='none'" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" style="visibility:hidden">
-          <button class="admin-delete-btn ${this.multiSelectMode ? 'disabled' : ''}" data-name="${p.name}">DELETE</button>
+          <img class="admin-texture" data-src="/thumbnails/${p.name}/diamond_sword.png" onerror="this.style.display='none'" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+          <img class="admin-texture" data-src="/thumbnails/${p.name}/ender_pearl.png" onerror="this.style.display='none'" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
         </div>
       </div>
     `).join('') || '<p>No packs found</p>';
@@ -186,15 +184,6 @@ class Admin {
       };
     });
 
-    listEl.querySelectorAll('.admin-pack-icon').forEach(img => {
-      img.onclick = () => this.toggleSelect(img.dataset.name);
-    });
-
-    listEl.querySelectorAll('.admin-delete-btn:not(.disabled)').forEach(btn => {
-      btn.onclick = () => this.deletePack(btn.dataset.name);
-    });
-
-    this.updateBatchBtn();
   }
 
   toggleSelect(name) {
@@ -219,6 +208,10 @@ class Admin {
   }
 
   async batchDelete() {
+    if (ARCHIVE_MUTATIONS_DISABLED) {
+      this.showMessage('Archive changes require normalized ingestion', 'error');
+      return;
+    }
     if (this.selected.size === 0) return;
     if (!await confirmDialog(`Delete ${this.selected.size} packs?`, { confirmText: 'DELETE', danger: true })) return;
 
@@ -290,6 +283,10 @@ class Admin {
   }
 
   async upload() {
+    if (ARCHIVE_MUTATIONS_DISABLED) {
+      this.showMessage('Archive changes require normalized ingestion', 'error');
+      return;
+    }
     const token = AUTH.getToken();
     const fileInput = document.getElementById('file-input');
     const files = Array.from(fileInput.files);
@@ -497,39 +494,39 @@ class Admin {
     const modal = document.createElement('div');
     modal.className = 'modal-overlay';
     modal.innerHTML = `
-      <div class="modal-content" style="max-width:500px;">
+      <div class="modal-content modal-wide">
         <h2>Upload Result</h2>
-        <div id="upload-result-list" style="max-height:400px;overflow-y:auto;">
+        <div id="upload-result-list" class="modal-scroll-lg">
           ${successFiles.length > 0 ? `
-            <p style="color:#060;font-weight:bold;">Uploaded (${successFiles.length})</p>
-            <div style="margin-bottom:12px;font-size:13px;">
-              ${sorted(successFiles).map(f => `<p style="margin:2px 0;">${f}</p>`).join('')}
+            <p class="upload-group-title upload-ok">Uploaded (${successFiles.length})</p>
+            <div class="upload-group">
+              ${sorted(successFiles).map(f => `<p class="upload-file">${f}</p>`).join('')}
             </div>
           ` : ''}
           ${warnUploaded.length > 0 ? `
-            <p style="color:#b80;font-weight:bold;">⚠ Warning - Unverified (${warnUploaded.length})</p>
-            <div style="margin-bottom:12px;font-size:13px;color:#996;">
-              ${sorted(warnUploaded).map(f => `<p style="margin:2px 0;">${f}</p>`).join('')}
-              <p style="margin-top:4px;font-size:12px;color:#888;">Could not validate client-side; will be verified during build</p>
+            <p class="upload-group-title upload-warn">⚠ Warning - Unverified (${warnUploaded.length})</p>
+            <div class="upload-group upload-group--warn">
+              ${sorted(warnUploaded).map(f => `<p class="upload-file">${f}</p>`).join('')}
+              <p class="field-note">Could not validate client-side; will be verified during build</p>
             </div>
           ` : ''}
           ${oversizedFiles.length > 0 ? `
-            <p style="color:#c00;font-weight:bold;">Failed - Too Large for API (${oversizedFiles.length})</p>
-            <div style="margin-bottom:12px;font-size:13px;">
-              ${sorted(oversizedFiles).map(f => `<p style="margin:2px 0;">${f}</p>`).join('')}
-              <p style="margin-top:4px;font-size:12px;color:#888;">Files >40MB must be uploaded via local git push</p>
+            <p class="upload-group-title upload-fail">Failed - Too Large for API (${oversizedFiles.length})</p>
+            <div class="upload-group">
+              ${sorted(oversizedFiles).map(f => `<p class="upload-file">${f}</p>`).join('')}
+              <p class="field-note">Files >40MB must be uploaded via local git push</p>
             </div>
           ` : ''}
           ${invalidFiles.length > 0 ? `
-            <p style="color:#c00;font-weight:bold;">Failed - Invalid (${invalidFiles.length})</p>
-            <div style="margin-bottom:12px;font-size:13px;">
-              ${sorted(invalidFiles).map(f => `<p style="margin:2px 0;">${f}</p>`).join('')}
+            <p class="upload-group-title upload-fail">Failed - Invalid (${invalidFiles.length})</p>
+            <div class="upload-group">
+              ${sorted(invalidFiles).map(f => `<p class="upload-file">${f}</p>`).join('')}
             </div>
           ` : ''}
           ${duplicateFiles.length > 0 ? `
-            <p style="color:#c80;font-weight:bold;">Failed - Duplicate (${duplicateFiles.length})</p>
-            <div style="margin-bottom:12px;font-size:13px;">
-              ${sorted(duplicateFiles).map(f => `<p style="margin:2px 0;">${f}</p>`).join('')}
+            <p class="upload-group-title upload-dup">Failed - Duplicate (${duplicateFiles.length})</p>
+            <div class="upload-group">
+              ${sorted(duplicateFiles).map(f => `<p class="upload-file">${f}</p>`).join('')}
             </div>
           ` : ''}
         </div>
@@ -558,10 +555,10 @@ class Admin {
     const buttonsDiv = modal.querySelector('#result-buttons');
 
     buildSection.innerHTML = `
-      <div style="margin-top:16px;padding-top:16px;border-top:1px solid #eee;">
-        <p id="modal-build-status" style="margin-bottom:8px;font-size:13px;">Waiting for build...</p>
-        <div style="background:#eee;height:6px;"><div id="modal-build-bar" style="background:#000;height:100%;width:10%;transition:width 0.3s;"></div></div>
-        <p id="modal-build-time" style="font-size:12px;color:#666;margin-top:4px;"></p>
+      <div class="admin-actions">
+        <p id="modal-build-status" class="upload-group">Waiting for build...</p>
+        <div class="progress-track"><div id="modal-build-bar" class="progress-bar"></div></div>
+        <p id="modal-build-time" class="field-note"></p>
       </div>
     `;
 
@@ -637,6 +634,10 @@ class Admin {
   }
 
   async deletePack(name) {
+    if (ARCHIVE_MUTATIONS_DISABLED) {
+      this.showMessage('Archive changes require normalized ingestion', 'error');
+      return;
+    }
     const pack = this.packs.find(p => p.name === name);
     if (!pack) return;
     if (!await confirmDialog(`Delete "${pack.displayName}"?`, { confirmText: 'DELETE', danger: true })) return;
@@ -675,11 +676,11 @@ class Admin {
     const modal = document.createElement('div');
     modal.className = 'modal-overlay';
     modal.innerHTML = `
-      <div class="modal-content" style="max-width:400px;text-align:center;">
-        <h2 style="margin-bottom:16px;">BUILD</h2>
-        <p id="build-status" style="margin-bottom:8px;">Waiting for build...</p>
-        <div style="background:#eee;height:8px;margin-bottom:16px;"><div id="build-bar" style="background:#000;height:100%;width:10%;transition:width 0.3s;"></div></div>
-        <p id="build-time" style="font-size:12px;color:#666;"></p>
+      <div class="modal-content modal-center">
+        <h2 class="panel-heading">BUILD</h2>
+        <p id="build-status" class="upload-group">Waiting for build...</p>
+        <div class="progress-track progress-track-lg"><div id="build-bar" class="progress-bar"></div></div>
+        <p id="build-time" class="field-note"></p>
       </div>
     `;
     document.body.appendChild(modal);
@@ -839,4 +840,8 @@ class Admin {
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => new Admin());
+if (typeof document !== 'undefined') {
+  document.addEventListener('DOMContentLoaded', () => new Admin());
+}
+
+if (typeof module !== 'undefined') module.exports = { Admin, ARCHIVE_MUTATIONS_DISABLED };

@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin - VALE</title>
   <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="stylesheet" href="/assets/css/style.css?v=38">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <link rel="stylesheet" href="/assets/css/style.css?v=39">
 </head>
 <body>
   <header>
@@ -23,33 +22,26 @@
       <button class="btn btn-primary" id="show-login-btn">LOGIN</button>
     </div>
 
-    <div id="admin-section" class="admin-panel" style="display:none;">
+    <div id="admin-section" class="admin-panel is-hidden">
       <div class="form-group">
         <label>ADD TO LISTS (optional)</label>
-        <div style="display:flex;gap:8px;margin-bottom:8px;">
-          <input type="text" id="list-search" placeholder="Search lists..." style="flex:1;padding:8px;border:2px solid #000;">
+        <div class="form-row">
+          <input type="text" id="list-search" class="form-input" placeholder="Search lists...">
           <button class="sort-btn" id="list-sort-btn">A-Z</button>
         </div>
-        <div id="list-checkboxes" style="max-height:120px;overflow-y:auto;border:2px solid #000;"></div>
-        <button class="btn btn-secondary" id="create-list-btn" style="padding:4px 12px;margin-top:8px;">+ NEW LIST</button>
+        <div id="list-checkboxes"></div>
+        <button class="btn btn-secondary btn-compact" id="create-list-btn">+ NEW LIST</button>
       </div>
-      <div class="form-group">
-        <label>UPLOAD PACK (.zip)</label>
-        <input type="file" id="file-input" accept=".zip" multiple>
-      </div>
-      <button class="btn btn-primary" id="upload-btn">UPLOAD</button>
-      <button class="btn btn-secondary" id="batch-delete-btn">BATCH DELETE</button>
-
       <div class="pack-list">
-        <h2 style="font-size:14px;margin-bottom:16px;">EXISTING PACKS</h2>
-        <div style="display:flex;gap:8px;margin-bottom:16px;">
-          <input type="text" id="pack-search" placeholder="Search packs..." style="flex:1;padding:8px;border:2px solid #000;">
+        <h2 class="panel-heading">EXISTING PACKS</h2>
+        <div class="form-row">
+          <input type="text" id="pack-search" class="form-input" placeholder="Search packs...">
           <button class="sort-btn" id="admin-sort-btn">A-Z</button>
         </div>
         <div id="pack-list"></div>
       </div>
 
-      <div style="margin-top:32px;padding-top:24px;border-top:2px solid #000;">
+      <div class="panel-section">
         <button class="btn btn-secondary" id="manual-build-btn">RUN BUILD</button>
         <button class="btn btn-secondary" id="maintenance-btn">MAINTENANCE: --</button>
       </div>
@@ -62,6 +54,6 @@
 
   <script src="/assets/js/toast.js?v=2"></script>
   <script src="/assets/js/auth.js?v=6"></script>
-  <script src="/assets/js/admin.js?v=5"></script>
+  <script src="/assets/js/admin.js?v=6"></script>
 </body>
 </html>
