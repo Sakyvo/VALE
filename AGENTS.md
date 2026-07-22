@@ -29,6 +29,7 @@ SBI 是项目核心能力，必须同时维持准确率、响应速度和静态�
 ## 常驻法则
 
 - 每次任务开始先执行 `git pull`，完成并验证后执行 `git push`；用户明示跳过时仅对当次任务生效。
+- 领取“下一个 issue”时先按 `Executor` 过滤当前工具，再从匹配项中选择编号最小的 open、无阻塞 issue；Codex 不执行 `Executor: Claude Code` 的任务，Claude Code 反之。
 - 主仓库不得出现材质包 `.zip` 或 `resourcepacks/`；提交前检查 tracked/staged 文件。
 - 材质包只长期保存在远端 `Sakyvo/packs-NNN`；`.vale-pack-upload` 仅作临时中转并必须在成功或失败后清理。
 - 远端仓库达到 5GB 时写入 `!  FULL  !`，然后使用或创建下一个编号仓库。
@@ -38,7 +39,7 @@ SBI 是项目核心能力，必须同时维持准确率、响应速度和静态�
 - 修改 SBI 匹配器或指纹数据时同步版本常量和 HTML cache buster，并运行 `python test_sbi.py`。
 - 站点经 Cloudflare 缓存（静态资源 4 小时）：修改 `style.css` 或共享 JS 后，必须统一 bump 全站 HTML 引用的 `?v=` 版本号（含重新生成 `p/*`），否则线上长时间不生效。
 - 不得根据扫描结果直接删除或替换远端包；必须执行完整内容判定、人工保留决策和两阶段清理。
-- pack/List 名新增非拉丁字符后，运行 `python scripts/subset-font.py` 更新像素字体子集。
+- pack/List 名新增非拉丁字符后，运行 `python scripts/subset-font.py` 更新字体子集（同时生成名称像素字体与 HarmonyOS Sans UI 字体）。
 
 ## 按需读取索引
 
