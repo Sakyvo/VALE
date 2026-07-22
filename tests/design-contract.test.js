@@ -132,3 +132,13 @@ test('modals carry the elevated card language with entrance motion', () => {
   assert.match(buttons, /justify-content: flex-end/);
   assert.match(block(source, '.modal-buttons .btn {'), /margin: 0;/, 'modal buttons drop the default .btn margins');
 });
+
+test('UI font is HarmonyOS Sans with the system stack as fallback', () => {
+  const source = css();
+  assert.match(rootBlock(source), /--font-ui: 'HarmonyOS Sans', -apple-system/);
+  const face = source.match(/@font-face \{[^}]*HarmonyOS Sans[^}]*\}/);
+  assert.ok(face, '@font-face for HarmonyOS Sans exists');
+  assert.match(face[0], /harmonyos-sans\.woff2/);
+  assert.match(face[0], /font-weight: 100 900;/, 'variable weight range declared');
+  assert.match(face[0], /font-display: swap;/);
+});

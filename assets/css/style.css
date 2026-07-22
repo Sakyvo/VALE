@@ -16,8 +16,15 @@
   --shadow-lift: 4px 4px 0 rgba(0, 0, 0, .18);
   --t-fast: 100ms;
   --t-base: 180ms;
-  --font-ui: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+  --font-ui: 'HarmonyOS Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
   --font-mc: 'Minecraft AE', var(--font-ui);
+}
+
+@font-face {
+  font-family: 'HarmonyOS Sans';
+  src: url('../fonts/harmonyos-sans.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
 }
 
 @font-face {
