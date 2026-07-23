@@ -152,3 +152,44 @@ test('admin/List reusable templates carry no inline style attributes', () => {
     }
   }
 });
+
+function mobileBlocks(source) {
+  const blocks = [];
+  const re = /@media \(max-width: 600px\) \{/g;
+  let m;
+  while ((m = re.exec(source))) {
+    let depth = 1, i = re.lastIndex;
+    while (depth > 0 && i < source.length) {
+      if (source[i] === '{') depth++;
+      else if (source[i] === '}') depth--;
+      i++;
+    }
+    blocks.push(source.slice(re.lastIndex, i - 1));
+  }
+  return blocks.join('\n');
+}
+
+test('mobile: interactive controls reach 40px tap targets at 600px', () => {
+  const mobile = mobileBlocks(css());
+  for (const selector of ['.nav-icon-btn', '.sort-btn', '.tab-btn', '.btn-compact', '.sbi-preset-btn', '.sbi-action-btn', '.sbi-mode-btn']) {
+    const rule = mobile.match(new RegExp(`[^}]*${selector.replace('.', '\.')}[^{]*\{([^}]*)\}`));
+    assert.ok(rule, `600px block styles ${selector}`);
+    assert.match(rule[1], /min-height: 40px/, `${selector} reaches 40px tap target on mobile`);
+  }
+});
+
+test('mobile: toasts span the viewport above the browser chrome', () => {
+  const mobile = mobileBlocks(css());
+  const stack = mobile.match(/#toast-stack \{([^}]*)\}/);
+  assert.ok(stack, '600px block repositions #toast-stack');
+  assert.match(stack[1], /env\(safe-area-inset-bottom\)/);
+  assert.match(stack[1], /left: 16px/);
+});
+
+test('mobile: page gutters and modal padding follow the spacing scale', () => {
+  const mobile = mobileBlocks(css());
+  assert.match(mobile, /\.hero \{[^}]*padding: 40px 16px/, 'hero tightens to 16px gutters');
+  assert.match(mobile, /\.explore-section \{[^}]*padding: 24px 16px/, 'explore section tightens');
+  assert.match(mobile, /\.pack-detail \{[^}]*padding: 0 16px/, 'detail page tightens');
+  assert.match(mobile, /\.modal-overlay \{[^}]*padding: 16px/, 'modals keep a gutter on small screens');
+});

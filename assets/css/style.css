@@ -1362,6 +1362,35 @@ footer {
   .sbi-result-cover { width: 72px; height: 36px; }
   .sbi-lite-item,
   .sbi-lite-item-anim { width: 24px; height: 24px; }
-  .sbi-mode-btn { padding: 2px 10px; font-size: 10px; }
+  .sbi-mode-btn { min-height: 40px; padding: 2px 10px; font-size: 10px; }
   .sbi-tools-actions { flex-direction: column; }
+}
+
+/* Mobile refinement (issue 006) — rules confined to media queries */
+@media (max-width: 600px) {
+  header { padding: 0 16px; }
+
+  .hero { padding: 40px 16px; }
+  .explore-section { padding: 24px 16px; }
+  .pack-detail { margin: 24px auto; padding: 0 16px; }
+
+  .nav-btn { min-height: 40px; display: inline-flex; align-items: center; }
+  .nav-icon-btn { min-height: 40px; padding: 10px; }
+  .sort-btn { min-height: 40px; }
+  .tab-btn { min-height: 40px; }
+  .btn-compact { min-height: 40px; }
+  .sbi-preset-btn { min-height: 40px; }
+  .sbi-action-btn { min-height: 40px; }
+  .sbi-result-card { height: 44px; }
+
+  .modal-overlay { padding: 16px; }
+
+  #toast-stack {
+    left: 16px;
+    right: 16px;
+    bottom: calc(16px + env(safe-area-inset-bottom));
+    align-items: stretch;
+  }
+
+  .toast { max-width: none; }
 }
