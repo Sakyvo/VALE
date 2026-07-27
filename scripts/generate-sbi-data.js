@@ -9,8 +9,10 @@ const THUMB_DIR = path.join(__dirname, '..', 'thumbnails');
 const OUT_FILE = path.join(__dirname, '..', 'data', 'sbi-fingerprints.json');
 const SHARD_DIR = path.join(__dirname, '..', 'data', 'sbi-fp');
 const META_FILE = path.join(SHARD_DIR, 'meta.json');
-const SBI_FINGERPRINT_VERSION = 16;
+const SBI_FINGERPRINT_VERSION = 17;
 const SBI_GROUP_SCHEMA_VERSION = 1;
+const DEFAULT_SHARD_TARGET_BYTES = 32 * 1024 * 1024;
+const GITHUB_FILE_LIMIT_BYTES = 100 * 1024 * 1024;
 const ANCHOR_INDEX_KEYS = new Set(['diamond_sword', 'ender_pearl', 'splash_potion']);
 const EXCLUDED_LIST_NAMES = ['Overlay', 'Conquest'];
 
@@ -487,7 +489,8 @@ function addHashIndexEntries(index, key, dhash, packName) {
 function buildShardPacks(packs, keys) {
   const shardPacks = {};
   const index = {};
-  for (const [packName, packData] of Object.entries(packs)) {
+  for (const packName of Object.keys(packs).sort((a, b) => a.localeCompare(b))) {
+    const packData = packs[packName];
     const entry = {};
     for (const key of keys) {
       if (!packData[key]) continue;
@@ -573,20 +576,98 @@ function buildGroupedData(packs, exclusionSummary = {}) {
   return { groupPacks, meta };
 }
 
-function writeShards(packs, meta) {
-  fs.mkdirSync(SHARD_DIR, { recursive: true });
-  for (const shard of SHARDS) {
-    const { shardPacks, index } = buildShardPacks(packs, shard.keys);
-    const payload = {
-      version: SBI_FINGERPRINT_VERSION,
-      type: shard.name,
-      keys: shard.keys,
-      packs: shardPacks,
-      _index: index,
-    };
-    fs.writeFileSync(path.join(SHARD_DIR, `${shard.name}.json`), JSON.stringify(payload));
+function shardPayload(type, keys, packs, bucketKey) {
+  const { shardPacks, index } = buildShardPacks(packs, keys);
+  return {
+    version: SBI_FINGERPRINT_VERSION,
+    type,
+    bucket: bucketKey,
+    keys,
+    packs: shardPacks,
+    _index: index,
+  };
+}
+
+function payloadBytes(payload) {
+  return Buffer.byteLength(JSON.stringify(payload));
+}
+
+function stablePackBucket(packName) {
+  return sha256Text(packName);
+}
+
+function splitShardEntries(type, keys, packs, targetBytes, hardLimitBytes, prefix = '') {
+  const names = Object.keys(packs).sort((a, b) => a.localeCompare(b));
+  const payload = shardPayload(type, keys, packs, prefix || 'all');
+  const size = payloadBytes(payload);
+  if (size <= targetBytes || names.length <= 1) {
+    if (size > hardLimitBytes) {
+      throw new Error(`SBI shard exceeds hard file limit: ${type}/${prefix || 'all'} (${size} bytes)`);
+    }
+    return [{ key: prefix || 'all', payload, size }];
   }
-  fs.writeFileSync(META_FILE, JSON.stringify(meta));
+
+  const groups = new Map();
+  const depth = prefix.length;
+  for (const name of names) {
+    const hash = stablePackBucket(name);
+    const key = `${prefix}${hash[depth] || '0'}`;
+    if (!groups.has(key)) groups.set(key, {});
+    groups.get(key)[name] = packs[name];
+  }
+  if (groups.size < 2) {
+    const midpoint = Math.ceil(names.length / 2);
+    groups.set(`${prefix}0`, Object.fromEntries(names.slice(0, midpoint).map(name => [name, packs[name]])));
+    groups.set(`${prefix}1`, Object.fromEntries(names.slice(midpoint).map(name => [name, packs[name]])));
+  }
+  return [...groups.entries()]
+    .sort(([a], [b]) => a.localeCompare(b))
+    .flatMap(([key, group]) => splitShardEntries(type, keys, group, targetBytes, hardLimitBytes, key));
+}
+
+function writeShards(packs, meta, options = {}) {
+  const shardDir = options.shardDir || SHARD_DIR;
+  const metaFile = options.metaFile || path.join(shardDir, 'meta.json');
+  const monolithicPath = options.monolithicPath || OUT_FILE;
+  const targetBytes = Number(options.targetBytes) || DEFAULT_SHARD_TARGET_BYTES;
+  const hardLimitBytes = Number(options.hardLimitBytes) || GITHUB_FILE_LIMIT_BYTES;
+  fs.mkdirSync(shardDir, { recursive: true });
+
+  const outputMeta = {
+    ...meta,
+    shards: {},
+    observations: {},
+  };
+  const expected = new Set(['meta.json']);
+  for (const shard of SHARDS) {
+    const buckets = splitShardEntries(shard.name, shard.keys, packs, targetBytes, hardLimitBytes);
+    outputMeta.shards[shard.name] = {
+      keys: shard.keys,
+      buckets: buckets.map(bucket => ({
+        key: bucket.key,
+        file: bucket.key === 'all' ? `${shard.name}.json` : `${shard.name}-${bucket.key}.json`,
+        bytes: bucket.size,
+      })),
+    };
+    for (const bucket of buckets) {
+      const file = bucket.key === 'all' ? `${shard.name}.json` : `${shard.name}-${bucket.key}.json`;
+      expected.add(file);
+      fs.writeFileSync(path.join(shardDir, file), JSON.stringify(bucket.payload));
+    }
+    for (const key of shard.keys) {
+      outputMeta.observations[key] = {
+        shard: shard.name,
+        files: outputMeta.shards[shard.name].buckets.map(bucket => bucket.file),
+      };
+    }
+  }
+  for (const file of fs.readdirSync(shardDir)) {
+    if (!file.endsWith('.json') || expected.has(file)) continue;
+    fs.rmSync(path.join(shardDir, file), { force: true });
+  }
+  fs.writeFileSync(metaFile, JSON.stringify(outputMeta));
+  if (monolithicPath && fs.existsSync(monolithicPath)) fs.rmSync(monolithicPath, { force: true });
+  return outputMeta;
 }
 
 async function processHudIcons(iconsPath) {
@@ -668,11 +749,9 @@ async function main(argv = process.argv.slice(2)) {
     if (done % 20 === 0) console.log(`  ${done}/${dirs.length}`);
   }
   const { groupPacks, meta } = buildGroupedData(packs, excluded.counts);
-  const result = { version: SBI_FINGERPRINT_VERSION, schemaVersion: SBI_GROUP_SCHEMA_VERSION, packs: groupPacks, meta };
-  fs.mkdirSync(path.dirname(OUT_FILE), { recursive: true });
-  fs.writeFileSync(OUT_FILE, JSON.stringify(result));
-  writeShards(groupPacks, meta);
-  console.log(`Done. ${Object.keys(packs).length} packs in ${meta.groupCount} exact groups -> ${OUT_FILE}`);
+  const outputMeta = writeShards(groupPacks, meta);
+  const result = { version: SBI_FINGERPRINT_VERSION, schemaVersion: SBI_GROUP_SCHEMA_VERSION, packs: groupPacks, meta: outputMeta };
+  console.log(`Done. ${Object.keys(packs).length} packs in ${meta.groupCount} exact groups -> ${SHARD_DIR}`);
   return result;
 }
 
@@ -688,4 +767,5 @@ module.exports = {
   loadExcludedPacks,
   main,
   surfaceKey,
+  writeShards,
 };

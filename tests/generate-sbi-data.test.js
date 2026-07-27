@@ -1,8 +1,12 @@
 const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const os = require('node:os');
+const path = require('node:path');
 const test = require('node:test');
 const {
   buildExclusionSet,
   buildGroupedData,
+  writeShards,
 } = require('../scripts/generate-sbi-data');
 
 function feature(seed) {
@@ -56,4 +60,52 @@ test('builds the exact Overlay and Conquest exclusion union', () => {
   ]);
   assert.deepEqual([...excluded.packs].sort(), ['A', 'B', 'Shared']);
   assert.deepEqual(excluded.counts, { Overlay: 2, Conquest: 2 });
+});
+
+test('writes deterministic size-bounded subshards and retires stale monolithic data', async () => {
+  const root = await fs.promises.mkdtemp(path.join(os.tmpdir(), 'vale-sbi-shards-'));
+  try {
+    const shardDir = path.join(root, 'sbi-fp');
+    const monolithicPath = path.join(root, 'sbi-fingerprints.json');
+    fs.mkdirSync(shardDir, { recursive: true });
+    fs.writeFileSync(monolithicPath, 'legacy');
+    fs.writeFileSync(path.join(shardDir, 'diamond_sword-stale.json'), 'stale');
+    const packs = {};
+    for (let index = 0; index < 24; index++) {
+      packs[`g:${String(index).padStart(64, '0')}`] = {
+        diamond_sword: { ...feature(`sword-${index}`), pix: String(index).padStart(2, '0').repeat(180) },
+      };
+    }
+    const meta = {
+      version: 17,
+      schemaVersion: 1,
+      packCount: 24,
+      groupCount: 24,
+      groups: {},
+      rarity: {},
+    };
+    const options = { shardDir, monolithicPath, targetBytes: 1600, hardLimitBytes: 4096 };
+    const firstMeta = writeShards(packs, meta, options);
+    const firstFiles = fs.readdirSync(shardDir).sort();
+    const firstBytes = Object.fromEntries(firstFiles.map(file => [file, fs.readFileSync(path.join(shardDir, file), 'utf8')]));
+
+    assert.equal(fs.existsSync(monolithicPath), false);
+    assert.equal(firstFiles.includes('diamond_sword-stale.json'), false);
+    assert.ok(firstMeta.shards.diamond_sword.buckets.length > 1);
+    assert.deepEqual(
+      firstMeta.observations.diamond_sword.files,
+      firstMeta.shards.diamond_sword.buckets.map(bucket => bucket.file)
+    );
+    for (const file of firstFiles) assert.ok(fs.statSync(path.join(shardDir, file)).size < 4096, file);
+
+    const secondMeta = writeShards(packs, meta, options);
+    const secondFiles = fs.readdirSync(shardDir).sort();
+    assert.deepEqual(secondFiles, firstFiles);
+    assert.deepEqual(secondMeta, firstMeta);
+    for (const file of secondFiles) {
+      assert.equal(fs.readFileSync(path.join(shardDir, file), 'utf8'), firstBytes[file], file);
+    }
+  } finally {
+    await fs.promises.rm(root, { recursive: true, force: true, maxRetries: 5, retryDelay: 50 });
+  }
 });

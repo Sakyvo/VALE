@@ -71,7 +71,7 @@ test('error toasts carry the error class', () => {
 test('no native alert() call sites remain in site scripts', () => {
   const dir = path.join(ROOT, 'assets', 'js');
   for (const file of fs.readdirSync(dir)) {
-    if (!file.endsWith('.js') || file === 'transformers.min.js' || file === 'sbi_test.js') continue;
+    if (!file.endsWith('.js') || file === 'transformers.min.js') continue;
     const source = fs.readFileSync(path.join(dir, file), 'utf-8');
     for (const [index, line] of source.split('\n').entries()) {
       const stripped = line.replace(/\/\/.*$/, '');

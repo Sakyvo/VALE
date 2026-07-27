@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-13T08:11:23.845Z",
-  "contentIndexDigest": "5a90459dead1f676f06776eefc1c51d3ffe9a917467cc10070b61dd6f0a76899",
+  "generatedAt": "2026-07-27T05:54:34.328Z",
+  "contentIndexDigest": "a495de83be1f79c6275185f18542661d038230f76d9d5d8bd362a69e08585a06",
   "conquest": {
     "publicPackCount": 22,
     "packs": [
@@ -2222,6 +2222,14 @@
         "reason": "no_exact_sword_pair"
       },
       {
+        "file": "! §cEUM3 §4Mash.zip",
+        "packId": "EUM3_Mash",
+        "public": false,
+        "included": false,
+        "pairs": [],
+        "reason": "no_exact_sword_pair"
+      },
+      {
         "file": "! §cL§fO§bL.zip",
         "packId": "LOL",
         "public": false,
@@ -4102,6 +4110,14 @@
         "reason": "no_exact_sword_pair"
       },
       {
+        "file": "§3! BLUE 32x.zip",
+        "packId": "BLUE_32x",
+        "public": false,
+        "included": false,
+        "pairs": [],
+        "reason": "no_exact_sword_pair"
+      },
+      {
         "file": "§3!##NEW OTB PACK (beta).zip",
         "packId": "NEW_OTB_PACK_beta",
         "public": true,
@@ -4246,6 +4262,14 @@
         "reason": "no_exact_sword_pair"
       },
       {
+        "file": "§4§lDeproved §4§l1k EDIT.zip",
+        "packId": "Deproved_1k_EDIT",
+        "public": false,
+        "included": false,
+        "pairs": [],
+        "reason": "no_exact_sword_pair"
+      },
+      {
         "file": "§4§lHurtin FPS edited.zip",
         "packId": "Hurtin_FPS_edited",
         "public": false,
@@ -4337,6 +4361,14 @@
         "file": "§4Burn.zip",
         "packId": "Burn",
         "public": true,
+        "included": false,
+        "pairs": [],
+        "reason": "no_exact_sword_pair"
+      },
+      {
+        "file": "§4Deproved 1k.zip",
+        "packId": "Deproved_1k",
+        "public": false,
         "included": false,
         "pairs": [],
         "reason": "no_exact_sword_pair"
@@ -5110,6 +5142,14 @@
         "reason": "no_exact_sword_pair"
       },
       {
+        "file": "§b§lM0DIFIER §8§lPrivate.zip",
+        "packId": "M0DIFIER_Private",
+        "public": false,
+        "included": false,
+        "pairs": [],
+        "reason": "no_exact_sword_pair"
+      },
+      {
         "file": "§b§lTylarzz SUPER AWESOME Pack.zip",
         "packId": "Tylarzz_SUPER_AWESOME_Pack",
         "public": true,
@@ -5854,6 +5894,14 @@
         "reason": "no_exact_sword_pair"
       },
       {
+        "file": "#LOL.zip",
+        "packId": "LOL",
+        "public": false,
+        "included": false,
+        "pairs": [],
+        "reason": "no_exact_sword_pair"
+      },
+      {
         "file": "#Mashup700subs.zip",
         "packId": "Mashup700subs",
         "public": true,
@@ -5872,6 +5920,14 @@
       {
         "file": "#Private Fyes Default Long.zip",
         "packId": "Private_Fyes_Default_Long",
+        "public": false,
+        "included": false,
+        "pairs": [],
+        "reason": "no_exact_sword_pair"
+      },
+      {
+        "file": "#Private Fyes Default.zip",
+        "packId": "Private_Fyes_Default",
         "public": false,
         "included": false,
         "pairs": [],
@@ -7334,6 +7390,14 @@
       {
         "file": "HUU x Pokemon.zip",
         "packId": "HUU_x_Pokemon",
+        "public": false,
+        "included": false,
+        "pairs": [],
+        "reason": "no_exact_sword_pair"
+      },
+      {
+        "file": "Hyperpop 1k beta.zip",
+        "packId": "Hyperpop_1k_beta",
         "public": false,
         "included": false,
         "pairs": [],
@@ -9034,7 +9098,7 @@
     ]
   },
   "overlay": {
-    "publicPackCount": 23,
+    "publicPackCount": 24,
     "packs": [
       "Advisers_Block_Overlay",
       "Arissi_Block_Overlay_V2",
@@ -9050,6 +9114,7 @@
       "Font_2",
       "GDrive",
       "Idiol_Snow_v4",
+      "Infera",
       "Kahzuk_overlay_gray",
       "LightMap_Clear_Walls",
       "Lunar_Themes_Overlay",

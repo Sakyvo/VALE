@@ -3,7 +3,7 @@
   "name": "Infera",
   "displayName": "Infera",
   "coloredName": "<span style=\"color:#55FF55\">I</span><span style=\"color:#55FF55\">n</span><span style=\"color:#55FF55\">f</span><span style=\"color:#55FF55\">e</span><span style=\"color:#55FF55\">r</span><span style=\"color:#55FF55\">a</span>",
-  "description": "By iSparkton",
+  "description": "source",
   "cover": "/thumbnails/Infera/cover.png",
   "packPng": "/thumbnails/Infera/pack.png",
   "icon": null,
@@ -12,6 +12,7 @@
   "uploadDate": "2026-07-03",
   "lists": [
     "Jewdah pf",
+    "Overlay",
     "Sakyvo"
   ],
   "textures": {
@@ -21,6 +22,7 @@
       "splash_potion_of_healing.png",
       "steak.png",
       "iron_sword.png",
+      "stone_sword.png",
       "fishing_rod_uncast.png",
       "apple_golden.png",
       "golden_carrot.png"
@@ -55,7 +57,7 @@
     ]
   },
   "downloads": {
-    "github": "https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/%C2%A78!%20%C2%A7aInfera.zip",
-    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/%C2%A78!%20%C2%A7aInfera.zip"
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/%C2%A78!%20%C2%A7aInfera.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/%C2%A78!%20%C2%A7aInfera.zip"
   }
 }

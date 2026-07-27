@@ -8,6 +8,7 @@
     "test": "node --test \"tests/*.test.js\"",
     "packs:scan-content": "node scripts/scan-pack-content.js",
     "packs:detect-special": "node scripts/detect-special-packs.js",
+    "packs:execute-normalization": "node scripts/execute-reviewed-normalization.js",
     "packs:finalize-replacements": "node scripts/finalize-pack-replacements.js",
     "fix:preview-alpha": "node scripts/fix-thumbnail-preview-alpha.js",
     "sbi:data": "node scripts/generate-sbi-data.js",

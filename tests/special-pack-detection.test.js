@@ -4,13 +4,50 @@ const os = require('node:os');
 const path = require('node:path');
 const test = require('node:test');
 const sharp = require('sharp');
+const { computeRegistryDigest } = require('../scripts/lib/pack-content-index');
 const { pixelHash } = require('../scripts/detect-overlay');
 const {
   detectConquest,
+  main,
   matchingSwordPairs,
   updateManagedLists,
   validateOverrides,
 } = require('../scripts/detect-special-packs');
+
+test('detection report timestamp is bound to the validated content index', async () => {
+  const dir = await fs.promises.mkdtemp(path.join(os.tmpdir(), 'vale-special-report-'));
+  try {
+    const registryPath = path.join(dir, 'registry.json');
+    const contentIndexPath = path.join(dir, 'content-index.json');
+    const siteIndexPath = path.join(dir, 'site-index.json');
+    const overridesPath = path.join(dir, 'overrides.json');
+    const listsPath = path.join(dir, 'lists.json');
+    const registry = {};
+    fs.writeFileSync(registryPath, JSON.stringify(registry));
+    fs.writeFileSync(contentIndexPath, JSON.stringify({
+      schemaVersion: 1,
+      fingerprintSchemaVersion: 1,
+      registryDigest: computeRegistryDigest(registry),
+      registryCount: 0,
+      selectedCount: 0,
+      complete: true,
+      generatedAt: '2026-07-21T00:00:00.000Z',
+      packs: {},
+      failures: [],
+    }));
+    fs.writeFileSync(siteIndexPath, JSON.stringify({ items: [] }));
+    fs.writeFileSync(overridesPath, JSON.stringify({ schemaVersion: 1, conquest: {} }));
+    fs.writeFileSync(listsPath, JSON.stringify([{ name: 'Overlay', packs: [] }]));
+    const report = await main([
+      '--dry-run', '--skip-overlay', '--registry', registryPath,
+      '--content-index', contentIndexPath, '--site-index', siteIndexPath,
+      '--overrides', overridesPath, '--lists', listsPath,
+    ]);
+    assert.equal(report.generatedAt, '2026-07-21T00:00:00.000Z');
+  } finally {
+    await fs.promises.rm(dir, { recursive: true, force: true, maxRetries: 5, retryDelay: 50 });
+  }
+});
 
 test('overlay pixel identity includes image dimensions', async () => {
   const dir = await fs.promises.mkdtemp(path.join(os.tmpdir(), 'vale-overlay-hash-'));

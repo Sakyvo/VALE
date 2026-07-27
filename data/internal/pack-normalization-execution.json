@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "normalizationSchemaVersion": 1,
+  "manifestRegistryDigest": "ec12ec112c33197ea9c14a8d2e2f48eeb35a797111a2d9ccef87394090d90109",
+  "manifestEvidenceDigest": "90cb80da98640ff0f27942d83017d2ddc7c6981776ff9dc1f01441adf18a1921",
+  "reviewedArtifactDigest": "82b45f78b395779915c6cb562280c26c6da097f6263a44e8f0f60bf9234cfdae",
+  "status": "site_prepared",
+  "catalogBefore": [
+    {
+      "path": "K:\\Projects\\website\\VALE\\data\\pack-registry.json",
+      "digest": "0ad009da9137ae802be7f5f3620e43a9c3582c56535694801d9425bab8d198c0"
+    },
+    {
+      "path": "K:\\Projects\\website\\VALE\\data\\internal\\pack-content-index.json",
+      "digest": "7ef55e8920052002aaef24d2f46e8670901517a93c08bad3d435fd1c0d6068da"
+    },
+    {
+      "path": "K:\\Projects\\website\\VALE\\data\\index.json",
+      "digest": "cbacf3e14a16f6c381aaab6c6c1698ddf1b64ed1c424eb557b9c84cb60fb80d5"
+    },
+    {
+      "path": "K:\\Projects\\website\\VALE\\l\\lists.json",
+      "digest": "242de59e6b6fdac9f69b62b0caf42ba07e49a3910fd02b5c34ba93e1b9af0860"
+    },
+    {
+      "path": "K:\\Projects\\website\\VALE\\data\\extracted.json",
+      "digest": "b8eedd62a4ddead29f7122aa9e1f232c74936aa01e1d9bcc7211aa922b750b51"
+    }
+  ],
+  "catalogAfter": [
+    {
+      "path": "K:\\Projects\\website\\VALE\\data\\pack-registry.json",
+      "digest": "f92ee3bf98cae1a41777f4f2b9b92b5f14759f335ca946fe2a1d03d4a3b0c1b2"
+    },
+    {
+      "path": "K:\\Projects\\website\\VALE\\data\\internal\\pack-content-index.json",
+      "digest": "22a10c5356013e33a926d25fa132e2b5b296d662dad28f5abcc39f55aabe23f7"
+    },
+    {
+      "path": "K:\\Projects\\website\\VALE\\data\\index.json",
+      "digest": "17a1d3801efee922acb5e5257b056d87d020113b768cd6395b75bc9fce815643"
+    },
+    {
+      "path": "K:\\Projects\\website\\VALE\\l\\lists.json",
+      "digest": "664e1bce350bd73c606dadb21cbdbad1d2a895c823e7cf7b69891c112b455b6d"
+    },
+    {
+      "path": "K:\\Projects\\website\\VALE\\data\\extracted.json",
+      "digest": "64778d57631861dee65b23778d2cec0aeeefb0cb2f3fd5cb6e246a8148616076"
+    }
+  ],
+  "catalogDiff": [
+    {
+      "path": "K:\\Projects\\website\\VALE\\data\\extracted.json",
+      "before": "b8eedd62a4ddead29f7122aa9e1f232c74936aa01e1d9bcc7211aa922b750b51",
+      "after": "64778d57631861dee65b23778d2cec0aeeefb0cb2f3fd5cb6e246a8148616076",
+      "changed": true
+    },
+    {
+      "path": "K:\\Projects\\website\\VALE\\data\\index.json",
+      "before": "cbacf3e14a16f6c381aaab6c6c1698ddf1b64ed1c424eb557b9c84cb60fb80d5",
+      "after": "17a1d3801efee922acb5e5257b056d87d020113b768cd6395b75bc9fce815643",
+      "changed": true
+    },
+    {
+      "path": "K:\\Projects\\website\\VALE\\data\\internal\\pack-content-index.json",
+      "before": "7ef55e8920052002aaef24d2f46e8670901517a93c08bad3d435fd1c0d6068da",
+      "after": "22a10c5356013e33a926d25fa132e2b5b296d662dad28f5abcc39f55aabe23f7",
+      "changed": true
+    },
+    {
+      "path": "K:\\Projects\\website\\VALE\\data\\pack-registry.json",
+      "before": "0ad009da9137ae802be7f5f3620e43a9c3582c56535694801d9425bab8d198c0",
+      "after": "f92ee3bf98cae1a41777f4f2b9b92b5f14759f335ca946fe2a1d03d4a3b0c1b2",
+      "changed": true
+    },
+    {
+      "path": "K:\\Projects\\website\\VALE\\l\\lists.json",
+      "before": "242de59e6b6fdac9f69b62b0caf42ba07e49a3910fd02b5c34ba93e1b9af0860",
+      "after": "664e1bce350bd73c606dadb21cbdbad1d2a895c823e7cf7b69891c112b455b6d",
+      "changed": true
+    }
+  ],
+  "lifecycle": {
+    "reviewed": "2026-07-26T03:36:31.617Z",
+    "staged_verified": "2026-07-26T06:54:45.335Z",
+    "site_preparing": "2026-07-27T04:51:38.184Z",
+    "site_prepared": "2026-07-27T05:58:02.939Z"
+  },
+  "updatedAt": "2026-07-27T05:58:02.939Z"
+}

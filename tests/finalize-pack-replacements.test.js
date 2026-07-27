@@ -88,7 +88,7 @@ test('local cleanup removes only discarded identities and preserves the retained
     assert.equal(fs.existsSync(path.join(options.packPageRoot, 'Old')), false);
     assert.equal(fs.existsSync(path.join(options.thumbnailsRoot, 'New')), true);
   } finally {
-    await fs.promises.rm(dir, { recursive: true, force: true });
+    await fs.promises.rm(dir, { recursive: true, force: true, maxRetries: 5, retryDelay: 50 });
   }
 });
 
@@ -104,7 +104,7 @@ test('remote cleanup completion resolves only prepared entries', async () => {
     assert.deepEqual(result.entries.map(row => row.incomingFile), ['Other.zip']);
     assert.equal(result.resolved[0].status, 'remote_deleted');
   } finally {
-    await fs.promises.rm(dir, { recursive: true, force: true });
+    await fs.promises.rm(dir, { recursive: true, force: true, maxRetries: 5, retryDelay: 50 });
   }
 });
 

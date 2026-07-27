@@ -697,19 +697,40 @@ async function generateCover(packId, textures, outputDir) {
   await generateCoverFromOutputDir(outputDir);
 }
 
-async function main() {
-  const args = process.argv.slice(2);
-  let packsDir = 'resourcepacks';
-  let merge = false;
-  let manifestPath = null;
-  for (let i = 0; i < args.length; i++) {
-    if (args[i] === '--input') packsDir = args[++i];
-    else if (args[i] === '--merge') merge = true;
-    else if (args[i] === '--manifest') manifestPath = args[++i];
+function parseArgs(argv) {
+  const options = {
+    packsDir: 'resourcepacks',
+    merge: false,
+    manifestPath: null,
+    replaceExisting: false,
+    strict: false,
+  };
+  for (let i = 0; i < argv.length; i++) {
+    if (argv[i] === '--input') options.packsDir = argv[++i];
+    else if (argv[i] === '--merge') options.merge = true;
+    else if (argv[i] === '--manifest') options.manifestPath = argv[++i];
+    else if (argv[i] === '--replace-existing') options.replaceExisting = true;
+    else if (argv[i] === '--strict') options.strict = true;
+    else throw new Error(`Unknown argument: ${argv[i]}`);
   }
+  if (options.replaceExisting && !options.manifestPath) {
+    throw new Error('--replace-existing requires --manifest');
+  }
+  return options;
+}
+
+function upsertExtraction(results, result, replaceExisting) {
+  const index = results.findIndex(row => row.packId === result.packId);
+  if (index >= 0 && replaceExisting) results[index] = result;
+  else if (index < 0) results.push(result);
+}
+
+async function main(argv = process.argv.slice(2)) {
+  const { packsDir, merge, manifestPath, replaceExisting, strict } = parseArgs(argv);
   if (!fs.existsSync(packsDir)) {
+    if (strict) throw new Error(`No input directory found: ${packsDir}`);
     console.log(`No input directory found: ${packsDir}`);
-    return;
+    return { processed: 0, failures: [] };
   }
 
   const files = fs.readdirSync(packsDir).filter(f => f.endsWith('.zip') || f.endsWith('.rar'));
@@ -721,6 +742,8 @@ async function main() {
   const allowedIds = manifestPath
     ? new Set(JSON.parse(fs.readFileSync(manifestPath, 'utf-8')).extractPackIds || [])
     : null;
+  const processedIds = new Set();
+  const failures = [];
 
   for (const file of files) {
     console.log(`Processing: ${file}`);
@@ -740,22 +763,48 @@ async function main() {
         console.log(`  Skipped: ${packId} (not in manifest extract set)`);
         continue;
       }
-      if (usedIds.has(packId)) {
+      const replacing = replaceExisting && allowedIds && allowedIds.has(packId) && !processedIds.has(packId);
+      if (usedIds.has(packId) && !replacing) {
         console.log(`  Skipped: ${packId} (duplicate of existing)`);
         continue;
       }
       const result = await extractPack(zipPath);
-      if (!result) continue;
+      if (!result) {
+        failures.push({ file, packId, reason: 'extraction_returned_no_result' });
+        continue;
+      }
       usedIds.add(result.packId);
-      results.push(result);
+      processedIds.add(result.packId);
+      upsertExtraction(results, result, replaceExisting);
       console.log(`  Extracted: ${result.packId}`);
     } catch (err) {
+      failures.push({ file, reason: err.message });
       console.error(`  Error: ${err.message}`);
     }
   }
 
+  const missing = allowedIds ? [...allowedIds].filter(packId => !processedIds.has(packId)) : [];
+  if (strict && (failures.length || missing.length)) {
+    const detail = [
+      ...failures.map(row => `${row.file}: ${row.reason}`),
+      ...missing.map(packId => `${packId}: missing input or extraction result`),
+    ];
+    throw new Error(`Texture extraction failed for ${detail.length} target(s): ${detail.join('; ')}`);
+  }
   fs.writeFileSync('data/extracted.json', JSON.stringify(results, null, 2));
   console.log(`Done. Processed ${results.length} packs.`);
+  return { processed: processedIds.size, failures, missing };
 }
 
-main();
+if (require.main === module) {
+  main().catch(error => {
+    console.error(error.stack || error.message);
+    process.exitCode = 1;
+  });
+}
+
+module.exports = {
+  main,
+  parseArgs,
+  upsertExtraction,
+};

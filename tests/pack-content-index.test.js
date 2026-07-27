@@ -1,4 +1,7 @@
 const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const os = require('node:os');
+const path = require('node:path');
 const test = require('node:test');
 const {
   PackContentIndexError,
@@ -6,11 +9,46 @@ const {
   computeRegistryDigest,
   sourceKey,
   validateContentIndex,
+  writeJsonAtomic,
 } = require('../scripts/lib/pack-content-index');
 
 const registry = {
   'a.zip': { repo: 'packs-001', repoNum: 1, size: 10 },
 };
+
+test('writeJsonAtomic retries transient Windows file locks', () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'vale-atomic-write-'));
+  const filePath = path.join(root, 'state.json');
+  fs.writeFileSync(filePath, '{}');
+  const originalRename = fs.renameSync;
+  const originalRemove = fs.rmSync;
+  let renameFailures = 1;
+  let removeFailures = 1;
+  fs.renameSync = (...args) => {
+    if (renameFailures-- > 0) {
+      const error = new Error('locked');
+      error.code = 'EPERM';
+      throw error;
+    }
+    return originalRename(...args);
+  };
+  fs.rmSync = (...args) => {
+    if (removeFailures-- > 0) {
+      const error = new Error('locked');
+      error.code = 'EPERM';
+      throw error;
+    }
+    return originalRemove(...args);
+  };
+  try {
+    writeJsonAtomic(filePath, { ok: true });
+    assert.deepEqual(JSON.parse(fs.readFileSync(filePath, 'utf8')), { ok: true });
+  } finally {
+    fs.renameSync = originalRename;
+    fs.rmSync = originalRemove;
+    originalRemove(root, { recursive: true, force: true });
+  }
+});
 
 test('validates a complete index bound to the registry digest', () => {
   const index = {

@@ -46,6 +46,12 @@ function sha256(value) {
   return crypto.createHash('sha256').update(value).digest('hex');
 }
 
+function sha256Parts(...values) {
+  const hash = crypto.createHash('sha256');
+  for (const value of values) hash.update(value);
+  return hash.digest('hex');
+}
+
 async function sha256File(filePath) {
   const hash = crypto.createHash('sha256');
   await new Promise((resolve, reject) => {
@@ -104,7 +110,7 @@ function checkArchiveLimits(entries, limits) {
 }
 
 function readZipRows(input, depth, limits) {
-  if (depth > 2) throw new PackFingerprintError('nested_archive_depth', 'Nested archive depth exceeds 2');
+  if (depth > 10) throw new PackFingerprintError('nested_archive_depth', 'Nested archive depth exceeds 10');
   let zip;
   try {
     zip = new AdmZip(input);
@@ -191,6 +197,12 @@ function classifyVisualPath(entryPath) {
   if (extension === '.properties' && (padded.includes('/optifine/') || padded.includes('/mcpatcher/'))) return 'properties';
   if (SHADER_EXTENSIONS.has(extension) && padded.includes('/shaders/')) return 'text';
   return null;
+}
+
+function isNormalizationRootBranding(entryPath) {
+  if (entryPath.includes('/')) return false;
+  const lower = entryPath.toLowerCase();
+  return lower === 'pack..png' || lower === 'pack.png.png';
 }
 
 function decodeText(buffer) {
@@ -294,7 +306,7 @@ async function hashRaster(buffer, entryPath) {
       .toBuffer({ resolveWithObject: true });
   } catch (error) {
     return {
-      pixelHash: sha256(Buffer.concat([Buffer.from('invalid-raster\0'), buffer])),
+      pixelHash: sha256Parts(Buffer.from('invalid-raster\0'), buffer),
       info: { invalid: true, bytes: buffer.length },
       decodable: false,
     };
@@ -307,7 +319,7 @@ async function hashRaster(buffer, entryPath) {
     pageHeight: result.info.pageHeight || result.info.height,
   };
   const header = Buffer.from(`${stableStringify(info)}\0`);
-  return { pixelHash: sha256(Buffer.concat([header, result.data])), info, decodable: true };
+  return { pixelHash: sha256Parts(header, result.data), info, decodable: true };
 }
 
 function readEntryData(entry, entryPath) {
@@ -362,6 +374,7 @@ async function fingerprintPack(zipPath, options = {}) {
 
   for (const row of rows) {
     if (row.entry.isDirectory) continue;
+    if (options.normalizationSource && isNormalizationRootBranding(row.path)) continue;
     const kind = classifyVisualPath(row.path);
     if (!kind) continue;
     if (seen.has(row.path)) {

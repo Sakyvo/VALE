@@ -143,7 +143,7 @@ async function main(argv = process.argv.slice(2)) {
 
   const report = {
     schemaVersion: 1,
-    generatedAt: new Date().toISOString(),
+    generatedAt: contentIndex.generatedAt,
     contentIndexDigest: contentIndex.registryDigest,
     conquest: {
       publicPackCount: conquest.packs.length,

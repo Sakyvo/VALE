@@ -55,7 +55,7 @@ function initClipWorker() {
 }
 
 let _lastHashResults = [], _lastAllScores = {};
-const SBI_FINGERPRINT_VERSION = 16;
+const SBI_FINGERPRINT_VERSION = 17;
 const SBI_BASE_FINGERPRINT_SHARDS = ['widget', 'health', 'hunger', 'armor', 'diamond_sword', 'ender_pearl', 'splash_potion'];
 const SBI_FOOD_FINGERPRINT_SHARD = 'food';
 const SBI_FINGERPRINT_SHARD_PATH = '/data/sbi-fp/';
@@ -163,7 +163,7 @@ function createFingerprintStore() {
 }
 
 function applyFingerprintMetadata(meta) {
-  if (!meta || meta.version !== SBI_FINGERPRINT_VERSION || !meta.groups || !meta.rarity) {
+  if (!meta || meta.version !== SBI_FINGERPRINT_VERSION || !meta.groups || !meta.rarity || !meta.shards || !meta.observations) {
     throw new Error('Fingerprint metadata is missing or incompatible');
   }
   if (!fingerprints) fingerprints = createFingerprintStore();
@@ -187,36 +187,70 @@ async function loadFingerprintMetadata() {
   await _fingerprintMetaPromise;
 }
 
-function mergeFingerprintShard(shardName, shard) {
+function mergeShardIndex(target, source) {
+  for (const [key, value] of Object.entries(source || {})) {
+    if (Array.isArray(value)) {
+      const merged = new Set([...(target[key] || []), ...value]);
+      target[key] = [...merged];
+    } else if (value && typeof value === 'object') {
+      if (!target[key] || typeof target[key] !== 'object' || Array.isArray(target[key])) target[key] = {};
+      mergeShardIndex(target[key], value);
+    }
+  }
+  return target;
+}
+
+function mergeFingerprintShard(shardFile, shard) {
   if (!fingerprints) fingerprints = createFingerprintStore();
   const packs = shard && shard.packs ? shard.packs : {};
   for (const [packName, packData] of Object.entries(packs)) {
     if (!fingerprints.packs[packName]) fingerprints.packs[packName] = {};
     Object.assign(fingerprints.packs[packName], packData);
   }
-  fingerprints._loadedShards[shardName] = true;
-  if (shard && shard._index) fingerprints._shardIndexes[shardName] = shard._index;
+  fingerprints._loadedShards[shardFile] = true;
+  const logicalName = shard && shard.type ? shard.type : shardFile.replace(/\.json$/, '');
+  if (shard && shard._index) {
+    if (!fingerprints._shardIndexes[logicalName]) fingerprints._shardIndexes[logicalName] = {};
+    mergeShardIndex(fingerprints._shardIndexes[logicalName], shard._index);
+  }
 }
 
-async function loadFingerprintShard(shardName) {
+function resolveFingerprintShardFiles(shardNames) {
+  const files = [];
+  for (const shardName of shardNames) {
+    const descriptor = fingerprints && fingerprints._meta && fingerprints._meta.shards
+      ? fingerprints._meta.shards[shardName]
+      : null;
+    if (!descriptor || !Array.isArray(descriptor.buckets) || !descriptor.buckets.length) {
+      throw new Error('Fingerprint metadata has no buckets for shard: ' + shardName);
+    }
+    for (const bucket of descriptor.buckets) {
+      if (!bucket || !bucket.file) throw new Error('Fingerprint metadata has an invalid bucket for shard: ' + shardName);
+      if (!files.includes(bucket.file)) files.push(bucket.file);
+    }
+  }
+  return files;
+}
+
+async function loadFingerprintShard(shardFile) {
   if (!fingerprints) fingerprints = createFingerprintStore();
-  if (fingerprints._loadedShards[shardName]) return;
-  if (!_fingerprintShardPromises[shardName]) {
-    _fingerprintShardPromises[shardName] = (async () => {
-      const resp = await fetch(`${SBI_FINGERPRINT_SHARD_PATH}${shardName}.json?v=${SBI_FINGERPRINT_VERSION}`);
-      if (!resp.ok) throw new Error('Failed to load fingerprint shard: ' + shardName + ' (' + resp.status + ')');
+  if (fingerprints._loadedShards[shardFile]) return;
+  if (!_fingerprintShardPromises[shardFile]) {
+    _fingerprintShardPromises[shardFile] = (async () => {
+      const resp = await fetch(`${SBI_FINGERPRINT_SHARD_PATH}${shardFile}?v=${SBI_FINGERPRINT_VERSION}`);
+      if (!resp.ok) throw new Error('Failed to load fingerprint shard: ' + shardFile + ' (' + resp.status + ')');
       const shard = await resp.json();
-      if (shard.version !== SBI_FINGERPRINT_VERSION) throw new Error('Fingerprint shard version mismatch: ' + shardName);
-      mergeFingerprintShard(shardName, shard);
+      if (shard.version !== SBI_FINGERPRINT_VERSION) throw new Error('Fingerprint shard version mismatch: ' + shardFile);
+      mergeFingerprintShard(shardFile, shard);
     })();
   }
-  await _fingerprintShardPromises[shardName];
+  await _fingerprintShardPromises[shardFile];
 }
 
 async function ensureFingerprints(shardNames) {
   const names = shardNames && shardNames.length ? shardNames : SBI_BASE_FINGERPRINT_SHARDS;
   await loadFingerprintMetadata();
-  await Promise.all(names.map(loadFingerprintShard));
+  await Promise.all(resolveFingerprintShardFiles(names).map(loadFingerprintShard));
 }
 
 function getGroupInfo(groupId) {

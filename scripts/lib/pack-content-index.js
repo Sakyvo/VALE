@@ -18,6 +18,17 @@ function readJson(filePath, fallback) {
   return fs.existsSync(filePath) ? JSON.parse(fs.readFileSync(filePath, 'utf8')) : fallback;
 }
 
+function retryWindowsFileOperation(operation, attempts = 20, delayMs = 25) {
+  for (let attempt = 0; ; attempt++) {
+    try {
+      return operation();
+    } catch (error) {
+      if (!['EPERM', 'EBUSY', 'EACCES'].includes(error.code) || attempt >= attempts - 1) throw error;
+      Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, delayMs);
+    }
+  }
+}
+
 function writeJsonAtomic(filePath, value) {
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
   const tempPath = `${filePath}.tmp`;
@@ -25,8 +36,8 @@ function writeJsonAtomic(filePath, value) {
   try {
     fs.renameSync(tempPath, filePath);
   } catch {
-    fs.rmSync(filePath, { force: true });
-    fs.renameSync(tempPath, filePath);
+    retryWindowsFileOperation(() => fs.rmSync(filePath, { force: true }));
+    retryWindowsFileOperation(() => fs.renameSync(tempPath, filePath));
   }
 }
 
@@ -136,6 +147,7 @@ module.exports = {
   computeRegistryDigest,
   readJson,
   refreshContentIndexMetadata,
+  retryWindowsFileOperation,
   sourceKey,
   validateContentIndex,
   writeJsonAtomic,
