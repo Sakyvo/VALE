@@ -193,3 +193,17 @@ test('mobile: page gutters and modal padding follow the spacing scale', () => {
   assert.match(mobile, /\.pack-detail \{[^}]*padding: 0 16px/, 'detail page tightens');
   assert.match(mobile, /\.modal-overlay \{[^}]*padding: 16px/, 'modals keep a gutter on small screens');
 });
+
+test('mobile: no horizontal overflow escape hatches on the page shell', () => {
+  const source = css();
+  assert.match(block(source, '\nbody {'), /overflow-x: hidden/, 'body clamps horizontal overflow');
+  const mobile = mobileBlocks(source);
+  assert.match(mobile, /\.pack-search-box \{[^}]*max-width: 100%/, 'list-detail search box stops using the desktop calc width');
+});
+
+test('letter-spaced display text compensates the trailing gap when centered', () => {
+  const source = css();
+  const title = block(source, '\n.site-title {');
+  assert.match(title, /letter-spacing: 8px/);
+  assert.match(title, /text-indent: 8px/, 'trailing letter-space is compensated so the title reads centered');
+});

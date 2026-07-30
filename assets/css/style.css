@@ -52,6 +52,7 @@ body {
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 header {
@@ -129,6 +130,7 @@ nav { display: flex; gap: 12px; align-items: center; }
   font-size: 48px;
   font-weight: bold;
   letter-spacing: 8px;
+  text-indent: 8px;
   margin-bottom: 16px;
 }
 
@@ -1384,6 +1386,9 @@ footer {
   .sbi-result-card { height: 44px; }
 
   .modal-overlay { padding: 16px; }
+
+  .pack-search-box { max-width: 100%; }
+  .section-header { flex-wrap: wrap; gap: 12px; }
 
   #toast-stack {
     left: 16px;
