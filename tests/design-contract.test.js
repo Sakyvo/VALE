@@ -207,3 +207,23 @@ test('letter-spaced display text compensates the trailing gap when centered', ()
   assert.match(title, /letter-spacing: 8px/);
   assert.match(title, /text-indent: 8px/, 'trailing letter-space is compensated so the title reads centered');
 });
+
+test('grids cannot be widened past their container by long pack names', () => {
+  const source = css();
+  for (const selector of ['\n.pack-grid {', '\n.list-grid {']) {
+    const body = block(source, selector);
+    assert.match(body, /minmax\(0, 1fr\)/, `${selector.trim()} uses minmax(0, 1fr) so min-content cannot expand the track`);
+    const tracks = (body.match(/grid-template-columns:([^;]*)/) || [])[1] || '';
+    assert.doesNotMatch(tracks.replace(/minmax\(0, 1fr\)/g, ''), /\b1fr\b/, `${selector.trim()} has no bare 1fr track`);
+  }
+  for (const m of source.matchAll(/@media[^{]*\{[^@]*?\.(pack|list)-grid \{([^}]*)\}/g)) {
+    if (/grid-template-columns/.test(m[2])) {
+      assert.match(m[2], /minmax\(0, 1fr\)/, `responsive ${m[1]}-grid override also needs minmax(0, 1fr): ${m[2].trim()}`);
+    }
+  }
+});
+
+test('long unbroken pack names wrap inside cards', () => {
+  const source = css();
+  assert.match(block(source, '.pack-card .name {'), /overflow-wrap: anywhere/, 'card names break rather than push the card wider');
+});
