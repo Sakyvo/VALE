@@ -227,3 +227,26 @@ test('long unbroken pack names wrap inside cards', () => {
   const source = css();
   assert.match(block(source, '.pack-card .name {'), /overflow-wrap: anywhere/, 'card names break rather than push the card wider');
 });
+
+test('mobile: min-height controls center their label instead of leaving bottom padding', () => {
+  const mobile = mobileBlocks(css());
+  const rules = [...mobile.matchAll(/([^{}]+)\{([^}]*)\}/g)].map(m => ({
+    selectors: m[1].split(',').map(sel => sel.trim()),
+    body: m[2],
+  }));
+  for (const selector of ['.nav-btn', '.tab-btn', '.sort-btn', '.btn-compact', '.sbi-preset-btn', '.sbi-action-btn', '.sbi-mode-btn']) {
+    const declared = rules.filter(r => r.selectors.includes(selector)).map(r => r.body).join(' ');
+    assert.ok(declared, `600px block styles ${selector}`);
+    assert.match(declared, /min-height: 40px/, `${selector} keeps its 40px tap target`);
+    assert.match(declared, /display: (inline-)?flex/, `${selector} uses flex so the label centers vertically`);
+    assert.match(declared, /align-items: center/, `${selector} centers its label`);
+    assert.match(declared, /justify-content: center/, `${selector} centers its label horizontally`);
+  }
+});
+
+test('section header row keeps its controls the same height', () => {
+  const source = css();
+  const headerRules = [...source.matchAll(/\n\.section-header \{([^}]*)\}/g)].map(m => m[1]).join(' ');
+  assert.match(headerRules, /align-items: (center|stretch)/, 'tabs and sort button align on one baseline');
+  assert.match(block(source, '\n.section-tabs {'), /align-items: (center|stretch)/);
+});
