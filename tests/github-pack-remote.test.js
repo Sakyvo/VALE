@@ -1,4 +1,5 @@
 const assert = require('node:assert/strict');
+const crypto = require('node:crypto');
 const fs = require('node:fs');
 const http = require('node:http');
 const os = require('node:os');
@@ -338,22 +339,34 @@ test('publishes and deletes archives through an owned temporary partial clone', 
     const source = path.join(root, 'Product.zip');
     const payload = Buffer.concat([Buffer.from('PK\x03\x04'), Buffer.alloc(2048, 91)]);
     fs.writeFileSync(source, payload);
+    const identityRefs = [];
     const remote = createGitHubPackRemote({
       allowCreateRepo: false,
       mutation: true,
       repoUrl: () => bare,
+      rawUrl: (_repo, _file, _nonce, reference) => {
+        identityRefs.push(reference);
+        return `data:application/octet-stream;base64,${payload.toString('base64')}`;
+      },
       workdir,
     });
     try {
       await remote.publishArchive({ repo: 'packs-005', file: 'Product.zip', path: source });
       const stored = git(['--git-dir', bare, 'show', 'main:resourcepacks/Product.zip'], { encoding: null });
       assert.deepEqual(stored, payload);
+      assert.deepEqual(await remote.getArchiveIdentity({
+        repo: 'packs-005', file: 'Product.zip', size: payload.length,
+      }), { size: payload.length, archiveSha256: crypto.createHash('sha256').update(payload).digest('hex') });
+      assert.equal(identityRefs.at(-1), git(['--git-dir', bare, 'rev-parse', 'main']).toString().trim());
       await assert.rejects(
         remote.publishArchive({ repo: 'packs-005', file: 'Product.zip', path: source }),
         /already exists/
       );
       await remote.deleteArchive({ repo: 'packs-005', file: 'Product.zip' });
       assert.throws(() => git(['--git-dir', bare, 'cat-file', '-e', 'main:resourcepacks/Product.zip']));
+      assert.equal(await remote.getArchiveIdentity({
+        repo: 'packs-005', file: 'Product.zip', size: payload.length,
+      }), null);
     } finally {
       remote.close();
     }
@@ -364,6 +377,47 @@ test('publishes and deletes archives through an owned temporary partial clone', 
       () => createGitHubPackRemote({ mutation: true, workdir }),
       /already exists/
     );
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('pins read-only archive identities to one cached remote commit', async () => {
+  const root = await fs.promises.mkdtemp(path.join(os.tmpdir(), 'vale-github-remote-head-'));
+  const bare = path.join(root, 'packs-005.git');
+  const seed = path.join(root, 'seed');
+  const payload = Buffer.concat([Buffer.from('PK\x03\x04'), Buffer.alloc(2048, 83)]);
+  try {
+    git(['init', '--bare', bare]);
+    git(['init', '-b', 'main', seed]);
+    git(['-C', seed, 'config', 'user.name', 'VALE test']);
+    git(['-C', seed, 'config', 'user.email', 'vale-test@localhost']);
+    fs.mkdirSync(path.join(seed, 'resourcepacks'));
+    fs.writeFileSync(path.join(seed, 'resourcepacks', 'Product.zip'), payload);
+    git(['-C', seed, 'add', 'resourcepacks/Product.zip']);
+    git(['-C', seed, 'commit', '-m', 'seed archive']);
+    git(['-C', seed, 'remote', 'add', 'origin', bare]);
+    git(['-C', seed, 'push', '-u', 'origin', 'main']);
+    const expectedHead = git(['--git-dir', bare, 'rev-parse', 'main']).toString().trim();
+    const identityRefs = [];
+    let repoUrlCalls = 0;
+    const remote = createGitHubPackRemote({
+      allowCreateRepo: false,
+      repoUrl: () => { repoUrlCalls++; return bare; },
+      rawUrl: (_repo, _file, _nonce, reference) => {
+        identityRefs.push(reference);
+        return `data:application/octet-stream;base64,${payload.toString('base64')}`;
+      },
+    });
+    try {
+      const expected = { repo: 'packs-005', file: 'Product.zip', size: payload.length };
+      await remote.getArchiveIdentity(expected);
+      await remote.getArchiveIdentity(expected);
+      assert.deepEqual(identityRefs, [expectedHead, expectedHead]);
+      assert.equal(repoUrlCalls, 1);
+    } finally {
+      remote.close();
+    }
   } finally {
     fs.rmSync(root, { recursive: true, force: true });
   }

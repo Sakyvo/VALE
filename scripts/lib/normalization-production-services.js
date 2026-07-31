@@ -30,6 +30,7 @@ function productionPaths(overrides = {}) {
     sbiMetaPath: path.join(ROOT, 'data', 'sbi-fp', 'meta.json'),
     legacySbiPath: path.join(ROOT, 'data', 'sbi-fingerprints.json'),
     tombstonePath: path.join(ROOT, 'data', 'internal', 'pack-normalization-illegal-tombstones.json'),
+    finalReconciliationStatePath: path.join(ROOT, 'data', 'internal', 'pack-normalization-reconciliation-state.json'),
     ...overrides,
   };
 }

@@ -29,10 +29,10 @@ function archivePath(file) {
   return `resourcepacks/${assertArchiveFile(file)}`;
 }
 
-function buildRawArchiveUrl(owner, repo, file, nonce = '') {
+function buildRawArchiveUrl(owner, repo, file, nonce = '', reference = 'main') {
   assertRepo(repo);
   assertArchiveFile(file);
-  const base = `https://raw.githubusercontent.com/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/main/resourcepacks/${encodeURIComponent(file)}`;
+  const base = `https://raw.githubusercontent.com/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/${encodeURIComponent(reference)}/resourcepacks/${encodeURIComponent(file)}`;
   return nonce ? `${base}?vale=${encodeURIComponent(nonce)}` : base;
 }
 
@@ -194,10 +194,11 @@ function createGitHubPackRemote(options = {}) {
   const owner = options.owner || 'Sakyvo';
   const workdir = path.resolve(options.workdir || DEFAULT_WORKDIR);
   const repoUrl = options.repoUrl || (repo => `https://github.com/${owner}/${repo}.git`);
-  const rawUrl = options.rawUrl || ((repo, file, nonce) => buildRawArchiveUrl(owner, repo, file, nonce));
+  const rawUrl = options.rawUrl || ((repo, file, nonce, reference) => buildRawArchiveUrl(owner, repo, file, nonce, reference));
   const allowCreateRepo = options.allowCreateRepo !== false;
   const mutation = Boolean(options.mutation);
   const clones = new Map();
+  const remoteHeads = new Map();
   const markerToken = crypto.randomBytes(16).toString('hex');
   let ownsWorkdir = false;
 
@@ -252,6 +253,29 @@ function createGitHubPackRemote(options = {}) {
     return repoDir;
   }
 
+  function resolveRemoteHead(repo) {
+    if (remoteHeads.has(repo)) return remoteHeads.get(repo);
+    const repoDir = clones.get(repo);
+    const head = repoDir
+      ? git(repoDir, ['rev-parse', 'refs/remotes/origin/main'])
+      : run('git', ['ls-remote', repoUrl(repo), 'refs/heads/main']).split(/\s+/)[0];
+    if (!/^[a-f0-9]{40,64}$/.test(head)) {
+      throw new Error(`Pack repository main branch is missing: ${owner}/${repo}`);
+    }
+    remoteHeads.set(repo, head);
+    return head;
+  }
+
+  function getRepositoryReference(repo, options = {}) {
+    assertRepo(repo);
+    if (options.refresh) {
+      remoteHeads.delete(repo);
+      const repoDir = clones.get(repo);
+      if (repoDir) git(repoDir, ['fetch', 'origin', 'main']);
+    }
+    return resolveRemoteHead(repo);
+  }
+
   function mutateRepository(repo, file, operation, sourcePath) {
     const repoDir = ensureClone(repo);
     const targetPath = archivePath(file);
@@ -290,6 +314,7 @@ function createGitHubPackRemote(options = {}) {
         },
       });
       git(repoDir, ['update-ref', 'refs/remotes/origin/main', commit]);
+      remoteHeads.set(repo, commit);
       return true;
     } finally {
       fs.rmSync(indexPath, { force: true });
@@ -299,6 +324,11 @@ function createGitHubPackRemote(options = {}) {
   async function getArchiveIdentity({ repo, file, size: expectedSize }) {
     assertRepo(repo);
     assertArchiveFile(file);
+    const repoDir = clones.get(repo);
+    let reference = resolveRemoteHead(repo);
+    if (repoDir) {
+      if (!gitExists(repoDir, `${reference}:${archivePath(file)}`)) return null;
+    }
     const attempts = Math.max(1, Number(options.identityAttempts) || Number(options.fetchOptions?.attempts) || 4);
     const chunkSize = Math.max(1, Number(options.rangeChunkSize) || 16 * 1024 * 1024);
     if (options.transport === 'curl') {
@@ -317,7 +347,7 @@ function createGitHubPackRemote(options = {}) {
           try {
             const nextHash = hash.copy();
             const nonce = `${Date.now()}-${crypto.randomBytes(6).toString('hex')}`;
-            const result = await curlRange(command, rawUrl(repo, file, nonce), {
+            const result = await curlRange(command, rawUrl(repo, file, nonce, reference), {
               start: offset,
               end,
               timeoutMs: options.fetchOptions?.timeoutMs,
@@ -359,7 +389,7 @@ function createGitHubPackRemote(options = {}) {
         try {
           const headers = { ...(options.fetchOptions?.headers || {}), range: `bytes=${offset}-${requestedEnd}` };
           const nonce = `${Date.now()}-${crypto.randomBytes(6).toString('hex')}`;
-          const response = await fetchArchive(rawUrl(repo, file, nonce), {
+          const response = await fetchArchive(rawUrl(repo, file, nonce, reference), {
             ...options.fetchOptions,
             attempts: 1,
             headers,
@@ -532,6 +562,7 @@ function createGitHubPackRemote(options = {}) {
     deleteArchive,
     downloadArchive,
     getArchiveIdentity,
+    getRepositoryReference,
     publishArchive,
     verifyArchive,
     workdir,

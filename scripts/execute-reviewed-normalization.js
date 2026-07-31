@@ -704,15 +704,90 @@ async function reconcileFinalState(options, services) {
       }
     }
   }
-  let remoteVerified = 0;
-  for (const [file, registryEntry] of Object.entries(registry)) {
-    const indexed = contentIndex.packs[file];
-    const actual = await services.remote.getArchiveIdentity({ file, ...registryEntry });
-    if (!actual || Number(actual.size) !== Number(registryEntry.size) ||
-        actual.archiveSha256 !== indexed.archiveSha256) {
-      throw new Error(`Final retained remote archive mismatch: ${registryEntry.repo}/${file}`);
+  const retained = Object.entries(registry);
+  const reconciliationDigest = digest({
+    registry,
+    packs: Object.fromEntries(retained.map(([file]) => [file, contentIndex.packs[file].archiveSha256])),
+  });
+  const checkpointPath = options.finalReconciliationStatePath;
+  let checkpoint = {
+    schemaVersion: 1,
+    reconciliationDigest,
+    repoReferences: {},
+    verified: {},
+  };
+  if (checkpointPath) {
+    if (typeof services.remote.getRepositoryReference !== 'function') {
+      throw new Error('Final reconciliation checkpoint requires repository references');
     }
-    remoteVerified++;
+    const saved = readJson(checkpointPath, null);
+    if (saved && saved.schemaVersion === 1 && saved.reconciliationDigest === reconciliationDigest &&
+        saved.repoReferences && saved.verified) {
+      checkpoint = saved;
+    }
+    const repos = [...new Set(retained.map(([, entry]) => entry.repo))].sort();
+    for (const repo of repos) {
+      const reference = await services.remote.getRepositoryReference(repo);
+      if (checkpoint.repoReferences[repo] !== reference) {
+        for (const [file, proof] of Object.entries(checkpoint.verified)) {
+          if (proof.repo === repo) delete checkpoint.verified[file];
+        }
+        checkpoint.repoReferences[repo] = reference;
+      }
+    }
+    writeJsonAtomic(checkpointPath, checkpoint);
+  }
+  const expectedProof = (file, registryEntry) => ({
+    repo: registryEntry.repo,
+    reference: checkpoint.repoReferences[registryEntry.repo],
+    size: Number(registryEntry.size),
+    archiveSha256: contentIndex.packs[file].archiveSha256,
+  });
+  const isVerified = (file, registryEntry) => {
+    if (!checkpointPath) return false;
+    return stableStringify(checkpoint.verified[file]) === stableStringify(expectedProof(file, registryEntry));
+  };
+  const pending = retained.filter(([file, registryEntry]) => !isVerified(file, registryEntry));
+  let cursor = 0;
+  let remoteVerified = retained.length - pending.length;
+  let remoteFailure = null;
+  const workers = Array.from({
+    length: Math.max(1, Math.min(Number(options.finalReconciliationConcurrency) || 6, pending.length || 1)),
+  }, async () => {
+    while (!remoteFailure) {
+      const index = cursor++;
+      if (index >= pending.length) return;
+      const [file, registryEntry] = pending[index];
+      try {
+        const indexed = contentIndex.packs[file];
+        const actual = await services.remote.getArchiveIdentity({ file, ...registryEntry });
+        if (!actual || Number(actual.size) !== Number(registryEntry.size) ||
+            actual.archiveSha256 !== indexed.archiveSha256) {
+          throw new Error(`Final retained remote archive mismatch: ${registryEntry.repo}/${file}`);
+        }
+        if (checkpointPath) {
+          checkpoint.verified[file] = expectedProof(file, registryEntry);
+          writeJsonAtomic(checkpointPath, checkpoint);
+        }
+        const done = ++remoteVerified;
+        if (typeof options.onFinalReconciliationProgress === 'function') {
+          options.onFinalReconciliationProgress(done, retained.length, { file, ...registryEntry });
+        }
+      } catch (error) {
+        remoteFailure = error;
+      }
+    }
+  });
+  await Promise.all(workers);
+  if (remoteFailure) throw remoteFailure;
+  if (checkpointPath) {
+    for (const [repo, reference] of Object.entries(checkpoint.repoReferences)) {
+      const current = await services.remote.getRepositoryReference(repo, { refresh: true });
+      if (current !== reference) {
+        throw new Error(`Pack repository changed during final reconciliation: ${repo}`);
+      }
+    }
+    fs.rmSync(checkpointPath, { force: true });
   }
   if (options.legacySbiPath && fs.existsSync(options.legacySbiPath)) {
     throw new Error(`Legacy monolithic SBI artifact remains: ${options.legacySbiPath}`);
@@ -945,6 +1020,7 @@ async function runReviewedMigration(options = {}, services = {}) {
       phase,
     }, services);
     const reconciliation = await reconcileFinalState(resolved, services);
+    executionState.finalReconciliation = reconciliation;
     finishExecutionPhase(resolved, approvedManifest, review, executionState, 'complete', { illegal, single, collection });
     return { phase, reviewedArtifactDigest, illegal, single, collection, reconciliation };
   }
@@ -959,6 +1035,7 @@ function parseExecutionArgs(argv) {
     owner: 'Sakyvo',
     baseUrl: 'https://vale.cc.cd/',
     sourcePreflightConcurrency: 6,
+    finalReconciliationConcurrency: 6,
     archiveRequestTimeoutMs: 30 * 60 * 1000,
     archiveRangeChunkBytes: 4 * 1024 * 1024,
     archiveTransport: 'curl',
@@ -973,6 +1050,7 @@ function parseExecutionArgs(argv) {
     else if (arg === '--owner') args.owner = argv[++index];
     else if (arg === '--base-url') args.baseUrl = argv[++index];
     else if (arg === '--source-preflight-concurrency') args.sourcePreflightConcurrency = Number(argv[++index]);
+    else if (arg === '--final-reconciliation-concurrency') args.finalReconciliationConcurrency = Number(argv[++index]);
     else if (arg === '--archive-request-timeout-minutes') args.archiveRequestTimeoutMs = Number(argv[++index]) * 60 * 1000;
     else if (arg === '--archive-range-chunk-mib') args.archiveRangeChunkBytes = Number(argv[++index]) * 1024 * 1024;
     else if (arg === '--deployment-concurrency') args.deploymentConcurrency = Number(argv[++index]);
@@ -986,6 +1064,7 @@ function parseExecutionArgs(argv) {
   }
   for (const [name, value] of [
     ['source preflight concurrency', args.sourcePreflightConcurrency],
+    ['final reconciliation concurrency', args.finalReconciliationConcurrency],
     ['archive request timeout', args.archiveRequestTimeoutMs],
     ['archive range chunk size', args.archiveRangeChunkBytes],
     ['deployment concurrency', args.deploymentConcurrency],
@@ -1014,6 +1093,7 @@ async function main(argv = process.argv.slice(2)) {
     repoOwner: args.owner,
     baseUrl: args.baseUrl,
     sourcePreflightConcurrency: args.sourcePreflightConcurrency,
+    finalReconciliationConcurrency: args.finalReconciliationConcurrency,
     archiveRequestTimeoutMs: args.archiveRequestTimeoutMs,
     archiveRangeChunkBytes: args.archiveRangeChunkBytes,
     archiveTransport: args.archiveTransport,
@@ -1021,6 +1101,9 @@ async function main(argv = process.argv.slice(2)) {
     deploymentTimeoutMs: args.deploymentTimeoutMs,
     onSourcePreflightProgress(done, total) {
       if (done === total || done % 25 === 0) console.log(`Source preflight: ${done}/${total}`);
+    },
+    onFinalReconciliationProgress(done, total) {
+      if (done === total || done % 25 === 0) console.log(`Final reconciliation: ${done}/${total}`);
     },
   };
   const production = createProductionServices(options);

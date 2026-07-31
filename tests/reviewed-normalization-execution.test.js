@@ -95,6 +95,7 @@ test('production CLI requires an explicit phase, execute flag, and approval dige
     {
       phase: 'stage', approvalDigest: digest, execute: true, owner: 'Sakyvo',
       baseUrl: 'https://vale.cc.cd/', sourcePreflightConcurrency: 6,
+      finalReconciliationConcurrency: 6,
       archiveRequestTimeoutMs: 30 * 60 * 1000,
       archiveRangeChunkBytes: 4 * 1024 * 1024,
       archiveTransport: 'curl',
@@ -120,6 +121,10 @@ test('production CLI requires an explicit phase, execute flag, and approval dige
   assert.throws(
     () => parseExecutionArgs(['--phase', 'stage', '--execute', '--approval-digest', digest, '--source-preflight-concurrency', '0']),
     /Invalid source preflight concurrency/
+  );
+  assert.throws(
+    () => parseExecutionArgs(['--phase', 'cleanup', '--execute', '--approval-digest', digest, '--final-reconciliation-concurrency', '0']),
+    /Invalid final reconciliation concurrency/
   );
   assert.throws(
     () => parseExecutionArgs(['--phase', 'stage', '--execute', '--approval-digest', digest, '--archive-request-timeout-minutes', '0']),
@@ -704,9 +709,68 @@ test('blocks cleanup until deployment verification and reconciles retained remot
     assert.equal(completed.illegal.entries[0].status, 'complete');
     assert.equal(completed.reconciliation.registryCount, 2);
     assert.equal(completed.reconciliation.remoteVerified, 2);
+    let active = 0;
+    let maxActive = 0;
+    const concurrentRemote = {
+      async getArchiveIdentity(identity) {
+        active++;
+        maxActive = Math.max(maxActive, active);
+        await new Promise(resolve => setTimeout(resolve, 20));
+        try {
+          return await data.remote.getArchiveIdentity(identity);
+        } finally {
+          active--;
+        }
+      },
+    };
+    const concurrent = await reconcileFinalState(
+      { ...data.paths, finalReconciliationConcurrency: 2 },
+      { remote: concurrentRemote }
+    );
+    assert.equal(concurrent.remoteVerified, 2);
+    assert.equal(maxActive, 2);
+    const reconciliationStatePath = path.join(root, 'reconciliation-state.json');
+    let firstRunCalls = 0;
+    await assert.rejects(
+      reconcileFinalState({
+        ...data.paths,
+        finalReconciliationConcurrency: 1,
+        finalReconciliationStatePath: reconciliationStatePath,
+      }, {
+        remote: {
+          getRepositoryReference: async repo => `head-${repo}`,
+          async getArchiveIdentity(identity) {
+            firstRunCalls++;
+            if (firstRunCalls === 2) throw new Error('transient remote failure');
+            return data.remote.getArchiveIdentity(identity);
+          },
+        },
+      }),
+      /transient remote failure/
+    );
+    const checkpoint = JSON.parse(fs.readFileSync(reconciliationStatePath, 'utf8'));
+    assert.equal(Object.keys(checkpoint.verified).length, 1);
+    let resumedCalls = 0;
+    const resumed = await reconcileFinalState({
+      ...data.paths,
+      finalReconciliationConcurrency: 1,
+      finalReconciliationStatePath: reconciliationStatePath,
+    }, {
+      remote: {
+        getRepositoryReference: async repo => `head-${repo}`,
+        async getArchiveIdentity(identity) {
+          resumedCalls++;
+          return data.remote.getArchiveIdentity(identity);
+        },
+      },
+    });
+    assert.equal(resumed.remoteVerified, 2);
+    assert.equal(resumedCalls, 1);
+    assert.equal(fs.existsSync(reconciliationStatePath), false);
     const executionState = JSON.parse(fs.readFileSync(data.paths.statePath, 'utf8'));
     assert.equal(executionState.reviewedArtifactDigest, completed.reviewedArtifactDigest);
     assert.equal(executionState.status, 'complete');
+    assert.deepEqual(executionState.finalReconciliation, completed.reconciliation);
     assert.ok(executionState.catalogDiff.some(entry => entry.path === data.paths.registryPath && entry.changed));
     const audit = JSON.parse(fs.readFileSync(data.paths.auditPath, 'utf8'));
     assert.equal(audit.entries.find(entry => entry.remoteIdentity.file === 'Bundle.zip').lifecycle.status, 'complete');
