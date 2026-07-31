@@ -413,7 +413,10 @@ test('pins read-only archive identities to one cached remote commit', async () =
       const expected = { repo: 'packs-005', file: 'Product.zip', size: payload.length };
       await remote.getArchiveIdentity(expected);
       await remote.getArchiveIdentity(expected);
-      assert.deepEqual(identityRefs, [expectedHead, expectedHead]);
+      const destination = path.join(root, 'downloaded.zip');
+      await remote.downloadArchive({ ...expected, destination });
+      assert.deepEqual(fs.readFileSync(destination), payload);
+      assert.deepEqual(identityRefs, [expectedHead, expectedHead, expectedHead]);
       assert.equal(repoUrlCalls, 1);
     } finally {
       remote.close();

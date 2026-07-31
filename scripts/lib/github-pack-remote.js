@@ -437,6 +437,7 @@ function createGitHubPackRemote(options = {}) {
   async function downloadArchive({ repo, file, size: expectedSize, registryEntry, destination }) {
     assertRepo(repo);
     assertArchiveFile(file);
+    const reference = resolveRemoteHead(repo);
     const attempts = Math.max(1, Number(options.downloadAttempts) || Number(options.fetchOptions?.attempts) || 4);
     fs.mkdirSync(path.dirname(destination), { recursive: true });
     if (options.transport === 'curl') {
@@ -460,7 +461,7 @@ function createGitHubPackRemote(options = {}) {
             let writeOffset = offset;
             try {
               const nonce = `${Date.now()}-download-${crypto.randomBytes(6).toString('hex')}`;
-              const result = await curlRange(command, rawUrl(repo, file, nonce), {
+              const result = await curlRange(command, rawUrl(repo, file, nonce, reference), {
                 start: offset,
                 end,
                 timeoutMs: options.fetchOptions?.timeoutMs,
@@ -506,7 +507,7 @@ function createGitHubPackRemote(options = {}) {
     for (let attempt = 1; attempt <= attempts; attempt++) {
       try {
         const nonce = `${Date.now()}-download-${crypto.randomBytes(6).toString('hex')}`;
-        const response = await fetchArchive(rawUrl(repo, file, nonce), { ...options.fetchOptions, attempts: 1 });
+        const response = await fetchArchive(rawUrl(repo, file, nonce, reference), { ...options.fetchOptions, attempts: 1 });
         if (!response || !response.body) throw new Error(`Remote archive is missing: ${repo}/${file}`);
         await pipeline(Readable.fromWeb(response.body), fs.createWriteStream(destination, { flags: 'wx' }));
         return;
