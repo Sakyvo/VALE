@@ -148,7 +148,7 @@ function verifyReplacement(replacement, registry, options) {
 function verifyDeployedCleanup(replacement, options) {
   const deployedIndex = curlJson(`${options.baseUrl}/data/index.json?verify=${Date.now()}`);
   const deployedNames = new Set((deployedIndex.items || []).map(row => row.name));
-  if (!deployedNames.has(replacement.incomingPackId)) {
+  if (!replacement.deletion && !deployedNames.has(replacement.incomingPackId)) {
     throw new Error(`Deployed index is missing retained pack: ${replacement.incomingPackId}`);
   }
   for (const existing of replacement.existing) {
@@ -240,6 +240,10 @@ function upsertAliases(aliases, rows) {
   return aliases;
 }
 
+function pendingKey(row) {
+  return row.incomingFile || `delete:${(row.existing || []).map(item => item.file).join('|')}`;
+}
+
 function applyLocalCleanup(options, replacements, state) {
   const { registry, contentIndex, extracted, lists, aliases, pending } = state;
   const removedFiles = new Set();
@@ -249,8 +253,10 @@ function applyLocalCleanup(options, replacements, state) {
     for (const existing of replacement.existing) {
       const indexed = contentIndex.packs[existing.file];
       removedFiles.add(existing.file);
-      removedPackIds.set(existing.packId, replacement.incomingPackId);
-      if (indexed) {
+      // A deletion entry has no incoming pack: the id leaves every List instead of
+      // being remapped onto a successor.
+      removedPackIds.set(existing.packId, replacement.deletion ? null : replacement.incomingPackId);
+      if (indexed && !replacement.deletion) {
         aliasRows.push({
           sourceFile: existing.file,
           sourcePackId: existing.packId,
@@ -275,16 +281,19 @@ function applyLocalCleanup(options, replacements, state) {
   );
   for (const list of lists) {
     const seen = new Set();
-    list.packs = (list.packs || []).map(packId => removedPackIds.get(packId) || packId).filter(packId => {
-      if (seen.has(packId)) return false;
-      seen.add(packId);
-      return true;
-    });
+    list.packs = (list.packs || [])
+      .map(packId => (removedPackIds.has(packId) ? removedPackIds.get(packId) : packId))
+      .filter(packId => {
+        if (!packId) return false;
+        if (seen.has(packId)) return false;
+        seen.add(packId);
+        return true;
+      });
   }
   refreshContentIndexMetadata(contentIndex, registry);
   const nextAliases = upsertAliases(aliases, aliasRows);
-  const selectedFiles = new Set(replacements.map(row => row.incomingFile));
-  pending.entries = pending.entries.map(row => selectedFiles.has(row.incomingFile)
+  const selectedFiles = new Set(replacements.map(pendingKey));
+  pending.entries = pending.entries.map(row => selectedFiles.has(pendingKey(row))
     ? { ...row, status: 'site_cleanup_pending_deployment', preparedAt: new Date().toISOString() }
     : row);
 
@@ -297,12 +306,12 @@ function applyLocalCleanup(options, replacements, state) {
 }
 
 function completePendingCleanup(options, replacements, pending) {
-  const selectedFiles = new Set(replacements.map(row => row.incomingFile));
+  const selectedFiles = new Set(replacements.map(pendingKey));
   pending.resolved = Array.isArray(pending.resolved) ? pending.resolved : [];
   for (const replacement of replacements) {
     pending.resolved.push({ ...replacement, status: 'remote_deleted', resolvedAt: new Date().toISOString() });
   }
-  pending.entries = pending.entries.filter(row => !selectedFiles.has(row.incomingFile));
+  pending.entries = pending.entries.filter(row => !selectedFiles.has(pendingKey(row)));
   writeJsonAtomic(options.pendingPath, pending);
 }
 
@@ -314,7 +323,8 @@ function main(argv = process.argv.slice(2)) {
   if (pending.schemaVersion !== 1 || !Array.isArray(pending.entries)) throw new Error('Invalid pending replacement state');
   let replacements = pending.entries;
   if (options.only) replacements = replacements.filter(row => row.incomingFile === options.only || row.incomingPackId === options.only);
-  const uploaded = replacements.filter(row => row.status === 'uploaded_pending_site_verification');
+  const uploaded = replacements.filter(row =>
+    row.status === 'uploaded_pending_site_verification' || row.status === 'pending_deletion');
   const prepared = replacements.filter(row => row.status === 'site_cleanup_pending_deployment');
   if (!uploaded.length && !prepared.length) {
     console.log('No pending replacements matched.');
@@ -323,7 +333,9 @@ function main(argv = process.argv.slice(2)) {
 
   if (options.prepareSite) {
     if (!uploaded.length || prepared.length) throw new Error('Select only uploaded_pending_site_verification replacements for --prepare-site');
-    for (const replacement of uploaded) verifyReplacement(replacement, registry, options);
+    for (const replacement of uploaded) {
+      if (!replacement.deletion) verifyReplacement(replacement, registry, options);
+    }
     applyLocalCleanup(options, uploaded, {
       registry,
       contentIndex,
@@ -343,7 +355,7 @@ function main(argv = process.argv.slice(2)) {
   if (options.executeCleanup) {
     if (!prepared.length || uploaded.length) throw new Error('Run --prepare-site and deploy before --execute-cleanup');
     for (const replacement of prepared) {
-      verifyReplacement(replacement, registry, options);
+      if (!replacement.deletion) verifyReplacement(replacement, registry, options);
       verifyDeployedCleanup(replacement, options);
       for (const existing of replacement.existing) verifyRemoteArchive(existing);
     }
@@ -353,9 +365,11 @@ function main(argv = process.argv.slice(2)) {
     return;
   }
 
-  for (const replacement of uploaded) verifyReplacement(replacement, registry, options);
+  for (const replacement of uploaded) {
+    if (!replacement.deletion) verifyReplacement(replacement, registry, options);
+  }
   for (const replacement of prepared) {
-    verifyReplacement(replacement, registry, options);
+    if (!replacement.deletion) verifyReplacement(replacement, registry, options);
     verifyDeployedCleanup(replacement, options);
   }
   console.log(`Verified ${uploaded.length} replacement(s) ready for --prepare-site and ${prepared.length} ready for --execute-cleanup.`);

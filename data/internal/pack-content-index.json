@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
   "fingerprintSchemaVersion": 1,
-  "registryDigest": "a495de83be1f79c6275185f18542661d038230f76d9d5d8bd362a69e08585a06",
-  "registryCount": 1121,
-  "selectedCount": 1121,
+  "registryDigest": "79ebc504e6521fc2dfa1487dae5a15c9f76b9cbf0f5845a03c4b395a277455bc",
+  "registryCount": 1118,
+  "selectedCount": 1118,
   "complete": true,
-  "generatedAt": "2026-07-27T05:54:34.328Z",
+  "generatedAt": "2026-08-02T06:03:27.402Z",
   "packs": {
     "!                     §o§7Andy §c32x §l§4[RED].zip": {
       "packId": "Andy_32x_RED",
@@ -80,21 +80,6 @@
         "stone": "dea4a1ee84dab3aae67295cb725a6fb3f64604603f34e6e3182544811168cfd4",
         "iron": "68fd4ea19cb162b2eaeaf792479844196c8717d85817085b09617c44495e94c4",
         "diamond": "a45a4ced97108424df5c0716a367cd69c8beeb427df94f6813ed4d83859070b1"
-      }
-    },
-    "!              §9§lDoly 128x.zip": {
-      "packId": "Doly_128x",
-      "repo": "packs-003",
-      "repoNum": 3,
-      "size": 17747131,
-      "sourceKey": "92c339237c4674270eeed720d3732556b2ac50732088efddf62f88489cbeb0fd",
-      "archiveSha256": "b068214e61d6cc7f2ded88e391fc866b3e1f8235cbd067b1f45fd5e677d7a7c8",
-      "visualContentHash": "1a5932fd74d480196be7a147ffcab6257600d2e094a56e2920ffd92fda54dd54",
-      "visualEntryCount": 752,
-      "swords": {
-        "stone": "9962a659fde07fedeea6d86372bf71bfbb1fccb04161715bcc181fbb501a185e",
-        "iron": "9f24f86b2f80ac2093fe0530537452f28b53a53fa37bcea10cb5a1344fb6cce3",
-        "diamond": "fafafcf0ae2329c0bd766e21f7c72c1b902a256bfe636c29fa61568e1e568e7d"
       }
     },
     "!              §cDragonfruit §532x.zip": {
@@ -5930,21 +5915,6 @@
         "stone": "4746ee833477dfa6a9dafbe884014277800f720a7546b68487a96a2e9622c733",
         "iron": "783c120d9d1d6a1c26afd1aba1896dd5f967f2158261406fafa1ac4aa1379746",
         "diamond": "5fbc0dc394dac2861a183353793fc10fa0321f941cb4d7f90b29933e22071957"
-      }
-    },
-    "! §b§l§oqCh1ll_ Private.zip": {
-      "packId": "qCh1ll__Private",
-      "repo": "packs-005",
-      "repoNum": 5,
-      "size": 4037400,
-      "sourceKey": "3edf095bdd796eb1259cad849d091649b505ce62ac200e2904e41e004c10c10d",
-      "archiveSha256": "5431cb3b482a496d2d626250a8e0e831fe15160078616f4fa99e1a1784bacb9b",
-      "visualContentHash": "d701522175685bcd104c8eb2fb5f0075dc0ee5cd251037dbd6533af00edb7799",
-      "visualEntryCount": 122,
-      "swords": {
-        "stone": "06cba6e52bd7f9d52acf48866b0404c9f38de5f6fc1f036e3d1d6e8c9bb5b533",
-        "iron": "60878c84ea56be49ae3d0128e44b2bf266f99390b29b463f160e209c14476eb1",
-        "diamond": "e5ce77693656fb5ef43f95c06a68bdd5e80ed26247de2e7cd64c0b3aa90f2933"
       }
     },
     "! §cArissis Amaranth Revamp [32x].zip": {
@@ -13325,21 +13295,6 @@
         "stone": "4746ee833477dfa6a9dafbe884014277800f720a7546b68487a96a2e9622c733",
         "iron": "783c120d9d1d6a1c26afd1aba1896dd5f967f2158261406fafa1ac4aa1379746",
         "diamond": "9bf9a4d91c878369dc395277d7e370735a5d8d855598386674608f060db33965"
-      }
-    },
-    "meezoid.zip": {
-      "packId": "meezoid",
-      "repo": "packs-003",
-      "repoNum": 3,
-      "size": 12699807,
-      "sourceKey": "4cd046d77368cfc0c9ff4a1153b6ebd64eaeacb45f4b47392cefb65dde494923",
-      "archiveSha256": "654d4c100e9e93eaee1b4e0a05d25f80ef8fa0002a1e2e5c9c7660519dc9f166",
-      "visualContentHash": "c47bd9fe8292068c2083bfb992531fb126980a5ee3c3af6f1dc1618024519b9a",
-      "visualEntryCount": 1777,
-      "swords": {
-        "stone": "add62db7a57b07963c58f9274cb780dcf088edb9c016f9aed17fe46685ee4484",
-        "iron": "7a39604c80b45d8594890fd47c90489986c036ccec39b1467233a0ab04c859e0",
-        "diamond": "84d7b0caa9e439abcfc1ac9021b4a1a0e938858f26df07d97ee5942814c8edde"
       }
     },
     "meow private.zip": {

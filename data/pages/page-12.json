@@ -2,187 +2,6 @@
   "page": 12,
   "items": [
     {
-      "id": "!Satisfying Candy Pack",
-      "name": "Satisfying_Candy_Pack",
-      "displayName": "Satisfying Candy Pack",
-      "coloredName": "Satisfying Candy Pack",
-      "description": "",
-      "cover": "/thumbnails/Satisfying_Candy_Pack/cover.png",
-      "packPng": "/thumbnails/Satisfying_Candy_Pack/pack.png",
-      "icon": null,
-      "file": "resourcepacks/!Satisfying Candy Pack.zip",
-      "fileSize": "47.4MB",
-      "uploadDate": "2026-07-03",
-      "lists": [
-        "Sakyvo"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!Satisfying%20Candy%20Pack.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!Satisfying%20Candy%20Pack.zip"
-      }
-    },
-    {
-      "id": "Satisfying green",
-      "name": "Satisfying_green",
-      "displayName": "Satisfying green",
-      "coloredName": "Satisfying green",
-      "description": "Airflect :---)",
-      "cover": "/thumbnails/Satisfying_green/cover.png",
-      "packPng": "/thumbnails/Satisfying_green/pack.png",
-      "icon": null,
-      "file": "resourcepacks/Satisfying green.zip",
-      "fileSize": "38.6MB",
-      "uploadDate": "2026-07-03",
-      "lists": [
-        "Sakyvo"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "stone_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/Satisfying%20green.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/Satisfying%20green.zip"
-      }
-    },
-    {
-      "id": "Satisfying Mario_Pack",
-      "name": "Satisfying_Mario_Pack",
-      "displayName": "Satisfying Mario_Pack",
-      "coloredName": "Satisfying Mario_Pack",
-      "description": "",
-      "cover": "/thumbnails/Satisfying_Mario_Pack/cover.png",
-      "packPng": "/thumbnails/Satisfying_Mario_Pack/pack.png",
-      "icon": null,
-      "file": "resourcepacks/Satisfying Mario_Pack.zip",
-      "fileSize": "47.7MB",
-      "uploadDate": "2026-07-03",
-      "lists": [
-        "Sakyvo"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/Satisfying%20Mario_Pack.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/Satisfying%20Mario_Pack.zip"
-      }
-    },
-    {
       "id": "! Scope c0ntrast",
       "name": "Scope_c0ntrast",
       "displayName": "Scope c0ntrast",
@@ -3018,6 +2837,190 @@
       "downloads": {
         "github": "https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/!%20%20%20%20%C2%A7bStimpy%20Waar%20Paack.zip",
         "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/!%20%20%20%20%C2%A7bStimpy%20Waar%20Paack.zip"
+      }
+    },
+    {
+      "id": "StimpyEum3Edit",
+      "name": "StimpyEum3Edit",
+      "displayName": "StimpyEum3Edit",
+      "coloredName": "StimpyEum3Edit",
+      "description": "Eum3's PvP Faithful 32x Edit Kyle9",
+      "cover": "/thumbnails/StimpyEum3Edit/cover.png",
+      "packPng": "/thumbnails/StimpyEum3Edit/pack.png",
+      "icon": null,
+      "file": "resourcepacks/StimpyEum3Edit.zip",
+      "fileSize": "27.8MB",
+      "uploadDate": "2026-04-09",
+      "lists": [
+        "Jewdah pf",
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "stone_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/StimpyEum3Edit.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/StimpyEum3Edit.zip"
+      }
+    },
+    {
+      "id": "# StimpyHCF",
+      "name": "StimpyHCF",
+      "displayName": "StimpyHCF",
+      "coloredName": "StimpyHCF",
+      "description": "Texture Pack pour mes 150 abonn�s",
+      "cover": "/thumbnails/StimpyHCF/cover.png",
+      "packPng": "/thumbnails/StimpyHCF/pack.png",
+      "icon": null,
+      "file": "resourcepacks/# StimpyHCF.zip",
+      "fileSize": "6.7MB",
+      "uploadDate": "2026-04-09",
+      "lists": [
+        "Jewdah pf",
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/%23%20StimpyHCF.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/%23%20StimpyHCF.zip"
+      }
+    },
+    {
+      "id": "§3stimpyHCF §f§lEDIT",
+      "name": "stimpyHCF_EDIT",
+      "displayName": "stimpyHCF EDIT",
+      "coloredName": "<span style=\"color:#00AAAA\">s</span><span style=\"color:#00AAAA\">t</span><span style=\"color:#00AAAA\">i</span><span style=\"color:#00AAAA\">m</span><span style=\"color:#00AAAA\">p</span><span style=\"color:#00AAAA\">y</span><span style=\"color:#00AAAA\">H</span><span style=\"color:#00AAAA\">C</span><span style=\"color:#00AAAA\">F</span><span style=\"color:#00AAAA\"> </span><span style=\"color:#FFFFFF\">E</span><span style=\"color:#FFFFFF\">D</span><span style=\"color:#FFFFFF\">I</span><span style=\"color:#FFFFFF\">T</span>",
+      "description": "WWW.YOUTUBE.COM/ghoku555",
+      "cover": "/thumbnails/stimpyHCF_EDIT/cover.png",
+      "packPng": "/thumbnails/stimpyHCF_EDIT/pack.png",
+      "icon": null,
+      "file": "resourcepacks/§3stimpyHCF §f§lEDIT.zip",
+      "fileSize": "7.2MB",
+      "uploadDate": "2026-04-09",
+      "lists": [
+        "Jewdah pf",
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/%C2%A73stimpyHCF%20%C2%A7f%C2%A7lEDIT.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/%C2%A73stimpyHCF%20%C2%A7f%C2%A7lEDIT.zip"
       }
     }
   ]

@@ -4,6 +4,7 @@ const os = require('node:os');
 const path = require('node:path');
 const test = require('node:test');
 const { computeRegistryDigest } = require('../scripts/lib/pack-content-index');
+const { SCHEMA_VERSION: FINGERPRINT_SCHEMA_VERSION } = require('../scripts/lib/pack-content-fingerprint');
 const { applyLocalCleanup, completePendingCleanup, parseArgs } = require('../scripts/finalize-pack-replacements');
 
 test('local cleanup removes only discarded identities and preserves the retained pack', async () => {
@@ -113,4 +114,89 @@ test('requires explicit replacement cleanup phases', () => {
   assert.equal(parseArgs(['--execute-cleanup']).executeCleanup, true);
   assert.throws(() => parseArgs(['--execute']), /prepare-site/);
   assert.throws(() => parseArgs(['--prepare-site', '--execute-cleanup']), /either/);
+});
+
+test('deletion entries remove the pack outright instead of remapping it to an incoming pack', async () => {
+  const dir = await fs.promises.mkdtemp(path.join(os.tmpdir(), 'vale-delete-'));
+  try {
+    const options = {
+      registryPath: path.join(dir, 'registry.json'),
+      contentIndexPath: path.join(dir, 'content-index.json'),
+      aliasesPath: path.join(dir, 'aliases.json'),
+      extractedPath: path.join(dir, 'extracted.json'),
+      listsPath: path.join(dir, 'lists.json'),
+      pendingPath: path.join(dir, 'pending.json'),
+      thumbnailsRoot: path.join(dir, 'thumbnails'),
+      packDataRoot: path.join(dir, 'data-packs'),
+      packPageRoot: path.join(dir, 'pages'),
+    };
+    for (const root of [options.thumbnailsRoot, options.packDataRoot, options.packPageRoot]) fs.mkdirSync(root, { recursive: true });
+    for (const id of ['Doomed', 'Kept']) {
+      fs.mkdirSync(path.join(options.thumbnailsRoot, id));
+      fs.mkdirSync(path.join(options.packPageRoot, id));
+      fs.writeFileSync(path.join(options.packDataRoot, `${id}.json`), '{}');
+    }
+    const registry = {
+      'Doomed.zip': { repo: 'packs-001', repoNum: 1, size: 10 },
+      'Kept.zip': { repo: 'packs-001', repoNum: 1, size: 20 },
+    };
+    const contentIndex = {
+      schemaVersion: 1,
+      fingerprintSchemaVersion: FINGERPRINT_SCHEMA_VERSION,
+      complete: true,
+      registryDigest: computeRegistryDigest(registry),
+      failures: [],
+      packs: {
+        'Doomed.zip': { packId: 'Doomed', repo: 'packs-001', repoNum: 1, size: 10, archiveSha256: 'a', visualContentHash: 'v' },
+        'Kept.zip': { packId: 'Kept', repo: 'packs-001', repoNum: 1, size: 20, archiveSha256: 'b', visualContentHash: 'w' },
+      },
+    };
+    const deletion = {
+      incomingFile: null,
+      incomingPackId: null,
+      deletion: true,
+      existing: [{ file: 'Doomed.zip', packId: 'Doomed', repo: 'packs-001' }],
+    };
+    const pending = { schemaVersion: 1, entries: [deletion], resolved: [] };
+    fs.writeFileSync(options.registryPath, JSON.stringify(registry));
+    fs.writeFileSync(options.contentIndexPath, JSON.stringify(contentIndex));
+    fs.writeFileSync(options.aliasesPath, JSON.stringify({ schemaVersion: 1, entries: [] }));
+    fs.writeFileSync(options.extractedPath, JSON.stringify([
+      { originalName: 'Doomed', packId: 'Doomed' },
+      { originalName: 'Kept', packId: 'Kept' },
+    ]));
+    fs.writeFileSync(options.listsPath, JSON.stringify([{ name: 'Sakyvo', packs: ['Doomed', 'Kept'] }]));
+    fs.writeFileSync(options.pendingPath, JSON.stringify(pending));
+
+    applyLocalCleanup(options, [deletion], {
+      registry,
+      contentIndex,
+      extracted: JSON.parse(fs.readFileSync(options.extractedPath, 'utf8')),
+      lists: JSON.parse(fs.readFileSync(options.listsPath, 'utf8')),
+      aliases: { schemaVersion: 1, entries: [] },
+      pending,
+    });
+
+    const nextRegistry = JSON.parse(fs.readFileSync(options.registryPath, 'utf8'));
+    assert.deepEqual(Object.keys(nextRegistry), ['Kept.zip']);
+    const nextIndex = JSON.parse(fs.readFileSync(options.contentIndexPath, 'utf8'));
+    assert.deepEqual(Object.keys(nextIndex.packs), ['Kept.zip']);
+    const nextExtracted = JSON.parse(fs.readFileSync(options.extractedPath, 'utf8'));
+    assert.deepEqual(nextExtracted.map(row => row.packId), ['Kept']);
+    const nextLists = JSON.parse(fs.readFileSync(options.listsPath, 'utf8'));
+    assert.deepEqual(nextLists[0].packs, ['Kept'], 'the deleted pack leaves the List with no replacement');
+    assert.ok(!fs.existsSync(path.join(options.thumbnailsRoot, 'Doomed')));
+    assert.ok(!fs.existsSync(path.join(options.packDataRoot, 'Doomed.json')));
+    assert.ok(!fs.existsSync(path.join(options.packPageRoot, 'Doomed')));
+    assert.ok(fs.existsSync(path.join(options.thumbnailsRoot, 'Kept')));
+    const nextPending = JSON.parse(fs.readFileSync(options.pendingPath, 'utf8'));
+    assert.equal(nextPending.entries[0].status, 'site_cleanup_pending_deployment');
+
+    completePendingCleanup(options, [deletion], nextPending);
+    const done = JSON.parse(fs.readFileSync(options.pendingPath, 'utf8'));
+    assert.equal(done.entries.length, 0);
+    assert.equal(done.resolved[0].status, 'remote_deleted');
+  } finally {
+    await fs.promises.rm(dir, { recursive: true, force: true });
+  }
 });

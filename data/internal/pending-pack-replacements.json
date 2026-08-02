@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "entries": [
+    {
+      "incomingFile": null,
+      "incomingPackId": null,
+      "deletion": true,
+      "status": "site_cleanup_pending_deployment",
+      "reason": "high_version",
+      "existing": [
+        {
+          "file": "meezoid.zip",
+          "packId": "meezoid",
+          "repo": "packs-003",
+          "size": 12699807,
+          "archiveSha256": "654d4c100e9e93eaee1b4e0a05d25f80ef8fa0002a1e2e5c9c7660519dc9f166"
+        }
+      ],
+      "queuedAt": "2026-08-01T00:00:00.000Z",
+      "preparedAt": "2026-08-02T06:03:27.419Z"
+    },
+    {
+      "incomingFile": null,
+      "incomingPackId": null,
+      "deletion": true,
+      "status": "site_cleanup_pending_deployment",
+      "reason": "high_version",
+      "existing": [
+        {
+          "file": "!              §9§lDoly 128x.zip",
+          "packId": "Doly_128x",
+          "repo": "packs-003",
+          "size": 17747131,
+          "archiveSha256": "b068214e61d6cc7f2ded88e391fc866b3e1f8235cbd067b1f45fd5e677d7a7c8"
+        }
+      ],
+      "queuedAt": "2026-08-01T00:00:00.000Z",
+      "preparedAt": "2026-08-02T06:03:27.419Z"
+    },
+    {
+      "incomingFile": null,
+      "incomingPackId": null,
+      "deletion": true,
+      "status": "site_cleanup_pending_deployment",
+      "reason": "high_version",
+      "existing": [
+        {
+          "file": "! §b§l§oqCh1ll_ Private.zip",
+          "packId": "qCh1ll__Private",
+          "repo": "packs-005",
+          "size": 4037400,
+          "archiveSha256": "5431cb3b482a496d2d626250a8e0e831fe15160078616f4fa99e1a1784bacb9b"
+        }
+      ],
+      "queuedAt": "2026-08-01T00:00:00.000Z",
+      "preparedAt": "2026-08-02T06:03:27.419Z"
+    }
+  ],
+  "resolved": []
+}
