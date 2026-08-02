@@ -250,3 +250,27 @@ test('section header row keeps its controls the same height', () => {
   assert.match(headerRules, /align-items: (center|stretch)/, 'tabs and sort button align on one baseline');
   assert.match(block(source, '\n.section-tabs {'), /align-items: (center|stretch)/);
 });
+
+test('overlay badge speaks the site overlay language and stays square', () => {
+  const source = css();
+  const badge = block(source, '\n.overlay-badge {');
+  assert.match(badge, /#E53935/i, 'badge reuses the established overlay red');
+  assert.doesNotMatch(badge, /#ffaa00/i, 'the foreign orange is gone');
+  assert.doesNotMatch(badge, /rgba\(/, 'no translucency');
+  assert.doesNotMatch(badge, /border-radius/, 'badges stay square like their container');
+  const size = badge.match(/font-size: (\d+)px/);
+  assert.ok(size && Number(size[1]) >= 12, `badge is legibly larger, got ${size && size[1]}px`);
+});
+
+test('every pack-card renderer draws the overlay badge', () => {
+  const renderers = ['assets/js/main.js', 'assets/js/list.js'];
+  for (const file of renderers) {
+    const source = fs.readFileSync(path.join(ROOT, file), 'utf-8');
+    assert.match(source, /overlay-badge/, `${file} renders the overlay badge`);
+  }
+});
+
+test('AGENTS.md carries the homepage/List consistency rule', () => {
+  const agents = fs.readFileSync(path.join(ROOT, 'AGENTS.md'), 'utf-8');
+  assert.match(agents, /主页与 List/, 'the consistency rule is documented');
+});

@@ -492,6 +492,7 @@ async function loadListDetail(listId) {
           <div class="pack-card-wrapper">
             <a class="pack-card" href="/p/${pack.name}/" target="_blank" rel="noopener noreferrer">
               <img class="cover" src="${pack.cover}" alt="${pack.displayName}">
+              ${(pack.lists || []).includes('Overlay') ? '<span class="overlay-badge">OVERLAY</span>' : ''}
               <div class="info">
                 <img class="pack-icon" src="${pack.packPng}" alt="">
                 <div class="name">${pack.coloredName || pack.displayName}</div>
