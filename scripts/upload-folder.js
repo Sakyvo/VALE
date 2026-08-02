@@ -3,7 +3,7 @@ const path = require('path');
 const { execFileSync } = require('child_process');
 const { getPackIdFromZipName } = require('./pack-utils');
 const { SCHEMA_VERSION: FINGERPRINT_SCHEMA_VERSION, fingerprintPack } = require('./lib/pack-content-fingerprint');
-const { NORMALIZATION_SCHEMA_VERSION, normalizePack } = require('./lib/pack-normalizer');
+const { HIGH_VERSION_CAUSE, NORMALIZATION_SCHEMA_VERSION, normalizePack } = require('./lib/pack-normalizer');
 const { isJunkName } = require('./lib/pack-normalizer');
 const {
   buildVisualHashLookup,
@@ -229,7 +229,8 @@ function persistNormalizationAudit(filePath, outcomes, provenance = []) {
       sourceArchiveSha256: outcome.sourceArchiveSha256,
       normalizationSchemaVersion: NORMALIZATION_SCHEMA_VERSION,
       classification: outcome.classification,
-      label: outcome.classification === 'illegal' ? '非法材质' : null,
+      label: outcome.classification === 'illegal' ? '非法材质'
+        : outcome.classification === HIGH_VERSION_CAUSE ? '高版本材质' : null,
       causes: outcome.causes,
       products: outcome.products.map(product => ({
         ...product,
@@ -237,7 +238,8 @@ function persistNormalizationAudit(filePath, outcomes, provenance = []) {
           item.productFile === product.file || item.originalProductFile === product.file
         ) || {}),
       })),
-      status: outcome.classification === 'illegal' ? 'rejected' : 'planned',
+      status: outcome.classification === 'illegal' || outcome.classification === HIGH_VERSION_CAUSE
+        ? 'rejected' : 'planned',
       firstSeenAt: existing ? existing.firstSeenAt : now,
       updatedAt: now,
     };
@@ -452,7 +454,20 @@ async function buildPlan(opts, services = {}) {
       reason: outcome.causes[0],
       causes: outcome.causes,
     }));
-  const entries = [...illegalEntries, ...limitEntries];
+  const highVersionEntries = normalized.outcomes
+    .filter(outcome => outcome.classification === HIGH_VERSION_CAUSE)
+    .map(outcome => ({
+      file: outcome.sourceFile,
+      sourceFile: outcome.sourceFile,
+      packId: null,
+      size: sourceFiles.find(source => source.file === outcome.sourceFile)?.size || 0,
+      action: HIGH_VERSION_CAUSE,
+      classification: HIGH_VERSION_CAUSE,
+      label: '高版本材质',
+      reason: outcome.causes[0],
+      causes: outcome.causes,
+    }));
+  const entries = [...illegalEntries, ...limitEntries, ...highVersionEntries];
   const listPackIds = [];
   const uploadEntries = [];
   const extractPackIds = [];

@@ -311,6 +311,28 @@ function rootFacts(rows, prefix = '') {
   };
 }
 
+const HIGH_VERSION_CAUSE = 'high_version';
+
+// Minecraft generation is read from texture directory layout, never from a declared
+// pack_format: real 1.8 packs declare unreliably (see .docs/adr/0002). Plural
+// textures/items|blocks is low-version evidence and wins outright.
+function textureVersionSignal(rows, prefix = '') {
+  let high = false;
+  for (const row of rows || []) {
+    const path = typeof row === 'string' ? row : row.path;
+    if (typeof path !== 'string' || !path.startsWith(prefix)) continue;
+    const relative = path.slice(prefix.length);
+    if (/(^|\/)textures\/(items|blocks)\//.test(relative)) return 'low';
+    const isDirectory = (typeof row === 'object' && row.directory) || relative.endsWith('/');
+    if (isDirectory) {
+      if (/(^|\/)textures\/block\/$/.test(relative)) high = true;
+      continue;
+    }
+    if (/(^|\/)textures\/(item|block)\//.test(relative)) high = true;
+  }
+  return high ? 'high' : 'none';
+}
+
 function repairCauses(facts) {
   const causes = [];
   if (!facts.hasMcmeta) causes.push('mcmeta_rescue');
@@ -420,6 +442,22 @@ function inspectSource(filePath, options = {}) {
       throw new PackNormalizationError('corrupt_zip', 'Nested ZIP data cannot be read');
     }
     throw new PackNormalizationError('no_core_found', 'Archive has no resolvable assets root');
+  }
+  // The signal's boundary is the matched inner pack: a high-version core layer never
+  // propagates to its container, and never affects sibling packs (.docs/adr/0002).
+  const highVersionLayer = search.layers.some(
+    layer => textureVersionSignal(rows, layer.prefix) === 'high'
+  );
+  if (highVersionLayer) {
+    return {
+      classification: HIGH_VERSION_CAUSE,
+      causes: [HIGH_VERSION_CAUSE],
+      sourceType,
+      zip,
+      rows,
+      prefix: search.layers[0].prefix,
+      layers: search.layers,
+    };
   }
   const root = search.layers[0].facts;
   const wrongExtension = sourceType === 'file' && !path.basename(filePath).endsWith('.zip');
@@ -531,6 +569,19 @@ async function normalizePack(filePath, options = {}) {
       .sort((a, b) => a.path.localeCompare(b.path))
       .flatMap(row => [Buffer.from(`${row.path}\0`), readRow(row)])));
 
+  if (inspected.classification === HIGH_VERSION_CAUSE) {
+    return {
+      schemaVersion: NORMALIZATION_SCHEMA_VERSION,
+      sourcePath,
+      sourceType: inspected.sourceType,
+      sourceArchiveSha256,
+      classification: HIGH_VERSION_CAUSE,
+      causes: [HIGH_VERSION_CAUSE],
+      details: {},
+      products: [],
+    };
+  }
+
   if (inspected.classification === 'normal') {
     return {
       schemaVersion: NORMALIZATION_SCHEMA_VERSION,
@@ -587,6 +638,9 @@ async function normalizePack(filePath, options = {}) {
 
 module.exports = {
   NORMALIZATION_SCHEMA_VERSION,
+  HIGH_VERSION_CAUSE,
+  textureVersionSignal,
+  inspectPackSource: inspectSource,
   DEFAULT_ARCHIVE_LIMITS,
   MAX_NESTING_DEPTH,
   PackNormalizationError,
