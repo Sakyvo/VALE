@@ -8,7 +8,7 @@ const ROOT = path.join(__dirname, '..');
 const THUMB_DIR = path.join(ROOT, 'thumbnails');
 const LISTS_PATH = path.join(ROOT, 'l', 'lists.json');
 const DEFAULT_TEXTURE_DIR = path.join(ROOT, 'Default_Texture');
-const OVERLAY_LIST_NAME = 'Overlay';
+const { OVERLAY_LIST_NAME, mergeOverlayMembers } = require('./lib/overlay-membership');
 
 const SEED_PACKS = [
   'Cases_Block_Overlaywhite_fire',
@@ -110,10 +110,17 @@ function bumpSbiVersion() {
   console.log(`  SBI_FINGERPRINT_VERSION ${oldVer} -> ${newVer}`);
 }
 
-function updateListsJson(overlays, listsPath = LISTS_PATH) {
+function readCatalog() {
+  const indexPath = path.join(ROOT, 'data', 'index.json');
+  if (!fs.existsSync(indexPath)) return [];
+  return JSON.parse(fs.readFileSync(indexPath, 'utf-8')).items || [];
+}
+
+function updateListsJson(overlays, listsPath = LISTS_PATH, catalog = null) {
   const lists = JSON.parse(fs.readFileSync(listsPath, 'utf-8'));
   let entry = lists.find(l => l.name === OVERLAY_LIST_NAME);
-  const sorted = [...overlays].sort();
+  const items = catalog || readCatalog();
+  const sorted = mergeOverlayMembers(overlays, items, entry ? entry.packs : []);
   if (!entry) {
     entry = {
       name: OVERLAY_LIST_NAME,

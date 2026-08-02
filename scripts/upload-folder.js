@@ -4,6 +4,7 @@ const { execFileSync } = require('child_process');
 const { getPackIdFromZipName } = require('./pack-utils');
 const { SCHEMA_VERSION: FINGERPRINT_SCHEMA_VERSION, fingerprintPack } = require('./lib/pack-content-fingerprint');
 const { HIGH_VERSION_CAUSE, NORMALIZATION_SCHEMA_VERSION, normalizePack } = require('./lib/pack-normalizer');
+const { OVERLAY_LIST_NAME, isOverlayByName } = require('./lib/overlay-membership');
 const { isJunkName } = require('./lib/pack-normalizer');
 const {
   buildVisualHashLookup,
@@ -955,6 +956,20 @@ function updateLists(listName, packIds, replacements = [], listsPath = LISTS_PAT
   if (!list) {
     list = { name: listName, cover: '', description: '', packs: [] };
     lists.push(list);
+  }
+  // Overlay membership by name is decided on arrival, so a newly uploaded overlay
+  // never waits for a manual classifier run.
+  const overlayIds = packIds.filter(packId => isOverlayByName({ name: packId, displayName: packId }));
+  if (overlayIds.length) {
+    let overlayList = lists.find(l => l.name === OVERLAY_LIST_NAME);
+    if (!overlayList) {
+      overlayList = { name: OVERLAY_LIST_NAME, cover: '', description: '', packs: [] };
+      lists.push(overlayList);
+    }
+    for (const packId of overlayIds) {
+      if (!overlayList.packs.includes(packId)) overlayList.packs.push(packId);
+    }
+    overlayList.packs.sort();
   }
   for (const packId of packIds) {
     if (!list.packs.includes(packId)) list.packs.push(packId);

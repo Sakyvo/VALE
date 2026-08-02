@@ -55,7 +55,7 @@ function initClipWorker() {
 }
 
 let _lastHashResults = [], _lastAllScores = {};
-const SBI_FINGERPRINT_VERSION = 17;
+const SBI_FINGERPRINT_VERSION = 18;
 const SBI_BASE_FINGERPRINT_SHARDS = ['widget', 'health', 'hunger', 'armor', 'diamond_sword', 'ender_pearl', 'splash_potion'];
 const SBI_FOOD_FINGERPRINT_SHARD = 'food';
 const SBI_FINGERPRINT_SHARD_PATH = '/data/sbi-fp/';
