@@ -115,7 +115,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       <div class="admin-actions is-hidden" id="admin-actions">
         <h3>ADMIN</h3>
         <button class="btn btn-primary" id="add-to-list-btn">ADD TO LIST</button>
-        <button class="btn btn-danger" id="delete-pack-btn">DELETE PACK</button>
       </div>
     `;
 
@@ -211,38 +210,42 @@ document.addEventListener('DOMContentLoaded', async () => {
       };
     };
 
-    document.getElementById('delete-pack-btn').onclick = async () => {
-      if (!await confirmDialog(`Delete "${pack.displayName}"?`, { confirmText: 'DELETE', danger: true })) return;
-
-      const token = window.AUTH?.getToken();
-        if (!token) return toast('Please login first', { type: 'error' });
-
-        try {
-          const path = `resourcepacks/${pack.id}.zip`;
-          const fileRes = await fetch(`https://api.github.com/repos/Sakyvo/VALE/contents/${path}`, {
-            headers: { Authorization: `token ${token}` }
-          });
-
-          if (!fileRes.ok) return toast('Pack file not found in the repository', { type: 'error' });
-
-          const fileData = await fileRes.json();
-          const res = await fetch(`https://api.github.com/repos/Sakyvo/VALE/contents/${path}`, {
-            method: 'DELETE',
-            headers: { Authorization: `token ${token}`, 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message: `Delete ${pack.id}`, sha: fileData.sha })
-          });
-
-          if (res.ok) {
-            toast('Deleted. Site will update after the next build.');
-            setTimeout(() => { window.location.href = '/'; }, 1200);
-          } else {
-            const err = await res.json();
-            toast(`Delete failed: ${err.message}`, { type: 'error' });
-          }
-        } catch (e) {
-          toast(`Delete failed: ${e.message}`, { type: 'error' });
-        }
-    };
+    // DELETE PACK is disabled: it targeted resourcepacks/ in the main repository,
+    // but archives now live in the numbered pack repositories. A correct rebuild must
+    // go through the two-phase deletion contract (see finalize-pack-replacements).
+    // document.getElementById('delete-pack-btn').onclick = async () => {
+    // if (!await confirmDialog(`Delete "${pack.displayName}"?`, { confirmText: 'DELETE', danger: true })) return;
+    //
+    // const token = window.AUTH?.getToken();
+    // if (!token) return toast('Please login first', { type: 'error' });
+    //
+    // try {
+    // const path = `resourcepacks/${pack.id}.zip`;
+    // const fileRes = await fetch(`https://api.github.com/repos/Sakyvo/VALE/contents/${path}`, {
+    // headers: { Authorization: `token ${token}` }
+    // });
+    //
+    // if (!fileRes.ok) return toast('Pack file not found in the repository', { type: 'error' });
+    //
+    // const fileData = await fileRes.json();
+    // const res = await fetch(`https://api.github.com/repos/Sakyvo/VALE/contents/${path}`, {
+    // method: 'DELETE',
+    // headers: { Authorization: `token ${token}`, 'Content-Type': 'application/json' },
+    // body: JSON.stringify({ message: `Delete ${pack.id}`, sha: fileData.sha })
+    // });
+    //
+    // if (res.ok) {
+    // toast('Deleted. Site will update after the next build.');
+    // setTimeout(() => { window.location.href = '/'; }, 1200);
+    // } else {
+    // const err = await res.json();
+    // toast(`Delete failed: ${err.message}`, { type: 'error' });
+    // }
+    // } catch (e) {
+    // toast(`Delete failed: ${e.message}`, { type: 'error' });
+    // }
+    // }
+;
 
     // Setup animated textures - hide until loaded to prevent flash
     document.querySelectorAll('.texture-grid img').forEach(img => {

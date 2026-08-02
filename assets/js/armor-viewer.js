@@ -57,15 +57,24 @@ class ArmorViewer {
     const el = this.renderer.domElement;
     el.style.cursor = 'grab';
 
+    const PAUSE_ICON = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="9" y1="5" x2="9" y2="19"/><line x1="15" y1="5" x2="15" y2="19"/></svg>';
+    const PLAY_ICON = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 4 20 12 6 20 6 4"/></svg>';
     const btn = document.createElement('button');
-    btn.textContent = '⏸️';
-    btn.style.cssText = 'position:absolute;top:8px;right:8px;background:rgba(0,0,0,0.5);border:none;padding:4px 8px;cursor:pointer;font-size:16px;border-radius:4px;';
+    btn.className = 'armor-toggle-btn';
+    const paint = () => {
+      btn.innerHTML = this.autoRotate ? PAUSE_ICON : PLAY_ICON;
+      const action = this.autoRotate ? 'Pause rotation' : 'Play rotation';
+      btn.title = action;
+      btn.setAttribute('aria-label', action);
+    };
+    paint();
     this.container.style.position = 'relative';
     this.container.appendChild(btn);
     btn.onclick = () => {
       this.autoRotate = !this.autoRotate;
-      btn.textContent = this.autoRotate ? '⏸️' : '▶️';
+      paint();
     };
+
 
     // Mouse events
     el.addEventListener('mousedown', e => {

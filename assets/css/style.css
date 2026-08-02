@@ -611,6 +611,26 @@ footer {
   object-fit: contain;
 }
 
+.armor-toggle-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  background: var(--bg-header);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-action);
+  cursor: pointer;
+  transition: background var(--t-fast);
+}
+
+.armor-toggle-btn:hover { background: #333; }
+.armor-toggle-btn svg { width: 16px; height: 16px; display: block; }
+
 #armor-viewer {
   width: 100%;
   height: 100%;

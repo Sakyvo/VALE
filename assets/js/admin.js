@@ -504,7 +504,7 @@ class Admin {
             </div>
           ` : ''}
           ${warnUploaded.length > 0 ? `
-            <p class="upload-group-title upload-warn">⚠ Warning - Unverified (${warnUploaded.length})</p>
+            <p class="upload-group-title upload-warn">Warning - Unverified (${warnUploaded.length})</p>
             <div class="upload-group upload-group--warn">
               ${sorted(warnUploaded).map(f => `<p class="upload-file">${f}</p>`).join('')}
               <p class="field-note">Could not validate client-side; will be verified during build</p>

@@ -144,7 +144,7 @@ test('UI font is HarmonyOS Sans with the system stack as fallback', () => {
 });
 
 test('admin/List reusable templates carry no inline style attributes', () => {
-  for (const file of ['admin/index.html', 'l/index.html', 'assets/js/admin.js', 'assets/js/list.js', 'assets/js/list-detail.js', 'assets/js/pack-detail.js']) {
+  for (const file of ['admin/index.html', 'l/index.html', 'assets/js/admin.js', 'assets/js/list.js', 'assets/js/pack-detail.js']) {
     const source = fs.readFileSync(path.join(ROOT, file), 'utf-8');
     for (const [i, line] of source.split('\n').entries()) {
       if (line.includes('keep-inline:')) continue;
@@ -273,4 +273,35 @@ test('every pack-card renderer draws the overlay badge', () => {
 test('AGENTS.md carries the homepage/List consistency rule', () => {
   const agents = fs.readFileSync(path.join(ROOT, 'AGENTS.md'), 'utf-8');
   assert.match(agents, /主页与 List/, 'the consistency rule is documented');
+});
+
+test('no emoji icons remain in site scripts', () => {
+  const dir = path.join(ROOT, 'assets', 'js');
+  const emoji = /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE0F}]/u;
+  for (const file of fs.readdirSync(dir)) {
+    if (!file.endsWith('.js') || file === 'transformers.min.js' || file === 'sbi_test.js') continue;
+    const source = fs.readFileSync(path.join(dir, file), 'utf-8');
+    for (const [i, line] of source.split('\n').entries()) {
+      assert.doesNotMatch(line, emoji, `${file}:${i + 1} still uses an emoji icon`);
+    }
+  }
+});
+
+test('armour playback toggle is a styled class, not an inline style block', () => {
+  const viewer = fs.readFileSync(path.join(ROOT, 'assets', 'js', 'armor-viewer.js'), 'utf-8');
+  assert.match(viewer, /armor-toggle-btn/, 'toggle uses a shared class');
+  assert.doesNotMatch(viewer, /cssText/, 'no inline style block remains');
+  assert.match(viewer, /aria-label|ariaLabel/, 'toggle names its action for assistive tech');
+  const toggle = block(css(), '.armor-toggle-btn {');
+  assert.match(toggle, /var\(--radius-action\)/, 'toggle follows the control language');
+});
+
+test('the stale DELETE PACK action is disabled, not left calling a dead path', () => {
+  const detail = fs.readFileSync(path.join(ROOT, 'assets', 'js', 'pack-detail.js'), 'utf-8');
+  const live = detail.split('\n').filter(line => !line.trim().startsWith('//') && !line.trim().startsWith('*'));
+  assert.ok(!live.some(line => line.includes('delete-pack-btn')), 'no live DELETE PACK wiring remains');
+});
+
+test('the orphaned list-detail script is gone', () => {
+  assert.ok(!fs.existsSync(path.join(ROOT, 'assets', 'js', 'list-detail.js')), 'dead script removed');
 });
