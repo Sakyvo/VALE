@@ -4,8 +4,10 @@
 
 - `Sakyvo/VALE` is the GitHub Pages site repository for code, thumbnails, and public data indexes. It must not store resource-pack archives.
 - `Sakyvo/packs-001` through `Sakyvo/packs-NNN` store `.zip` archives under `resourcepacks/`.
-- Each pack repository has a 5 GB storage limit. Archives are assigned in ascending modification-date order.
+- Each pack repository uses 5 GiB as a soft allocation threshold. Archives are assigned in ascending modification-date order.
 - When a repository is full, create `!  FULL  !` at its root. Upload to the first repository without that marker; create the next numbered GitHub repository when none remain.
+- A repository already above 5 GiB is not invalid and its packs are not illegal; mark it full and allocate future writes elsewhere.
+- `!  FULL  !` is sticky. Deleting current-tree archives during migration does not remove the marker because historical Git objects still consume repository storage; reuse requires a separate manual capacity audit.
 
 ## Local Safety
 

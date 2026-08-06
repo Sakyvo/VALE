@@ -14,6 +14,7 @@ VALE is a static multi-page site with plain browser JavaScript, one shared CSS f
 
 | Guide | Description | Status |
 |-------|-------------|--------|
+| [Design System](./design-system.md) | Modernization contract: tokens, radius/shadow rules, signature element, out-of-scope | Active |
 | [Directory Structure](./directory-structure.md) | Hand-edited sources, generators, and generated outputs | Active |
 | [Component Guidelines](./component-guidelines.md) | Native DOM/template/class conventions and shared styling | Active |
 | [Hook Guidelines](./hook-guidelines.md) | Framework-free lifecycle and data-fetching patterns | Active |

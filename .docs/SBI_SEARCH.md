@@ -13,7 +13,9 @@ Packs in the `Overlay` and `Conquest` Lists remain browsable through their Lists
 
 ## Fingerprints
 
-`scripts/generate-sbi-data.js` builds fingerprints from `thumbnails/` and writes sharded JSON under `data/sbi-fp/`.
+`scripts/generate-sbi-data.js` builds fingerprints from `thumbnails/` and writes sharded JSON under `data/sbi-fp/`. Shards are the only durable/runtime SBI fingerprint representation; do not also retain a monolithic `data/sbi-fingerprints.json` copy.
+
+There is no total fingerprint-size ceiling. Keep each generated shard near a 32 MiB target and split it by a deterministic key when it would grow beyond that target, so adding thousands of packs cannot cross GitHub's per-file limit or change shard assignment nondeterministically.
 
 Each texture fingerprint contains:
 

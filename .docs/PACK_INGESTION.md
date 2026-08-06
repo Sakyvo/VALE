@@ -163,3 +163,65 @@ if (existing && existing.visualContentHash !== incoming.visualContentHash) {
   return 'blocked_content_conflict';
 }
 ```
+
+## Scenario: Illegal Pack Intake And Retirement
+
+### Execution Signature
+
+```bash
+npm run packs:execute-normalization -- --phase stage --execute --approval-digest <sha256>
+npm run packs:execute-normalization -- --phase prepare-site --execute --approval-digest <sha256>
+npm run packs:execute-normalization -- --phase verify-deployment --execute --approval-digest <sha256>
+npm run packs:execute-normalization -- --phase cleanup --execute --approval-digest <sha256>
+```
+
+- The digest must exactly match the approved `data/internal/pack-normalization-review.json`; `reviewed: false`, a stale digest, or an out-of-order phase fails before remote or catalog work.
+- `stage` streams and hashes every reviewed source before publishing any product. Remote mutations use an owned temporary `.vale-pack-upload` partial clone and clean it on handled success or failure.
+- `prepare-site` downloads each visible staged product and runs `extract-textures.js --replace-existing --strict`, including packs that already have extraction data. Catalog/state JSON writes are protected by a resumable short-lived transaction backup.
+- `verify-deployment` compares deployed registry, index, Lists, extraction data, pack records, routes, downloads, and SBI metadata with the prepared catalog.
+- `cleanup` is accepted only after deployment verification. It hash-verifies retained and old archives again before deleting old remote files, then reconciles every retained registry archive.
+- Remote identity checks and archive downloads resolve each `packs-NNN/main` branch to an immutable commit SHA before reading bytes; never hash a moving branch reference across retries or ranges.
+- Final retained-archive reconciliation uses bounded concurrency and an atomic checkpoint bound to the registry/content digest and each repository commit. A retry skips proven entries, invalidates only repositories whose head changed, refreshes every head before completion, and removes the checkpoint only after full success.
+
+### Contracts
+
+- Plot's current classification and repair behavior is the authority for VALE's normal pack form. This includes structural rescue, Lunar illegal-escape repair, bloat cleanup, dead-path cleanup, and collection splitting.
+- The implementation is self-contained CommonJS in VALE and records a `normalizationSchemaVersion` in plans and audit state. It does not invoke a local Plot executable or require a sibling Plot checkout.
+- Plot-derived parity fixtures lock the versioned VALE implementation to the accepted rule snapshot; adopting later Plot behavior requires an explicit schema upgrade.
+- The normalized ingestion pipeline is the only archive write boundary. Legacy single-file/migration scripts must delegate to it or reject writes, and browser administration must not upload or delete archive files directly.
+- Keep the implementation layered: a pure CommonJS normalizer, local-source upload orchestration, registry-backed existing-pack migration, and a two-phase finalizer. Remote/catalog mutation and normalization logic must not share one monolithic entry point.
+- Source ingestion scans each top-level directory entry, not only `.zip` filenames. ZIP magic and internal structure determine repairability; wrong extensions and folder packs may be rescued, known Plot junk is ignored, and symbolic links/junctions are never followed.
+- Nested source directories are pack containers, not additional scan roots. Non-repairable top-level entries, including real RAR/7z files, are recorded as illegal material instead of being silently skipped.
+- Normalization applies archive-safety checks at every nested level: at most 50,000 entries, 512 MiB per expanded entry, and 2 GiB total expanded bytes, with no absolute/traversal/NUL paths, link entries, or colliding output paths.
+- A safety-limit refusal is `blocked_archive_limits`, not illegal material, because the pack was not fully classified. It requires an explicit reviewed defer or limit change and rescan.
+- GitHub's 100 MiB per-file limit is a hard upload gate after normalization. A product still above it is `blocked_oversize`, never illegal; an already-online oversize pack remains online and deferred unless a supported storage path is explicitly introduced.
+- Plot's bloat/dead-path cleanup runs before the size gate, so ordinary oversized packs should shrink before this blocker is evaluated.
+- Normalized ZIP output is reproducible: stable entry ordering, UTF-8 name flags, fixed archive metadata, and unchanged resource bytes except for Plot-defined repairs. The same source and schema version must produce the same product SHA-256.
+- Every product is reclassified after writing and must be Normal; one-to-one migrations additionally require the pre/post visual content hash to match.
+- Only a Plot-normal product may be uploaded. Every repairable incoming archive is normalized before content identity checks and repository allocation.
+- Registered archives receive a one-time normalization migration under the same rules; already-normal archives remain byte-for-byte untouched.
+- Existing-catalog migration begins with a read-only batch manifest bound to the registry digest, every selected remote archive SHA-256, and the normalization schema version. Scanning never performs a remote or catalog write.
+- The one-time existing-pack migration selects every archive in `data/pack-registry.json`, including entries absent from the public index or Lists. Public visibility affects cleanup/rebuild work, not scan inclusion.
+- Normalization migration preserves visibility: registry-only entries remain registry-only, and a non-public collection's products do not gain public extraction, pages, or List membership merely because they were normalized.
+- Execution requires the explicitly reviewed manifest. Any registry or selected-archive identity change invalidates the whole manifest and requires a new scan and review; review is batch-level rather than an interactive prompt per pack.
+- Unresolved hard blockers make the manifest non-executable unless the reviewed decision file explicitly marks each affected entry `defer`; deferred entries remain unchanged and retain their audit reason.
+- Each migration entry is resumable through `planned`, `staged_verified`, `site_prepared`, `deployed_verified`, `old_deleted`, and `complete` states. State transitions are monotonic; a verified staged copy may be reused, and an interrupted run never deletes an unverified or unreferenced remote archive automatically.
+- A registered archive that normalizes to one product preserves its existing archive filename, pack ID, route, upload date, and List references while its bytes, size, and hashes are updated.
+- A one-product migration must preserve the existing complete visual-content hash. A mismatch is a non-bypassable content-change blocker, not a normalization result.
+- The normalized archive is first uploaded under the preserved filename to a different capacity-eligible `packs-NNN` repository and verified there. Registry/site data switches to the new repository before deployment verification and deletion of the old remote archive.
+- A collection source may normalize into multiple products. Each product is an independent upload candidate with its own inner-container-derived filename and pack ID, identity/conflict/size checks, registry entry, and List membership.
+- A normalized product that is an exact existing content identity reuses the existing pack and records source provenance instead of uploading another archive.
+- Normalization never performs automatic duplicate deletion. Exact visual duplicates remain review blockers under the existing hash-bound retain-decision flow; same-ID visual conflicts remain hard blockers.
+- Distinct same-named products from one collection receive deterministic ` (n)` suffixes after stable ordering. A different-content collision with an existing published filename or pack ID is a hard blocker until the reviewed manifest supplies an explicit name override.
+- A registered collection retires its parent identity and creates one identity per accepted product.
+- Every product split from a registered collection inherits all non-derived List memberships from the parent. Derived `Overlay` and `Conquest` membership is never inherited and is recomputed from each product after extraction.
+- Catalog migration regenerates SBI data in sharded-only form; the legacy monolithic SBI fingerprint file is retired, and oversized shards split deterministically around the documented target.
+- The outer collection source is provenance only and never becomes a registry entry; its audit record links it to every normalized product.
+- `Illegal material` follows the domain definition in `CONTEXT.md`; repairable structural or metadata problems are not illegal material.
+- A newly discovered illegal pack is excluded from upload and List membership and is retained in a durable audit record with its classification reason.
+- A registered illegal pack is retired from the complete catalog, including registry, content identity, extraction records, Lists, thumbnails, generated pack data/pages, and SBI data.
+- Retirement is two-phase: prepare and deploy the site removal first, verify that the deployed catalog no longer references the pack, then delete the remote archive from `packs-NNN`.
+- Keep an audit record after retirement so the same illegal source remains explainable on later scans.
+- The canonical audit ledger is internal `data/internal/pack-normalization-audit.json`; it stores source/remote identity, classification causes, normalization schema, product mappings, lifecycle status, and timestamps without retaining archive bytes or machine-specific absolute paths.
+- A generated Markdown summary may expose illegal, deferred, migrated, and retired entries to maintainers, but illegal material is never represented as a public List solely for audit visibility.
+- The first rollout is dry-run only, followed by reviewed execution, site deployment verification, and remote cleanup. Test coverage uses temporary archives and mocked repositories; production remote writes are never part of automated tests.
