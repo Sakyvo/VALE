@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const pack = await fetch(`/data/packs/${packName}.json`).then(r => r.json());
     document.title = `${pack.displayName} - VALE`;
 
-    const base = `/thumbnails/${encodeURIComponent(pack.name)}/`;
+    const base = valeAssetBaseUrl(pack.name, pack.assetBase);
     const packPng = `${base}pack.png`;
     const img = (name) => `<img src="${base}${encodeURIComponent(name)}" alt="${name}" data-texture="${name}">`;
     const renderPreviewCell = (name) => name === '__potion__'

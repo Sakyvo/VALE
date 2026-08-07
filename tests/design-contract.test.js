@@ -305,3 +305,20 @@ test('the stale DELETE PACK action is disabled, not left calling a dead path', (
 test('the orphaned list-detail script is gone', () => {
   assert.ok(!fs.existsSync(path.join(ROOT, 'assets', 'js', 'list-detail.js')), 'dead script removed');
 });
+
+test('thumbnail references go through the asset base, not hardcoded repo paths', () => {
+  const read = file => fs.readFileSync(path.join(ROOT, ...file.split('/')), 'utf-8');
+  const helper = read('assets/js/asset-base.js');
+  assert.match(helper, /VALE_LOCAL_ASSET_BASE/, 'helper declares the local-dev fallback base');
+  assert.match(helper, /function valeAssetBaseUrl\(/, 'helper builds the per-pack base');
+  assert.match(helper, /function valeAssetUrl\(/, 'helper builds per-file asset URLs');
+  assert.match(helper, /encodeURIComponent/, 'helper encodes pack and file segments');
+  for (const file of ['assets/js/pack-detail.js', 'assets/js/sbi.js', 'assets/js/admin.js']) {
+    const source = read(file);
+    assert.doesNotMatch(source, /['"`]\/thumbnails\//, `${file} hardcodes the in-repo thumbnail path`);
+    assert.match(source, /valeAsset(Base)?Url\(/, `${file} builds thumbnail URLs through the helper`);
+  }
+  const generator = read('scripts/generate-index.js');
+  assert.match(generator, /resolveAssetBase\(/, 'generator resolves the per-pack asset base');
+  assert.match(generator, /buildAssetUrl\(/, 'generator stamps URLs through the shared constructor');
+});

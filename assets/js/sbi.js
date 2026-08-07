@@ -516,6 +516,7 @@ async function ensurePackNameIndex() {
         map[it.name] = {
           displayName: it.displayName || fallback,
           coloredName: it.coloredName || it.displayName || fallback,
+          assetBase: it.assetBase || null,
         };
       }
     } catch (_) { /* keep empty map; fall back to slug names */ }
@@ -4196,8 +4197,13 @@ function applyDebugVisibility() {
   });
 }
 
+function getPackAssetBase(name) {
+  const meta = _packNameIndex && _packNameIndex[name];
+  return (meta && meta.assetBase) || null;
+}
+
 function getTextureThumbUrl(packName, fileName) {
-  return `/thumbnails/${encodeURIComponent(packName)}/${fileName}`;
+  return valeAssetUrl(packName, fileName, getPackAssetBase(packName));
 }
 
 function renderLiteTextureThumb(packName, fileName) {
@@ -4263,8 +4269,8 @@ function bindAnimatedTextureThumbs(scope) {
 function renderResultCard(r, i, mode) {
   const pct = Math.min(100, Math.round(getDisplayScoreValue(r, _lastMatchDetails[r.name]) * 100));
   const color = scoreColor(pct);
-  const coverUrl = '/thumbnails/' + encodeURIComponent(r.name) + '/cover.png';
-  const packPng = '/thumbnails/' + encodeURIComponent(r.name) + '/pack.png';
+  const coverUrl = valeAssetUrl(r.name, 'cover.png', getPackAssetBase(r.name));
+  const packPng = valeAssetUrl(r.name, 'pack.png', getPackAssetBase(r.name));
   const nameHtml = getPackColoredName(r.name);
   const rightContent = mode === 'lite'
     ? `<span class="sbi-lite-items">${[
@@ -4326,8 +4332,8 @@ function saveHistory(imageDataUrl, results) {
     imageDataUrl,
     results: results.map(r => ({
       name: r.name, score: getDisplayScoreValue(r, _lastMatchDetails[r.name]),
-      cover: '/thumbnails/' + r.name + '/cover.png',
-      packPng: '/thumbnails/' + r.name + '/pack.png'
+      cover: valeAssetUrl(r.name, 'cover.png', getPackAssetBase(r.name)),
+      packPng: valeAssetUrl(r.name, 'pack.png', getPackAssetBase(r.name))
     }))
   });
   if (history.length > 5) history.length = 5;

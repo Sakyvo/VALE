@@ -1,4 +1,4 @@
-Status: open
+Status: review
 Executor: Claude Code
 
 ## Parent
@@ -17,17 +17,44 @@ Executor: Claude Code
 
 前端引用缩略图的位置改为从资产基址常量拼接，基址在构建期注入，本地开发回落到本地目录。本 issue 只需让这一个包的资产走新路径并正确显示，其余包保持原样。
 
+## R2 额度核实（2026-08-07，来源 https://developers.cloudflare.com/r2/pricing/）
+
+官方免费档（按月计）：存储 10 GB-month；Class A 操作（写/列等）100 万次/月；Class B 操作（读）1000 万次/月；出站流量免费（含 Workers API、S3 API、`r2.dev` 与自定义域）。另：`DeleteObject`/`DeleteBucket`/`AbortMultipartUpload` 始终免费。
+
+结论：全量约 3900 包、展示资产约 790MB 远低于 10GB 存储档；一次性回填上传量级在数万次 Class A，远低于 100 万/月；站点读取走 Class B，1000 万/月对当前流量充裕。**分级上限维持原方案（图集 512 / 物品方块 256），不收紧。**
+
 ## Acceptance criteria
 
-- [ ] R2 免费额度的存储、读写操作与出站流量数字已核实并记录；若额度不足，分级上限的收紧决定已写入本 issue
+- [x] R2 免费额度的存储、读写操作与出站流量数字已核实并记录；若额度不足，分级上限的收紧决定已写入本 issue
 - [ ] 降采样规则纯函数存在，其测试覆盖：四类文件各自的目标尺寸、任何输入都只产生 2 的幂次缩放比、原始尺寸低于上限时返回"保持原样"、封面在任何输入尺寸下都保持原样
 - [ ] 资产远端模块存在，其测试用本地 stub 承接请求、不接触真实远端，覆盖：拒绝穿越路径与非法对象名、含色号与井号与空格的包名产生正确的资产 URL、重复上传同一对象不产生副本、中断后重跑跳过已验证对象
-- [ ] 选定一个包名含色号或空格的材质包，其展示纹理经降采样后上传至 R2，可通过 `assets.vale.cc.cd` 访问
-- [ ] 该包的详情页与主页卡片从资产基址加载图片并正常渲染，护甲、GUI、物品栏三个预览的精灵切片位置正确
-- [ ] 该包的封面若为多帧动画，帧高计算与动画播放不受影响
-- [ ] 前端不再硬编码仓库内缩略图路径，改为从资产基址拼接；基址在构建期注入且本地开发可回落
-- [ ] `npm test` 通过
-- [ ] 受影响脚本的 cache buster 已推进
+- [ ] 选定一个包名含色号或空格的材质包，其展示纹理经降采样后上传至 R2，可通过 `assets.vale.cc.cd` 访问 —— **skipped-manual**，见下方「人工验收」
+- [ ] 该包的详情页与主页卡片从资产基址加载图片并正常渲染，护甲、GUI、物品栏三个预览的精灵切片位置正确 —— **skipped-manual**（代码路径已验证：未迁移包构造的 URL 与旧表达式逐字节相同，已编码 URL 本地服务全部 200；切片渲染脚本本身未改动）
+- [ ] 该包的封面若为多帧动画，帧高计算与动画播放不受影响 —— **skipped-manual**（cover 保持原样已有纯函数测试锁定；真实播放随上传验证）
+- [x] 前端不再硬编码仓库内缩略图路径，改为从资产基址拼接；基址在构建期注入且本地开发可回落（`data/asset-base.json` → generate-index 盖入生成数据；浏览器 `assets/js/asset-base.js` 回落 `/thumbnails`；`tests/design-contract.test.js` 锁定）
+- [x] `npm test` 通过（176/176）
+- [x] 受影响脚本的 cache buster 已推进（asset-base.js?v=1 新增；pack-detail v10→11；sbi v106→107；admin v7→8；`p/*` 已重新生成）
+
+## 人工验收（真实 R2 链路）
+
+前置（Cloudflare 控制台，一次性）：
+1. 建 R2 bucket（如 `vale-assets`），绑定自定义域 `assets.vale.cc.cd`。
+2. bucket CORS 允许 `https://vale.cc.cd`（与本地验收 `http://127.0.0.1:*`）——详情页 favicon/画布会跨域读图。
+3. 建 API token（Object Read & Write，限该 bucket）。
+
+执行：
+```bash
+export R2_ACCOUNT_ID=... R2_ACCESS_KEY_ID=... R2_SECRET_ACCESS_KEY=... R2_BUCKET=vale-assets
+node scripts/upload-assets.js '$hyGuy$'   # packId 含 $、originalName 含 § 色号与空格，真实走编码路径
+node scripts/generate-index.js && node scripts/build.js
+git add -A && git commit -m '...' && git push   # CI 部署后生效
+```
+
+验收点：
+- `https://assets.vale.cc.cd/%24hyGuy%24/cover.png` 可访问。
+- 重跑 upload-assets 全部输出 `skip`（幂等）。
+- 该包详情页与主页卡片正常渲染；护甲/GUI/物品栏预览切片位置正确；封面动画播放正常。
+- 其余包渲染不受影响（仍走 `/thumbnails/` 本地路径）。
 
 ## Blocked by
 

@@ -138,8 +138,8 @@ class Admin {
           <a href="/p/${p.name}/" class="admin-pack-name">${p.displayName}</a>
         </div>
         <div class="admin-pack-row2">
-          <img class="admin-texture" data-src="/thumbnails/${p.name}/diamond_sword.png" onerror="this.style.display='none'" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
-          <img class="admin-texture" data-src="/thumbnails/${p.name}/ender_pearl.png" onerror="this.style.display='none'" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+          <img class="admin-texture" data-src="${valeAssetUrl(p.name, 'diamond_sword.png', p.assetBase)}" onerror="this.style.display='none'" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+          <img class="admin-texture" data-src="${valeAssetUrl(p.name, 'ender_pearl.png', p.assetBase)}" onerror="this.style.display='none'" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
         </div>
       </div>
     `).join('') || '<p>No packs found</p>';

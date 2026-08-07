@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { LOCAL_ASSET_BASE, buildAssetUrl, resolveAssetBase } = require('./lib/asset-remote');
 
 const PAGE_SIZE = 50;
 
@@ -73,6 +74,8 @@ function main() {
   // Load pack registry for download URLs
   const registryPath = 'data/pack-registry.json';
   const registry = fs.existsSync(registryPath) ? JSON.parse(fs.readFileSync(registryPath, 'utf-8')) : null;
+  const assetBasePath = 'data/asset-base.json';
+  const assetBaseConfig = fs.existsSync(assetBasePath) ? JSON.parse(fs.readFileSync(assetBasePath, 'utf-8')) : null;
 
   // Load lists
   const listsPath = 'l/lists.json';
@@ -106,15 +109,17 @@ function main() {
       githubUrl = `https://raw.githubusercontent.com/Sakyvo/VALE/main/resourcepacks/${encodedName}.zip`;
       mirrorUrl = `https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/VALE/main/resourcepacks/${encodedName}.zip`;
     }
+    const assetBase = resolveAssetBase(assetBaseConfig, e.packId);
     return {
       id: e.originalName,
       name: e.packId,
       displayName: cleanMinecraftText(e.originalName) || e.packId,
       coloredName: toColoredHtml(e.originalName),
       description: e.description || '',
-      cover: `/thumbnails/${e.packId}/cover.png`,
-      packPng: `/thumbnails/${e.packId}/pack.png`,
-      icon: fs.existsSync(path.join(e.outputDir, 'icon.png')) ? `/thumbnails/${e.packId}/icon.png` : null,
+      cover: buildAssetUrl(assetBase, e.packId, 'cover.png'),
+      packPng: buildAssetUrl(assetBase, e.packId, 'pack.png'),
+      icon: fs.existsSync(path.join(e.outputDir, 'icon.png')) ? buildAssetUrl(assetBase, e.packId, 'icon.png') : null,
+      ...(assetBase !== LOCAL_ASSET_BASE ? { assetBase } : {}),
       file: `resourcepacks/${e.originalName}.zip`,
       fileSize: getFileSize(path.join('resourcepacks', `${e.originalName}.zip`), registry && registry[zipName]),
       uploadDate: readExistingUploadDate(e.packId) || today,
@@ -145,7 +150,8 @@ function main() {
     description: p.description,
     lists: p.lists,
     cover: p.cover,
-    packPng: p.packPng
+    packPng: p.packPng,
+    ...(p.assetBase ? { assetBase: p.assetBase } : {})
   }));
 
   const index = {
