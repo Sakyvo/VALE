@@ -1,0 +1,61 @@
+{
+  "id": "§c! Miami §4Private [V2]",
+  "name": "Miami_Private_V2",
+  "displayName": "Miami Private [V2]",
+  "coloredName": "Miami <span style=\"color:#AA0000\">P</span><span style=\"color:#AA0000\">r</span><span style=\"color:#AA0000\">i</span><span style=\"color:#AA0000\">v</span><span style=\"color:#AA0000\">a</span><span style=\"color:#AA0000\">t</span><span style=\"color:#AA0000\">e</span><span style=\"color:#AA0000\"> </span><span style=\"color:#AA0000\">[</span><span style=\"color:#AA0000\">V</span><span style=\"color:#AA0000\">2</span><span style=\"color:#AA0000\">]</span>",
+  "description": "By Arissi 4 Miami",
+  "cover": "/thumbnails/Miami_Private_V2/cover.png",
+  "packPng": "/thumbnails/Miami_Private_V2/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§c! Miami §4Private [V2].zip",
+  "fileSize": "21.3MB",
+  "uploadDate": "2026-08-08",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/%C2%A7c!%20Miami%20%C2%A74Private%20%5BV2%5D.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/%C2%A7c!%20Miami%20%C2%A74Private%20%5BV2%5D.zip"
+  }
+}

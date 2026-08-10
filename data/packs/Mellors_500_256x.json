@@ -1,0 +1,61 @@
+{
+  "id": "! §dMellors§3 500 §8[256x]",
+  "name": "Mellors_500_256x",
+  "displayName": "Mellors 500 [256x]",
+  "coloredName": "<span style=\"color:#FF55FF\">M</span><span style=\"color:#FF55FF\">e</span><span style=\"color:#FF55FF\">l</span><span style=\"color:#FF55FF\">l</span><span style=\"color:#FF55FF\">o</span><span style=\"color:#FF55FF\">r</span><span style=\"color:#FF55FF\">s</span><span style=\"color:#00AAAA\"> </span><span style=\"color:#00AAAA\">5</span><span style=\"color:#00AAAA\">0</span><span style=\"color:#00AAAA\">0</span><span style=\"color:#00AAAA\"> </span><span style=\"color:#555555\">[</span><span style=\"color:#555555\">2</span><span style=\"color:#555555\">5</span><span style=\"color:#555555\">6</span><span style=\"color:#555555\">x</span><span style=\"color:#555555\">]</span>",
+  "description": "by Mellor",
+  "cover": "/thumbnails/Mellors_500_256x/cover.png",
+  "packPng": "/thumbnails/Mellors_500_256x/pack.png",
+  "icon": null,
+  "file": "resourcepacks/! §dMellors§3 500 §8[256x].zip",
+  "fileSize": "11.6MB",
+  "uploadDate": "2026-08-08",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/!%20%C2%A7dMellors%C2%A73%20500%20%C2%A78%5B256x%5D.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/!%20%C2%A7dMellors%C2%A73%20500%20%C2%A78%5B256x%5D.zip"
+  }
+}

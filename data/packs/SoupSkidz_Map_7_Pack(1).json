@@ -1,0 +1,61 @@
+{
+  "id": "§aSoupSkidz Map 7 Pack (1)",
+  "name": "SoupSkidz_Map_7_Pack(1)",
+  "displayName": "SoupSkidz Map 7 Pack (1)",
+  "coloredName": "<span style=\"color:#55FF55\">S</span><span style=\"color:#55FF55\">o</span><span style=\"color:#55FF55\">u</span><span style=\"color:#55FF55\">p</span><span style=\"color:#55FF55\">S</span><span style=\"color:#55FF55\">k</span><span style=\"color:#55FF55\">i</span><span style=\"color:#55FF55\">d</span><span style=\"color:#55FF55\">z</span><span style=\"color:#55FF55\"> </span><span style=\"color:#55FF55\">M</span><span style=\"color:#55FF55\">a</span><span style=\"color:#55FF55\">p</span><span style=\"color:#55FF55\"> </span><span style=\"color:#55FF55\">7</span><span style=\"color:#55FF55\"> </span><span style=\"color:#55FF55\">P</span><span style=\"color:#55FF55\">a</span><span style=\"color:#55FF55\">c</span><span style=\"color:#55FF55\">k</span><span style=\"color:#55FF55\"> </span><span style=\"color:#55FF55\">(</span><span style=\"color:#55FF55\">1</span><span style=\"color:#55FF55\">)</span>",
+  "description": "~Cardio",
+  "cover": "/thumbnails/SoupSkidz_Map_7_Pack(1)/cover.png",
+  "packPng": "/thumbnails/SoupSkidz_Map_7_Pack(1)/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§aSoupSkidz Map 7 Pack (1).zip",
+  "fileSize": "Unknown",
+  "uploadDate": "2026-08-08",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/VALE/main/resourcepacks/%C2%A7aSoupSkidz%20Map%207%20Pack%20(1).zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/VALE/main/resourcepacks/%C2%A7aSoupSkidz%20Map%207%20Pack%20(1).zip"
+  }
+}

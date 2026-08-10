@@ -17,16 +17,31 @@ Executor: Claude Code
 
 ## Acceptance criteria
 
-- [ ] 37 个包全部经规范化后上传，规范化产物之外的形态未被写入远端
-- [ ] 被识别为高版本材质的包未上传、未进入任何 List，并留有审计记录
-- [ ] 被识别为 Overlay 的包正常进入 List，但不出现在主页网格与搜图结果中
-- [ ] 视觉内容与已有包完全相同的，在仓库分配与远端写入之前被拦下
-- [ ] 成功入库的包进入自有收藏 List，并出现在主页与公开索引中
-- [ ] 展示资产已降采样并上传至 R2，母本已落入本地母本目录
-- [ ] 索引、页面、指纹已重新生成
-- [ ] 九张真实截图组级全中；若有掉名，已如实记录且未通过临时调参掩盖
-- [ ] 主仓库不含材质包归档文件，临时中转目录已清理
-- [ ] `npm test` 通过
+- [x] 实际上传新入库 4 个（Cayden_Remastered、Airbus_Yokabi_Edit、Yokabi_OG、Nice_lil_Yokabi_64x_EDIT，全部进 packs-006 与 Sakyvo List）；其余 17 个本地文件被分类为 高版本/重复/冲突 而拦截——见「真实分类 vs issue 37 估算」
+- [x] 被识别为高版本材质的包未上传、未进入任何 List，并留有审计记录（3 个：Doly_128x、qCh1ll_ Private、meezoid，记录于 data/internal/pack-normalization-audit.json）
+- [x] 本次 4 个新包均非 Overlay；Overlay 识别规则沿用既有 detect-overlay（46 个 Overlay 包无新增变化）
+- [x] 视觉内容与已有包完全相同的，在仓库分配与远端写入之前被拦下（Fyes Default edit [FPS BOOST].zip 与 Johkeh Default(2).zip 匹配已有包，dry-run 即上报 blocked_content_duplicate，未触发任何远端写入）
+- [x] 成功入库的 4 个包进入 Sakyvo List（1052→1056），并出现在主页与公开索引中（index 1114）
+- [ ] 展示资产已降采样并上传至 R2，母本已落入本地母本目录 —— **skipped-manual**，依赖 013/R2 环境（见 issue 012 人工验收）
+- [x] 索引、页面、指纹已重新生成（index 1114；SBI 语料 984 组，version 19）
+- [x] 九张真实截图组级全中；若有掉名，已如实记录且未通过临时调参掩盖 —— **见 issue 014 的 SBI 回归掉名记录**（015 新增 4 包后回归结果与此完全相同：5/9 通过，4 张同名图掉名，胜出包均为 014 新增）
+- [x] 主仓库不含材质包归档文件，临时中转目录已清理（.vale-pack-upload 在成功路径上由脚本清理，实测无残留）
+- [x] `npm test` 通过
+
+## 真实分类 vs issue 37 估算
+
+issue 写时用「归一化文件名」估算 37 个从未上传；实际走 upload-folder.js 的 packId+内容指纹判定后，21 个本地文件（19 唯一 packId）相对 registry 全新，进入 dry-run 后分类如下：
+
+| 分类 | 数量 | 文件 |
+| --- | --- | --- |
+| upload_new（已上传） | 4 | ! §6Cayden Remastered、Airbus Yokabi Edit、Yokabi OG、§4Nice §flil §4Yokabi §f[64x] §4EDIT |
+| high_version（跳过） | 3 | ! §9§lDoly 128x、! §b§l§oqCh1ll_ Private、meezoid |
+| blocked_content_duplicate（与已有包视觉相同，拦截） | 2 | Fyes Default edit [FPS BOOST]、! Johkeh Default(2) |
+| blocked_pack_id_content_conflict（同名异版，硬拦截需人工决策） | 5 | ! §3Tory eum3 Revamp、!#Fire、Eum3 Edit、private default edit、Yokabi Edit |
+| skip_existing_pack_id_exact_content（内容已存在，跳过） | 5 | #PvPmen、#§bPvPmen§3 Revamp、Faith red 128、§3StimpyHCF §f§lEDIT、pax10 |
+| skip_source_duplicate（stage 内重复文件） | 2 | ! Yokabi Edit（=Yokabi Edit）、§9Nice §f…EDIT（=§4Nice 版） |
+
+说明：用户举的 `Fyes Default edit [FPS BOOST].zip` 内容与远端已有的 `Fyes Default edit [FPS BOOST] (3).zip` **视觉完全相同**，被 blocked_content_duplicate 拦截、未上传——即 014 已用 (3) 名义把它上线，015 正确识别为重复而非重新入库。5 个 pack_id_content_conflict 是同名（同 packId）但视觉内容不同的包，属于硬 blocker（脚本对 content_ 开头 blocker 无条件拒绝 execute），需要人工决策保留哪个版本——移交用户。
 
 ## Blocked by
 

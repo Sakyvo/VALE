@@ -1,0 +1,61 @@
+{
+  "id": "_Plast _Pack_",
+  "name": "Plast__Pack_",
+  "displayName": "Plast _Pack_",
+  "coloredName": "Plast _Pack_",
+  "description": "v1.9.2 for Minecraft 1.7.2\nby Plastix",
+  "cover": "/thumbnails/Plast__Pack_/cover.png",
+  "packPng": "/thumbnails/Plast__Pack_/pack.png",
+  "icon": null,
+  "file": "resourcepacks/_Plast _Pack_.zip",
+  "fileSize": "4.0MB",
+  "uploadDate": "2026-08-08",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/_Plast%20_Pack_.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/_Plast%20_Pack_.zip"
+  }
+}

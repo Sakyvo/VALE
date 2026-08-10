@@ -2,19 +2,258 @@
   "page": 13,
   "items": [
     {
-      "id": "StimpyHCFpack",
-      "name": "StimpyHCFpack",
-      "displayName": "StimpyHCFpack",
-      "coloredName": "StimpyHCFpack",
-      "description": "StimpyHCF",
-      "cover": "/thumbnails/StimpyHCFpack/cover.png",
-      "packPng": "/thumbnails/StimpyHCFpack/pack.png",
+      "id": "!  §b§lKyeick §4§lPack",
+      "name": "Kyeick_Pack",
+      "displayName": "Kyeick Pack",
+      "coloredName": "<span style=\"color:#55FFFF\">K</span><span style=\"color:#55FFFF\">y</span><span style=\"color:#55FFFF\">e</span><span style=\"color:#55FFFF\">i</span><span style=\"color:#55FFFF\">c</span><span style=\"color:#55FFFF\">k</span><span style=\"color:#55FFFF\"> </span><span style=\"color:#AA0000\">P</span><span style=\"color:#AA0000\">a</span><span style=\"color:#AA0000\">c</span><span style=\"color:#AA0000\">k</span>",
+      "description": "-Kyeick",
+      "cover": "/thumbnails/Kyeick_Pack/cover.png",
+      "packPng": "/thumbnails/Kyeick_Pack/pack.png",
       "icon": null,
-      "file": "resourcepacks/StimpyHCFpack.zip",
-      "fileSize": "17.7MB",
-      "uploadDate": "2026-04-09",
+      "file": "resourcepacks/!  §b§lKyeick §4§lPack.zip",
+      "fileSize": "24.2MB",
+      "uploadDate": "2026-07-03",
       "lists": [
-        "Jewdah pf",
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%20%C2%A7b%C2%A7lKyeick%20%C2%A74%C2%A7lPack.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%20%C2%A7b%C2%A7lKyeick%20%C2%A74%C2%A7lPack.zip"
+      }
+    },
+    {
+      "id": "! ! §c§lKyeick §8Private v2[§7512x]",
+      "name": "Kyeick_Private_v2512x",
+      "displayName": "Kyeick Private v2[512x]",
+      "coloredName": "<span style=\"color:#FF5555\">K</span><span style=\"color:#FF5555\">y</span><span style=\"color:#FF5555\">e</span><span style=\"color:#FF5555\">i</span><span style=\"color:#FF5555\">c</span><span style=\"color:#FF5555\">k</span><span style=\"color:#FF5555\"> </span><span style=\"color:#555555\">P</span><span style=\"color:#555555\">r</span><span style=\"color:#555555\">i</span><span style=\"color:#555555\">v</span><span style=\"color:#555555\">a</span><span style=\"color:#555555\">t</span><span style=\"color:#555555\">e</span><span style=\"color:#555555\"> </span><span style=\"color:#555555\">v</span><span style=\"color:#555555\">2</span><span style=\"color:#555555\">[</span><span style=\"color:#AAAAAA\">5</span><span style=\"color:#AAAAAA\">1</span><span style=\"color:#AAAAAA\">2</span><span style=\"color:#AAAAAA\">x</span><span style=\"color:#AAAAAA\">]</span>",
+      "description": "",
+      "cover": "/thumbnails/Kyeick_Private_v2512x/cover.png",
+      "packPng": "/thumbnails/Kyeick_Private_v2512x/pack.png",
+      "icon": null,
+      "file": "resourcepacks/! ! §c§lKyeick §8Private v2[§7512x].zip",
+      "fileSize": "22.5MB",
+      "uploadDate": "2026-07-03",
+      "lists": [
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!%20!%20%C2%A7c%C2%A7lKyeick%20%C2%A78Private%20v2%5B%C2%A77512x%5D.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!%20!%20%C2%A7c%C2%A7lKyeick%20%C2%A78Private%20v2%5B%C2%A77512x%5D.zip"
+      }
+    },
+    {
+      "id": "##KyogrePack",
+      "name": "KyogrePack",
+      "displayName": "KyogrePack",
+      "coloredName": "KyogrePack",
+      "description": "Pack based on the Sea Basin Pokemon, Kyogre!",
+      "cover": "/thumbnails/KyogrePack/cover.png",
+      "packPng": "/thumbnails/KyogrePack/pack.png",
+      "icon": null,
+      "file": "resourcepacks/##KyogrePack.zip",
+      "fileSize": "27.3MB",
+      "uploadDate": "2026-07-03",
+      "lists": [
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/%23%23KyogrePack.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/%23%23KyogrePack.zip"
+      }
+    },
+    {
+      "id": "! Kyzectioned",
+      "name": "Kyzectioned",
+      "displayName": "Kyzectioned",
+      "coloredName": "Kyzectioned",
+      "description": "Sectioned Edit by Kyzuko",
+      "cover": "/thumbnails/Kyzectioned/cover.png",
+      "packPng": "/thumbnails/Kyzectioned/pack.png",
+      "icon": null,
+      "file": "resourcepacks/! Kyzectioned.zip",
+      "fileSize": "19.9MB",
+      "uploadDate": "2026-07-03",
+      "lists": [
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%20Kyzectioned.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%20Kyzectioned.zip"
+      }
+    },
+    {
+      "id": "Kyzou Edit ( ZYLOWH)",
+      "name": "Kyzou_Edit_ZYLOWH",
+      "displayName": "Kyzou Edit ( ZYLOWH)",
+      "coloredName": "Kyzou Edit ( ZYLOWH)",
+      "description": "-denqy�7[USING RECOLOUR.PY]",
+      "cover": "/thumbnails/Kyzou_Edit_ZYLOWH/cover.png",
+      "packPng": "/thumbnails/Kyzou_Edit_ZYLOWH/pack.png",
+      "icon": null,
+      "file": "resourcepacks/Kyzou Edit ( ZYLOWH).zip",
+      "fileSize": "41.2MB",
+      "uploadDate": "2026-08-08",
+      "lists": [
         "Sakyvo"
       ],
       "textures": {
@@ -59,21 +298,143 @@
         ]
       },
       "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/StimpyHCFpack.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/StimpyHCFpack.zip"
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/Kyzou%20Edit%20(%20ZYLOWH).zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/Kyzou%20Edit%20(%20ZYLOWH).zip"
       }
     },
     {
-      "id": "StrafeGOD",
-      "name": "StrafeGOD",
-      "displayName": "StrafeGOD",
-      "coloredName": "StrafeGOD",
-      "description": "StrafeGOD",
-      "cover": "/thumbnails/StrafeGOD/cover.png",
-      "packPng": "/thumbnails/StrafeGOD/pack.png",
+      "id": "Kyzou Prac Edit",
+      "name": "Kyzou_Prac_Edit",
+      "displayName": "Kyzou Prac Edit",
+      "coloredName": "Kyzou Prac Edit",
+      "description": "Ahh, my shoulders hurt..",
+      "cover": "/thumbnails/Kyzou_Prac_Edit/cover.png",
+      "packPng": "/thumbnails/Kyzou_Prac_Edit/pack.png",
       "icon": null,
-      "file": "resourcepacks/StrafeGOD.zip",
-      "fileSize": "21.0MB",
+      "file": "resourcepacks/Kyzou Prac Edit.zip",
+      "fileSize": "30.8MB",
+      "uploadDate": "2026-08-08",
+      "lists": [
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "stone_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/Kyzou%20Prac%20Edit.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/Kyzou%20Prac%20Edit.zip"
+      }
+    },
+    {
+      "id": "Kyzou war",
+      "name": "Kyzou_war",
+      "displayName": "Kyzou war",
+      "coloredName": "Kyzou war",
+      "description": "ratchet",
+      "cover": "/thumbnails/Kyzou_war/cover.png",
+      "packPng": "/thumbnails/Kyzou_war/pack.png",
+      "icon": null,
+      "file": "resourcepacks/Kyzou war.zip",
+      "fileSize": "29.9MB",
+      "uploadDate": "2026-08-08",
+      "lists": [
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "stone_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/Kyzou%20war.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/Kyzou%20war.zip"
+      }
+    },
+    {
+      "id": "l9NotRamix_64x",
+      "name": "l9NotRamix_64x",
+      "displayName": "l9NotRamix_64x",
+      "coloredName": "l9NotRamix_64x",
+      "description": "edit made by Megah",
+      "cover": "/thumbnails/l9NotRamix_64x/cover.png",
+      "packPng": "/thumbnails/l9NotRamix_64x/pack.png",
+      "icon": null,
+      "file": "resourcepacks/l9NotRamix_64x.zip",
+      "fileSize": "10.2MB",
       "uploadDate": "2026-07-03",
       "lists": [
         "Sakyvo"
@@ -120,21 +481,82 @@
         ]
       },
       "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/StrafeGOD.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/StrafeGOD.zip"
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/l9NotRamix_64x.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/l9NotRamix_64x.zip"
       }
     },
     {
-      "id": "#SUPREME#",
-      "name": "SUPREME",
-      "displayName": "SUPREME#",
-      "coloredName": "SUPREME#",
-      "description": "by Timon",
-      "cover": "/thumbnails/SUPREME/cover.png",
-      "packPng": "/thumbnails/SUPREME/pack.png",
+      "id": "!     §3§lLagoon §8[§3§l16x§8]",
+      "name": "Lagoon_16x",
+      "displayName": "Lagoon [16x]",
+      "coloredName": "<span style=\"color:#00AAAA\">L</span><span style=\"color:#00AAAA\">a</span><span style=\"color:#00AAAA\">g</span><span style=\"color:#00AAAA\">o</span><span style=\"color:#00AAAA\">o</span><span style=\"color:#00AAAA\">n</span><span style=\"color:#00AAAA\"> </span><span style=\"color:#555555\">[</span><span style=\"color:#00AAAA\">1</span><span style=\"color:#00AAAA\">6</span><span style=\"color:#00AAAA\">x</span><span style=\"color:#555555\">]</span>",
+      "description": "By Mek/@packMeker // For Lazys! !!!",
+      "cover": "/thumbnails/Lagoon_16x/cover.png",
+      "packPng": "/thumbnails/Lagoon_16x/pack.png",
       "icon": null,
-      "file": "resourcepacks/#SUPREME#.zip",
-      "fileSize": "9.0MB",
+      "file": "resourcepacks/!     §3§lLagoon §8[§3§l16x§8].zip",
+      "fileSize": "20.0MB",
+      "uploadDate": "2026-08-08",
+      "lists": [
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "stone_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/!%20%20%20%20%20%C2%A73%C2%A7lLagoon%20%C2%A78%5B%C2%A73%C2%A7l16x%C2%A78%5D.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/!%20%20%20%20%20%C2%A73%C2%A7lLagoon%20%C2%A78%5B%C2%A73%C2%A7l16x%C2%A78%5D.zip"
+      }
+    },
+    {
+      "id": "Latenci eum3",
+      "name": "Latenci_eum3",
+      "displayName": "Latenci eum3",
+      "coloredName": "Latenci eum3",
+      "description": "-Latenci",
+      "cover": "/thumbnails/Latenci_eum3/cover.png",
+      "packPng": "/thumbnails/Latenci_eum3/pack.png",
+      "icon": null,
+      "file": "resourcepacks/Latenci eum3.zip",
+      "fileSize": "14.6MB",
       "uploadDate": "2026-07-03",
       "lists": [
         "Sakyvo"
@@ -180,22 +602,22 @@
         ]
       },
       "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/%23SUPREME%23.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/%23SUPREME%23.zip"
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/Latenci%20eum3.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/Latenci%20eum3.zip"
       }
     },
     {
-      "id": "!#supreme# v2",
-      "name": "supreme_v2",
-      "displayName": "supreme# v2",
-      "coloredName": "supreme# v2",
-      "description": "-TIMON-",
-      "cover": "/thumbnails/supreme_v2/cover.png",
-      "packPng": "/thumbnails/supreme_v2/pack.png",
+      "id": "!! Latenci Eum3 Edit",
+      "name": "Latenci_Eum3_Edit",
+      "displayName": "Latenci Eum3 Edit",
+      "coloredName": "Latenci Eum3 Edit",
+      "description": "-Latenci",
+      "cover": "/thumbnails/Latenci_Eum3_Edit/cover.png",
+      "packPng": "/thumbnails/Latenci_Eum3_Edit/pack.png",
       "icon": null,
-      "file": "resourcepacks/!#supreme# v2.zip",
-      "fileSize": "7.8MB",
-      "uploadDate": "2026-07-03",
+      "file": "resourcepacks/!! Latenci Eum3 Edit.zip",
+      "fileSize": "45.5MB",
+      "uploadDate": "2026-08-08",
       "lists": [
         "Sakyvo"
       ],
@@ -206,6 +628,7 @@
           "splash_potion_of_healing.png",
           "steak.png",
           "iron_sword.png",
+          "stone_sword.png",
           "fishing_rod_uncast.png",
           "apple_golden.png",
           "golden_carrot.png"
@@ -240,21 +663,21 @@
         ]
       },
       "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%23supreme%23%20v2.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%23supreme%23%20v2.zip"
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!!%20Latenci%20Eum3%20Edit.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!!%20Latenci%20Eum3%20Edit.zip"
       }
     },
     {
-      "id": "! surprise pack",
-      "name": "surprise_pack",
-      "displayName": "surprise pack",
-      "coloredName": "surprise pack",
-      "description": "Happy birthday <3 - Arissi",
-      "cover": "/thumbnails/surprise_pack/cover.png",
-      "packPng": "/thumbnails/surprise_pack/pack.png",
+      "id": "Latenci FPS",
+      "name": "Latenci_FPS",
+      "displayName": "Latenci FPS",
+      "coloredName": "Latenci FPS",
+      "description": "-Latenci",
+      "cover": "/thumbnails/Latenci_FPS/cover.png",
+      "packPng": "/thumbnails/Latenci_FPS/pack.png",
       "icon": null,
-      "file": "resourcepacks/! surprise pack.zip",
-      "fileSize": "24.5MB",
+      "file": "resourcepacks/Latenci FPS.zip",
+      "fileSize": "11.1MB",
       "uploadDate": "2026-04-09",
       "lists": [
         "iil pf v1"
@@ -300,20 +723,627 @@
         ]
       },
       "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/!%20surprise%20pack.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/!%20surprise%20pack.zip"
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/Latenci%20FPS.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/Latenci%20FPS.zip"
       }
     },
     {
-      "id": "Swampie Franxx Pack",
-      "name": "Swampie_Franxx_Pack",
-      "displayName": "Swampie Franxx Pack",
-      "coloredName": "Swampie Franxx Pack",
-      "description": "Remember who you are. Remember me too! @Swaumpie",
-      "cover": "/thumbnails/Swampie_Franxx_Pack/cover.png",
-      "packPng": "/thumbnails/Swampie_Franxx_Pack/pack.png",
+      "id": "§l§5! Lavender Town Default Edit",
+      "name": "Lavender_Town_Default_Edit",
+      "displayName": "Lavender Town Default Edit",
+      "coloredName": "Lavender Town Default Edit",
+      "description": "by strafeist ~ enjoy + sword edited by Zefew!",
+      "cover": "/thumbnails/Lavender_Town_Default_Edit/cover.png",
+      "packPng": "/thumbnails/Lavender_Town_Default_Edit/pack.png",
       "icon": null,
-      "file": "resourcepacks/Swampie Franxx Pack.zip",
+      "file": "resourcepacks/§l§5! Lavender Town Default Edit.zip",
+      "fileSize": "2.4MB",
+      "uploadDate": "2026-07-03",
+      "lists": [
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/%C2%A7l%C2%A75!%20Lavender%20Town%20Default%20Edit.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/%C2%A7l%C2%A75!%20Lavender%20Town%20Default%20Edit.zip"
+      }
+    },
+    {
+      "id": "Legacy red HCF",
+      "name": "Legacy_red_HCF",
+      "displayName": "Legacy red HCF",
+      "coloredName": "Legacy red HCF",
+      "description": "By Kardesh",
+      "cover": "/thumbnails/Legacy_red_HCF/cover.png",
+      "packPng": "/thumbnails/Legacy_red_HCF/pack.png",
+      "icon": null,
+      "file": "resourcepacks/Legacy red HCF.zip",
+      "fileSize": "16.7MB",
+      "uploadDate": "2026-08-08",
+      "lists": [
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "stone_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/Legacy%20red%20HCF.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/Legacy%20red%20HCF.zip"
+      }
+    },
+    {
+      "id": "§4ＳＬＡＵ§blight",
+      "name": "light",
+      "displayName": "light",
+      "coloredName": "<span style=\"color:#AA0000\">Ｓ</span><span style=\"color:#AA0000\">Ｌ</span><span style=\"color:#AA0000\">Ａ</span><span style=\"color:#AA0000\">Ｕ</span><span style=\"color:#55FFFF\">l</span><span style=\"color:#55FFFF\">i</span><span style=\"color:#55FFFF\">g</span><span style=\"color:#55FFFF\">h</span><span style=\"color:#55FFFF\">t</span>",
+      "description": "zefff",
+      "cover": "/thumbnails/light/cover.png",
+      "packPng": "/thumbnails/light/pack.png",
+      "icon": null,
+      "file": "resourcepacks/§4ＳＬＡＵ§blight.zip",
+      "fileSize": "49.4MB",
+      "uploadDate": "2026-07-03",
+      "lists": [
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/%C2%A74%EF%BC%B3%EF%BC%AC%EF%BC%A1%EF%BC%B5%C2%A7blight.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/%C2%A74%EF%BC%B3%EF%BC%AC%EF%BC%A1%EF%BC%B5%C2%A7blight.zip"
+      }
+    },
+    {
+      "id": "!Light Blue Default",
+      "name": "Light_Blue_Default",
+      "displayName": "Light Blue Default",
+      "coloredName": "Light Blue Default",
+      "description": "WATCHDOG BESTWW",
+      "cover": "/thumbnails/Light_Blue_Default/cover.png",
+      "packPng": "/thumbnails/Light_Blue_Default/pack.png",
+      "icon": null,
+      "file": "resourcepacks/!Light Blue Default.zip",
+      "fileSize": "25.2MB",
+      "uploadDate": "2026-07-03",
+      "lists": [
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!Light%20Blue%20Default.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!Light%20Blue%20Default.zip"
+      }
+    },
+    {
+      "id": "!       LightMap + Clear Walls",
+      "name": "LightMap_Clear_Walls",
+      "displayName": "LightMap + Clear Walls",
+      "coloredName": "LightMap + Clear Walls",
+      "description": "Apexay",
+      "cover": "/thumbnails/LightMap_Clear_Walls/cover.png",
+      "packPng": "/thumbnails/LightMap_Clear_Walls/pack.png",
+      "icon": null,
+      "file": "resourcepacks/!       LightMap + Clear Walls.zip",
+      "fileSize": "4KB",
+      "uploadDate": "2026-04-09",
+      "lists": [
+        "Jewdah pf",
+        "Overlay",
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/!%20%20%20%20%20%20%20LightMap%20%2B%20Clear%20Walls.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/!%20%20%20%20%20%20%20LightMap%20%2B%20Clear%20Walls.zip"
+      }
+    },
+    {
+      "id": "! Lightning [64x]",
+      "name": "Lightning_64x",
+      "displayName": "Lightning [64x]",
+      "coloredName": "Lightning [64x]",
+      "description": "By Arissi for some cheater called Staind",
+      "cover": "/thumbnails/Lightning_64x/cover.png",
+      "packPng": "/thumbnails/Lightning_64x/pack.png",
+      "icon": null,
+      "file": "resourcepacks/! Lightning [64x].zip",
+      "fileSize": "17.1MB",
+      "uploadDate": "2026-08-08",
+      "lists": [
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "stone_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!%20Lightning%20%5B64x%5D.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!%20Lightning%20%5B64x%5D.zip"
+      }
+    },
+    {
+      "id": "! §cL§fO§bL",
+      "name": "LOL",
+      "displayName": "LOL",
+      "coloredName": "<span style=\"color:#FF5555\">L</span><span style=\"color:#FFFFFF\">O</span><span style=\"color:#55FFFF\">L</span>",
+      "description": "By Distory",
+      "cover": "/thumbnails/LOL/cover.png",
+      "packPng": "/thumbnails/LOL/pack.png",
+      "icon": null,
+      "file": "resourcepacks/! §cL§fO§bL.zip",
+      "fileSize": "22.7MB",
+      "uploadDate": "2026-08-08",
+      "lists": [
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "stone_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!%20%C2%A7cL%C2%A7fO%C2%A7bL.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!%20%C2%A7cL%C2%A7fO%C2%A7bL.zip"
+      }
+    },
+    {
+      "id": "lol sky",
+      "name": "lol_sky",
+      "displayName": "lol sky",
+      "coloredName": "lol sky",
+      "description": "saint",
+      "cover": "/thumbnails/lol_sky/cover.png",
+      "packPng": "/thumbnails/lol_sky/pack.png",
+      "icon": null,
+      "file": "resourcepacks/lol sky.zip",
+      "fileSize": "39.0MB",
+      "uploadDate": "2026-08-08",
+      "lists": [
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "stone_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/lol%20sky.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/lol%20sky.zip"
+      }
+    },
+    {
+      "id": "! lollocoffee",
+      "name": "lollocoffee",
+      "displayName": "lollocoffee",
+      "coloredName": "lollocoffee",
+      "description": "Zefew",
+      "cover": "/thumbnails/lollocoffee/cover.png",
+      "packPng": "/thumbnails/lollocoffee/pack.png",
+      "icon": null,
+      "file": "resourcepacks/! lollocoffee.zip",
+      "fileSize": "25.3MB",
+      "uploadDate": "2026-07-03",
+      "lists": [
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%20lollocoffee.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%20lollocoffee.zip"
+      }
+    },
+    {
+      "id": "Low Fire TheLegend24",
+      "name": "Low_Fire_TheLegend24",
+      "displayName": "Low Fire TheLegend24",
+      "coloredName": "Low Fire TheLegend24",
+      "description": "Edits by Icicly",
+      "cover": "/thumbnails/Low_Fire_TheLegend24/cover.png",
+      "packPng": "/thumbnails/Low_Fire_TheLegend24/pack.png",
+      "icon": null,
+      "file": "resourcepacks/Low Fire TheLegend24.zip",
+      "fileSize": "12.3MB",
+      "uploadDate": "2026-08-08",
+      "lists": [
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "stone_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/Low%20Fire%20TheLegend24.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/Low%20Fire%20TheLegend24.zip"
+      }
+    },
+    {
+      "id": "Low Res Franxx Pack",
+      "name": "Low_Res_Franxx_Pack",
+      "displayName": "Low Res Franxx Pack",
+      "coloredName": "Low Res Franxx Pack",
+      "description": "Remember who you are. Remember me too! @Swaumpie Edited By Zefew",
+      "cover": "/thumbnails/Low_Res_Franxx_Pack/cover.png",
+      "packPng": "/thumbnails/Low_Res_Franxx_Pack/pack.png",
+      "icon": null,
+      "file": "resourcepacks/Low Res Franxx Pack.zip",
       "fileSize": "16.2MB",
       "uploadDate": "2026-07-03",
       "lists": [
@@ -360,986 +1390,21 @@
         ]
       },
       "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/Swampie%20Franxx%20Pack.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/Swampie%20Franxx%20Pack.zip"
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/Low%20Res%20Franxx%20Pack.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/Low%20Res%20Franxx%20Pack.zip"
       }
     },
     {
-      "id": "swips kiro purple edit",
-      "name": "swips_kiro_purple_edit",
-      "displayName": "swips kiro purple edit",
-      "coloredName": "swips kiro purple edit",
-      "description": "by swip",
-      "cover": "/thumbnails/swips_kiro_purple_edit/cover.png",
-      "packPng": "/thumbnails/swips_kiro_purple_edit/pack.png",
+      "id": "! §fLunar §8[§f128x§8]",
+      "name": "Lunar_128x",
+      "displayName": "Lunar [128x]",
+      "coloredName": "<span style=\"color:#FFFFFF\">L</span><span style=\"color:#FFFFFF\">u</span><span style=\"color:#FFFFFF\">n</span><span style=\"color:#FFFFFF\">a</span><span style=\"color:#FFFFFF\">r</span><span style=\"color:#FFFFFF\"> </span><span style=\"color:#555555\">[</span><span style=\"color:#FFFFFF\">1</span><span style=\"color:#FFFFFF\">2</span><span style=\"color:#FFFFFF\">8</span><span style=\"color:#FFFFFF\">x</span><span style=\"color:#555555\">]</span>",
+      "description": "By iSparkton, for Stimpy",
+      "cover": "/thumbnails/Lunar_128x/cover.png",
+      "packPng": "/thumbnails/Lunar_128x/pack.png",
       "icon": null,
-      "file": "resourcepacks/swips kiro purple edit.zip",
-      "fileSize": "17.3MB",
-      "uploadDate": "2026-07-03",
-      "lists": [
-        "Sakyvo"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/swips%20kiro%20purple%20edit.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/swips%20kiro%20purple%20edit.zip"
-      }
-    },
-    {
-      "id": "swipy_crash",
-      "name": "swipy_crash",
-      "displayName": "swipy_crash",
-      "coloredName": "swipy_crash",
-      "description": "By: SoulFruit",
-      "cover": "/thumbnails/swipy_crash/cover.png",
-      "packPng": "/thumbnails/swipy_crash/pack.png",
-      "icon": null,
-      "file": "resourcepacks/swipy_crash.zip",
-      "fileSize": "2.5MB",
-      "uploadDate": "2026-07-03",
-      "lists": [
-        "Sakyvo"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/swipy_crash.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/swipy_crash.zip"
-      }
-    },
-    {
-      "id": "SWIPYS PACK LOOOOOOL",
-      "name": "SWIPYS_PACK_LOOOOOOL",
-      "displayName": "SWIPYS PACK LOOOOOOL",
-      "coloredName": "SWIPYS PACK LOOOOOOL",
-      "description": "D.T.B | Made by Moa",
-      "cover": "/thumbnails/SWIPYS_PACK_LOOOOOOL/cover.png",
-      "packPng": "/thumbnails/SWIPYS_PACK_LOOOOOOL/pack.png",
-      "icon": null,
-      "file": "resourcepacks/SWIPYS PACK LOOOOOOL.zip",
-      "fileSize": "24.9MB",
-      "uploadDate": "2026-07-03",
-      "lists": [
-        "Sakyvo"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/SWIPYS%20PACK%20LOOOOOOL.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/SWIPYS%20PACK%20LOOOOOOL.zip"
-      }
-    },
-    {
-      "id": "! §4§lSwoozay §f§l16x",
-      "name": "Swoozay_16x",
-      "displayName": "Swoozay 16x",
-      "coloredName": "<span style=\"color:#AA0000\">S</span><span style=\"color:#AA0000\">w</span><span style=\"color:#AA0000\">o</span><span style=\"color:#AA0000\">o</span><span style=\"color:#AA0000\">z</span><span style=\"color:#AA0000\">a</span><span style=\"color:#AA0000\">y</span><span style=\"color:#AA0000\"> </span><span style=\"color:#FFFFFF\">1</span><span style=\"color:#FFFFFF\">6</span><span style=\"color:#FFFFFF\">x</span>",
-      "description": "by Swoozay & Andwy",
-      "cover": "/thumbnails/Swoozay_16x/cover.png",
-      "packPng": "/thumbnails/Swoozay_16x/pack.png",
-      "icon": null,
-      "file": "resourcepacks/! §4§lSwoozay §f§l16x.zip",
-      "fileSize": "16.0MB",
-      "uploadDate": "2026-07-03",
-      "lists": [
-        "Sakyvo"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%C2%A74%C2%A7lSwoozay%20%C2%A7f%C2%A7l16x.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%C2%A74%C2%A7lSwoozay%20%C2%A7f%C2%A7l16x.zip"
-      }
-    },
-    {
-      "id": "! §4§lSwoozay §f§lEum3",
-      "name": "Swoozay_Eum3",
-      "displayName": "Swoozay Eum3",
-      "coloredName": "<span style=\"color:#AA0000\">S</span><span style=\"color:#AA0000\">w</span><span style=\"color:#AA0000\">o</span><span style=\"color:#AA0000\">o</span><span style=\"color:#AA0000\">z</span><span style=\"color:#AA0000\">a</span><span style=\"color:#AA0000\">y</span><span style=\"color:#AA0000\"> </span><span style=\"color:#FFFFFF\">E</span><span style=\"color:#FFFFFF\">u</span><span style=\"color:#FFFFFF\">m</span><span style=\"color:#FFFFFF\">3</span>",
-      "description": "Swoozay's Private Pack",
-      "cover": "/thumbnails/Swoozay_Eum3/cover.png",
-      "packPng": "/thumbnails/Swoozay_Eum3/pack.png",
-      "icon": null,
-      "file": "resourcepacks/! §4§lSwoozay §f§lEum3.zip",
-      "fileSize": "10.6MB",
-      "uploadDate": "2026-07-03",
-      "lists": [
-        "Sakyvo"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%C2%A74%C2%A7lSwoozay%20%C2%A7f%C2%A7lEum3.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%C2%A74%C2%A7lSwoozay%20%C2%A7f%C2%A7lEum3.zip"
-      }
-    },
-    {
-      "id": "! §4§lSwoozay §f§lFPS",
-      "name": "Swoozay_FPS",
-      "displayName": "Swoozay FPS",
-      "coloredName": "<span style=\"color:#AA0000\">S</span><span style=\"color:#AA0000\">w</span><span style=\"color:#AA0000\">o</span><span style=\"color:#AA0000\">o</span><span style=\"color:#AA0000\">z</span><span style=\"color:#AA0000\">a</span><span style=\"color:#AA0000\">y</span><span style=\"color:#AA0000\"> </span><span style=\"color:#FFFFFF\">F</span><span style=\"color:#FFFFFF\">P</span><span style=\"color:#FFFFFF\">S</span>",
-      "description": "by Swoozay",
-      "cover": "/thumbnails/Swoozay_FPS/cover.png",
-      "packPng": "/thumbnails/Swoozay_FPS/pack.png",
-      "icon": null,
-      "file": "resourcepacks/! §4§lSwoozay §f§lFPS.zip",
-      "fileSize": "16.1MB",
-      "uploadDate": "2026-07-03",
-      "lists": [
-        "Sakyvo"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%C2%A74%C2%A7lSwoozay%20%C2%A7f%C2%A7lFPS.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%C2%A74%C2%A7lSwoozay%20%C2%A7f%C2%A7lFPS.zip"
-      }
-    },
-    {
-      "id": "#T-Zone",
-      "name": "T-Zone",
-      "displayName": "T-Zone",
-      "coloredName": "T-Zone",
-      "description": "You've just crossed over into... The Twilight Zone",
-      "cover": "/thumbnails/T-Zone/cover.png",
-      "packPng": "/thumbnails/T-Zone/pack.png",
-      "icon": null,
-      "file": "resourcepacks/#T-Zone.zip",
-      "fileSize": "15.1MB",
-      "uploadDate": "2026-07-03",
-      "lists": [
-        "Sakyvo"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/%23T-Zone.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/%23T-Zone.zip"
-      }
-    },
-    {
-      "id": "!!§3@t3lus on twitters priv pack",
-      "name": "t3lus_on_twitters_priv_pack",
-      "displayName": "t3lus on twitters priv pack",
-      "coloredName": "<span style=\"color:#00AAAA\">@</span><span style=\"color:#00AAAA\">t</span><span style=\"color:#00AAAA\">3</span><span style=\"color:#00AAAA\">l</span><span style=\"color:#00AAAA\">u</span><span style=\"color:#00AAAA\">s</span><span style=\"color:#00AAAA\"> </span><span style=\"color:#00AAAA\">o</span><span style=\"color:#00AAAA\">n</span><span style=\"color:#00AAAA\"> </span><span style=\"color:#00AAAA\">t</span><span style=\"color:#00AAAA\">w</span><span style=\"color:#00AAAA\">i</span><span style=\"color:#00AAAA\">t</span><span style=\"color:#00AAAA\">t</span><span style=\"color:#00AAAA\">e</span><span style=\"color:#00AAAA\">r</span><span style=\"color:#00AAAA\">s</span><span style=\"color:#00AAAA\"> </span><span style=\"color:#00AAAA\">p</span><span style=\"color:#00AAAA\">r</span><span style=\"color:#00AAAA\">i</span><span style=\"color:#00AAAA\">v</span><span style=\"color:#00AAAA\"> </span><span style=\"color:#00AAAA\">p</span><span style=\"color:#00AAAA\">a</span><span style=\"color:#00AAAA\">c</span><span style=\"color:#00AAAA\">k</span>",
-      "description": "Naisu pack T_T",
-      "cover": "/thumbnails/t3lus_on_twitters_priv_pack/cover.png",
-      "packPng": "/thumbnails/t3lus_on_twitters_priv_pack/pack.png",
-      "icon": null,
-      "file": "resourcepacks/!!§3@t3lus on twitters priv pack.zip",
-      "fileSize": "20.6MB",
-      "uploadDate": "2026-04-09",
-      "lists": [
-        "iil pf v1"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/!!%C2%A73%40t3lus%20on%20twitters%20priv%20pack.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/!!%C2%A73%40t3lus%20on%20twitters%20priv%20pack.zip"
-      }
-    },
-    {
-      "id": "TeaserOnTour Private",
-      "name": "TeaserOnTour_Private",
-      "displayName": "TeaserOnTour Private",
-      "coloredName": "TeaserOnTour Private",
-      "description": "Mashuped by Qunc & Teaser edit by iil",
-      "cover": "/thumbnails/TeaserOnTour_Private/cover.png",
-      "packPng": "/thumbnails/TeaserOnTour_Private/pack.png",
-      "icon": null,
-      "file": "resourcepacks/TeaserOnTour Private.zip",
-      "fileSize": "12.7MB",
-      "uploadDate": "2026-04-09",
-      "lists": [
-        "iil pf v2"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/TeaserOnTour%20Private.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/TeaserOnTour%20Private.zip"
-      }
-    },
-    {
-      "id": "TeeDawgs Stimpy EUM remake!",
-      "name": "TeeDawgs_Stimpy_EUM_remake",
-      "displayName": "TeeDawgs Stimpy EUM remake!",
-      "coloredName": "TeeDawgs Stimpy EUM remake!",
-      "description": "Faithful/Default Red by Tempah_",
-      "cover": "/thumbnails/TeeDawgs_Stimpy_EUM_remake/cover.png",
-      "packPng": "/thumbnails/TeeDawgs_Stimpy_EUM_remake/pack.png",
-      "icon": null,
-      "file": "resourcepacks/TeeDawgs Stimpy EUM remake!.zip",
-      "fileSize": "16.1MB",
-      "uploadDate": "2026-07-03",
-      "lists": [
-        "Sakyvo"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/TeeDawgs%20Stimpy%20EUM%20remake!.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/TeeDawgs%20Stimpy%20EUM%20remake!.zip"
-      }
-    },
-    {
-      "id": "! §dTewChaynz",
-      "name": "TewChaynz",
-      "displayName": "TewChaynz",
-      "coloredName": "<span style=\"color:#FF55FF\">T</span><span style=\"color:#FF55FF\">e</span><span style=\"color:#FF55FF\">w</span><span style=\"color:#FF55FF\">C</span><span style=\"color:#FF55FF\">h</span><span style=\"color:#FF55FF\">a</span><span style=\"color:#FF55FF\">y</span><span style=\"color:#FF55FF\">n</span><span style=\"color:#FF55FF\">z</span>",
-      "description": "by Tory <3",
-      "cover": "/thumbnails/TewChaynz/cover.png",
-      "packPng": "/thumbnails/TewChaynz/pack.png",
-      "icon": null,
-      "file": "resourcepacks/! §dTewChaynz.zip",
-      "fileSize": "33.8MB",
-      "uploadDate": "2026-04-09",
-      "lists": [
-        "Jewdah pf",
-        "Sakyvo"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/!%20%C2%A7dTewChaynz.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/!%20%C2%A7dTewChaynz.zip"
-      }
-    },
-    {
-      "id": "TewChaynz 1.7 FPS Booster",
-      "name": "TewChaynz_1.7_FPS_Booster",
-      "displayName": "TewChaynz 1.7 FPS Booster",
-      "coloredName": "TewChaynz 1.7 FPS Booster",
-      "description": "youtube.com/TewChaynz",
-      "cover": "/thumbnails/TewChaynz_1.7_FPS_Booster/cover.png",
-      "packPng": "/thumbnails/TewChaynz_1.7_FPS_Booster/pack.png",
-      "icon": null,
-      "file": "resourcepacks/TewChaynz 1.7 FPS Booster.zip",
-      "fileSize": "4.2MB",
-      "uploadDate": "2026-07-03",
-      "lists": [
-        "Sakyvo"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/TewChaynz%201.7%20FPS%20Booster.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/TewChaynz%201.7%20FPS%20Booster.zip"
-      }
-    },
-    {
-      "id": "§4TewChaynzEUM3",
-      "name": "TewChaynzEUM3",
-      "displayName": "TewChaynzEUM3",
-      "coloredName": "<span style=\"color:#AA0000\">T</span><span style=\"color:#AA0000\">e</span><span style=\"color:#AA0000\">w</span><span style=\"color:#AA0000\">C</span><span style=\"color:#AA0000\">h</span><span style=\"color:#AA0000\">a</span><span style=\"color:#AA0000\">y</span><span style=\"color:#AA0000\">n</span><span style=\"color:#AA0000\">z</span><span style=\"color:#AA0000\">E</span><span style=\"color:#AA0000\">U</span><span style=\"color:#AA0000\">M</span><span style=\"color:#AA0000\">3</span>",
-      "description": "By: TewChaynz",
-      "cover": "/thumbnails/TewChaynzEUM3/cover.png",
-      "packPng": "/thumbnails/TewChaynzEUM3/pack.png",
-      "icon": null,
-      "file": "resourcepacks/§4TewChaynzEUM3.zip",
-      "fileSize": "22.0MB",
-      "uploadDate": "2026-04-09",
-      "lists": [
-        "Jewdah pf",
-        "Sakyvo"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/%C2%A74TewChaynzEUM3.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/%C2%A74TewChaynzEUM3.zip"
-      }
-    },
-    {
-      "id": "The Red Wolf",
-      "name": "The_Red_Wolf",
-      "displayName": "The Red Wolf",
-      "coloredName": "The Red Wolf",
-      "description": "HattoWolf's 1.6.2 Resource Pack Edit",
-      "cover": "/thumbnails/The_Red_Wolf/cover.png",
-      "packPng": "/thumbnails/The_Red_Wolf/pack.png",
-      "icon": null,
-      "file": "resourcepacks/The Red Wolf.zip",
-      "fileSize": "16.5MB",
-      "uploadDate": "2026-04-09",
-      "lists": [
-        "Jewdah pf",
-        "Sakyvo"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/The%20Red%20Wolf.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/The%20Red%20Wolf.zip"
-      }
-    },
-    {
-      "id": "!#Thiu",
-      "name": "Thiu",
-      "displayName": "Thiu",
-      "coloredName": "Thiu",
-      "description": "By MegaAdox07",
-      "cover": "/thumbnails/Thiu/cover.png",
-      "packPng": "/thumbnails/Thiu/pack.png",
-      "icon": null,
-      "file": "resourcepacks/!#Thiu.zip",
-      "fileSize": "1.6MB",
-      "uploadDate": "2026-07-03",
-      "lists": [
-        "Sakyvo"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%23Thiu.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%23Thiu.zip"
-      }
-    },
-    {
-      "id": "#Throwback",
-      "name": "Throwback",
-      "displayName": "Throwback",
-      "coloredName": "Throwback",
-      "description": "",
-      "cover": "/thumbnails/Throwback/cover.png",
-      "packPng": "/thumbnails/Throwback/pack.png",
-      "icon": null,
-      "file": "resourcepacks/#Throwback.zip",
-      "fileSize": "6.4MB",
-      "uploadDate": "2026-04-09",
-      "lists": [
-        "Jewdah pf",
-        "Sakyvo"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "stone_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/%23Throwback.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/%23Throwback.zip"
-      }
-    },
-    {
-      "id": "#Throwback 16x",
-      "name": "Throwback_16x",
-      "displayName": "Throwback 16x",
-      "coloredName": "Throwback 16x",
-      "description": "16x zef",
-      "cover": "/thumbnails/Throwback_16x/cover.png",
-      "packPng": "/thumbnails/Throwback_16x/pack.png",
-      "icon": null,
-      "file": "resourcepacks/#Throwback 16x.zip",
-      "fileSize": "6.4MB",
+      "file": "resourcepacks/! §fLunar §8[§f128x§8].zip",
+      "fileSize": "18.9MB",
       "uploadDate": "2026-07-03",
       "lists": [
         "Sakyvo"
@@ -1386,21 +1451,21 @@
         ]
       },
       "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/%23Throwback%2016x.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/%23Throwback%2016x.zip"
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/!%20%C2%A7fLunar%20%C2%A78%5B%C2%A7f128x%C2%A78%5D.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/!%20%C2%A7fLunar%20%C2%A78%5B%C2%A7f128x%C2%A78%5D.zip"
       }
     },
     {
-      "id": "TightfeaR[Revamp][32x]_2",
-      "name": "TightfeaRRevamp32x_2",
-      "displayName": "TightfeaR[Revamp][32x]_2",
-      "coloredName": "TightfeaR[Revamp][32x]_2",
-      "description": "[Original]Tight[Revamp]Timon",
-      "cover": "/thumbnails/TightfeaRRevamp32x_2/cover.png",
-      "packPng": "/thumbnails/TightfeaRRevamp32x_2/pack.png",
+      "id": "!      §fLunar §764x",
+      "name": "Lunar_64x",
+      "displayName": "Lunar 64x",
+      "coloredName": "<span style=\"color:#FFFFFF\">L</span><span style=\"color:#FFFFFF\">u</span><span style=\"color:#FFFFFF\">n</span><span style=\"color:#FFFFFF\">a</span><span style=\"color:#FFFFFF\">r</span><span style=\"color:#FFFFFF\"> </span><span style=\"color:#AAAAAA\">6</span><span style=\"color:#AAAAAA\">4</span><span style=\"color:#AAAAAA\">x</span>",
+      "description": "By Zefew",
+      "cover": "/thumbnails/Lunar_64x/cover.png",
+      "packPng": "/thumbnails/Lunar_64x/pack.png",
       "icon": null,
-      "file": "resourcepacks/TightfeaR[Revamp][32x]_2.zip",
-      "fileSize": "10.8MB",
+      "file": "resourcepacks/!      §fLunar §764x.zip",
+      "fileSize": "13.6MB",
       "uploadDate": "2026-07-03",
       "lists": [
         "Sakyvo"
@@ -1446,22 +1511,22 @@
         ]
       },
       "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/TightfeaR%5BRevamp%5D%5B32x%5D_2.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/TightfeaR%5BRevamp%5D%5B32x%5D_2.zip"
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%20%20%20%20%20%20%C2%A7fLunar%20%C2%A7764x.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%20%20%20%20%20%20%C2%A7fLunar%20%C2%A7764x.zip"
       }
     },
     {
-      "id": "TIMONDEFAULT[V3]",
-      "name": "TIMONDEFAULTV3",
-      "displayName": "TIMONDEFAULT[V3]",
-      "coloredName": "TIMONDEFAULT[V3]",
-      "description": "Default Edit by TIMON",
-      "cover": "/thumbnails/TIMONDEFAULTV3/cover.png",
-      "packPng": "/thumbnails/TIMONDEFAULTV3/pack.png",
+      "id": "Lunar pack tory remake",
+      "name": "Lunar_pack_tory_remake",
+      "displayName": "Lunar pack tory remake",
+      "coloredName": "Lunar pack tory remake",
+      "description": "gayez u gay",
+      "cover": "/thumbnails/Lunar_pack_tory_remake/cover.png",
+      "packPng": "/thumbnails/Lunar_pack_tory_remake/pack.png",
       "icon": null,
-      "file": "resourcepacks/TIMONDEFAULT[V3].zip",
-      "fileSize": "17.3MB",
-      "uploadDate": "2026-07-03",
+      "file": "resourcepacks/Lunar pack tory remake.zip",
+      "fileSize": "29.5MB",
+      "uploadDate": "2026-08-08",
       "lists": [
         "Sakyvo"
       ],
@@ -1472,6 +1537,7 @@
           "splash_potion_of_healing.png",
           "steak.png",
           "iron_sword.png",
+          "stone_sword.png",
           "fishing_rod_uncast.png",
           "apple_golden.png",
           "golden_carrot.png"
@@ -1506,1043 +1572,20 @@
         ]
       },
       "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/TIMONDEFAULT%5BV3%5D.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/TIMONDEFAULT%5BV3%5D.zip"
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/Lunar%20pack%20tory%20remake.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/Lunar%20pack%20tory%20remake.zip"
       }
     },
     {
-      "id": "!   §3§lTjuvigt §3By Weberg",
-      "name": "Tjuvigt_By_Weberg",
-      "displayName": "Tjuvigt By Weberg",
-      "coloredName": "<span style=\"color:#00AAAA\">T</span><span style=\"color:#00AAAA\">j</span><span style=\"color:#00AAAA\">u</span><span style=\"color:#00AAAA\">v</span><span style=\"color:#00AAAA\">i</span><span style=\"color:#00AAAA\">g</span><span style=\"color:#00AAAA\">t</span><span style=\"color:#00AAAA\"> </span><span style=\"color:#00AAAA\">B</span><span style=\"color:#00AAAA\">y</span><span style=\"color:#00AAAA\"> </span><span style=\"color:#00AAAA\">W</span><span style=\"color:#00AAAA\">e</span><span style=\"color:#00AAAA\">b</span><span style=\"color:#00AAAA\">e</span><span style=\"color:#00AAAA\">r</span><span style=\"color:#00AAAA\">g</span>",
-      "description": "Tjuvigt by Weberg",
-      "cover": "/thumbnails/Tjuvigt_By_Weberg/cover.png",
-      "packPng": "/thumbnails/Tjuvigt_By_Weberg/pack.png",
+      "id": "!      §fLunar §7Private §8[§f16§7x§8]",
+      "name": "Lunar_Private_16x",
+      "displayName": "Lunar Private [16x]",
+      "coloredName": "<span style=\"color:#FFFFFF\">L</span><span style=\"color:#FFFFFF\">u</span><span style=\"color:#FFFFFF\">n</span><span style=\"color:#FFFFFF\">a</span><span style=\"color:#FFFFFF\">r</span><span style=\"color:#FFFFFF\"> </span><span style=\"color:#AAAAAA\">P</span><span style=\"color:#AAAAAA\">r</span><span style=\"color:#AAAAAA\">i</span><span style=\"color:#AAAAAA\">v</span><span style=\"color:#AAAAAA\">a</span><span style=\"color:#AAAAAA\">t</span><span style=\"color:#AAAAAA\">e</span><span style=\"color:#AAAAAA\"> </span><span style=\"color:#555555\">[</span><span style=\"color:#FFFFFF\">1</span><span style=\"color:#FFFFFF\">6</span><span style=\"color:#AAAAAA\">x</span><span style=\"color:#555555\">]</span>",
+      "description": "Remade By InfernalFatality",
+      "cover": "/thumbnails/Lunar_Private_16x/cover.png",
+      "packPng": "/thumbnails/Lunar_Private_16x/pack.png",
       "icon": null,
-      "file": "resourcepacks/!   §3§lTjuvigt §3By Weberg.zip",
-      "fileSize": "19.0MB",
-      "uploadDate": "2026-07-03",
-      "lists": [
-        "Sakyvo"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%20%20%C2%A73%C2%A7lTjuvigt%20%C2%A73By%20Weberg.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%20%20%C2%A73%C2%A7lTjuvigt%20%C2%A73By%20Weberg.zip"
-      }
-    },
-    {
-      "id": "#  Tokyoh",
-      "name": "Tokyoh",
-      "displayName": "Tokyoh",
-      "coloredName": "Tokyoh",
-      "description": "An edit of default minecraft",
-      "cover": "/thumbnails/Tokyoh/cover.png",
-      "packPng": "/thumbnails/Tokyoh/pack.png",
-      "icon": null,
-      "file": "resourcepacks/#  Tokyoh.zip",
-      "fileSize": "7.7MB",
-      "uploadDate": "2026-07-03",
-      "lists": [
-        "Sakyvo"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/%23%20%20Tokyoh.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/%23%20%20Tokyoh.zip"
-      }
-    },
-    {
-      "id": "! §4Tokyoou §8 0,5k",
-      "name": "Tokyoou_05k",
-      "displayName": "Tokyoou  0,5k",
-      "coloredName": "<span style=\"color:#AA0000\">T</span><span style=\"color:#AA0000\">o</span><span style=\"color:#AA0000\">k</span><span style=\"color:#AA0000\">y</span><span style=\"color:#AA0000\">o</span><span style=\"color:#AA0000\">o</span><span style=\"color:#AA0000\">u</span><span style=\"color:#AA0000\"> </span><span style=\"color:#555555\"> </span><span style=\"color:#555555\">0</span><span style=\"color:#555555\">,</span><span style=\"color:#555555\">5</span><span style=\"color:#555555\">k</span>",
-      "description": "I love dick -Jep (jk)",
-      "cover": "/thumbnails/Tokyoou_05k/cover.png",
-      "packPng": "/thumbnails/Tokyoou_05k/pack.png",
-      "icon": null,
-      "file": "resourcepacks/! §4Tokyoou §8 0,5k.zip",
-      "fileSize": "13.7MB",
-      "uploadDate": "2026-07-03",
-      "lists": [
-        "Sakyvo"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%C2%A74Tokyoou%20%C2%A78%200%2C5k.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%C2%A74Tokyoou%20%C2%A78%200%2C5k.zip"
-      }
-    },
-    {
-      "id": "! ! !Tokyoou Real 0.5k",
-      "name": "Tokyoou_Real_0.5k",
-      "displayName": "Tokyoou Real 0.5k",
-      "coloredName": "Tokyoou Real 0.5k",
-      "description": "Pack by Zefew",
-      "cover": "/thumbnails/Tokyoou_Real_0.5k/cover.png",
-      "packPng": "/thumbnails/Tokyoou_Real_0.5k/pack.png",
-      "icon": null,
-      "file": "resourcepacks/! ! !Tokyoou Real 0.5k.zip",
-      "fileSize": "52.9MB",
-      "uploadDate": "2026-07-03",
-      "lists": [
-        "Sakyvo"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20!%20!Tokyoou%20Real%200.5k.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20!%20!Tokyoou%20Real%200.5k.zip"
-      }
-    },
-    {
-      "id": "tokyov2",
-      "name": "tokyov2",
-      "displayName": "tokyov2",
-      "coloredName": "tokyov2",
-      "description": "Tokyo! oiii",
-      "cover": "/thumbnails/tokyov2/cover.png",
-      "packPng": "/thumbnails/tokyov2/pack.png",
-      "icon": null,
-      "file": "resourcepacks/tokyov2.zip",
-      "fileSize": "21.2MB",
-      "uploadDate": "2026-07-03",
-      "lists": [
-        "Sakyvo"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/tokyov2.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/tokyov2.zip"
-      }
-    },
-    {
-      "id": "!  Tory block overlay",
-      "name": "Tory_block_overlay",
-      "displayName": "Tory block overlay",
-      "coloredName": "Tory block overlay",
-      "description": "Blocks from MeeZoid Pack by Tory",
-      "cover": "/thumbnails/Tory_block_overlay/cover.png",
-      "packPng": "/thumbnails/Tory_block_overlay/pack.png",
-      "icon": null,
-      "file": "resourcepacks/!  Tory block overlay.zip",
-      "fileSize": "3.7MB",
-      "uploadDate": "2026-07-03",
-      "lists": [
-        "Overlay",
-        "Sakyvo"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%20Tory%20block%20overlay.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%20Tory%20block%20overlay.zip"
-      }
-    },
-    {
-      "id": "! Tory c0ntrast",
-      "name": "Tory_c0ntrast",
-      "displayName": "Tory c0ntrast",
-      "coloredName": "Tory c0ntrast",
-      "description": "Tory x MD",
-      "cover": "/thumbnails/Tory_c0ntrast/cover.png",
-      "packPng": "/thumbnails/Tory_c0ntrast/pack.png",
-      "icon": null,
-      "file": "resourcepacks/! Tory c0ntrast.zip",
-      "fileSize": "44.2MB",
-      "uploadDate": "2026-07-03",
-      "lists": [
-        "Sakyvo"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%20Tory%20c0ntrast.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%20Tory%20c0ntrast.zip"
-      }
-    },
-    {
-      "id": "tory eum 3 ping",
-      "name": "tory_eum_3_ping",
-      "displayName": "tory eum 3 ping",
-      "coloredName": "tory eum 3 ping",
-      "description": "by qunc",
-      "cover": "/thumbnails/tory_eum_3_ping/cover.png",
-      "packPng": "/thumbnails/tory_eum_3_ping/pack.png",
-      "icon": null,
-      "file": "resourcepacks/tory eum 3 ping.zip",
-      "fileSize": "20.2MB",
-      "uploadDate": "2026-04-09",
-      "lists": [
-        "iil pf v1"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/tory%20eum%203%20ping.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/tory%20eum%203%20ping.zip"
-      }
-    },
-    {
-      "id": "! §2 Tory EUM3 Revamp",
-      "name": "Tory_EUM3_Revamp",
-      "displayName": "Tory EUM3 Revamp",
-      "coloredName": "<span style=\"color:#00AA00\"> </span><span style=\"color:#00AA00\">T</span><span style=\"color:#00AA00\">o</span><span style=\"color:#00AA00\">r</span><span style=\"color:#00AA00\">y</span><span style=\"color:#00AA00\"> </span><span style=\"color:#00AA00\">E</span><span style=\"color:#00AA00\">U</span><span style=\"color:#00AA00\">M</span><span style=\"color:#00AA00\">3</span><span style=\"color:#00AA00\"> </span><span style=\"color:#00AA00\">R</span><span style=\"color:#00AA00\">e</span><span style=\"color:#00AA00\">v</span><span style=\"color:#00AA00\">a</span><span style=\"color:#00AA00\">m</span><span style=\"color:#00AA00\">p</span>",
-      "description": "By Arissi",
-      "cover": "/thumbnails/Tory_EUM3_Revamp/cover.png",
-      "packPng": "/thumbnails/Tory_EUM3_Revamp/pack.png",
-      "icon": null,
-      "file": "resourcepacks/! §2 Tory EUM3 Revamp.zip",
-      "fileSize": "42.9MB",
-      "uploadDate": "2026-07-03",
-      "lists": [
-        "Sakyvo"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%20%C2%A72%20Tory%20EUM3%20Revamp.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%20%C2%A72%20Tory%20EUM3%20Revamp.zip"
-      }
-    },
-    {
-      "id": "! §3Tory Eum3 v1 §r§l[Revamp]",
-      "name": "Tory_Eum3_v1_Revamp",
-      "displayName": "Tory Eum3 v1 [Revamp]",
-      "coloredName": "<span style=\"color:#00AAAA\">T</span><span style=\"color:#00AAAA\">o</span><span style=\"color:#00AAAA\">r</span><span style=\"color:#00AAAA\">y</span><span style=\"color:#00AAAA\"> </span><span style=\"color:#00AAAA\">E</span><span style=\"color:#00AAAA\">u</span><span style=\"color:#00AAAA\">m</span><span style=\"color:#00AAAA\">3</span><span style=\"color:#00AAAA\"> </span><span style=\"color:#00AAAA\">v</span><span style=\"color:#00AAAA\">1</span><span style=\"color:#00AAAA\"> </span><span style=\"color:#00AAAA\">[</span><span style=\"color:#00AAAA\">R</span><span style=\"color:#00AAAA\">e</span><span style=\"color:#00AAAA\">v</span><span style=\"color:#00AAAA\">a</span><span style=\"color:#00AAAA\">m</span><span style=\"color:#00AAAA\">p</span><span style=\"color:#00AAAA\">]</span>",
-      "description": "by Tory",
-      "cover": "/thumbnails/Tory_Eum3_v1_Revamp/cover.png",
-      "packPng": "/thumbnails/Tory_Eum3_v1_Revamp/pack.png",
-      "icon": null,
-      "file": "resourcepacks/! §3Tory Eum3 v1 §r§l[Revamp].zip",
-      "fileSize": "22.7MB",
-      "uploadDate": "2026-04-09",
-      "lists": [
-        "Jewdah pf",
-        "Sakyvo"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/!%20%C2%A73Tory%20Eum3%20v1%20%C2%A7r%C2%A7l%5BRevamp%5D.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/!%20%C2%A73Tory%20Eum3%20v1%20%C2%A7r%C2%A7l%5BRevamp%5D.zip"
-      }
-    },
-    {
-      "id": "! Tory Eum3 V2",
-      "name": "Tory_Eum3_V2",
-      "displayName": "Tory Eum3 V2",
-      "coloredName": "Tory Eum3 V2",
-      "description": "Tory Edit V2",
-      "cover": "/thumbnails/Tory_Eum3_V2/cover.png",
-      "packPng": "/thumbnails/Tory_Eum3_V2/pack.png",
-      "icon": null,
-      "file": "resourcepacks/! Tory Eum3 V2.zip",
-      "fileSize": "20.4MB",
-      "uploadDate": "2026-07-03",
-      "lists": [
-        "Sakyvo"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!%20Tory%20Eum3%20V2.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!%20Tory%20Eum3%20V2.zip"
-      }
-    },
-    {
-      "id": "! Tory Eum3 V2 (1)",
-      "name": "Tory_Eum3_V2(1)",
-      "displayName": "Tory Eum3 V2 (1)",
-      "coloredName": "Tory Eum3 V2 (1)",
-      "description": "Tory Edit V2",
-      "cover": "/thumbnails/Tory_Eum3_V2(1)/cover.png",
-      "packPng": "/thumbnails/Tory_Eum3_V2(1)/pack.png",
-      "icon": null,
-      "file": "resourcepacks/! Tory Eum3 V2 (1).zip",
-      "fileSize": "20.4MB",
-      "uploadDate": "2026-04-09",
-      "lists": [
-        "Jewdah pf"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/!%20Tory%20Eum3%20V2%20(1).zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/!%20Tory%20Eum3%20V2%20(1).zip"
-      }
-    },
-    {
-      "id": "! Tory Eum3-EDIT",
-      "name": "Tory_Eum3-EDIT",
-      "displayName": "Tory Eum3-EDIT",
-      "coloredName": "Tory Eum3-EDIT",
-      "description": "Tory Edit",
-      "cover": "/thumbnails/Tory_Eum3-EDIT/cover.png",
-      "packPng": "/thumbnails/Tory_Eum3-EDIT/pack.png",
-      "icon": null,
-      "file": "resourcepacks/! Tory Eum3-EDIT.zip",
-      "fileSize": "20.8MB",
-      "uploadDate": "2026-04-09",
-      "lists": [
-        "Jewdah pf",
-        "Sakyvo"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/!%20Tory%20Eum3-EDIT.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/!%20Tory%20Eum3-EDIT.zip"
-      }
-    },
-    {
-      "id": "! Tory Eum3-PURPLE",
-      "name": "Tory_Eum3-PURPLE",
-      "displayName": "Tory Eum3-PURPLE",
-      "coloredName": "Tory Eum3-PURPLE",
-      "description": "Edit by INTERLACED",
-      "cover": "/thumbnails/Tory_Eum3-PURPLE/cover.png",
-      "packPng": "/thumbnails/Tory_Eum3-PURPLE/pack.png",
-      "icon": null,
-      "file": "resourcepacks/! Tory Eum3-PURPLE.zip",
-      "fileSize": "20.8MB",
-      "uploadDate": "2026-07-03",
-      "lists": [
-        "Sakyvo"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20Tory%20Eum3-PURPLE.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20Tory%20Eum3-PURPLE.zip"
-      }
-    },
-    {
-      "id": "! Tye Long Swords [32x]",
-      "name": "Tye_Long_Swords_32x",
-      "displayName": "Tye Long Swords [32x]",
-      "coloredName": "Tye Long Swords [32x]",
-      "description": "Tye3315 Sucks Arissi is cooler",
-      "cover": "/thumbnails/Tye_Long_Swords_32x/cover.png",
-      "packPng": "/thumbnails/Tye_Long_Swords_32x/pack.png",
-      "icon": null,
-      "file": "resourcepacks/! Tye Long Swords [32x].zip",
-      "fileSize": "12.4MB",
-      "uploadDate": "2026-07-03",
-      "lists": [
-        "Sakyvo"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20Tye%20Long%20Swords%20%5B32x%5D.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20Tye%20Long%20Swords%20%5B32x%5D.zip"
-      }
-    },
-    {
-      "id": "! Tye Soup [32x]",
-      "name": "Tye_Soup_32x",
-      "displayName": "Tye Soup [32x]",
-      "coloredName": "Tye Soup [32x]",
-      "description": "Arissi > Tye3315",
-      "cover": "/thumbnails/Tye_Soup_32x/cover.png",
-      "packPng": "/thumbnails/Tye_Soup_32x/pack.png",
-      "icon": null,
-      "file": "resourcepacks/! Tye Soup [32x].zip",
-      "fileSize": "18.5MB",
-      "uploadDate": "2026-07-03",
-      "lists": [
-        "Sakyvo"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20Tye%20Soup%20%5B32x%5D.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20Tye%20Soup%20%5B32x%5D.zip"
-      }
-    },
-    {
-      "id": "§b§lTylarzz SUPER AWESOME Pack",
-      "name": "Tylarzz_SUPER_AWESOME_Pack",
-      "displayName": "Tylarzz SUPER AWESOME Pack",
-      "coloredName": "<span style=\"color:#55FFFF\">T</span><span style=\"color:#55FFFF\">y</span><span style=\"color:#55FFFF\">l</span><span style=\"color:#55FFFF\">a</span><span style=\"color:#55FFFF\">r</span><span style=\"color:#55FFFF\">z</span><span style=\"color:#55FFFF\">z</span><span style=\"color:#55FFFF\"> </span><span style=\"color:#55FFFF\">S</span><span style=\"color:#55FFFF\">U</span><span style=\"color:#55FFFF\">P</span><span style=\"color:#55FFFF\">E</span><span style=\"color:#55FFFF\">R</span><span style=\"color:#55FFFF\"> </span><span style=\"color:#55FFFF\">A</span><span style=\"color:#55FFFF\">W</span><span style=\"color:#55FFFF\">E</span><span style=\"color:#55FFFF\">S</span><span style=\"color:#55FFFF\">O</span><span style=\"color:#55FFFF\">M</span><span style=\"color:#55FFFF\">E</span><span style=\"color:#55FFFF\"> </span><span style=\"color:#55FFFF\">P</span><span style=\"color:#55FFFF\">a</span><span style=\"color:#55FFFF\">c</span><span style=\"color:#55FFFF\">k</span>",
-      "description": "Made by @aydvna for Tylarzz",
-      "cover": "/thumbnails/Tylarzz_SUPER_AWESOME_Pack/cover.png",
-      "packPng": "/thumbnails/Tylarzz_SUPER_AWESOME_Pack/pack.png",
-      "icon": null,
-      "file": "resourcepacks/§b§lTylarzz SUPER AWESOME Pack.zip",
-      "fileSize": "45.3MB",
-      "uploadDate": "2026-07-03",
-      "lists": [
-        "Sakyvo"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/%C2%A7b%C2%A7lTylarzz%20SUPER%20AWESOME%20Pack.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/%C2%A7b%C2%A7lTylarzz%20SUPER%20AWESOME%20Pack.zip"
-      }
-    },
-    {
-      "id": "§4#!TZ EDIT Mashup",
-      "name": "TZ_EDIT_Mashup",
-      "displayName": "TZ EDIT Mashup",
-      "coloredName": "TZ EDIT Mashup",
-      "description": "lequack zefquack",
-      "cover": "/thumbnails/TZ_EDIT_Mashup/cover.png",
-      "packPng": "/thumbnails/TZ_EDIT_Mashup/pack.png",
-      "icon": null,
-      "file": "resourcepacks/§4#!TZ EDIT Mashup.zip",
+      "file": "resourcepacks/!      §fLunar §7Private §8[§f16§7x§8].zip",
       "fileSize": "11.0MB",
       "uploadDate": "2026-07-03",
       "lists": [
@@ -2589,21 +1632,386 @@
         ]
       },
       "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/%C2%A74%23!TZ%20EDIT%20Mashup.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/%C2%A74%23!TZ%20EDIT%20Mashup.zip"
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%20%20%20%20%20%C2%A7fLunar%20%C2%A77Private%20%C2%A78%5B%C2%A7f16%C2%A77x%C2%A78%5D.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%20%20%20%20%20%C2%A7fLunar%20%C2%A77Private%20%C2%A78%5B%C2%A7f16%C2%A77x%C2%A78%5D.zip"
       }
     },
     {
-      "id": "! §4Uchiha §r[Private]",
-      "name": "Uchiha_Private",
-      "displayName": "Uchiha [Private]",
-      "coloredName": "<span style=\"color:#AA0000\">U</span><span style=\"color:#AA0000\">c</span><span style=\"color:#AA0000\">h</span><span style=\"color:#AA0000\">i</span><span style=\"color:#AA0000\">h</span><span style=\"color:#AA0000\">a</span><span style=\"color:#AA0000\"> </span><span style=\"color:#AA0000\">[</span><span style=\"color:#AA0000\">P</span><span style=\"color:#AA0000\">r</span><span style=\"color:#AA0000\">i</span><span style=\"color:#AA0000\">v</span><span style=\"color:#AA0000\">a</span><span style=\"color:#AA0000\">t</span><span style=\"color:#AA0000\">e</span><span style=\"color:#AA0000\">]</span>",
-      "description": "by Tory",
-      "cover": "/thumbnails/Uchiha_Private/cover.png",
-      "packPng": "/thumbnails/Uchiha_Private/pack.png",
+      "id": "!      §fLunar §7Private §8[§f32§7x§8]",
+      "name": "Lunar_Private_32x",
+      "displayName": "Lunar Private [32x]",
+      "coloredName": "<span style=\"color:#FFFFFF\">L</span><span style=\"color:#FFFFFF\">u</span><span style=\"color:#FFFFFF\">n</span><span style=\"color:#FFFFFF\">a</span><span style=\"color:#FFFFFF\">r</span><span style=\"color:#FFFFFF\"> </span><span style=\"color:#AAAAAA\">P</span><span style=\"color:#AAAAAA\">r</span><span style=\"color:#AAAAAA\">i</span><span style=\"color:#AAAAAA\">v</span><span style=\"color:#AAAAAA\">a</span><span style=\"color:#AAAAAA\">t</span><span style=\"color:#AAAAAA\">e</span><span style=\"color:#AAAAAA\"> </span><span style=\"color:#555555\">[</span><span style=\"color:#FFFFFF\">3</span><span style=\"color:#FFFFFF\">2</span><span style=\"color:#AAAAAA\">x</span><span style=\"color:#555555\">]</span>",
+      "description": "By Tory",
+      "cover": "/thumbnails/Lunar_Private_32x/cover.png",
+      "packPng": "/thumbnails/Lunar_Private_32x/pack.png",
       "icon": null,
-      "file": "resourcepacks/! §4Uchiha §r[Private].zip",
-      "fileSize": "13.6MB",
+      "file": "resourcepacks/!      §fLunar §7Private §8[§f32§7x§8].zip",
+      "fileSize": "13.8MB",
+      "uploadDate": "2026-04-09",
+      "lists": [
+        "Jewdah pf",
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/!%20%20%20%20%20%20%C2%A7fLunar%20%C2%A77Private%20%C2%A78%5B%C2%A7f32%C2%A77x%C2%A78%5D.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/!%20%20%20%20%20%20%C2%A7fLunar%20%C2%A77Private%20%C2%A78%5B%C2%A7f32%C2%A77x%C2%A78%5D.zip"
+      }
+    },
+    {
+      "id": "!      §fLunar §7Private §8[§f64§7x§8]",
+      "name": "Lunar_Private_64x",
+      "displayName": "Lunar Private [64x]",
+      "coloredName": "<span style=\"color:#FFFFFF\">L</span><span style=\"color:#FFFFFF\">u</span><span style=\"color:#FFFFFF\">n</span><span style=\"color:#FFFFFF\">a</span><span style=\"color:#FFFFFF\">r</span><span style=\"color:#FFFFFF\"> </span><span style=\"color:#AAAAAA\">P</span><span style=\"color:#AAAAAA\">r</span><span style=\"color:#AAAAAA\">i</span><span style=\"color:#AAAAAA\">v</span><span style=\"color:#AAAAAA\">a</span><span style=\"color:#AAAAAA\">t</span><span style=\"color:#AAAAAA\">e</span><span style=\"color:#AAAAAA\"> </span><span style=\"color:#555555\">[</span><span style=\"color:#FFFFFF\">6</span><span style=\"color:#FFFFFF\">4</span><span style=\"color:#AAAAAA\">x</span><span style=\"color:#555555\">]</span>",
+      "description": "By Tory",
+      "cover": "/thumbnails/Lunar_Private_64x/cover.png",
+      "packPng": "/thumbnails/Lunar_Private_64x/pack.png",
+      "icon": null,
+      "file": "resourcepacks/!      §fLunar §7Private §8[§f64§7x§8].zip",
+      "fileSize": "30.3MB",
+      "uploadDate": "2026-07-03",
+      "lists": [
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%20%20%20%20%20%20%C2%A7fLunar%20%C2%A77Private%20%C2%A78%5B%C2%A7f64%C2%A77x%C2%A78%5D.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%20%20%20%20%20%20%C2%A7fLunar%20%C2%A77Private%20%C2%A78%5B%C2%A7f64%C2%A77x%C2%A78%5D.zip"
+      }
+    },
+    {
+      "id": "!      §3Lunar Themes §6Overlay",
+      "name": "Lunar_Themes_Overlay",
+      "displayName": "Lunar Themes Overlay",
+      "coloredName": "<span style=\"color:#00AAAA\">L</span><span style=\"color:#00AAAA\">u</span><span style=\"color:#00AAAA\">n</span><span style=\"color:#00AAAA\">a</span><span style=\"color:#00AAAA\">r</span><span style=\"color:#00AAAA\"> </span><span style=\"color:#00AAAA\">T</span><span style=\"color:#00AAAA\">h</span><span style=\"color:#00AAAA\">e</span><span style=\"color:#00AAAA\">m</span><span style=\"color:#00AAAA\">e</span><span style=\"color:#00AAAA\">s</span><span style=\"color:#00AAAA\"> </span><span style=\"color:#FFAA00\">O</span><span style=\"color:#FFAA00\">v</span><span style=\"color:#FFAA00\">e</span><span style=\"color:#FFAA00\">r</span><span style=\"color:#FFAA00\">l</span><span style=\"color:#FFAA00\">a</span><span style=\"color:#FFAA00\">y</span>",
+      "description": "Lunar Themes [redefault#4883]",
+      "cover": "/thumbnails/Lunar_Themes_Overlay/cover.png",
+      "packPng": "/thumbnails/Lunar_Themes_Overlay/pack.png",
+      "icon": null,
+      "file": "resourcepacks/!      §3Lunar Themes §6Overlay.zip",
+      "fileSize": "20.1MB",
+      "uploadDate": "2026-07-03",
+      "lists": [
+        "Overlay",
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "stone_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/!%20%20%20%20%20%20%C2%A73Lunar%20Themes%20%C2%A76Overlay.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/!%20%20%20%20%20%20%C2%A73Lunar%20Themes%20%C2%A76Overlay.zip"
+      }
+    },
+    {
+      "id": "!    §1M0difier §9Private",
+      "name": "M0difier_Private",
+      "displayName": "M0difier Private",
+      "coloredName": "<span style=\"color:#0000AA\">M</span><span style=\"color:#0000AA\">0</span><span style=\"color:#0000AA\">d</span><span style=\"color:#0000AA\">i</span><span style=\"color:#0000AA\">f</span><span style=\"color:#0000AA\">i</span><span style=\"color:#0000AA\">e</span><span style=\"color:#0000AA\">r</span><span style=\"color:#0000AA\"> </span><span style=\"color:#5555FF\">P</span><span style=\"color:#5555FF\">r</span><span style=\"color:#5555FF\">i</span><span style=\"color:#5555FF\">v</span><span style=\"color:#5555FF\">a</span><span style=\"color:#5555FF\">t</span><span style=\"color:#5555FF\">e</span>",
+      "description": "by Metar0X",
+      "cover": "/thumbnails/M0difier_Private/cover.png",
+      "packPng": "/thumbnails/M0difier_Private/pack.png",
+      "icon": null,
+      "file": "resourcepacks/!    §1M0difier §9Private.zip",
+      "fileSize": "25.4MB",
+      "uploadDate": "2026-08-08",
+      "lists": [
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "stone_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!%20%20%20%20%C2%A71M0difier%20%C2%A79Private.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!%20%20%20%20%C2%A71M0difier%20%C2%A79Private.zip"
+      }
+    },
+    {
+      "id": "§b§lM0DIFIER §8§lPrivate",
+      "name": "M0DIFIER_Private",
+      "displayName": "M0DIFIER Private",
+      "coloredName": "<span style=\"color:#55FFFF\">M</span><span style=\"color:#55FFFF\">0</span><span style=\"color:#55FFFF\">D</span><span style=\"color:#55FFFF\">I</span><span style=\"color:#55FFFF\">F</span><span style=\"color:#55FFFF\">I</span><span style=\"color:#55FFFF\">E</span><span style=\"color:#55FFFF\">R</span><span style=\"color:#55FFFF\"> </span><span style=\"color:#555555\">P</span><span style=\"color:#555555\">r</span><span style=\"color:#555555\">i</span><span style=\"color:#555555\">v</span><span style=\"color:#555555\">a</span><span style=\"color:#555555\">t</span><span style=\"color:#555555\">e</span>",
+      "description": "Made by:miami",
+      "cover": "/thumbnails/M0DIFIER_Private/cover.png",
+      "packPng": "/thumbnails/M0DIFIER_Private/pack.png",
+      "icon": null,
+      "file": "resourcepacks/§b§lM0DIFIER §8§lPrivate.zip",
+      "fileSize": "42.8MB",
+      "uploadDate": "2026-08-08",
+      "lists": [
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "stone_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/%C2%A7b%C2%A7lM0DIFIER%20%C2%A78%C2%A7lPrivate.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/%C2%A7b%C2%A7lM0DIFIER%20%C2%A78%C2%A7lPrivate.zip"
+      }
+    },
+    {
+      "id": "§3Mad §fDefault §3EDIT",
+      "name": "Mad_Default_EDIT",
+      "displayName": "Mad Default EDIT",
+      "coloredName": "<span style=\"color:#00AAAA\">M</span><span style=\"color:#00AAAA\">a</span><span style=\"color:#00AAAA\">d</span><span style=\"color:#00AAAA\"> </span><span style=\"color:#FFFFFF\">D</span><span style=\"color:#FFFFFF\">e</span><span style=\"color:#FFFFFF\">f</span><span style=\"color:#FFFFFF\">a</span><span style=\"color:#FFFFFF\">u</span><span style=\"color:#FFFFFF\">l</span><span style=\"color:#FFFFFF\">t</span><span style=\"color:#FFFFFF\"> </span><span style=\"color:#00AAAA\">E</span><span style=\"color:#00AAAA\">D</span><span style=\"color:#00AAAA\">I</span><span style=\"color:#00AAAA\">T</span>",
+      "description": "it's mad dope - By:BabyMarcel",
+      "cover": "/thumbnails/Mad_Default_EDIT/cover.png",
+      "packPng": "/thumbnails/Mad_Default_EDIT/pack.png",
+      "icon": null,
+      "file": "resourcepacks/§3Mad §fDefault §3EDIT.zip",
+      "fileSize": "25.5MB",
+      "uploadDate": "2026-07-03",
+      "lists": [
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/%C2%A73Mad%20%C2%A7fDefault%20%C2%A73EDIT.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/%C2%A73Mad%20%C2%A7fDefault%20%C2%A73EDIT.zip"
+      }
+    },
+    {
+      "id": "! Maltreat 128",
+      "name": "Maltreat_128",
+      "displayName": "Maltreat 128",
+      "coloredName": "Maltreat 128",
+      "description": "- Maltreat",
+      "cover": "/thumbnails/Maltreat_128/cover.png",
+      "packPng": "/thumbnails/Maltreat_128/pack.png",
+      "icon": null,
+      "file": "resourcepacks/! Maltreat 128.zip",
+      "fileSize": "21.9MB",
       "uploadDate": "2026-04-09",
       "lists": [
         "Jewdah pf"
@@ -2649,21 +2057,21 @@
         ]
       },
       "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/!%20%C2%A74Uchiha%20%C2%A7r%5BPrivate%5D.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/!%20%C2%A74Uchiha%20%C2%A7r%5BPrivate%5D.zip"
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/!%20Maltreat%20128.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/!%20Maltreat%20128.zip"
       }
     },
     {
-      "id": "Ukan.",
-      "name": "Ukan",
-      "displayName": "Ukan.",
-      "coloredName": "Ukan.",
-      "description": "By iSparkton",
-      "cover": "/thumbnails/Ukan/cover.png",
-      "packPng": "/thumbnails/Ukan/pack.png",
+      "id": "§5§lMarkey Purple v2",
+      "name": "Markey_Purple_v2",
+      "displayName": "Markey Purple v2",
+      "coloredName": "<span style=\"color:#AA00AA\">M</span><span style=\"color:#AA00AA\">a</span><span style=\"color:#AA00AA\">r</span><span style=\"color:#AA00AA\">k</span><span style=\"color:#AA00AA\">e</span><span style=\"color:#AA00AA\">y</span><span style=\"color:#AA00AA\"> </span><span style=\"color:#AA00AA\">P</span><span style=\"color:#AA00AA\">u</span><span style=\"color:#AA00AA\">r</span><span style=\"color:#AA00AA\">p</span><span style=\"color:#AA00AA\">l</span><span style=\"color:#AA00AA\">e</span><span style=\"color:#AA00AA\"> </span><span style=\"color:#AA00AA\">v</span><span style=\"color:#AA00AA\">2</span>",
+      "description": "by marcus",
+      "cover": "/thumbnails/Markey_Purple_v2/cover.png",
+      "packPng": "/thumbnails/Markey_Purple_v2/pack.png",
       "icon": null,
-      "file": "resourcepacks/Ukan..zip",
-      "fileSize": "70.9MB",
+      "file": "resourcepacks/§5§lMarkey Purple v2.zip",
+      "fileSize": "4.3MB",
       "uploadDate": "2026-07-03",
       "lists": [
         "Sakyvo"
@@ -2709,21 +2117,21 @@
         ]
       },
       "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/Ukan..zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/Ukan..zip"
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/%C2%A75%C2%A7lMarkey%20Purple%20v2.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/%C2%A75%C2%A7lMarkey%20Purple%20v2.zip"
       }
     },
     {
-      "id": "!              §4§lUltimate Red §b§l16x §dby §b§lVeroxus.zip",
-      "name": "Ultimate_Red_16x_by_Veroxus.zip",
-      "displayName": "Ultimate Red 16x by Veroxus.zip",
-      "coloredName": "<span style=\"color:#AA0000\">U</span><span style=\"color:#AA0000\">l</span><span style=\"color:#AA0000\">t</span><span style=\"color:#AA0000\">i</span><span style=\"color:#AA0000\">m</span><span style=\"color:#AA0000\">a</span><span style=\"color:#AA0000\">t</span><span style=\"color:#AA0000\">e</span><span style=\"color:#AA0000\"> </span><span style=\"color:#AA0000\">R</span><span style=\"color:#AA0000\">e</span><span style=\"color:#AA0000\">d</span><span style=\"color:#AA0000\"> </span><span style=\"color:#55FFFF\">1</span><span style=\"color:#55FFFF\">6</span><span style=\"color:#55FFFF\">x</span><span style=\"color:#55FFFF\"> </span><span style=\"color:#FF55FF\">b</span><span style=\"color:#FF55FF\">y</span><span style=\"color:#FF55FF\"> </span><span style=\"color:#55FFFF\">V</span><span style=\"color:#55FFFF\">e</span><span style=\"color:#55FFFF\">r</span><span style=\"color:#55FFFF\">o</span><span style=\"color:#55FFFF\">x</span><span style=\"color:#55FFFF\">u</span><span style=\"color:#55FFFF\">s</span><span style=\"color:#55FFFF\">.</span><span style=\"color:#55FFFF\">z</span><span style=\"color:#55FFFF\">i</span><span style=\"color:#55FFFF\">p</span>",
-      "description": "Made by Veroxus",
-      "cover": "/thumbnails/Ultimate_Red_16x_by_Veroxus.zip/cover.png",
-      "packPng": "/thumbnails/Ultimate_Red_16x_by_Veroxus.zip/pack.png",
+      "id": "§cMars Pack §7(Map 2)",
+      "name": "Mars_Pack_Map_2",
+      "displayName": "Mars Pack (Map 2)",
+      "coloredName": "<span style=\"color:#FF5555\">M</span><span style=\"color:#FF5555\">a</span><span style=\"color:#FF5555\">r</span><span style=\"color:#FF5555\">s</span><span style=\"color:#FF5555\"> </span><span style=\"color:#FF5555\">P</span><span style=\"color:#FF5555\">a</span><span style=\"color:#FF5555\">c</span><span style=\"color:#FF5555\">k</span><span style=\"color:#FF5555\"> </span><span style=\"color:#AAAAAA\">(</span><span style=\"color:#AAAAAA\">M</span><span style=\"color:#AAAAAA\">a</span><span style=\"color:#AAAAAA\">p</span><span style=\"color:#AAAAAA\"> </span><span style=\"color:#AAAAAA\">2</span><span style=\"color:#AAAAAA\">)</span>",
+      "description": "Mars Map 2 Pack",
+      "cover": "/thumbnails/Mars_Pack_Map_2/cover.png",
+      "packPng": "/thumbnails/Mars_Pack_Map_2/pack.png",
       "icon": null,
-      "file": "resourcepacks/!              §4§lUltimate Red §b§l16x §dby §b§lVeroxus.zip.zip",
-      "fileSize": "15.4MB",
+      "file": "resourcepacks/§cMars Pack §7(Map 2).zip",
+      "fileSize": "23.3MB",
       "uploadDate": "2026-07-03",
       "lists": [
         "Sakyvo"
@@ -2735,6 +2143,7 @@
           "splash_potion_of_healing.png",
           "steak.png",
           "iron_sword.png",
+          "stone_sword.png",
           "fishing_rod_uncast.png",
           "apple_golden.png",
           "golden_carrot.png"
@@ -2769,22 +2178,22 @@
         ]
       },
       "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%20%20%20%20%20%20%20%20%20%20%20%20%20%20%C2%A74%C2%A7lUltimate%20Red%20%C2%A7b%C2%A7l16x%20%C2%A7dby%20%C2%A7b%C2%A7lVeroxus.zip.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%20%20%20%20%20%20%20%20%20%20%20%20%20%20%C2%A74%C2%A7lUltimate%20Red%20%C2%A7b%C2%A7l16x%20%C2%A7dby%20%C2%A7b%C2%A7lVeroxus.zip.zip"
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/%C2%A7cMars%20Pack%20%C2%A77(Map%202).zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/%C2%A7cMars%20Pack%20%C2%A77(Map%202).zip"
       }
     },
     {
-      "id": "!  §9 Ultra Instinct §8[§7128x§8]",
-      "name": "Ultra_Instinct_128x",
-      "displayName": "Ultra Instinct [128x]",
-      "coloredName": "<span style=\"color:#5555FF\"> </span><span style=\"color:#5555FF\">U</span><span style=\"color:#5555FF\">l</span><span style=\"color:#5555FF\">t</span><span style=\"color:#5555FF\">r</span><span style=\"color:#5555FF\">a</span><span style=\"color:#5555FF\"> </span><span style=\"color:#5555FF\">I</span><span style=\"color:#5555FF\">n</span><span style=\"color:#5555FF\">s</span><span style=\"color:#5555FF\">t</span><span style=\"color:#5555FF\">i</span><span style=\"color:#5555FF\">n</span><span style=\"color:#5555FF\">c</span><span style=\"color:#5555FF\">t</span><span style=\"color:#5555FF\"> </span><span style=\"color:#555555\">[</span><span style=\"color:#AAAAAA\">1</span><span style=\"color:#AAAAAA\">2</span><span style=\"color:#AAAAAA\">8</span><span style=\"color:#AAAAAA\">x</span><span style=\"color:#555555\">]</span>",
-      "description": "by Mellor",
-      "cover": "/thumbnails/Ultra_Instinct_128x/cover.png",
-      "packPng": "/thumbnails/Ultra_Instinct_128x/pack.png",
+      "id": "! Mars x Oken",
+      "name": "Mars_x_Oken",
+      "displayName": "Mars x Oken",
+      "coloredName": "Mars x Oken",
+      "description": "⁓Oken",
+      "cover": "/thumbnails/Mars_x_Oken/cover.png",
+      "packPng": "/thumbnails/Mars_x_Oken/pack.png",
       "icon": null,
-      "file": "resourcepacks/!  §9 Ultra Instinct §8[§7128x§8].zip",
-      "fileSize": "10.7MB",
-      "uploadDate": "2026-07-03",
+      "file": "resourcepacks/! Mars x Oken.zip",
+      "fileSize": "30.9MB",
+      "uploadDate": "2026-08-08",
       "lists": [
         "Sakyvo"
       ],
@@ -2795,6 +2204,7 @@
           "splash_potion_of_healing.png",
           "steak.png",
           "iron_sword.png",
+          "stone_sword.png",
           "fishing_rod_uncast.png",
           "apple_golden.png",
           "golden_carrot.png"
@@ -2829,22 +2239,22 @@
         ]
       },
       "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%20%20%C2%A79%20Ultra%20Instinct%20%C2%A78%5B%C2%A77128x%C2%A78%5D.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/!%20%20%C2%A79%20Ultra%20Instinct%20%C2%A78%5B%C2%A77128x%C2%A78%5D.zip"
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/!%20Mars%20x%20Oken.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/!%20Mars%20x%20Oken.zip"
       }
     },
     {
-      "id": "§urple CL0CK §7eum3 private §8beta",
-      "name": "urple_CL0CK_eum3_private_beta",
-      "displayName": "urple CL0CK eum3 private beta",
-      "coloredName": "rple CL0CK <span style=\"color:#AAAAAA\">e</span><span style=\"color:#AAAAAA\">u</span><span style=\"color:#AAAAAA\">m</span><span style=\"color:#AAAAAA\">3</span><span style=\"color:#AAAAAA\"> </span><span style=\"color:#AAAAAA\">p</span><span style=\"color:#AAAAAA\">r</span><span style=\"color:#AAAAAA\">i</span><span style=\"color:#AAAAAA\">v</span><span style=\"color:#AAAAAA\">a</span><span style=\"color:#AAAAAA\">t</span><span style=\"color:#AAAAAA\">e</span><span style=\"color:#AAAAAA\"> </span><span style=\"color:#555555\">b</span><span style=\"color:#555555\">e</span><span style=\"color:#555555\">t</span><span style=\"color:#555555\">a</span>",
-      "description": "By xYAZAN",
-      "cover": "/thumbnails/urple_CL0CK_eum3_private_beta/cover.png",
-      "packPng": "/thumbnails/urple_CL0CK_eum3_private_beta/pack.png",
+      "id": "mashup",
+      "name": "mashup",
+      "displayName": "mashup",
+      "coloredName": "mashup",
+      "description": "mashup by mossik",
+      "cover": "/thumbnails/mashup/cover.png",
+      "packPng": "/thumbnails/mashup/pack.png",
       "icon": null,
-      "file": "resourcepacks/§urple CL0CK §7eum3 private §8beta.zip",
-      "fileSize": "24.9MB",
-      "uploadDate": "2026-07-03",
+      "file": "resourcepacks/mashup.zip",
+      "fileSize": "57.9MB",
+      "uploadDate": "2026-08-08",
       "lists": [
         "Sakyvo"
       ],
@@ -2855,6 +2265,7 @@
           "splash_potion_of_healing.png",
           "steak.png",
           "iron_sword.png",
+          "stone_sword.png",
           "fishing_rod_uncast.png",
           "apple_golden.png",
           "golden_carrot.png"
@@ -2889,24 +2300,328 @@
         ]
       },
       "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/%C2%A7urple%20CL0CK%20%C2%A77eum3%20private%20%C2%A78beta.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/%C2%A7urple%20CL0CK%20%C2%A77eum3%20private%20%C2%A78beta.zip"
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/mashup.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/mashup.zip"
       }
     },
     {
-      "id": "USA CANT HANG",
-      "name": "USA_CANT_HANG",
-      "displayName": "USA CANT HANG",
-      "coloredName": "USA CANT HANG",
-      "description": "koala im not eu speedah",
-      "cover": "/thumbnails/USA_CANT_HANG/cover.png",
-      "packPng": "/thumbnails/USA_CANT_HANG/pack.png",
+      "id": "Mashup Beta",
+      "name": "Mashup_Beta",
+      "displayName": "Mashup Beta",
+      "coloredName": "Mashup Beta",
+      "description": "Mashup - By:le ClockPvP",
+      "cover": "/thumbnails/Mashup_Beta/cover.png",
+      "packPng": "/thumbnails/Mashup_Beta/pack.png",
       "icon": null,
-      "file": "resourcepacks/USA CANT HANG.zip",
+      "file": "resourcepacks/Mashup Beta.zip",
+      "fileSize": "24.5MB",
+      "uploadDate": "2026-08-08",
+      "lists": [
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "stone_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/Mashup%20Beta.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/Mashup%20Beta.zip"
+      }
+    },
+    {
+      "id": "§6Mashup Law",
+      "name": "Mashup_Law",
+      "displayName": "Mashup Law",
+      "coloredName": "<span style=\"color:#FFAA00\">M</span><span style=\"color:#FFAA00\">a</span><span style=\"color:#FFAA00\">s</span><span style=\"color:#FFAA00\">h</span><span style=\"color:#FFAA00\">u</span><span style=\"color:#FFAA00\">p</span><span style=\"color:#FFAA00\"> </span><span style=\"color:#FFAA00\">L</span><span style=\"color:#FFAA00\">a</span><span style=\"color:#FFAA00\">w</span>",
+      "description": "~Vampirical/Law",
+      "cover": "/thumbnails/Mashup_Law/cover.png",
+      "packPng": "/thumbnails/Mashup_Law/pack.png",
+      "icon": null,
+      "file": "resourcepacks/§6Mashup Law.zip",
       "fileSize": "26.9MB",
+      "uploadDate": "2026-08-08",
+      "lists": [
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "stone_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/%C2%A76Mashup%20Law.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/%C2%A76Mashup%20Law.zip"
+      }
+    },
+    {
+      "id": "#Mashup700subs",
+      "name": "Mashup700subs",
+      "displayName": "Mashup700subs",
+      "coloredName": "Mashup700subs",
+      "description": "Pack Mashup",
+      "cover": "/thumbnails/Mashup700subs/cover.png",
+      "packPng": "/thumbnails/Mashup700subs/pack.png",
+      "icon": null,
+      "file": "resourcepacks/#Mashup700subs.zip",
+      "fileSize": "42.1MB",
+      "uploadDate": "2026-07-03",
+      "lists": [
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/%23Mashup700subs.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/%23Mashup700subs.zip"
+      }
+    },
+    {
+      "id": "mashupperino",
+      "name": "mashupperino",
+      "displayName": "mashupperino",
+      "coloredName": "mashupperino",
+      "description": "Mashup by Alessio26gas",
+      "cover": "/thumbnails/mashupperino/cover.png",
+      "packPng": "/thumbnails/mashupperino/pack.png",
+      "icon": null,
+      "file": "resourcepacks/mashupperino.zip",
+      "fileSize": "42.9MB",
+      "uploadDate": "2026-07-03",
+      "lists": [
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/mashupperino.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/mashupperino.zip"
+      }
+    },
+    {
+      "id": "! §bMav FPS",
+      "name": "Mav_FPS",
+      "displayName": "Mav FPS",
+      "coloredName": "<span style=\"color:#55FFFF\">M</span><span style=\"color:#55FFFF\">a</span><span style=\"color:#55FFFF\">v</span><span style=\"color:#55FFFF\"> </span><span style=\"color:#55FFFF\">F</span><span style=\"color:#55FFFF\">P</span><span style=\"color:#55FFFF\">S</span>",
+      "description": "made by mav :>",
+      "cover": "/thumbnails/Mav_FPS/cover.png",
+      "packPng": "/thumbnails/Mav_FPS/pack.png",
+      "icon": null,
+      "file": "resourcepacks/! §bMav FPS.zip",
+      "fileSize": "28.4MB",
+      "uploadDate": "2026-08-08",
+      "lists": [
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "stone_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/!%20%C2%A7bMav%20FPS.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/!%20%C2%A7bMav%20FPS.zip"
+      }
+    },
+    {
+      "id": "!        §bMav War",
+      "name": "Mav_War",
+      "displayName": "Mav War",
+      "coloredName": "<span style=\"color:#55FFFF\">M</span><span style=\"color:#55FFFF\">a</span><span style=\"color:#55FFFF\">v</span><span style=\"color:#55FFFF\"> </span><span style=\"color:#55FFFF\">W</span><span style=\"color:#55FFFF\">a</span><span style=\"color:#55FFFF\">r</span>",
+      "description": "made by mav :>",
+      "cover": "/thumbnails/Mav_War/cover.png",
+      "packPng": "/thumbnails/Mav_War/pack.png",
+      "icon": null,
+      "file": "resourcepacks/!        §bMav War.zip",
+      "fileSize": "28.4MB",
       "uploadDate": "2026-04-09",
       "lists": [
-        "iil pf v2"
+        "Jewdah pf",
+        "Sakyvo"
       ],
       "textures": {
         "items": [
@@ -2915,6 +2630,7 @@
           "splash_potion_of_healing.png",
           "steak.png",
           "iron_sword.png",
+          "stone_sword.png",
           "fishing_rod_uncast.png",
           "apple_golden.png",
           "golden_carrot.png"
@@ -2949,21 +2665,21 @@
         ]
       },
       "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/USA%20CANT%20HANG.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-001/main/resourcepacks/USA%20CANT%20HANG.zip"
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/!%20%20%20%20%20%20%20%20%C2%A7bMav%20War.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/!%20%20%20%20%20%20%20%20%C2%A7bMav%20War.zip"
       }
     },
     {
-      "id": "§1utterHCF",
-      "name": "utterHCF",
-      "displayName": "utterHCF",
-      "coloredName": "<span style=\"color:#0000AA\">u</span><span style=\"color:#0000AA\">t</span><span style=\"color:#0000AA\">t</span><span style=\"color:#0000AA\">e</span><span style=\"color:#0000AA\">r</span><span style=\"color:#0000AA\">H</span><span style=\"color:#0000AA\">C</span><span style=\"color:#0000AA\">F</span>",
-      "description": "utter",
-      "cover": "/thumbnails/utterHCF/cover.png",
-      "packPng": "/thumbnails/utterHCF/pack.png",
+      "id": "!   §dMayai [16x]",
+      "name": "Mayai_16x",
+      "displayName": "Mayai [16x]",
+      "coloredName": "<span style=\"color:#FF55FF\">M</span><span style=\"color:#FF55FF\">a</span><span style=\"color:#FF55FF\">y</span><span style=\"color:#FF55FF\">a</span><span style=\"color:#FF55FF\">i</span><span style=\"color:#FF55FF\"> </span><span style=\"color:#FF55FF\">[</span><span style=\"color:#FF55FF\">1</span><span style=\"color:#FF55FF\">6</span><span style=\"color:#FF55FF\">x</span><span style=\"color:#FF55FF\">]</span>",
+      "description": "6",
+      "cover": "/thumbnails/Mayai_16x/cover.png",
+      "packPng": "/thumbnails/Mayai_16x/pack.png",
       "icon": null,
-      "file": "resourcepacks/§1utterHCF.zip",
-      "fileSize": "9.0MB",
+      "file": "resourcepacks/!   §dMayai [16x].zip",
+      "fileSize": "16.6MB",
       "uploadDate": "2026-07-03",
       "lists": [
         "Sakyvo"
@@ -3009,8 +2725,310 @@
         ]
       },
       "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/%C2%A71utterHCF.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/%C2%A71utterHCF.zip"
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%20%20%C2%A7dMayai%20%5B16x%5D.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%20%20%C2%A7dMayai%20%5B16x%5D.zip"
+      }
+    },
+    {
+      "id": "maybe eum3 edit",
+      "name": "maybe_eum3_edit",
+      "displayName": "maybe eum3 edit",
+      "coloredName": "maybe eum3 edit",
+      "description": "unknown",
+      "cover": "/thumbnails/maybe_eum3_edit/cover.png",
+      "packPng": "/thumbnails/maybe_eum3_edit/pack.png",
+      "icon": null,
+      "file": "resourcepacks/maybe eum3 edit.zip",
+      "fileSize": "12.1MB",
+      "uploadDate": "2026-08-08",
+      "lists": [
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "stone_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/maybe%20eum3%20edit.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/maybe%20eum3%20edit.zip"
+      }
+    },
+    {
+      "id": "MCPVP 1.2.5",
+      "name": "MCPVP_1.2.5",
+      "displayName": "MCPVP 1.2.5",
+      "coloredName": "MCPVP 1.2.5",
+      "description": "Remember 1.2.5",
+      "cover": "/thumbnails/MCPVP_1.2.5/cover.png",
+      "packPng": "/thumbnails/MCPVP_1.2.5/pack.png",
+      "icon": null,
+      "file": "resourcepacks/MCPVP 1.2.5.zip",
+      "fileSize": "22.8MB",
+      "uploadDate": "2026-07-03",
+      "lists": [
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/MCPVP%201.2.5.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/MCPVP%201.2.5.zip"
+      }
+    },
+    {
+      "id": "!      §3MeeZoid §8[§fv7§8]",
+      "name": "MeeZoid_v7",
+      "displayName": "MeeZoid [v7]",
+      "coloredName": "<span style=\"color:#00AAAA\">M</span><span style=\"color:#00AAAA\">e</span><span style=\"color:#00AAAA\">e</span><span style=\"color:#00AAAA\">Z</span><span style=\"color:#00AAAA\">o</span><span style=\"color:#00AAAA\">i</span><span style=\"color:#00AAAA\">d</span><span style=\"color:#00AAAA\"> </span><span style=\"color:#555555\">[</span><span style=\"color:#FFFFFF\">v</span><span style=\"color:#FFFFFF\">7</span><span style=\"color:#555555\">]</span>",
+      "description": "by Tory",
+      "cover": "/thumbnails/MeeZoid_v7/cover.png",
+      "packPng": "/thumbnails/MeeZoid_v7/pack.png",
+      "icon": null,
+      "file": "resourcepacks/!      §3MeeZoid §8[§fv7§8].zip",
+      "fileSize": "12.0MB",
+      "uploadDate": "2026-07-03",
+      "lists": [
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%20%20%20%20%20%C2%A73MeeZoid%20%C2%A78%5B%C2%A7fv7%C2%A78%5D.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/!%20%20%20%20%20%20%C2%A73MeeZoid%20%C2%A78%5B%C2%A7fv7%C2%A78%5D.zip"
+      }
+    },
+    {
+      "id": "! MegaMilk FPS Edit",
+      "name": "MegaMilk_FPS_Edit",
+      "displayName": "MegaMilk FPS Edit",
+      "coloredName": "MegaMilk FPS Edit",
+      "description": "",
+      "cover": "/thumbnails/MegaMilk_FPS_Edit/cover.png",
+      "packPng": "/thumbnails/MegaMilk_FPS_Edit/pack.png",
+      "icon": null,
+      "file": "resourcepacks/! MegaMilk FPS Edit.zip",
+      "fileSize": "4.8MB",
+      "uploadDate": "2026-08-08",
+      "lists": [
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "stone_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/!%20MegaMilk%20FPS%20Edit.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/!%20MegaMilk%20FPS%20Edit.zip"
+      }
+    },
+    {
+      "id": "Megumin",
+      "name": "Megumin",
+      "displayName": "Megumin",
+      "coloredName": "Megumin",
+      "description": "EXPLOSION",
+      "cover": "/thumbnails/Megumin/cover.png",
+      "packPng": "/thumbnails/Megumin/pack.png",
+      "icon": null,
+      "file": "resourcepacks/Megumin.zip",
+      "fileSize": "18.8MB",
+      "uploadDate": "2026-07-03",
+      "lists": [
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/Megumin.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/Megumin.zip"
       }
     }
   ]

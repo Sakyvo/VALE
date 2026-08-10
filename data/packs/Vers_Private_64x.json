@@ -1,0 +1,61 @@
+{
+  "id": "! §LVers Private §f§L[64x]",
+  "name": "Vers_Private_64x",
+  "displayName": "Vers Private [64x]",
+  "coloredName": "Vers Private <span style=\"color:#FFFFFF\">[</span><span style=\"color:#FFFFFF\">6</span><span style=\"color:#FFFFFF\">4</span><span style=\"color:#FFFFFF\">x</span><span style=\"color:#FFFFFF\">]</span>",
+  "description": "By vltr",
+  "cover": "/thumbnails/Vers_Private_64x/cover.png",
+  "packPng": "/thumbnails/Vers_Private_64x/pack.png",
+  "icon": null,
+  "file": "resourcepacks/! §LVers Private §f§L[64x].zip",
+  "fileSize": "15.0MB",
+  "uploadDate": "2026-08-08",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!%20%C2%A7LVers%20Private%20%C2%A7f%C2%A7L%5B64x%5D.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!%20%C2%A7LVers%20Private%20%C2%A7f%C2%A7L%5B64x%5D.zip"
+  }
+}

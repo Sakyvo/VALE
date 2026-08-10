@@ -1,0 +1,61 @@
+{
+  "id": "§dCrimson27 §f16§7x §5mashup",
+  "name": "Crimson27_16x_mashup",
+  "displayName": "Crimson27 16x mashup",
+  "coloredName": "<span style=\"color:#FF55FF\">C</span><span style=\"color:#FF55FF\">r</span><span style=\"color:#FF55FF\">i</span><span style=\"color:#FF55FF\">m</span><span style=\"color:#FF55FF\">s</span><span style=\"color:#FF55FF\">o</span><span style=\"color:#FF55FF\">n</span><span style=\"color:#FF55FF\">2</span><span style=\"color:#FF55FF\">7</span><span style=\"color:#FF55FF\"> </span><span style=\"color:#FFFFFF\">1</span><span style=\"color:#FFFFFF\">6</span><span style=\"color:#AAAAAA\">x</span><span style=\"color:#AAAAAA\"> </span><span style=\"color:#AA00AA\">m</span><span style=\"color:#AA00AA\">a</span><span style=\"color:#AA00AA\">s</span><span style=\"color:#AA00AA\">h</span><span style=\"color:#AA00AA\">u</span><span style=\"color:#AA00AA\">p</span>",
+  "description": ". by hancey & kdh .",
+  "cover": "/thumbnails/Crimson27_16x_mashup/cover.png",
+  "packPng": "/thumbnails/Crimson27_16x_mashup/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§dCrimson27 §f16§7x §5mashup.zip",
+  "fileSize": "10.6MB",
+  "uploadDate": "2026-08-08",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/%C2%A7dCrimson27%20%C2%A7f16%C2%A77x%20%C2%A75mashup.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/%C2%A7dCrimson27%20%C2%A7f16%C2%A77x%20%C2%A75mashup.zip"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "id": "§cSwing The §5Fruit",
+  "name": "Swing_The_Fruit",
+  "displayName": "Swing The Fruit",
+  "coloredName": "<span style=\"color:#FF5555\">S</span><span style=\"color:#FF5555\">w</span><span style=\"color:#FF5555\">i</span><span style=\"color:#FF5555\">n</span><span style=\"color:#FF5555\">g</span><span style=\"color:#FF5555\"> </span><span style=\"color:#FF5555\">T</span><span style=\"color:#FF5555\">h</span><span style=\"color:#FF5555\">e</span><span style=\"color:#FF5555\"> </span><span style=\"color:#AA00AA\">F</span><span style=\"color:#AA00AA\">r</span><span style=\"color:#AA00AA\">u</span><span style=\"color:#AA00AA\">i</span><span style=\"color:#AA00AA\">t</span>",
+  "description": "By Metar0X/metarox",
+  "cover": "/thumbnails/Swing_The_Fruit/cover.png",
+  "packPng": "/thumbnails/Swing_The_Fruit/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§cSwing The §5Fruit.zip",
+  "fileSize": "43.5MB",
+  "uploadDate": "2026-08-08",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/%C2%A7cSwing%20The%20%C2%A75Fruit.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/%C2%A7cSwing%20The%20%C2%A75Fruit.zip"
+  }
+}

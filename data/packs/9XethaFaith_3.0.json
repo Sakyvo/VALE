@@ -1,0 +1,61 @@
+{
+  "id": "! _9XethaFaith 3.0",
+  "name": "9XethaFaith_3.0",
+  "displayName": "9XethaFaith 3.0",
+  "coloredName": "9XethaFaith 3.0",
+  "description": "Latenci x Apexay",
+  "cover": "/thumbnails/9XethaFaith_3.0/cover.png",
+  "packPng": "/thumbnails/9XethaFaith_3.0/pack.png",
+  "icon": null,
+  "file": "resourcepacks/! _9XethaFaith 3.0.zip",
+  "fileSize": "25.3MB",
+  "uploadDate": "2026-08-08",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!%20_9XethaFaith%203.0.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!%20_9XethaFaith%203.0.zip"
+  }
+}

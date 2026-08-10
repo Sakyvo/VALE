@@ -1,0 +1,61 @@
+{
+  "id": "kqthy default eum3",
+  "name": "kqthy_default_eum3",
+  "displayName": "kqthy default eum3",
+  "coloredName": "kqthy default eum3",
+  "description": "told shorty to wait im popping a bean",
+  "cover": "/thumbnails/kqthy_default_eum3/cover.png",
+  "packPng": "/thumbnails/kqthy_default_eum3/pack.png",
+  "icon": null,
+  "file": "resourcepacks/kqthy default eum3.zip",
+  "fileSize": "8.7MB",
+  "uploadDate": "2026-08-08",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/kqthy%20default%20eum3.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/kqthy%20default%20eum3.zip"
+  }
+}

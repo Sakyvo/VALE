@@ -1,0 +1,61 @@
+{
+  "id": "!§7[§e64x§7]§d eev33",
+  "name": "64x_eev33",
+  "displayName": "64x] eev33",
+  "coloredName": "<span style=\"color:#AAAAAA\">[</span><span style=\"color:#FFFF55\">6</span><span style=\"color:#FFFF55\">4</span><span style=\"color:#FFFF55\">x</span><span style=\"color:#AAAAAA\">]</span><span style=\"color:#FF55FF\"> </span><span style=\"color:#FF55FF\">e</span><span style=\"color:#FF55FF\">e</span><span style=\"color:#FF55FF\">v</span><span style=\"color:#FF55FF\">3</span><span style=\"color:#FF55FF\">3</span>",
+  "description": "By Rectifies & eevay",
+  "cover": "/thumbnails/64x_eev33/cover.png",
+  "packPng": "/thumbnails/64x_eev33/pack.png",
+  "icon": null,
+  "file": "resourcepacks/!§7[§e64x§7]§d eev33.zip",
+  "fileSize": "22.0MB",
+  "uploadDate": "2026-08-08",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!%C2%A77%5B%C2%A7e64x%C2%A77%5D%C2%A7d%20eev33.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!%C2%A77%5B%C2%A7e64x%C2%A77%5D%C2%A7d%20eev33.zip"
+  }
+}

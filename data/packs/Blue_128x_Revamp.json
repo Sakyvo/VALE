@@ -1,0 +1,61 @@
+{
+  "id": "§1Blue 128x §9Revamp",
+  "name": "Blue_128x_Revamp",
+  "displayName": "Blue 128x Revamp",
+  "coloredName": "<span style=\"color:#0000AA\">B</span><span style=\"color:#0000AA\">l</span><span style=\"color:#0000AA\">u</span><span style=\"color:#0000AA\">e</span><span style=\"color:#0000AA\"> </span><span style=\"color:#0000AA\">1</span><span style=\"color:#0000AA\">2</span><span style=\"color:#0000AA\">8</span><span style=\"color:#0000AA\">x</span><span style=\"color:#0000AA\"> </span><span style=\"color:#5555FF\">R</span><span style=\"color:#5555FF\">e</span><span style=\"color:#5555FF\">v</span><span style=\"color:#5555FF\">a</span><span style=\"color:#5555FF\">m</span><span style=\"color:#5555FF\">p</span>",
+  "description": "by Metar0X/metarox",
+  "cover": "/thumbnails/Blue_128x_Revamp/cover.png",
+  "packPng": "/thumbnails/Blue_128x_Revamp/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§1Blue 128x §9Revamp.zip",
+  "fileSize": "24.7MB",
+  "uploadDate": "2026-08-08",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/%C2%A71Blue%20128x%20%C2%A79Revamp.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/%C2%A71Blue%20128x%20%C2%A79Revamp.zip"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "id": "! VAMPEDIT Eum3 FPS",
+  "name": "VAMPEDIT_Eum3_FPS",
+  "displayName": "VAMPEDIT Eum3 FPS",
+  "coloredName": "VAMPEDIT Eum3 FPS",
+  "description": "Arbaz x Apexay",
+  "cover": "/thumbnails/VAMPEDIT_Eum3_FPS/cover.png",
+  "packPng": "/thumbnails/VAMPEDIT_Eum3_FPS/pack.png",
+  "icon": null,
+  "file": "resourcepacks/! VAMPEDIT Eum3 FPS.zip",
+  "fileSize": "37.0MB",
+  "uploadDate": "2026-08-08",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/!%20VAMPEDIT%20Eum3%20FPS.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/!%20VAMPEDIT%20Eum3%20FPS.zip"
+  }
+}

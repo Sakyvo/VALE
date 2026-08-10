@@ -1,0 +1,61 @@
+{
+  "id": "! §dBubbleGum §7[32x]",
+  "name": "BubbleGum_32x",
+  "displayName": "BubbleGum [32x]",
+  "coloredName": "<span style=\"color:#FF55FF\">B</span><span style=\"color:#FF55FF\">u</span><span style=\"color:#FF55FF\">b</span><span style=\"color:#FF55FF\">b</span><span style=\"color:#FF55FF\">l</span><span style=\"color:#FF55FF\">e</span><span style=\"color:#FF55FF\">G</span><span style=\"color:#FF55FF\">u</span><span style=\"color:#FF55FF\">m</span><span style=\"color:#FF55FF\"> </span><span style=\"color:#AAAAAA\">[</span><span style=\"color:#AAAAAA\">3</span><span style=\"color:#AAAAAA\">2</span><span style=\"color:#AAAAAA\">x</span><span style=\"color:#AAAAAA\">]</span>",
+  "description": "-Latenci",
+  "cover": "/thumbnails/BubbleGum_32x/cover.png",
+  "packPng": "/thumbnails/BubbleGum_32x/pack.png",
+  "icon": null,
+  "file": "resourcepacks/! §dBubbleGum §7[32x].zip",
+  "fileSize": "13.5MB",
+  "uploadDate": "2026-08-08",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!%20%C2%A7dBubbleGum%20%C2%A77%5B32x%5D.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!%20%C2%A7dBubbleGum%20%C2%A77%5B32x%5D.zip"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "id": "eum3blue128xV2",
+  "name": "eum3blue128xV2",
+  "displayName": "eum3blue128xV2",
+  "coloredName": "eum3blue128xV2",
+  "description": "iil edit",
+  "cover": "/thumbnails/eum3blue128xV2/cover.png",
+  "packPng": "/thumbnails/eum3blue128xV2/pack.png",
+  "icon": null,
+  "file": "resourcepacks/eum3blue128xV2.zip",
+  "fileSize": "12.2MB",
+  "uploadDate": "2026-08-08",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/eum3blue128xV2.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/eum3blue128xV2.zip"
+  }
+}

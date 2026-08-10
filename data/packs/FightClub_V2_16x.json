@@ -1,0 +1,61 @@
+{
+  "id": "!  §4§lFight§f§lClub §4V2 16x",
+  "name": "FightClub_V2_16x",
+  "displayName": "FightClub V2 16x",
+  "coloredName": "<span style=\"color:#AA0000\">F</span><span style=\"color:#AA0000\">i</span><span style=\"color:#AA0000\">g</span><span style=\"color:#AA0000\">h</span><span style=\"color:#AA0000\">t</span><span style=\"color:#FFFFFF\">C</span><span style=\"color:#FFFFFF\">l</span><span style=\"color:#FFFFFF\">u</span><span style=\"color:#FFFFFF\">b</span><span style=\"color:#FFFFFF\"> </span><span style=\"color:#AA0000\">V</span><span style=\"color:#AA0000\">2</span><span style=\"color:#AA0000\"> </span><span style=\"color:#AA0000\">1</span><span style=\"color:#AA0000\">6</span><span style=\"color:#AA0000\">x</span>",
+  "description": "By Ziblacking 16x By BanWave",
+  "cover": "/thumbnails/FightClub_V2_16x/cover.png",
+  "packPng": "/thumbnails/FightClub_V2_16x/pack.png",
+  "icon": null,
+  "file": "resourcepacks/!  §4§lFight§f§lClub §4V2 16x.zip",
+  "fileSize": "21.0MB",
+  "uploadDate": "2026-08-08",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/!%20%20%C2%A74%C2%A7lFight%C2%A7f%C2%A7lClub%20%C2%A74V2%2016x.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/!%20%20%C2%A74%C2%A7lFight%C2%A7f%C2%A7lClub%20%C2%A74V2%2016x.zip"
+  }
+}

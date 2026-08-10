@@ -1,0 +1,61 @@
+{
+  "id": "§b!    fye §1mashup",
+  "name": "fye_mashup",
+  "displayName": "fye mashup",
+  "coloredName": "fye <span style=\"color:#0000AA\">m</span><span style=\"color:#0000AA\">a</span><span style=\"color:#0000AA\">s</span><span style=\"color:#0000AA\">h</span><span style=\"color:#0000AA\">u</span><span style=\"color:#0000AA\">p</span>",
+  "description": "knayer productions",
+  "cover": "/thumbnails/fye_mashup/cover.png",
+  "packPng": "/thumbnails/fye_mashup/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§b!    fye §1mashup.zip",
+  "fileSize": "9.3MB",
+  "uploadDate": "2026-08-08",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/%C2%A7b!%20%20%20%20fye%20%C2%A71mashup.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/%C2%A7b!%20%20%20%20fye%20%C2%A71mashup.zip"
+  }
+}

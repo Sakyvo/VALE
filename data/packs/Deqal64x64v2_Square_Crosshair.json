@@ -1,0 +1,61 @@
+{
+  "id": "!Deqal64x64v2 [Square Crosshair]",
+  "name": "Deqal64x64v2_Square_Crosshair",
+  "displayName": "Deqal64x64v2 [Square Crosshair]",
+  "coloredName": "Deqal64x64v2 [Square Crosshair]",
+  "description": "v2 By Deqal",
+  "cover": "/thumbnails/Deqal64x64v2_Square_Crosshair/cover.png",
+  "packPng": "/thumbnails/Deqal64x64v2_Square_Crosshair/pack.png",
+  "icon": null,
+  "file": "resourcepacks/!Deqal64x64v2 [Square Crosshair].zip",
+  "fileSize": "21.2MB",
+  "uploadDate": "2026-08-08",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!Deqal64x64v2%20%5BSquare%20Crosshair%5D.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!Deqal64x64v2%20%5BSquare%20Crosshair%5D.zip"
+  }
+}

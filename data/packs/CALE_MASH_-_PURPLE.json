@@ -1,0 +1,61 @@
+{
+  "id": "!   §5CALE MASH - PURPLE",
+  "name": "CALE_MASH_-_PURPLE",
+  "displayName": "CALE MASH - PURPLE",
+  "coloredName": "<span style=\"color:#AA00AA\">C</span><span style=\"color:#AA00AA\">A</span><span style=\"color:#AA00AA\">L</span><span style=\"color:#AA00AA\">E</span><span style=\"color:#AA00AA\"> </span><span style=\"color:#AA00AA\">M</span><span style=\"color:#AA00AA\">A</span><span style=\"color:#AA00AA\">S</span><span style=\"color:#AA00AA\">H</span><span style=\"color:#AA00AA\"> </span><span style=\"color:#AA00AA\">-</span><span style=\"color:#AA00AA\"> </span><span style=\"color:#AA00AA\">P</span><span style=\"color:#AA00AA\">U</span><span style=\"color:#AA00AA\">R</span><span style=\"color:#AA00AA\">P</span><span style=\"color:#AA00AA\">L</span><span style=\"color:#AA00AA\">E</span>",
+  "description": "by beevah",
+  "cover": "/thumbnails/CALE_MASH_-_PURPLE/cover.png",
+  "packPng": "/thumbnails/CALE_MASH_-_PURPLE/pack.png",
+  "icon": null,
+  "file": "resourcepacks/!   §5CALE MASH - PURPLE.zip",
+  "fileSize": "14.1MB",
+  "uploadDate": "2026-08-08",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/!%20%20%20%C2%A75CALE%20MASH%20-%20PURPLE.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/!%20%20%20%C2%A75CALE%20MASH%20-%20PURPLE.zip"
+  }
+}

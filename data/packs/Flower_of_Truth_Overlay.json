@@ -1,0 +1,62 @@
+{
+  "id": "§4Flower of Truth Overlay",
+  "name": "Flower_of_Truth_Overlay",
+  "displayName": "Flower of Truth Overlay",
+  "coloredName": "<span style=\"color:#AA0000\">F</span><span style=\"color:#AA0000\">l</span><span style=\"color:#AA0000\">o</span><span style=\"color:#AA0000\">w</span><span style=\"color:#AA0000\">e</span><span style=\"color:#AA0000\">r</span><span style=\"color:#AA0000\"> </span><span style=\"color:#AA0000\">o</span><span style=\"color:#AA0000\">f</span><span style=\"color:#AA0000\"> </span><span style=\"color:#AA0000\">T</span><span style=\"color:#AA0000\">r</span><span style=\"color:#AA0000\">u</span><span style=\"color:#AA0000\">t</span><span style=\"color:#AA0000\">h</span><span style=\"color:#AA0000\"> </span><span style=\"color:#AA0000\">O</span><span style=\"color:#AA0000\">v</span><span style=\"color:#AA0000\">e</span><span style=\"color:#AA0000\">r</span><span style=\"color:#AA0000\">l</span><span style=\"color:#AA0000\">a</span><span style=\"color:#AA0000\">y</span>",
+  "description": "Latenci x Apexay",
+  "cover": "/thumbnails/Flower_of_Truth_Overlay/cover.png",
+  "packPng": "/thumbnails/Flower_of_Truth_Overlay/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§4Flower of Truth Overlay.zip",
+  "fileSize": "3KB",
+  "uploadDate": "2026-08-08",
+  "lists": [
+    "Overlay",
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/%C2%A74Flower%20of%20Truth%20Overlay.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/%C2%A74Flower%20of%20Truth%20Overlay.zip"
+  }
+}

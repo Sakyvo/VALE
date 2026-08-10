@@ -1,0 +1,61 @@
+{
+  "id": "§8! grinch contrast [§bBlue§8]",
+  "name": "grinch_contrast_Blue",
+  "displayName": "grinch contrast [Blue]",
+  "coloredName": "grinch contrast [<span style=\"color:#55FFFF\">B</span><span style=\"color:#55FFFF\">l</span><span style=\"color:#55FFFF\">u</span><span style=\"color:#55FFFF\">e</span><span style=\"color:#555555\">]</span>",
+  "description": "saint x grinch",
+  "cover": "/thumbnails/grinch_contrast_Blue/cover.png",
+  "packPng": "/thumbnails/grinch_contrast_Blue/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§8! grinch contrast [§bBlue§8].zip",
+  "fileSize": "22.8MB",
+  "uploadDate": "2026-08-08",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/%C2%A78!%20grinch%20contrast%20%5B%C2%A7bBlue%C2%A78%5D.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/%C2%A78!%20grinch%20contrast%20%5B%C2%A7bBlue%C2%A78%5D.zip"
+  }
+}

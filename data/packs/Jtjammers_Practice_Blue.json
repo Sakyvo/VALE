@@ -1,0 +1,61 @@
+{
+  "id": "!  §6§lJtjammers §1§lPractice Blue",
+  "name": "Jtjammers_Practice_Blue",
+  "displayName": "Jtjammers Practice Blue",
+  "coloredName": "<span style=\"color:#FFAA00\">J</span><span style=\"color:#FFAA00\">t</span><span style=\"color:#FFAA00\">j</span><span style=\"color:#FFAA00\">a</span><span style=\"color:#FFAA00\">m</span><span style=\"color:#FFAA00\">m</span><span style=\"color:#FFAA00\">e</span><span style=\"color:#FFAA00\">r</span><span style=\"color:#FFAA00\">s</span><span style=\"color:#FFAA00\"> </span><span style=\"color:#0000AA\">P</span><span style=\"color:#0000AA\">r</span><span style=\"color:#0000AA\">a</span><span style=\"color:#0000AA\">c</span><span style=\"color:#0000AA\">t</span><span style=\"color:#0000AA\">i</span><span style=\"color:#0000AA\">c</span><span style=\"color:#0000AA\">e</span><span style=\"color:#0000AA\"> </span><span style=\"color:#0000AA\">B</span><span style=\"color:#0000AA\">l</span><span style=\"color:#0000AA\">u</span><span style=\"color:#0000AA\">e</span>",
+  "description": "big balls on the beat",
+  "cover": "/thumbnails/Jtjammers_Practice_Blue/cover.png",
+  "packPng": "/thumbnails/Jtjammers_Practice_Blue/pack.png",
+  "icon": null,
+  "file": "resourcepacks/!  §6§lJtjammers §1§lPractice Blue.zip",
+  "fileSize": "20.0MB",
+  "uploadDate": "2026-08-08",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/!%20%20%C2%A76%C2%A7lJtjammers%20%C2%A71%C2%A7lPractice%20Blue.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/!%20%20%C2%A76%C2%A7lJtjammers%20%C2%A71%C2%A7lPractice%20Blue.zip"
+  }
+}

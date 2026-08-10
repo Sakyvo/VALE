@@ -4,6 +4,439 @@
   "registryDigest": "a495de83be1f79c6275185f18542661d038230f76d9d5d8bd362a69e08585a06",
   "entries": [
     {
+      "key": "file:!     §3Tory eum3 Revamp.zip:792bb539268cd8a95b97a6691edf2bf1b92a9d0294fd29429a81c49cc44ff39c",
+      "sourceFile": "!     §3Tory eum3 Revamp.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "792bb539268cd8a95b97a6691edf2bf1b92a9d0294fd29429a81c49cc44ff39c",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!     §3Tory eum3 Revamp.zip",
+          "archiveSha256": "792bb539268cd8a95b97a6691edf2bf1b92a9d0294fd29429a81c49cc44ff39c"
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-09T05:48:14.170Z",
+      "updatedAt": "2026-08-09T05:48:14.170Z"
+    },
+    {
+      "key": "file:!  Johkeh Default(2).zip:795961fe1e434276248c5c3e683bad323ec8e1f832566bde07822c66549767d0",
+      "sourceFile": "!  Johkeh Default(2).zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "795961fe1e434276248c5c3e683bad323ec8e1f832566bde07822c66549767d0",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!  Johkeh Default(2).zip",
+          "archiveSha256": "795961fe1e434276248c5c3e683bad323ec8e1f832566bde07822c66549767d0"
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-09T05:48:14.170Z",
+      "updatedAt": "2026-08-09T05:48:14.170Z"
+    },
+    {
+      "key": "file:! §6Cayden Remastered.zip:990bf455e9082b9fe602aeff6d4586405826be8bf2b5ce93ab71603fe1ee8b4a",
+      "sourceFile": "! §6Cayden Remastered.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "990bf455e9082b9fe602aeff6d4586405826be8bf2b5ce93ab71603fe1ee8b4a",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "! §6Cayden Remastered.zip",
+          "archiveSha256": "990bf455e9082b9fe602aeff6d4586405826be8bf2b5ce93ab71603fe1ee8b4a",
+          "sourceFile": "! §6Cayden Remastered.zip",
+          "sourceArchiveSha256": "990bf455e9082b9fe602aeff6d4586405826be8bf2b5ce93ab71603fe1ee8b4a",
+          "productFile": "! §6Cayden Remastered.zip",
+          "originalProductFile": "! §6Cayden Remastered.zip",
+          "productPackId": "Cayden_Remastered",
+          "productArchiveSha256": "990bf455e9082b9fe602aeff6d4586405826be8bf2b5ce93ab71603fe1ee8b4a",
+          "visualContentHash": "127557c07bbed74de88f29458e01874c70df9378496a3535b165fd595c3c1ed8",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-09T05:48:14.170Z",
+      "updatedAt": "2026-08-09T09:11:22.721Z"
+    },
+    {
+      "key": "file:! §9§lDoly 128x.zip:b068214e61d6cc7f2ded88e391fc866b3e1f8235cbd067b1f45fd5e677d7a7c8",
+      "sourceFile": "! §9§lDoly 128x.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "b068214e61d6cc7f2ded88e391fc866b3e1f8235cbd067b1f45fd5e677d7a7c8",
+      "normalizationSchemaVersion": 1,
+      "classification": "high_version",
+      "label": "高版本材质",
+      "causes": [
+        "high_version"
+      ],
+      "products": [],
+      "status": "rejected",
+      "firstSeenAt": "2026-08-09T05:48:14.170Z",
+      "updatedAt": "2026-08-09T05:48:14.170Z"
+    },
+    {
+      "key": "file:! §b§l§oqCh1ll_ Private.zip:cdb3707483dd6bf8493b70c5cd43b11f8af879cff960fbf4196535ad42b9a034",
+      "sourceFile": "! §b§l§oqCh1ll_ Private.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "cdb3707483dd6bf8493b70c5cd43b11f8af879cff960fbf4196535ad42b9a034",
+      "normalizationSchemaVersion": 1,
+      "classification": "high_version",
+      "label": "高版本材质",
+      "causes": [
+        "high_version"
+      ],
+      "products": [],
+      "status": "rejected",
+      "firstSeenAt": "2026-08-09T05:48:14.170Z",
+      "updatedAt": "2026-08-09T05:48:14.170Z"
+    },
+    {
+      "key": "file:! Yokabi Edit.zip:d8dc4341805bc3f5cbb2f973f95df8ccebf3b38c5bdd8c4347593c493f977d08",
+      "sourceFile": "! Yokabi Edit.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "d8dc4341805bc3f5cbb2f973f95df8ccebf3b38c5bdd8c4347593c493f977d08",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "! Yokabi Edit.zip",
+          "archiveSha256": "d8dc4341805bc3f5cbb2f973f95df8ccebf3b38c5bdd8c4347593c493f977d08"
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-09T05:48:14.170Z",
+      "updatedAt": "2026-08-09T05:48:14.170Z"
+    },
+    {
+      "key": "file:!#Fire.zip:d28c6210d4ee7a3a98aeacd6c7bf208852d8942822fb7d3f8e3f5ac0358a8e27",
+      "sourceFile": "!#Fire.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "d28c6210d4ee7a3a98aeacd6c7bf208852d8942822fb7d3f8e3f5ac0358a8e27",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!#Fire.zip",
+          "archiveSha256": "d28c6210d4ee7a3a98aeacd6c7bf208852d8942822fb7d3f8e3f5ac0358a8e27"
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-09T05:48:14.170Z",
+      "updatedAt": "2026-08-09T05:48:14.170Z"
+    },
+    {
+      "key": "file:§3StimpyHCF §f§lEDIT.zip:74ee3ec060ef0f91f67bba407439bc3bf2595d0d0a4c9868337e398d2e68eab6",
+      "sourceFile": "§3StimpyHCF §f§lEDIT.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "74ee3ec060ef0f91f67bba407439bc3bf2595d0d0a4c9868337e398d2e68eab6",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "§3StimpyHCF §f§lEDIT.zip",
+          "archiveSha256": "74ee3ec060ef0f91f67bba407439bc3bf2595d0d0a4c9868337e398d2e68eab6"
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-09T05:48:14.170Z",
+      "updatedAt": "2026-08-09T05:48:14.170Z"
+    },
+    {
+      "key": "file:§4Nice §flil §4Yokabi §f[64x] §4EDIT.zip:6ddf07459ea337c6039620de8e191e3605d09292b33a570b1a651da4eb0e4f97",
+      "sourceFile": "§4Nice §flil §4Yokabi §f[64x] §4EDIT.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "6ddf07459ea337c6039620de8e191e3605d09292b33a570b1a651da4eb0e4f97",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "§4Nice §flil §4Yokabi §f[64x] §4EDIT.zip",
+          "archiveSha256": "6ddf07459ea337c6039620de8e191e3605d09292b33a570b1a651da4eb0e4f97",
+          "sourceFile": "§4Nice §flil §4Yokabi §f[64x] §4EDIT.zip",
+          "sourceArchiveSha256": "6ddf07459ea337c6039620de8e191e3605d09292b33a570b1a651da4eb0e4f97",
+          "productFile": "§4Nice §flil §4Yokabi §f[64x] §4EDIT.zip",
+          "originalProductFile": "§4Nice §flil §4Yokabi §f[64x] §4EDIT.zip",
+          "productPackId": "Nice_lil_Yokabi_64x_EDIT",
+          "productArchiveSha256": "6ddf07459ea337c6039620de8e191e3605d09292b33a570b1a651da4eb0e4f97",
+          "visualContentHash": "c6d43ab9bc8c2fb89cec411131b8da11f55ae89adf9c4055c7daf4ed08bfc7ec",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-09T05:48:14.170Z",
+      "updatedAt": "2026-08-09T09:11:22.721Z"
+    },
+    {
+      "key": "file:§9Nice §flil §9Yokabi §f[64x] §9EDIT.zip:690978512b7dac47b0045ec30b932181052886946933d3b3aee68a81d1cc5a28",
+      "sourceFile": "§9Nice §flil §9Yokabi §f[64x] §9EDIT.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "690978512b7dac47b0045ec30b932181052886946933d3b3aee68a81d1cc5a28",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "§9Nice §flil §9Yokabi §f[64x] §9EDIT.zip",
+          "archiveSha256": "690978512b7dac47b0045ec30b932181052886946933d3b3aee68a81d1cc5a28"
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-09T05:48:14.170Z",
+      "updatedAt": "2026-08-09T05:48:14.170Z"
+    },
+    {
+      "key": "file:#§bPvPmen§3 Revamp.zip:f78b240a4414cbfb576f9730246e1310a27b12f8f82a7c384c894f1bec811420",
+      "sourceFile": "#§bPvPmen§3 Revamp.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "f78b240a4414cbfb576f9730246e1310a27b12f8f82a7c384c894f1bec811420",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "#§bPvPmen§3 Revamp.zip",
+          "archiveSha256": "f78b240a4414cbfb576f9730246e1310a27b12f8f82a7c384c894f1bec811420"
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-09T05:48:14.170Z",
+      "updatedAt": "2026-08-09T05:48:14.170Z"
+    },
+    {
+      "key": "file:#PvPmen.zip:56a61d27c4b1987b955c4ad8a4c3747fd08dff01bd8b28ad814d0872879dc9ec",
+      "sourceFile": "#PvPmen.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "56a61d27c4b1987b955c4ad8a4c3747fd08dff01bd8b28ad814d0872879dc9ec",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "#PvPmen.zip",
+          "archiveSha256": "56a61d27c4b1987b955c4ad8a4c3747fd08dff01bd8b28ad814d0872879dc9ec"
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-09T05:48:14.170Z",
+      "updatedAt": "2026-08-09T05:48:14.170Z"
+    },
+    {
+      "key": "file:Airbus Yokabi Edit.zip:f66779ad2a7f62c26022218b8099899e23763c2fa6020761c57ec81a95b7b430",
+      "sourceFile": "Airbus Yokabi Edit.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "f66779ad2a7f62c26022218b8099899e23763c2fa6020761c57ec81a95b7b430",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "Airbus Yokabi Edit.zip",
+          "archiveSha256": "f66779ad2a7f62c26022218b8099899e23763c2fa6020761c57ec81a95b7b430",
+          "sourceFile": "Airbus Yokabi Edit.zip",
+          "sourceArchiveSha256": "f66779ad2a7f62c26022218b8099899e23763c2fa6020761c57ec81a95b7b430",
+          "productFile": "Airbus Yokabi Edit.zip",
+          "originalProductFile": "Airbus Yokabi Edit.zip",
+          "productPackId": "Airbus_Yokabi_Edit",
+          "productArchiveSha256": "f66779ad2a7f62c26022218b8099899e23763c2fa6020761c57ec81a95b7b430",
+          "visualContentHash": "de17828c23e32047537246182e5011cf9da9a74506dd5d6b73743b94642f58df",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-09T05:48:14.170Z",
+      "updatedAt": "2026-08-09T09:11:22.721Z"
+    },
+    {
+      "key": "file:Eum3 Edit.zip:5c7032de2a7cafdbca0360497bfdf569a52b46998307f0fa78c905198df20dde",
+      "sourceFile": "Eum3 Edit.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "5c7032de2a7cafdbca0360497bfdf569a52b46998307f0fa78c905198df20dde",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "Eum3 Edit.zip",
+          "archiveSha256": "5c7032de2a7cafdbca0360497bfdf569a52b46998307f0fa78c905198df20dde"
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-09T05:48:14.170Z",
+      "updatedAt": "2026-08-09T05:48:14.170Z"
+    },
+    {
+      "key": "file:Faith red 128.zip:2b5830d7e0f55930fdedd35986fc268e0670f64b25e5ad1df6ebc9e38c6b4a2d",
+      "sourceFile": "Faith red 128.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "2b5830d7e0f55930fdedd35986fc268e0670f64b25e5ad1df6ebc9e38c6b4a2d",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "Faith red 128.zip",
+          "archiveSha256": "2b5830d7e0f55930fdedd35986fc268e0670f64b25e5ad1df6ebc9e38c6b4a2d"
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-09T05:48:14.170Z",
+      "updatedAt": "2026-08-09T05:48:14.170Z"
+    },
+    {
+      "key": "file:Fyes Default edit [FPS BOOST].zip:1b302696c7d9f866c261f6cab9c2352656adff72a6ca67529d1176b6234ad839",
+      "sourceFile": "Fyes Default edit [FPS BOOST].zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "1b302696c7d9f866c261f6cab9c2352656adff72a6ca67529d1176b6234ad839",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "Fyes Default edit [FPS BOOST].zip",
+          "archiveSha256": "1b302696c7d9f866c261f6cab9c2352656adff72a6ca67529d1176b6234ad839"
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-09T05:48:14.170Z",
+      "updatedAt": "2026-08-09T05:48:14.170Z"
+    },
+    {
+      "key": "file:meezoid.zip:654d4c100e9e93eaee1b4e0a05d25f80ef8fa0002a1e2e5c9c7660519dc9f166",
+      "sourceFile": "meezoid.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "654d4c100e9e93eaee1b4e0a05d25f80ef8fa0002a1e2e5c9c7660519dc9f166",
+      "normalizationSchemaVersion": 1,
+      "classification": "high_version",
+      "label": "高版本材质",
+      "causes": [
+        "high_version"
+      ],
+      "products": [],
+      "status": "rejected",
+      "firstSeenAt": "2026-08-09T05:48:14.170Z",
+      "updatedAt": "2026-08-09T05:48:14.170Z"
+    },
+    {
+      "key": "file:pax10 111.zip:b74becdd030cf3484734b264facd8237b797e0299063ad2e9fb6b0acb28d34b0",
+      "sourceFile": "pax10 111.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "b74becdd030cf3484734b264facd8237b797e0299063ad2e9fb6b0acb28d34b0",
+      "normalizationSchemaVersion": 1,
+      "classification": "repairable",
+      "label": null,
+      "causes": [
+        "nested_container",
+        "lunar_escape"
+      ],
+      "products": [
+        {
+          "file": "pax10.zip",
+          "archiveSha256": "ccb9354bdd6d486f290815fb916875b55e9cd532d0439a330a79825efa7c24e4"
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-09T05:48:14.170Z",
+      "updatedAt": "2026-08-09T05:48:14.170Z"
+    },
+    {
+      "key": "file:private default edit.zip:f0f8816adb481e69f4d71ee9f51e6624322f53a84b763e9bd8c189e1dde0386f",
+      "sourceFile": "private default edit.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "f0f8816adb481e69f4d71ee9f51e6624322f53a84b763e9bd8c189e1dde0386f",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "private default edit.zip",
+          "archiveSha256": "f0f8816adb481e69f4d71ee9f51e6624322f53a84b763e9bd8c189e1dde0386f"
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-09T05:48:14.170Z",
+      "updatedAt": "2026-08-09T05:48:14.170Z"
+    },
+    {
+      "key": "file:Yokabi Edit.zip:cb281c964741b5e8fa6eb12008e7b01f525107ea6da64b2403c129c88e1e1264",
+      "sourceFile": "Yokabi Edit.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "cb281c964741b5e8fa6eb12008e7b01f525107ea6da64b2403c129c88e1e1264",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "Yokabi Edit.zip",
+          "archiveSha256": "cb281c964741b5e8fa6eb12008e7b01f525107ea6da64b2403c129c88e1e1264"
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-09T05:48:14.170Z",
+      "updatedAt": "2026-08-09T05:48:14.170Z"
+    },
+    {
+      "key": "file:Yokabi OG.zip:ea6f3369f14763a86a523a8c70f2b73ef5871cfd4974b75ae59689cced5fda37",
+      "sourceFile": "Yokabi OG.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "ea6f3369f14763a86a523a8c70f2b73ef5871cfd4974b75ae59689cced5fda37",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "Yokabi OG.zip",
+          "archiveSha256": "ea6f3369f14763a86a523a8c70f2b73ef5871cfd4974b75ae59689cced5fda37",
+          "sourceFile": "Yokabi OG.zip",
+          "sourceArchiveSha256": "ea6f3369f14763a86a523a8c70f2b73ef5871cfd4974b75ae59689cced5fda37",
+          "productFile": "Yokabi OG.zip",
+          "originalProductFile": "Yokabi OG.zip",
+          "productPackId": "Yokabi_OG",
+          "productArchiveSha256": "ea6f3369f14763a86a523a8c70f2b73ef5871cfd4974b75ae59689cced5fda37",
+          "visualContentHash": "f9763a2986ae605363dbf04b7313d0cc235f6f3db97f765e072ad3a7902da1e1",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-09T05:48:14.170Z",
+      "updatedAt": "2026-08-09T09:11:22.721Z"
+    },
+    {
       "key": "remote:_a dariogoat private pack.zip:f6e316081b0b3489fda863ca6403e3ee503f3981d348cad6681a2b9fdf359c61",
       "remoteIdentity": {
         "file": "_a dariogoat private pack.zip",

@@ -1,0 +1,61 @@
+{
+  "id": "! §bNDB§9Fault §1[16x]",
+  "name": "NDBFault_16x",
+  "displayName": "NDBFault [16x]",
+  "coloredName": "<span style=\"color:#55FFFF\">N</span><span style=\"color:#55FFFF\">D</span><span style=\"color:#55FFFF\">B</span><span style=\"color:#5555FF\">F</span><span style=\"color:#5555FF\">a</span><span style=\"color:#5555FF\">u</span><span style=\"color:#5555FF\">l</span><span style=\"color:#5555FF\">t</span><span style=\"color:#5555FF\"> </span><span style=\"color:#0000AA\">[</span><span style=\"color:#0000AA\">1</span><span style=\"color:#0000AA\">6</span><span style=\"color:#0000AA\">x</span><span style=\"color:#0000AA\">]</span>",
+  "description": "By Arissi",
+  "cover": "/thumbnails/NDBFault_16x/cover.png",
+  "packPng": "/thumbnails/NDBFault_16x/pack.png",
+  "icon": null,
+  "file": "resourcepacks/! §bNDB§9Fault §1[16x].zip",
+  "fileSize": "16.9MB",
+  "uploadDate": "2026-08-08",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/!%20%C2%A7bNDB%C2%A79Fault%20%C2%A71%5B16x%5D.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/!%20%C2%A7bNDB%C2%A79Fault%20%C2%A71%5B16x%5D.zip"
+  }
+}

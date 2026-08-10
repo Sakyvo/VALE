@@ -1,0 +1,61 @@
+{
+  "id": "§9§lArmed §4And §9§lDangerous",
+  "name": "Armed_And_Dangerous",
+  "displayName": "Armed And Dangerous",
+  "coloredName": "<span style=\"color:#5555FF\">A</span><span style=\"color:#5555FF\">r</span><span style=\"color:#5555FF\">m</span><span style=\"color:#5555FF\">e</span><span style=\"color:#5555FF\">d</span><span style=\"color:#5555FF\"> </span><span style=\"color:#AA0000\">A</span><span style=\"color:#AA0000\">n</span><span style=\"color:#AA0000\">d</span><span style=\"color:#AA0000\"> </span><span style=\"color:#5555FF\">D</span><span style=\"color:#5555FF\">a</span><span style=\"color:#5555FF\">n</span><span style=\"color:#5555FF\">g</span><span style=\"color:#5555FF\">e</span><span style=\"color:#5555FF\">r</span><span style=\"color:#5555FF\">o</span><span style=\"color:#5555FF\">u</span><span style=\"color:#5555FF\">s</span>",
+  "description": "By Metar0X/metarox",
+  "cover": "/thumbnails/Armed_And_Dangerous/cover.png",
+  "packPng": "/thumbnails/Armed_And_Dangerous/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§9§lArmed §4And §9§lDangerous.zip",
+  "fileSize": "19.8MB",
+  "uploadDate": "2026-08-08",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/%C2%A79%C2%A7lArmed%20%C2%A74And%20%C2%A79%C2%A7lDangerous.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/%C2%A79%C2%A7lArmed%20%C2%A74And%20%C2%A79%C2%A7lDangerous.zip"
+  }
+}

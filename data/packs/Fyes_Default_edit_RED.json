@@ -1,0 +1,61 @@
+{
+  "id": "Fyes Default edit [RED]",
+  "name": "Fyes_Default_edit_RED",
+  "displayName": "Fyes Default edit [RED]",
+  "coloredName": "Fyes Default edit [RED]",
+  "description": "youtube.com/c/fyec | recolor by mxntal",
+  "cover": "/thumbnails/Fyes_Default_edit_RED/cover.png",
+  "packPng": "/thumbnails/Fyes_Default_edit_RED/pack.png",
+  "icon": null,
+  "file": "resourcepacks/Fyes Default edit [RED].zip",
+  "fileSize": "3.1MB",
+  "uploadDate": "2026-08-08",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/Fyes%20Default%20edit%20%5BRED%5D.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/Fyes%20Default%20edit%20%5BRED%5D.zip"
+  }
+}

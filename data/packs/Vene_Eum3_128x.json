@@ -1,0 +1,61 @@
+{
+  "id": "!     §eVene §9Eum3 §c128x",
+  "name": "Vene_Eum3_128x",
+  "displayName": "Vene Eum3 128x",
+  "coloredName": "<span style=\"color:#FFFF55\">V</span><span style=\"color:#FFFF55\">e</span><span style=\"color:#FFFF55\">n</span><span style=\"color:#FFFF55\">e</span><span style=\"color:#FFFF55\"> </span><span style=\"color:#5555FF\">E</span><span style=\"color:#5555FF\">u</span><span style=\"color:#5555FF\">m</span><span style=\"color:#5555FF\">3</span><span style=\"color:#5555FF\"> </span><span style=\"color:#FF5555\">1</span><span style=\"color:#FF5555\">2</span><span style=\"color:#FF5555\">8</span><span style=\"color:#FF5555\">x</span>",
+  "description": "Original by Miami in 128x by Metar0X",
+  "cover": "/thumbnails/Vene_Eum3_128x/cover.png",
+  "packPng": "/thumbnails/Vene_Eum3_128x/pack.png",
+  "icon": null,
+  "file": "resourcepacks/!     §eVene §9Eum3 §c128x.zip",
+  "fileSize": "29.8MB",
+  "uploadDate": "2026-08-08",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!%20%20%20%20%20%C2%A7eVene%20%C2%A79Eum3%20%C2%A7c128x.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!%20%20%20%20%20%C2%A7eVene%20%C2%A79Eum3%20%C2%A7c128x.zip"
+  }
+}

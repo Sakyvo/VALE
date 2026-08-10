@@ -1,0 +1,61 @@
+{
+  "id": "bulma §f[§b32x§f]",
+  "name": "bulma_32x",
+  "displayName": "bulma [32x]",
+  "coloredName": "bulma <span style=\"color:#FFFFFF\">[</span><span style=\"color:#55FFFF\">3</span><span style=\"color:#55FFFF\">2</span><span style=\"color:#55FFFF\">x</span><span style=\"color:#FFFFFF\">]</span>",
+  "description": "alexuz ur boi",
+  "cover": "/thumbnails/bulma_32x/cover.png",
+  "packPng": "/thumbnails/bulma_32x/pack.png",
+  "icon": null,
+  "file": "resourcepacks/bulma §f[§b32x§f].zip",
+  "fileSize": "11.7MB",
+  "uploadDate": "2026-08-08",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/bulma%20%C2%A7f%5B%C2%A7b32x%C2%A7f%5D.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/bulma%20%C2%A7f%5B%C2%A7b32x%C2%A7f%5D.zip"
+  }
+}

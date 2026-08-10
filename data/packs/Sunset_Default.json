@@ -1,0 +1,61 @@
+{
+  "id": "§c§lSunset §e§lDefault",
+  "name": "Sunset_Default",
+  "displayName": "Sunset Default",
+  "coloredName": "<span style=\"color:#FF5555\">S</span><span style=\"color:#FF5555\">u</span><span style=\"color:#FF5555\">n</span><span style=\"color:#FF5555\">s</span><span style=\"color:#FF5555\">e</span><span style=\"color:#FF5555\">t</span><span style=\"color:#FF5555\"> </span><span style=\"color:#FFFF55\">D</span><span style=\"color:#FFFF55\">e</span><span style=\"color:#FFFF55\">f</span><span style=\"color:#FFFF55\">a</span><span style=\"color:#FFFF55\">u</span><span style=\"color:#FFFF55\">l</span><span style=\"color:#FFFF55\">t</span>",
+  "description": "By Tayber",
+  "cover": "/thumbnails/Sunset_Default/cover.png",
+  "packPng": "/thumbnails/Sunset_Default/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§c§lSunset §e§lDefault.zip",
+  "fileSize": "4.9MB",
+  "uploadDate": "2026-08-08",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/%C2%A7c%C2%A7lSunset%20%C2%A7e%C2%A7lDefault.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/%C2%A7c%C2%A7lSunset%20%C2%A7e%C2%A7lDefault.zip"
+  }
+}

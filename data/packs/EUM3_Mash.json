@@ -1,0 +1,61 @@
+{
+  "id": "! §9EUM3 §1Mash",
+  "name": "EUM3_Mash",
+  "displayName": "EUM3 Mash",
+  "coloredName": "<span style=\"color:#5555FF\">E</span><span style=\"color:#5555FF\">U</span><span style=\"color:#5555FF\">M</span><span style=\"color:#5555FF\">3</span><span style=\"color:#5555FF\"> </span><span style=\"color:#0000AA\">M</span><span style=\"color:#0000AA\">a</span><span style=\"color:#0000AA\">s</span><span style=\"color:#0000AA\">h</span>",
+  "description": "Made by Arissi also mashed by Arissi?",
+  "cover": "/thumbnails/EUM3_Mash/cover.png",
+  "packPng": "/thumbnails/EUM3_Mash/pack.png",
+  "icon": null,
+  "file": "resourcepacks/! §9EUM3 §1Mash.zip",
+  "fileSize": "23.8MB",
+  "uploadDate": "2026-08-08",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!%20%C2%A79EUM3%20%C2%A71Mash.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!%20%C2%A79EUM3%20%C2%A71Mash.zip"
+  }
+}

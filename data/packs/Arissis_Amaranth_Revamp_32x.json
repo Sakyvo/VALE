@@ -1,0 +1,61 @@
+{
+  "id": "! §cArissis Amaranth Revamp [32x]",
+  "name": "Arissis_Amaranth_Revamp_32x",
+  "displayName": "Arissis Amaranth Revamp [32x]",
+  "coloredName": "<span style=\"color:#FF5555\">A</span><span style=\"color:#FF5555\">r</span><span style=\"color:#FF5555\">i</span><span style=\"color:#FF5555\">s</span><span style=\"color:#FF5555\">s</span><span style=\"color:#FF5555\">i</span><span style=\"color:#FF5555\">s</span><span style=\"color:#FF5555\"> </span><span style=\"color:#FF5555\">A</span><span style=\"color:#FF5555\">m</span><span style=\"color:#FF5555\">a</span><span style=\"color:#FF5555\">r</span><span style=\"color:#FF5555\">a</span><span style=\"color:#FF5555\">n</span><span style=\"color:#FF5555\">t</span><span style=\"color:#FF5555\">h</span><span style=\"color:#FF5555\"> </span><span style=\"color:#FF5555\">R</span><span style=\"color:#FF5555\">e</span><span style=\"color:#FF5555\">v</span><span style=\"color:#FF5555\">a</span><span style=\"color:#FF5555\">m</span><span style=\"color:#FF5555\">p</span><span style=\"color:#FF5555\"> </span><span style=\"color:#FF5555\">[</span><span style=\"color:#FF5555\">3</span><span style=\"color:#FF5555\">2</span><span style=\"color:#FF5555\">x</span><span style=\"color:#FF5555\">]</span>",
+  "description": "By Arissi, originally by Dualzz",
+  "cover": "/thumbnails/Arissis_Amaranth_Revamp_32x/cover.png",
+  "packPng": "/thumbnails/Arissis_Amaranth_Revamp_32x/pack.png",
+  "icon": null,
+  "file": "resourcepacks/! §cArissis Amaranth Revamp [32x].zip",
+  "fileSize": "16.4MB",
+  "uploadDate": "2026-08-08",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!%20%C2%A7cArissis%20Amaranth%20Revamp%20%5B32x%5D.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!%20%C2%A7cArissis%20Amaranth%20Revamp%20%5B32x%5D.zip"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "id": "! §3NoLimit §7[Map 14] §3Private",
+  "name": "NoLimit_Map_14_Private",
+  "displayName": "NoLimit [Map 14] Private",
+  "coloredName": "<span style=\"color:#00AAAA\">N</span><span style=\"color:#00AAAA\">o</span><span style=\"color:#00AAAA\">L</span><span style=\"color:#00AAAA\">i</span><span style=\"color:#00AAAA\">m</span><span style=\"color:#00AAAA\">i</span><span style=\"color:#00AAAA\">t</span><span style=\"color:#00AAAA\"> </span><span style=\"color:#AAAAAA\">[</span><span style=\"color:#AAAAAA\">M</span><span style=\"color:#AAAAAA\">a</span><span style=\"color:#AAAAAA\">p</span><span style=\"color:#AAAAAA\"> </span><span style=\"color:#AAAAAA\">1</span><span style=\"color:#AAAAAA\">4</span><span style=\"color:#AAAAAA\">]</span><span style=\"color:#AAAAAA\"> </span><span style=\"color:#00AAAA\">P</span><span style=\"color:#00AAAA\">r</span><span style=\"color:#00AAAA\">i</span><span style=\"color:#00AAAA\">v</span><span style=\"color:#00AAAA\">a</span><span style=\"color:#00AAAA\">t</span><span style=\"color:#00AAAA\">e</span>",
+  "description": "-Latenci",
+  "cover": "/thumbnails/NoLimit_Map_14_Private/cover.png",
+  "packPng": "/thumbnails/NoLimit_Map_14_Private/pack.png",
+  "icon": null,
+  "file": "resourcepacks/! §3NoLimit §7[Map 14] §3Private.zip",
+  "fileSize": "24.7MB",
+  "uploadDate": "2026-08-08",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!%20%C2%A73NoLimit%20%C2%A77%5BMap%2014%5D%20%C2%A73Private.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-004/main/resourcepacks/!%20%C2%A73NoLimit%20%C2%A77%5BMap%2014%5D%20%C2%A73Private.zip"
+  }
+}

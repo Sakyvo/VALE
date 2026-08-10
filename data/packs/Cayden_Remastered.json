@@ -1,0 +1,61 @@
+{
+  "id": "! §6Cayden Remastered",
+  "name": "Cayden_Remastered",
+  "displayName": "Cayden Remastered",
+  "coloredName": "<span style=\"color:#FFAA00\">C</span><span style=\"color:#FFAA00\">a</span><span style=\"color:#FFAA00\">y</span><span style=\"color:#FFAA00\">d</span><span style=\"color:#FFAA00\">e</span><span style=\"color:#FFAA00\">n</span><span style=\"color:#FFAA00\"> </span><span style=\"color:#FFAA00\">R</span><span style=\"color:#FFAA00\">e</span><span style=\"color:#FFAA00\">m</span><span style=\"color:#FFAA00\">a</span><span style=\"color:#FFAA00\">s</span><span style=\"color:#FFAA00\">t</span><span style=\"color:#FFAA00\">e</span><span style=\"color:#FFAA00\">r</span><span style=\"color:#FFAA00\">e</span><span style=\"color:#FFAA00\">d</span>",
+  "description": "Cayden Pack Edit by Apexay/Silents",
+  "cover": "/thumbnails/Cayden_Remastered/cover.png",
+  "packPng": "/thumbnails/Cayden_Remastered/pack.png",
+  "icon": null,
+  "file": "resourcepacks/! §6Cayden Remastered.zip",
+  "fileSize": "27.3MB",
+  "uploadDate": "2026-08-09",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/!%20%C2%A76Cayden%20Remastered.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/!%20%C2%A76Cayden%20Remastered.zip"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "id": "!   §bOLYMPIAN",
+  "name": "OLYMPIAN",
+  "displayName": "OLYMPIAN",
+  "coloredName": "<span style=\"color:#55FFFF\">O</span><span style=\"color:#55FFFF\">L</span><span style=\"color:#55FFFF\">Y</span><span style=\"color:#55FFFF\">M</span><span style=\"color:#55FFFF\">P</span><span style=\"color:#55FFFF\">I</span><span style=\"color:#55FFFF\">A</span><span style=\"color:#55FFFF\">N</span>",
+  "description": "By Metar0X/metarox",
+  "cover": "/thumbnails/OLYMPIAN/cover.png",
+  "packPng": "/thumbnails/OLYMPIAN/pack.png",
+  "icon": null,
+  "file": "resourcepacks/!   §bOLYMPIAN.zip",
+  "fileSize": "15.9MB",
+  "uploadDate": "2026-08-08",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/!%20%20%20%C2%A7bOLYMPIAN.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/!%20%20%20%C2%A7bOLYMPIAN.zip"
+  }
+}

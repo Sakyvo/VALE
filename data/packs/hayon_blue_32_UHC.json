@@ -1,0 +1,61 @@
+{
+  "id": "hayon blue 32 §1UHC",
+  "name": "hayon_blue_32_UHC",
+  "displayName": "hayon blue 32 UHC",
+  "coloredName": "hayon blue 32 <span style=\"color:#0000AA\">U</span><span style=\"color:#0000AA\">H</span><span style=\"color:#0000AA\">C</span>",
+  "description": "ratchet - uhc overlay by hancey",
+  "cover": "/thumbnails/hayon_blue_32_UHC/cover.png",
+  "packPng": "/thumbnails/hayon_blue_32_UHC/pack.png",
+  "icon": null,
+  "file": "resourcepacks/hayon blue 32 §1UHC.zip",
+  "fileSize": "19.1MB",
+  "uploadDate": "2026-08-08",
+  "lists": [
+    "Sakyvo"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/hayon%20blue%2032%20%C2%A71UHC.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-005/main/resourcepacks/hayon%20blue%2032%20%C2%A71UHC.zip"
+  }
+}

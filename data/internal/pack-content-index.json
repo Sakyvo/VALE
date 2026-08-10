@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
   "fingerprintSchemaVersion": 1,
-  "registryDigest": "79ebc504e6521fc2dfa1487dae5a15c9f76b9cbf0f5845a03c4b395a277455bc",
-  "registryCount": 1118,
-  "selectedCount": 1118,
+  "registryDigest": "3481e7b8914e9157964eb99b87899169bb628065209fcab73c31a7f11e2a6ca2",
+  "registryCount": 1122,
+  "selectedCount": 1122,
   "complete": true,
-  "generatedAt": "2026-08-02T06:03:27.402Z",
+  "generatedAt": "2026-08-09T09:16:04.940Z",
   "packs": {
     "!                     §o§7Andy §c32x §l§4[RED].zip": {
       "packId": "Andy_32x_RED",
@@ -16775,6 +16775,66 @@
         "stone": "eff4b0d8178982f9175737ab51b137e826ab5c91443864fb9d760d23e005b287",
         "iron": "f99837fe98d23e09649000c099f9ea974c6f2329683be2a48de675914d7d1a50",
         "diamond": "b5a25ab5c8d3a3769f0e9e1d5623df7f93b2586eb4584bf6e25e4f3672c84f5d"
+      }
+    },
+    "! §6Cayden Remastered.zip": {
+      "packId": "Cayden_Remastered",
+      "repo": "packs-006",
+      "repoNum": 6,
+      "size": 28575718,
+      "sourceKey": "361fff37d3ef599f2c4f8e0990e12030d4a454014cc32e049644158051e2b324",
+      "archiveSha256": "990bf455e9082b9fe602aeff6d4586405826be8bf2b5ce93ab71603fe1ee8b4a",
+      "visualContentHash": "127557c07bbed74de88f29458e01874c70df9378496a3535b165fd595c3c1ed8",
+      "visualEntryCount": 1110,
+      "swords": {
+        "stone": "ac0832229ebb005543e3c8df88d46ac2fdd96aa6ce66f6727414e8930e09ae41",
+        "iron": "cffc520ff981ae876a7e55bbf2f29c307ad1ee2c57359576c0a504898f0b5f34",
+        "diamond": "afc62fa2b4448ac581aa6423a7647c2c5de021807b45ac0996077f10a289f4d4"
+      }
+    },
+    "Airbus Yokabi Edit.zip": {
+      "packId": "Airbus_Yokabi_Edit",
+      "repo": "packs-006",
+      "repoNum": 6,
+      "size": 47217910,
+      "sourceKey": "ab569bec09d0e8ae1ec287e2eba5beddbde4fd48be24a49e50b5d17aca627f61",
+      "archiveSha256": "f66779ad2a7f62c26022218b8099899e23763c2fa6020761c57ec81a95b7b430",
+      "visualContentHash": "de17828c23e32047537246182e5011cf9da9a74506dd5d6b73743b94642f58df",
+      "visualEntryCount": 1138,
+      "swords": {
+        "stone": "9449085b0f64625c4ca680df0179308445eed5ac749eaf1926dfed11bad21198",
+        "iron": "3f401e72302d75124160078554f5ef94a7662e7dda20e06356f40ea1219314be",
+        "diamond": "0db776390009130a3b34feaad1ab2c1182000d6d6108cb07c3d496a536e66c97"
+      }
+    },
+    "Yokabi OG.zip": {
+      "packId": "Yokabi_OG",
+      "repo": "packs-006",
+      "repoNum": 6,
+      "size": 54297080,
+      "sourceKey": "e9503e329e5900f8f9bdca3fdb4538780d9ee874e9d412c6a769b471aa495a14",
+      "archiveSha256": "ea6f3369f14763a86a523a8c70f2b73ef5871cfd4974b75ae59689cced5fda37",
+      "visualContentHash": "f9763a2986ae605363dbf04b7313d0cc235f6f3db97f765e072ad3a7902da1e1",
+      "visualEntryCount": 1142,
+      "swords": {
+        "stone": "9449085b0f64625c4ca680df0179308445eed5ac749eaf1926dfed11bad21198",
+        "iron": "3f401e72302d75124160078554f5ef94a7662e7dda20e06356f40ea1219314be",
+        "diamond": "11a5004bd5f54047d850aecf8f0e81b8d1bb646ef356342089115384923cbfc9"
+      }
+    },
+    "§4Nice §flil §4Yokabi §f[64x] §4EDIT.zip": {
+      "packId": "Nice_lil_Yokabi_64x_EDIT",
+      "repo": "packs-006",
+      "repoNum": 6,
+      "size": 29054636,
+      "sourceKey": "7c40784ec6dafe7add6f62daceac029f1189133aeef310dbfecc156276b7d737",
+      "archiveSha256": "6ddf07459ea337c6039620de8e191e3605d09292b33a570b1a651da4eb0e4f97",
+      "visualContentHash": "c6d43ab9bc8c2fb89cec411131b8da11f55ae89adf9c4055c7daf4ed08bfc7ec",
+      "visualEntryCount": 1086,
+      "swords": {
+        "stone": "a91997a3b2eff93f4394f4fe7e547f095ff9c7687255d663093c792356c1b525",
+        "iron": "309d4ade8f8ac2fe9d9a0c87c32262ffbcf4f501cdf87b1da4e153e22b772920",
+        "diamond": "e553a03fd78faaa25a734f32a668fc893ef76dcecb59075b5705d2b1b7c9c23f"
       }
     }
   },
