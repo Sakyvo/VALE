@@ -1,4 +1,4 @@
-Status: open
+Status: review
 Executor: Claude Code
 
 ## Parent
@@ -42,6 +42,21 @@ Executor: Claude Code
 | Small - Eum3 Blue Revamp.jpeg | Eum3_Blue_Revamp | Ratchet__32x | 0.0000 | #4 | 完全并列 |
 
 候选召回 8/9（Large - Eum3Blue Revamp (2).jpeg 真值掉出候选集），与 PRD "粗排召回是本方案唯一新增风险" 的判断一致。
+
+## 人工验收步骤（R2 环境就绪后）
+
+R2 环境（bucket + assets.vale.cc.cd + 凭据，见 issue 012 人工验收）就绪后，对 1114 个公开包的展示资产统一做降采样上传：
+
+```
+# 逐个 packId 上传并在 data/asset-base.json 登记
+node scripts/upload-assets.js '<pack_id>'
+# 每批后重生成
+node scripts/generate-index.js && node scripts/build.js
+npm run sbi:data
+python test_sbi.py
+```
+
+确认本地母本目录含全部 1114 个包的全分辨率纹理（迁移后 `thumbnails/` 仅存降采样展示副本）。
 
 ## Blocked by
 

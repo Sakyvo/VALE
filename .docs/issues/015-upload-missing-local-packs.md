@@ -1,4 +1,4 @@
-Status: open
+Status: review
 Executor: Claude Code
 
 ## Parent
@@ -42,6 +42,33 @@ issue 写时用「归一化文件名」估算 37 个从未上传；实际走 upl
 | skip_source_duplicate（stage 内重复文件） | 2 | ! Yokabi Edit（=Yokabi Edit）、§9Nice §f…EDIT（=§4Nice 版） |
 
 说明：用户举的 `Fyes Default edit [FPS BOOST].zip` 内容与远端已有的 `Fyes Default edit [FPS BOOST] (3).zip` **视觉完全相同**，被 blocked_content_duplicate 拦截、未上传——即 014 已用 (3) 名义把它上线，015 正确识别为重复而非重新入库。5 个 pack_id_content_conflict 是同名（同 packId）但视觉内容不同的包，属于硬 blocker（脚本对 content_ 开头 blocker 无条件拒绝 execute），需要人工决策保留哪个版本——移交用户。
+
+## 人工验收步骤（R2 环境就绪后）
+
+R2 环境（bucket + assets.vale.cc.cd + 凭据，见 issue 012 人工验收）就绪后，对 1114 个公开包的展示资产统一做降采样上传：
+
+```
+# 逐个 packId 上传（当前 1114 个已上传但未迁移资产），并在 data/asset-base.json 登记
+node scripts/upload-assets.js '<pack_id>'
+# 每批后重生成
+node scripts/generate-index.js && node scripts/build.js
+npm run sbi:data
+python test_sbi.py
+```
+
+回填 015 新增的 4 个包（Cayden_Remastered、Airbus_Yokabi_Edit、Yokabi_OG、Nice_lil_Yokabi_64x_EDIT）时同样执行，并确认本地母本目录含它们的全分辨率纹理。
+
+## 遗留：5 个同名异版冲突（需人工决策）
+
+| 本地文件 | packId | registry 已有 |
+| --- | --- | --- |
+| !     §3Tory eum3 Revamp.zip | Tory_EUM3_Revamp | ! §2 Tory EUM3 Revamp.zip @ packs-002 |
+| !#Fire.zip | fire | fire.zip @ packs-002 |
+| Eum3 Edit.zip | Eum3_edit | ! Eum3 edit.zip @ packs-002 |
+| private default edit.zip | Private_Default_EDIT | §3Private Default §fEDIT.zip @ packs-002 |
+| Yokabi Edit.zip | yokabi_edit | yokabi edit.zip @ packs-001 |
+
+5 个都是「同名（同 packId）但视觉内容不同」，流程按硬 blocker 拒绝 execute。决策：保留 registry 现有版本（丢弃本地），或保留本地并替换远端——由人工在下次入库会话中决定。
 
 ## Blocked by
 
