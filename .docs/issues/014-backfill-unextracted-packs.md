@@ -43,6 +43,16 @@ Executor: Claude Code
 
 候选召回 8/9（Large - Eum3Blue Revamp (2).jpeg 真值掉出候选集），与 PRD "粗排召回是本方案唯一新增风险" 的判断一致。
 
+## 已知问题：大小写碰撞 packId（Blue_32x/BLUE_32x 等）
+
+014 补提取使 registry 中大小写仅异的 packId 对同时进入 extracted 与站点生成，暴露 Windows 本地（core.ignorecase=true）无法同时保存两个大小写目录的固有限制：
+
+- Blue_32x（packs-004，43.6MB）与 BLUE_32x（packs-005，15.6MB）是两个独立包，index 中均有条目（index total 1114 含两者）；Linux CI 正确生成 data/packs/BLUE_32x.json 与 p/BLUE_32x/ 页面
+- 但 thumbnails/ 只有一个物理目录（Blue_32x），提取时两个包的展示资产互相覆盖；线上 thumbnails/BLUE_32x 缺失（其 cover 引用为 404），Blue_32x 目录内容可能来自 BLUE_32x 的提取
+- 同类碰撞还有 M0difier_Private/M0DIFIER_Private
+
+**此问题不影响 014 验收项**（提取入 index、可搜索、SBI 指纹均完成），但影响这两个大小写碰撞包的展示资产正确性。修复路径是 013（thumbnails 移出仓库、远端收纳可保留大小写差异）；在 R2 迁移时以远端对象名区分两包，并用 `git mv` 或远端操作在 Linux 上整理。本地 Windows 工作树会因此残留无法消除的 `M data/packs/*` 大小写差异，属物理限制，勿尝试提交修复。
+
 ## 人工验收步骤（R2 环境就绪后）
 
 R2 环境（bucket + assets.vale.cc.cd + 凭据，见 issue 012 人工验收）就绪后，对 1114 个公开包的展示资产统一做降采样上传：
