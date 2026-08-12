@@ -19,6 +19,12 @@ Executor: Claude Code
 
 理由与被拒方案见 `.docs/adr/0004-sbi-two-tier-retrieval.md`。
 
+## 实施共识（grill 2026-08-10）
+
+- 召回策略动态化：推断证据面 < 2 时放宽候选规模（约 64），≥ 2 时锁定精细上限 28。
+- 本轮不改以下常量：`SBI_CANDIDATE_MIN_PACKS` = 24、`SBI_REFINEMENT_RESULT_LIMIT` = 28、CLIP 混合权重 0.35/0.65；调参在实施时按 016 尺子实测数据决定，不为让测试变绿而临时改。
+- 提速机制保持现有两阶段：粗排 → 精排，仅在分片结构与按需拉取上做文章，不改组判定、不加代码级并发。
+
 ## Acceptance criteria
 
 - [ ] 粗排分片不含像素数据；像素数据独立成桶，桶归属对同样输入是确定性的
