@@ -57,11 +57,40 @@ def parse_test_images():
     return tests
 
 
+def parse_synthetic_manifest(tests_dir, tiers=None):
+    """Read test_img/synthetic/manifest.json and emit (relpath, scale, expected_pack_name) triples.
+
+    relpath is relative to test_img/synthetic/ so that the caller constructs
+    the HTTP URL as base/test_img/synthetic/<relpath>.
+    """
+    manifest_path = os.path.join(tests_dir, 'synthetic', 'manifest.json')
+    if not os.path.exists(manifest_path):
+        return []
+    with open(manifest_path, 'r', encoding='utf-8') as fh:
+        manifest = json.load(fh)
+    images = manifest.get('images', [])
+    tests = []
+    for img in images:
+        if tiers and img.get('tier') not in tiers:
+            continue
+        rel = img.get('file')
+        if not rel:
+            continue
+        expected = img.get('packId', '')
+        if not expected:
+            continue
+        normalized = normalize_pack_name(expected)
+        tests.append((rel.replace('\\', '/'), 'synthetic', normalized))
+    return tests
+
+
 def parse_args():
     parser = argparse.ArgumentParser(description="Run SBI image matching regression tests.")
     group = parser.add_mutually_exclusive_group()
     group.add_argument("--image", help="Run one test image by exact or case-insensitive substring match.")
     group.add_argument("--filter", help="Run test images whose filename matches this regex.")
+    group.add_argument("--synthetic", action="store_true",
+                       help="Evaluate the synthetic corpus (test_img/synthetic/manifest.json) instead of the 9-shot regression set.")
     parser.add_argument("--fail-fast", action="store_true", help="Stop after the first failed test.")
     parser.add_argument("--quiet", action="store_true", help="Only print compact per-image results and summary.")
     parser.add_argument("--verbose", action="store_true", help="Print slot features and top-10 rows.")
@@ -76,11 +105,17 @@ def parse_args():
     parser.add_argument("--port", type=int, default=DEFAULT_PORT, help="HTTP server port.")
     parser.add_argument("--debug-port", type=int, default=DEFAULT_DEBUG_PORT, help="Browser CDP port.")
     parser.add_argument("--browser", help="Browser executable path. Defaults to Edge if available, then Chrome.")
+    parser.add_argument("--synthetic-tiers", default="light",
+                       help="Comma-separated synthetic tiers to evaluate (default: light).")
+    parser.add_argument("--limit", type=int, default=0,
+                       help="Cap the number of evaluated images (0 = no cap). Useful for baseline sampling.")
     parser.add_argument("--headless", default="--headless", help="Browser headless flag, e.g. --headless or --headless=new.")
     return parser.parse_args()
 
 
 def filter_tests(tests, args):
+    if getattr(args, 'synthetic', False):
+        return tests
     if args.image:
         needle = args.image.lower()
         exact = [test for test in tests if test[0].lower() == needle]
@@ -213,7 +248,13 @@ async def main():
         print(f"ERROR: {exc}")
         return 1
     print(f"Browser: {browser_path}\n", flush=True)
-    tests = filter_tests(parse_test_images(), args)
+    if args.synthetic:
+        tiers = set(t.strip() for t in args.synthetic_tiers.split(",") if t.strip())
+        tests = filter_tests(parse_synthetic_manifest(TEST_DIR, tiers), args)
+        if args.limit > 0:
+            tests = tests[:args.limit]
+    else:
+        tests = filter_tests(parse_test_images(), args)
     if not tests:
         print("No test images found in", TEST_DIR)
         return 1
@@ -255,6 +296,7 @@ async def main():
     ], stdout=edge_log, stderr=edge_log)
 
     results = []
+    synthetic_records = []  # (file, packId, tier, recalled, topGroupId, expectedGroupId)
     diagnostics = []
     candidate_recalls = []
     benchmark_samples = []
@@ -342,7 +384,10 @@ async def main():
                     await wait_for(ws, "!!window.__sbiTest && !!document.getElementById('sbi-results')", timeout=30)
                 test_t0 = time.monotonic()
                 try:
-                    img_url = f"{base}/test_img/{urllib.parse.quote(img_name)}"
+                    if getattr(args, 'synthetic', False):
+                        img_url = f"{base}/test_img/synthetic/{urllib.parse.quote(img_name)}"
+                    else:
+                        img_url = f"{base}/test_img/{urllib.parse.quote(img_name)}"
                     js_img_name = json.dumps(img_name)
                     js_preset = json.dumps(preset)
                     js_img_url = json.dumps(img_url)
@@ -426,6 +471,18 @@ async def main():
                     status = "PASS" if ok else "FAIL"
                     elapsed = time.monotonic() - test_t0
                     results.append((img_name, expected, top1, ok, elapsed))
+                    if args.synthetic:
+                        parts = img_name.split('/')
+                        tier = parts[1] if len(parts) >= 3 else 'unknown'
+                        synthetic_records.append({
+                            'image': img_name,
+                            'expected': expected,
+                            'tier': tier,
+                            'recalled': recall_ok,
+                            'expected_group': expected_group,
+                            'top_group': top_group,
+                            'member_exists': expected_member_exists,
+                        })
                     if args.benchmark:
                         benchmark_samples.append({
                             "mode": args.benchmark,
@@ -576,6 +633,38 @@ async def main():
     print(f"Candidate recall: {sum(candidate_recalls)}/{len(candidate_recalls)}")
     for name, expected, got, ok, elapsed in results:
         print(f"  {'PASS' if ok else 'FAIL'}: {name} -> {got} (expected {expected}, {fmt_seconds(elapsed)})")
+
+    if args.synthetic:
+        print("\n# Synthetic corpus (separate from 9-shot regression; diagnostic only, NOT acceptance)")
+        if not synthetic_records:
+            print("  (no synthetic records collected)")
+        else:
+            by_tier = {}
+            for rec in synthetic_records:
+                by_tier.setdefault(rec['tier'], []).append(rec)
+            for tier in sorted(by_tier):
+                recs = by_tier[tier]
+                n = len(recs)
+                recalled = sum(1 for r in recs if r['recalled'])
+                top1_group = sum(1 for r in recs if r['expected_group'] and r['expected_group'] == r['top_group'])
+                member_exists = sum(1 for r in recs if r['member_exists'])
+                print(f"  [{tier}] n={n}  coarse recall={recalled}/{n} ({100*recalled/n:.1f}%)  "
+                      f"group top-1={top1_group}/{n} ({100*top1_group/n:.1f}%)  "
+                      f"expected member present={member_exists}/{n} ({100*member_exists/n:.1f}%)")
+            # Indistinguishable pack sets: groups whose median member_exists + recalled and top1==expected
+            print("  \n# Indistinguishable-pack sets (groups whose every synthetic shot matched its own group as top-1):")
+            groups_out = {}
+            for rec in synthetic_records:
+                gid = rec['expected_group']
+                if not gid:
+                    continue
+                ok = rec['recalled'] and rec['member_exists'] and rec['expected_group'] == rec['top_group']
+                groups_out.setdefault(gid, []).append(ok)
+            fully = [gid for gid, oks in groups_out.items() if any(oks) and all(oks)]
+            partial = [gid for gid, oks in groups_out.items() if any(oks) and not all(oks)]
+            none = [gid for gid, oks in groups_out.items() if not any(oks)]
+            print(f"  fully indistinguishable: {len(fully)}  partially: {len(partial)}  none: {len(none)}")
+        return 0 if passed == total else 1
 
     budget_ok = True
     if benchmark_samples:

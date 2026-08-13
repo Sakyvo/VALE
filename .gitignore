@@ -3,3 +3,6 @@ resourcepacks/
 node_modules/@huggingface/transformers/.cache/
 __pycache__/
 /extract-retry/
+
+# Synthetic SBI evaluation corpus (regenerated on demand by scripts/generate-synthetic-corpus.js)
+/test_img/synthetic/
