@@ -868,6 +868,15 @@ function ensureRepo(workdir, num) {
   try {
     run('git', ['clone', `https://github.com/${REPO_OWNER}/${name}.git`, dir], { stdio: 'inherit' });
   } catch (cloneErr) {
+    // git clone over an unstable proxy often fails (early EOF / invalid index-pack).
+    // gh repo clone uses the authenticated token transport and is more reliable.
+    if (fs.existsSync(dir)) fs.rmSync(dir, { recursive: true, force: true });
+    let clonedViaGh = false;
+    try {
+      run('gh', ['repo', 'clone', `${REPO_OWNER}/${name}`, dir], { stdio: 'inherit' });
+      clonedViaGh = fs.existsSync(path.join(dir, '.git'));
+    } catch (ghCloneErr) { /* fall through to init/create below */ }
+    if (clonedViaGh) return dir;
     fs.mkdirSync(dir, { recursive: true });
     run('git', ['init'], { cwd: dir });
     run('git', ['remote', 'add', 'origin', `https://github.com/${REPO_OWNER}/${name}.git`], { cwd: dir });
@@ -876,7 +885,10 @@ function ensureRepo(workdir, num) {
     run('git', ['add', '.'], { cwd: dir });
     run('git', ['commit', '-m', 'init'], { cwd: dir });
     run('git', ['branch', '-M', 'main'], { cwd: dir });
-    run('gh', ['repo', 'create', `${REPO_OWNER}/${name}`, '--public', '-y'], { cwd: dir, stdio: 'inherit' });
+    // Probe for an existing repo before creating; gh repo create fails on "already exists".
+    let repoExists = false;
+    try { run('gh', ['repo', 'view', `${REPO_OWNER}/${name}`]); repoExists = true; } catch (viewErr) { /* does not exist yet */ }
+    if (!repoExists) run('gh', ['repo', 'create', `${REPO_OWNER}/${name}`, '--public', '-y'], { cwd: dir, stdio: 'inherit' });
     run('git', ['push', '-u', 'origin', 'main'], { cwd: dir, stdio: 'inherit' });
   }
   try {

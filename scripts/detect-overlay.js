@@ -34,6 +34,15 @@ const CORE_TEXTURES = [
 ];
 
 async function pixelHash(filePath) {
+  // Issue 020 defect: a high-version pack texture (e.g. 256x256) decodes to a raw
+  // buffer large enough to exhaust vips memory (16MB+). High-version textures can
+  // never match the 16x16 vanilla reference set anyway (the hash includes width x
+  // height), so guard the raw decode and return a non-matching hash on oversize.
+  const meta = await sharp(filePath).metadata();
+  const pixels = (meta.width || 0) * (meta.height || 0) * (meta.channels || 4);
+  if (pixels > 8 * 1024 * 1024) {
+    return `oversize:${meta.width}x${meta.height}x${meta.channels}`;
+  }
   const { data, info } = await sharp(filePath).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
   return crypto.createHash('sha256')
     .update(`${info.width}x${info.height}x${info.channels}\0`)
