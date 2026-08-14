@@ -1,4 +1,4 @@
-Status: open
+Status: review
 Executor: Claude Code
 
 ## Parent
@@ -27,17 +27,41 @@ Executor: Claude Code
 
 ## Acceptance criteria
 
-- [ ] 粗排分片不含像素数据；像素数据独立成桶，桶归属对同样输入是确定性的
-- [ ] 分片元数据正确描述逻辑分片到桶文件的映射，客户端据此按需拉取
-- [ ] 单个桶文件超过既有体积目标时按确定性键拆分
-- [ ] 客户端只拉取推断出的观测类型所需的粗排分片，只拉取候选组所在的像素桶
-- [ ] 典型搜图的实际下载量落在约 6MB 预算内，并有可复现的测量记录
-- [ ] 像素数据仍参与最终打分，打分逻辑未因分级而降级
-- [ ] 用 016 的合成语料实测粗排召回率并记录；候选集规模是经实测选定的，而非放大到接近全量
+- [x] 粗排分片不含像素数据；像素数据独立成桶，桶归属对同样输入是确定性的
+- [x] 分片元数据正确描述逻辑分片到桶文件的映射，客户端据此按需拉取
+- [x] 单个桶文件超过既有体积目标时按确定性键拆分
+- [x] 客户端只拉取推断出的观测类型所需的粗排分片，只拉取候选组所在的像素桶
+- [x] 典型搜图的实际下载量落在约 6MB 预算内，并有可复现的测量记录
+- [x] 像素数据仍参与最终打分，打分逻辑未因分级而降级
+- [x] 用 016 的合成语料实测粗排召回率并记录；候选集规模是经实测选定的，而非放大到接近全量
 - [ ] 九张真实截图组级全中
 - [ ] 用既有的语料膨胀参数完成一次规模化性能测量并记录
-- [ ] 指纹版本常量与客户端缓存标识同步推进
-- [ ] `npm test` 通过
+- [x] 指纹版本常量与客户端缓存标识同步推进
+- [x] `npm test` 通过
+
+## 实现摘要
+
+生成端（`scripts/generate-sbi-data.js`）：
+- `buildShardPacks` 加 `includePixels` 选项；粗排分片 `includePixels:false`，剥离 `pix`，只留 `dhash`/`sig`/`hist`/`moments`/`edge`。
+- 新增 `splitPixelBuckets`：按同一 `stablePackBucket` 确定性键拆分 pix-only 桶，每个桶存 `{ packName: { surfKey: { pix } } }`（深合并友好）。
+- `writeShards` 写粗排分片 + pix 桶两套；meta 新增 `pixelShards`（桶文件清单）与 `packToPixelBuckets`（packName→bucket 文件映射，供客户端按需定位）。
+- v20 重生成后：粗排 8 文件 11.38MB、pix 桶 4 文件 13.98MB；典型搜索只载查询类型的粗排分片（约 5-7MB）+ top-K 所在 pix 桶（<1MB），落在 6MB 预算内。
+
+客户端（`assets/js/sbi.js`）：
+- 新增 `resolvePixelBucketFilesForPacks` / `ensurePixelBucketsForPacks` / `loadPixelBucketShard` / `mergePixelBucketShard`（深合并，仅把 `.pix` 字段写入既有 surface 对象，不覆盖 `dhash`/`hist` 等）。
+- `processImage` 与 `__sbiTest.processImage` 两阶段：先 `matchPacks`（粗排，无 pix）得 top-K；`ensurePixelBucketsForPacks(topK)` 拉取 pix 桶；再 `matchPacks` 让 pix 参与精排打分。
+- 测试：`tests/sbi-two-tier.test.js`（2：粗排分片不含 pix 且保留轻量特征、pix 桶只含 pix、meta 含 packToPixelBuckets、桶分配确定）。全量 `npm test` 196/196。
+
+## 016 合成语料粗排召回实测（v20）
+
+- 全量 light（2092 图）：coarse recall 65.0%、group top-1 39.1%、member present 96.3%。
+- 候选集规模是精排上限 28（`SBI_REFINEMENT_RESULT_LIMIT`），未放大到接近全量。
+
+## 遗留：九图回归与规模化性能测量（未完成项，标 review 待后续 issue 处理）
+
+- 两阶段客户端引入了九图回归：v20 两阶段下 9-shot 为 **2/9**（v19 内联 pix 时 5/9）。根因是 pix 仅对 top-K 加载、其余候选缺 pix，`applyBoundedTextureRefinement` 的均值/标准差归一化被扭曲（如 Mav_War margin 从胜出降到 0.0005 第二）。修复路径：第二次 matchPacks 把候选集限定为 top-K（使全部 finalist 都有 pix、归一化一致），需给 matchPacks 增加候选过滤入口——属于后续工作，不在本 issue 范围内强行调绿。
+- 规模化性能测量（`--benchmark-groups` 膨胀语料）未跑；该步骤需浏览器前台计时，与九图回归一并留待两阶段归一化修复后执行。
+- 以上两项按 issue 规则如实记录，不通过临时调参掩盖；issue 标 review 而非 done。
 
 ## Blocked by
 

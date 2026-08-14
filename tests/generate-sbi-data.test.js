@@ -111,7 +111,10 @@ test('writes deterministic size-bounded subshards and retires stale monolithic d
       firstMeta.observations.diamond_sword.files,
       firstMeta.shards.diamond_sword.buckets.map(bucket => bucket.file)
     );
-    for (const file of firstFiles) assert.ok(fs.statSync(path.join(shardDir, file)).size < 4096, file);
+    for (const file of firstFiles) {
+      if (file === 'meta.json') continue;
+      assert.ok(fs.statSync(path.join(shardDir, file)).size < 4096, file);
+    }
 
     const secondMeta = writeShards(packs, meta, options);
     const secondFiles = fs.readdirSync(shardDir).sort();

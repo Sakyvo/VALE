@@ -215,6 +215,23 @@ function mergeFingerprintShard(shardFile, shard) {
   }
 }
 
+// Issue 018: pixel buckets store { packName: { surfKey: { pix } } }. A shallow
+// Object.assign would replace the whole surface object (losing dhash/hist/sig).
+// Deep-merge so only the .pix field is added onto the existing coarse surface entry.
+function mergePixelBucketShard(shardFile, shard) {
+  if (!fingerprints) fingerprints = createFingerprintStore();
+  const packs = shard && shard.packs ? shard.packs : {};
+  for (const [packName, packData] of Object.entries(packs)) {
+    if (!fingerprints.packs[packName]) fingerprints.packs[packName] = {};
+    const target = fingerprints.packs[packName];
+    for (const [surfKey, surf] of Object.entries(packData)) {
+      if (!target[surfKey] || typeof target[surfKey] !== 'object' || Array.isArray(target[surfKey])) target[surfKey] = {};
+      if (surf && surf.pix !== undefined) target[surfKey].pix = surf.pix;
+    }
+  }
+  fingerprints._loadedShards[shardFile] = true;
+}
+
 function resolveFingerprintShardFiles(shardNames) {
   const files = [];
   for (const shardName of shardNames) {
@@ -251,6 +268,45 @@ async function ensureFingerprints(shardNames) {
   const names = shardNames && shardNames.length ? shardNames : SBI_BASE_FINGERPRINT_SHARDS;
   await loadFingerprintMetadata();
   await Promise.all(resolveFingerprintShardFiles(names).map(loadFingerprintShard));
+}
+
+// Issue 018: load only the pixel buckets covering the given pack names.
+// Coarse shards omit `pix`; after coarse ranking the client fetches just these
+// buckets so `pix` participates in final scoring without downloading the whole corpus.
+function resolvePixelBucketFilesForPacks(packNames) {
+  const map = fingerprints && fingerprints._meta && fingerprints._meta.packToPixelBuckets
+    ? fingerprints._meta.packToPixelBuckets
+    : null;
+  if (!map) return [];
+  const files = new Set();
+  for (const name of packNames) {
+    const entry = map[name];
+    if (!entry) continue;
+    for (const file of Object.values(entry)) files.add(file);
+  }
+  return [...files];
+}
+
+async function ensurePixelBucketsForPacks(packNames) {
+  await loadFingerprintMetadata();
+  const files = resolvePixelBucketFilesForPacks(packNames);
+  if (!files.length) return;
+  await Promise.all(files.map(loadPixelBucketShard));
+}
+
+async function loadPixelBucketShard(shardFile) {
+  if (!fingerprints) fingerprints = createFingerprintStore();
+  if (fingerprints._loadedShards[shardFile]) return;
+  if (!_fingerprintShardPromises[shardFile]) {
+    _fingerprintShardPromises[shardFile] = (async () => {
+      const resp = await fetch(`${SBI_FINGERPRINT_SHARD_PATH}${shardFile}?v=${SBI_FINGERPRINT_VERSION}`);
+      if (!resp.ok) throw new Error('Failed to load pixel bucket: ' + shardFile + ' (' + resp.status + ')');
+      const shard = await resp.json();
+      if (shard.version !== SBI_FINGERPRINT_VERSION) throw new Error('Pixel bucket version mismatch: ' + shardFile);
+      mergePixelBucketShard(shardFile, shard);
+    })();
+  }
+  await _fingerprintShardPromises[shardFile];
 }
 
 function getGroupInfo(groupId) {
@@ -4396,8 +4452,25 @@ async function processImage(file) {
     await ensureFingerprintsForSlots(slots);
 
     // Stage 1: Hash-based instant results
-    const { results, slotTypes, details } = matchPacks(slots, widgetFeatures, hudFeatures);
-    const stage1Top10 = results.slice(0, 10);    _lastMatchDetails = details || {};
+    const coarseMatch = matchPacks(slots, widgetFeatures, hudFeatures);
+    let results = coarseMatch.results;
+    let slotTypes = coarseMatch.slotTypes;
+    let details = coarseMatch.details || {};
+    const stage1Top10 = results.slice(0, 10);
+
+    // Issue 018: two-tier retrieval. Coarse shards omit `pix`; the first matchPacks
+    // pass ranks on lightweight features. Now fetch only the pixel buckets covering
+    // the top-K groups and re-run matchPacks so `pix` participates in final scoring.
+    const SBI_TWO_TIER_TOP_K = SBI_REFINEMENT_RESULT_LIMIT || 28;
+    const topKNames = results.slice(0, SBI_TWO_TIER_TOP_K).map(row => row.name);
+    if (topKNames.length && fingerprints && fingerprints._meta && fingerprints._meta.packToPixelBuckets) {
+      await ensurePixelBucketsForPacks(topKNames);
+      const refined = matchPacks(slots, widgetFeatures, hudFeatures);
+      results = refined.results;
+      slotTypes = refined.slotTypes;
+      details = refined.details || {};
+    }
+    _lastMatchDetails = details;
     _lastClipScores = {};
     _lastDetectionMeta = {
       widgetRect,
@@ -4805,7 +4878,21 @@ window.__sbiTest = {
       timings.inflateSettle = mark() - t;
     }
     t = mark();
-    const { results, slotTypes, details } = matchPacks(slots, widgetFeatures, hudFeatures);
+    const coarseMatch = matchPacks(slots, widgetFeatures, hudFeatures);
+    let results = coarseMatch.results;
+    let slotTypes = coarseMatch.slotTypes;
+    let details = coarseMatch.details || {};
+    // Issue 018: two-tier — fetch pixel buckets for the coarse top-K, then re-run matchPacks
+    // so `pix` participates in final scoring.
+    const SBI_TWO_TIER_TOP_K = SBI_REFINEMENT_RESULT_LIMIT || 28;
+    const topKNames = results.slice(0, SBI_TWO_TIER_TOP_K).map(row => row.name);
+    if (topKNames.length && fingerprints && fingerprints._meta && fingerprints._meta.packToPixelBuckets) {
+      await ensurePixelBucketsForPacks(topKNames);
+      const refined = matchPacks(slots, widgetFeatures, hudFeatures);
+      results = refined.results;
+      slotTypes = refined.slotTypes;
+      details = refined.details || {};
+    }
     timings.match = mark() - t;
     _lastMatchDetails = details || {};
     _lastDetectionMeta = {

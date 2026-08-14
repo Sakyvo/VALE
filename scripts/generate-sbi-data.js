@@ -487,7 +487,7 @@ function addHashIndexEntries(index, key, dhash, packName) {
   }
 }
 
-function buildShardPacks(packs, keys) {
+function buildShardPacks(packs, keys, { includePixels = true } = {}) {
   const shardPacks = {};
   const index = {};
   for (const packName of Object.keys(packs).sort((a, b) => a.localeCompare(b))) {
@@ -495,7 +495,14 @@ function buildShardPacks(packs, keys) {
     const entry = {};
     for (const key of keys) {
       if (!packData[key]) continue;
-      entry[key] = packData[key];
+      // Issue 018: coarse (two-tier) shards omit `pix` to cut download volume;
+      // pix lives in separate pixel-bucket shards loaded on demand after coarse ranking.
+      if (!includePixels && packData[key].pix) {
+        const { pix, ...rest } = packData[key];
+        entry[key] = rest;
+      } else {
+        entry[key] = packData[key];
+      }
       addIndexEntry(index, key, getBucketKey(packData[key].sig), packName);
       addHashIndexEntries(index, key, packData[key].dhash, packName);
     }
@@ -576,8 +583,8 @@ function buildGroupedData(packs, exclusionSummary = {}) {
   return { groupPacks, meta };
 }
 
-function shardPayload(type, keys, packs, bucketKey) {
-  const { shardPacks, index } = buildShardPacks(packs, keys);
+function shardPayload(type, keys, packs, bucketKey, { includePixels = true } = {}) {
+  const { shardPacks, index } = buildShardPacks(packs, keys, { includePixels });
   return {
     version: SBI_FINGERPRINT_VERSION,
     type,
@@ -596,9 +603,10 @@ function stablePackBucket(packName) {
   return sha256Text(packName);
 }
 
-function splitShardEntries(type, keys, packs, targetBytes, hardLimitBytes, prefix = '') {
+function splitShardEntries(type, keys, packs, targetBytes, hardLimitBytes, prefix = '', options = {}) {
+  const includePixels = options.includePixels !== false;
   const names = Object.keys(packs).sort((a, b) => a.localeCompare(b));
-  const payload = shardPayload(type, keys, packs, prefix || 'all');
+  const payload = shardPayload(type, keys, packs, prefix || 'all', { includePixels });
   const size = payloadBytes(payload);
   if (size <= targetBytes || names.length <= 1) {
     if (size > hardLimitBytes) {
@@ -622,7 +630,38 @@ function splitShardEntries(type, keys, packs, targetBytes, hardLimitBytes, prefi
   }
   return [...groups.entries()]
     .sort(([a], [b]) => a.localeCompare(b))
-    .flatMap(([key, group]) => splitShardEntries(type, keys, group, targetBytes, hardLimitBytes, key));
+    .flatMap(([key, group]) => splitShardEntries(type, keys, group, targetBytes, hardLimitBytes, key, options));
+}
+
+// Issue 018: split pix-only buckets. Packs are grouped by the same deterministic
+// stablePackBucket key as coarse shards, so the client can map a coarse candidate set
+// to the covering pixel buckets. Each bucket holds { packName: { surfKey: pix } }.
+function splitPixelBuckets(type, pixPacks, targetBytes, hardLimitBytes, prefix = '') {
+  const names = Object.keys(pixPacks).sort((a, b) => a.localeCompare(b));
+  const payload = { version: SBI_FINGERPRINT_VERSION, type: `pix-${type}`, bucket: prefix || 'all', packs: pixPacks };
+  const size = payloadBytes(payload);
+  if (size <= targetBytes || names.length <= 1) {
+    if (size > hardLimitBytes) {
+      throw new Error(`SBI pixel shard exceeds hard file limit: pix-${type}/${prefix || 'all'} (${size} bytes)`);
+    }
+    return [{ key: prefix || 'all', payload, size }];
+  }
+  const groups = new Map();
+  const depth = prefix.length;
+  for (const name of names) {
+    const hash = stablePackBucket(name);
+    const key = `${prefix}${hash[depth] || '0'}`;
+    if (!groups.has(key)) groups.set(key, {});
+    groups.get(key)[name] = pixPacks[name];
+  }
+  if (groups.size < 2) {
+    const midpoint = Math.ceil(names.length / 2);
+    groups.set(`${prefix}0`, Object.fromEntries(names.slice(0, midpoint).map(name => [name, pixPacks[name]])));
+    groups.set(`${prefix}1`, Object.fromEntries(names.slice(midpoint).map(name => [name, pixPacks[name]])));
+  }
+  return [...groups.entries()]
+    .sort(([a], [b]) => a.localeCompare(b))
+    .flatMap(([key, group]) => splitPixelBuckets(type, group, targetBytes, hardLimitBytes, key));
 }
 
 function writeShards(packs, meta, options = {}) {
@@ -633,14 +672,22 @@ function writeShards(packs, meta, options = {}) {
   const hardLimitBytes = Number(options.hardLimitBytes) || GITHUB_FILE_LIMIT_BYTES;
   fs.mkdirSync(shardDir, { recursive: true });
 
+  // Issue 018: two-tier retrieval. Coarse shards carry only lightweight features
+  // (dhash/sig/hist/moments/edge) so a typical search downloads ~5MB instead of the
+  // full corpus. Pixel buckets are a separate shard family carrying only `pix`, split
+  // by the same deterministic stablePackBucket key; the client fetches only the
+  // buckets covering the coarse top-K groups after ranking.
   const outputMeta = {
     ...meta,
     shards: {},
+    pixelShards: {},
     observations: {},
   };
   const expected = new Set(['meta.json']);
+
+  // Coarse shards (no pix)
   for (const shard of SHARDS) {
-    const buckets = splitShardEntries(shard.name, shard.keys, packs, targetBytes, hardLimitBytes);
+    const buckets = splitShardEntries(shard.name, shard.keys, packs, targetBytes, hardLimitBytes, '', { includePixels: false });
     outputMeta.shards[shard.name] = {
       keys: shard.keys,
       buckets: buckets.map(bucket => ({
@@ -661,6 +708,43 @@ function writeShards(packs, meta, options = {}) {
       };
     }
   }
+
+  // Pixel buckets: one shard family per surface type, holding only { packName: { surfKey: pix } }.
+  // Grouped by the same stablePackBucket key so the client can map a coarse candidate set to buckets.
+  // packToPixelBuckets records each packName -> bucket file (per type) so the client can resolve
+  // which pixel bucket to fetch for a coarse top-K candidate without replaying the split.
+  const packToPixelBuckets = {};
+  for (const shard of SHARDS) {
+    const pixOnlyPacks = {};
+    for (const [packName, packData] of Object.entries(packs)) {
+      const entry = {};
+      for (const key of shard.keys) {
+        if (packData[key] && packData[key].pix) entry[key] = { pix: packData[key].pix };
+      }
+      if (Object.keys(entry).length) pixOnlyPacks[packName] = entry;
+    }
+    if (!Object.keys(pixOnlyPacks).length) continue;
+    const buckets = splitPixelBuckets(shard.name, pixOnlyPacks, targetBytes, hardLimitBytes);
+    outputMeta.pixelShards[shard.name] = {
+      keys: shard.keys,
+      buckets: buckets.map(bucket => ({
+        key: bucket.key,
+        file: bucket.key === 'all' ? `pix-${shard.name}.json` : `pix-${shard.name}-${bucket.key}.json`,
+        bytes: bucket.size,
+      })),
+    };
+    for (const bucket of buckets) {
+      const file = bucket.key === 'all' ? `pix-${shard.name}.json` : `pix-${shard.name}-${bucket.key}.json`;
+      expected.add(file);
+      fs.writeFileSync(path.join(shardDir, file), JSON.stringify(bucket.payload));
+      for (const packName of Object.keys(bucket.payload.packs || {})) {
+        if (!packToPixelBuckets[packName]) packToPixelBuckets[packName] = {};
+        packToPixelBuckets[packName][shard.name] = file;
+      }
+    }
+  }
+  outputMeta.packToPixelBuckets = packToPixelBuckets;
+
   for (const file of fs.readdirSync(shardDir)) {
     if (!file.endsWith('.json') || expected.has(file)) continue;
     fs.rmSync(path.join(shardDir, file), { force: true });
