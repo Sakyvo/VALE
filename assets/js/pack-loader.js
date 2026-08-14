@@ -1,6 +1,6 @@
 // Issue 019: build-versioned cache key for index.json / page data so Cloudflare caches them.
 // generate-index.js rewrites this to the index content hash on each build.
-const VALE_INDEX_VERSION = 'dd330bdd';
+const VALE_INDEX_VERSION = 'b1c721cd';
 
 class PackLoader {
   constructor() {
