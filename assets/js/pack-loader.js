@@ -1,3 +1,7 @@
+// Issue 019: build-versioned cache key for index.json / page data so Cloudflare caches them.
+// generate-index.js rewrites this to the index content hash on each build.
+const VALE_INDEX_VERSION = '879520b1';
+
 class PackLoader {
   constructor() {
     this.index = null;
@@ -12,8 +16,13 @@ class PackLoader {
   }
 
   async init() {
-    const raw = await fetch('data/index.json?t=' + Date.now()).then(r => r.json());
+    const raw = await fetch('data/index.json?v=' + VALE_INDEX_VERSION).then(r => r.json());
     this.allItems = raw.items;
+    // Issue 019: precompute name -> original index so onIntersect/getPackByIndex are O(1),
+    // not O(N) linear scans that make the visibility callback O(N^2) over the full grid.
+    this.nameToOrigIndex = new Map();
+    this.allItems.forEach((item, i) => this.nameToOrigIndex.set(item.name, i));
+    this.nameToPagePack = new Map();
     const displayItems = raw.items.filter(it => !(it.lists || []).includes('Overlay'));
     this.index = { ...raw, items: displayItems };
     this.renderPlaceholders();
@@ -59,14 +68,20 @@ class PackLoader {
       const items = this.getItems();
       const item = items[index];
       if (!item) continue;
-      const origIndex = this.allItems.indexOf(item);
+      const origIndex = this.nameToOrigIndex.get(item.name);
+      if (origIndex == null) continue;
       const page = Math.floor(origIndex / this.pageSize) + 1;
 
       if (!this.loadedPages.has(page)) {
         await this.loadPage(page);
       }
 
-      const pack = this.pagesData[page]?.find(p => p.name === item.name);
+      const pageItems = this.pagesData[page];
+      let pack = pageItems && pageItems[origIndex % this.pageSize];
+      if (!pack) {
+        // Fall back to the name map only if the precomputed offset didn't line up.
+        pack = pageItems && pageItems.find(p => p.name === item.name);
+      }
       if (pack) this.renderCard(el, pack);
 
       el.dataset.loaded = 'true';
@@ -75,7 +90,7 @@ class PackLoader {
   }
 
   async loadPage(page) {
-    const data = await fetch(`data/pages/page-${page}.json?t=` + Date.now()).then(r => r.json());
+    const data = await fetch(`data/pages/page-${page}.json?v=` + VALE_INDEX_VERSION).then(r => r.json());
     this.pagesData[page] = data.items;
     this.loadedPages.add(page);
   }
@@ -84,7 +99,8 @@ class PackLoader {
     const items = this.getItems();
     const item = items[index];
     if (!item) return null;
-    const origIndex = this.index.items.indexOf(item);
+    const origIndex = this.nameToOrigIndex.get(item.name);
+    if (origIndex == null) return null;
     const page = Math.floor(origIndex / this.pageSize) + 1;
     const offset = origIndex % this.pageSize;
     return this.pagesData[page]?.[offset];

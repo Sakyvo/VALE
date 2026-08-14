@@ -141,13 +141,13 @@ function main() {
     fs.writeFileSync(`data/packs/${p.name}.json`, JSON.stringify(p, null, 2));
   });
 
-  // Generate index.json (lightweight)
+  // Generate index.json (lightweight). Issue 019: drop fields the homepage card
+  // renderer and search do not consume (id/description) so the index does not
+  // balloon with pack count. Search/grid use name/displayName/coloredName/lists/cover/packPng.
   const indexItems = packs.map(p => ({
-    id: p.id,
     name: p.name,
     displayName: p.displayName,
     coloredName: p.coloredName,
-    description: p.description,
     lists: p.lists,
     cover: p.cover,
     packPng: p.packPng,
@@ -161,6 +161,28 @@ function main() {
     items: indexItems
   };
   fs.writeFileSync('data/index.json', JSON.stringify(index, null, 2));
+
+  // Issue 019: stamp a build-version cache key (content hash of the index) into
+  // pack-loader.js so Cloudflare can cache index.json / page data instead of being
+  // busted by a per-request timestamp.
+  const crypto = require('crypto');
+  const indexHash = crypto.createHash('sha256').update(JSON.stringify(index)).digest('hex').slice(0, 8);
+  const loaderPath = path.join(__dirname, '..', 'assets', 'js', 'pack-loader.js');
+  let loaderSrc = fs.readFileSync(loaderPath, 'utf8');
+  const before = loaderSrc;
+  loaderSrc = loaderSrc.replace(/(const VALE_INDEX_VERSION = )[^;]+;/, `$1'${indexHash}';`);
+  if (loaderSrc !== before) fs.writeFileSync(loaderPath, loaderSrc);
+
+  // Likewise stamp lists.json content hash into list.js so list page data is cacheable.
+  const listsJsonPath = path.join(__dirname, '..', 'l', 'lists.json');
+  if (fs.existsSync(listsJsonPath)) {
+    const listsHash = crypto.createHash('sha256').update(fs.readFileSync(listsJsonPath)).digest('hex').slice(0, 8);
+    const listJsPath = path.join(__dirname, '..', 'assets', 'js', 'list.js');
+    let listSrc = fs.readFileSync(listJsPath, 'utf8');
+    const beforeList = listSrc;
+    listSrc = listSrc.replace(/(const VALE_LISTS_VERSION = )[^;]+;/, `$1'${listsHash}';`);
+    if (listSrc !== beforeList) fs.writeFileSync(listJsPath, listSrc);
+  }
 
   // Generate paginated data
   fs.mkdirSync('data/pages', { recursive: true });

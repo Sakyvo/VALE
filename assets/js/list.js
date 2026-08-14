@@ -3,6 +3,9 @@ let allPacks = [];
 let sortByDate = false;
 let saveQueue = Promise.resolve();
 
+// Issue 019: build-versioned cache key for lists.json (generate-index.js rewrites it).
+const VALE_LISTS_VERSION = '634a5ca2';
+
 const LIST_PAGE_HTML = `<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -50,7 +53,7 @@ async function loadLists() {
   }
   // 未登录时从 CDN 获取
   try {
-    const res = await fetch('/l/lists.json?t=' + Date.now());
+    const res = await fetch('/l/lists.json?v=' + VALE_LISTS_VERSION);
     listsData = await res.json();
     localStorage.setItem('vale_lists', JSON.stringify(listsData));
   } catch (e) {
@@ -281,8 +284,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   window.renderLists = function(query = '') {
     const q = query.toLowerCase();
     const overlay = listsData.find(l => l.name === 'Overlay');
+    // Issue 019: the 'test' list is a single-member scaffold kept only as the page
+    // template (l/test/index.html); hide it from list navigation.
     let filtered = listsData.filter(l =>
-      l.name !== 'Overlay' && l.name.toLowerCase().includes(q)
+      l.name !== 'Overlay' && l.name !== 'test' && l.name.toLowerCase().includes(q)
     );
 
     if (sortByDate) {

@@ -322,3 +322,32 @@ test('thumbnail references go through the asset base, not hardcoded repo paths',
   assert.match(generator, /resolveAssetBase\(/, 'generator resolves the per-pack asset base');
   assert.match(generator, /buildAssetUrl\(/, 'generator stamps URLs through the shared constructor');
 });
+
+test('index and list data requests use a build-version cache key, not a per-request timestamp (issue 019)', () => {
+  const read = file => fs.readFileSync(path.join(ROOT, ...file.split('/')), 'utf-8');
+  const loader = read('assets/js/pack-loader.js');
+  const list = read('assets/js/list.js');
+  assert.doesNotMatch(loader, /index\.json\?t=/, 'pack-loader must not timestamp-bust index.json');
+  assert.doesNotMatch(loader, /page-\$\{page\}\.json\?t=/, 'pack-loader must not timestamp-bust page data');
+  assert.doesNotMatch(list, /lists\.json\?t=/, 'list.js must not timestamp-bust lists.json');
+  assert.match(loader, /VALE_INDEX_VERSION/, 'pack-loader uses a build-version cache key');
+  assert.match(loader, /data\/index\.json\?v=' \+ VALE_INDEX_VERSION/, 'index.json fetched with the version key');
+  assert.match(list, /VALE_LISTS_VERSION/, 'list.js uses a build-version cache key');
+  assert.match(list, /lists\.json\?v=' \+ VALE_LISTS_VERSION/, 'lists.json fetched with the version key');
+});
+
+test('homepage index.json omits fields the card renderer does not consume (issue 019)', () => {
+  const idx = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'index.json'), 'utf-8'));
+  assert.ok(idx.items && idx.items.length, 'index has items');
+  for (const item of idx.items) {
+    assert.equal(item.id, undefined, 'index items drop the unused id field');
+    assert.equal(item.description, undefined, 'index items drop the unused description field');
+    assert.ok(item.name && item.displayName && item.coloredName && item.cover && item.packPng && item.lists,
+      'index items keep the render/search fields');
+  }
+});
+
+test('test list is hidden from list navigation (issue 019)', () => {
+  const list = fs.readFileSync(path.join(ROOT, 'assets', 'js', 'list.js'), 'utf-8');
+  assert.match(list, /l\.name !== 'test'/, 'list navigation filters out the test scaffold list');
+});
