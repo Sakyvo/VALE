@@ -43,3 +43,14 @@ Executor: Claude Code
 ## Blocked by
 
 - `020-blatant-cheater-pilot.md`
+
+## 放量前置状态（2026-08-14）
+
+- 020 试点已完成 50 包全链路（40 upload_new + 5 conflict retain + 1 duplicate + 4 skip），验证了 upload-folder → backfill-extract → generate-index → build → SBI 重生成链路在 Blatant Cheater List 下端到端可用。
+- 全量源：`D:\Blatant Cheater` 2754 个归档（63GB，less/ 233 + more/ 2521），规范+视觉指纹自动剔重，预期净入库 ~2201。
+- 全量 dry-run 在 2754 包上做 content fingerprinting 会超时（之前 600s 未写 manifest），需分批 dry-run 或提升并发——这是放量的工程前置。
+- 执行计划：按 4 个新仓库（packs-007→010）分 4 批，每批走完整四阶段审批；满仓自动滚动；不加代码级并发；预计 8-12 小时串行上传——超出单次会话自主范围，需人工分批监控执行。
+- 复用 020 试点的 duplicate-resolution 模式处理全量中的同名异版/content_duplicate（人工 retain 决策）。
+- 管线缺陷（020 记录的 3 项）需在放量前修复：ensureRepo 探测已存在仓库、gh repo clone 绕过 proxy、detect-overlay vips OOM。
+
+剩余验收项（R2 相关 + 九图 + 全量评估 + 性能测量）受 012/013 R2 人工验收与 8-12 小时上传阻塞，按 issue 规则如实记录、不调参。
