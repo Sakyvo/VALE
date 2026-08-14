@@ -4,12 +4,13 @@ const crypto = require('crypto');
 const sharp = require('sharp');
 const { sanitizePreviewPngBuffer } = require('./thumbnail-preview-utils');
 const { stableStringify } = require('./lib/pack-content-fingerprint');
+const { computeGroupKey, OBSERVABLE_GROUP_SURFACES } = require('./lib/group-equivalence');
 
 const THUMB_DIR = path.join(__dirname, '..', 'thumbnails');
 const OUT_FILE = path.join(__dirname, '..', 'data', 'sbi-fingerprints.json');
 const SHARD_DIR = path.join(__dirname, '..', 'data', 'sbi-fp');
 const META_FILE = path.join(SHARD_DIR, 'meta.json');
-const SBI_FINGERPRINT_VERSION = 19;
+const SBI_FINGERPRINT_VERSION = 20;
 const SBI_GROUP_SCHEMA_VERSION = 1;
 const DEFAULT_SHARD_TARGET_BYTES = 32 * 1024 * 1024;
 const GITHUB_FILE_LIMIT_BYTES = 100 * 1024 * 1024;
@@ -516,10 +517,9 @@ function buildGroupedData(packs, exclusionSummary = {}) {
   const grouped = new Map();
   for (const packName of Object.keys(packs).sort((a, b) => a.localeCompare(b))) {
     const packData = packs[packName];
-    const record = {};
-    for (const key of surfaceKeys) record[key] = packData[key] || null;
-    const digest = sha256Text(stableStringify(record));
-    const groupId = `g:${digest}`;
+    // Issue 017: group equivalence is now the observable anchor-surface dhash
+    // (see ADR 0005 + scripts/lib/group-equivalence.js), not the full-fingerprint hash.
+    const groupId = computeGroupKey(packData);
     if (!grouped.has(groupId)) grouped.set(groupId, { representative: packName, members: [], packData });
     grouped.get(groupId).members.push(packName);
   }

@@ -19,34 +19,49 @@ function feature(seed) {
   };
 }
 
-test('groups only complete exact observable fingerprint records', () => {
-  const common = { diamond_sword: feature('same'), health_full: feature('hud') };
+test('groups packs sharing the observable anchor-surface dhash (issue 017)', () => {
+  // Under issue 017 / ADR 0005, group equivalence is the dhash of the three anchor
+  // surfaces (diamond_sword/ender_pearl/splash_potion). Non-anchor surfaces (food,
+  // widget, HUD) no longer split groups; float noise in non-dhash fields doesn't either.
+  const common = { diamond_sword: feature('same'), ender_pearl: feature('ep'), splash_potion: feature('hl'), health_full: feature('hud') };
   const { groupPacks, meta } = buildGroupedData({
     Zed: common,
     Alpha: JSON.parse(JSON.stringify(common)),
-    Different: { diamond_sword: feature('different'), health_full: feature('hud') },
-    MissingHud: { diamond_sword: feature('same') },
+    // Missing the non-anchor health_full surface -> still same group (DS/EP/HL match)
+    MissingHud: { diamond_sword: feature('same'), ender_pearl: feature('ep'), splash_potion: feature('hl') },
+    // Different anchor diamond_sword dhash -> different group
+    Different: { diamond_sword: feature('different'), ender_pearl: feature('ep'), splash_potion: feature('hl'), health_full: feature('hud') },
+    // Same DS as common but different anchor ender_pearl dhash -> different group
+    DiffEp: { diamond_sword: feature('same'), ender_pearl: feature('other-ep'), splash_potion: feature('hl') },
   }, { Overlay: 2, Conquest: 3 });
 
-  assert.equal(meta.packCount, 4);
+  assert.equal(meta.packCount, 5);
   assert.equal(meta.groupCount, 3);
   assert.equal(Object.keys(groupPacks).length, 3);
-  const exact = Object.entries(meta.groups).find(([, group]) => group.members.length === 2);
-  assert.deepEqual(exact[1].members, ['Alpha', 'Zed']);
-  assert.equal(exact[1].representative, 'Alpha');
+  const merged = Object.entries(meta.groups).find(([, group]) => group.members.length === 3);
+  assert.deepEqual(merged[1].members, ['Alpha', 'MissingHud', 'Zed']);
+  assert.equal(merged[1].representative, 'Alpha');
   assert.deepEqual(meta.excludedCounts, { Overlay: 2, Conquest: 3 });
 });
 
-test('computes rarity counts over exact groups rather than raw pack names', () => {
+test('computes rarity counts over the observable anchor groups (issue 017)', () => {
+  // Under issue 017, A/ACopy/B all share the diamond_sword anchor dhash 'shared',
+  // so they collapse to ONE group even though B differs in the non-anchor hotbar_widget.
+  // D shares the same DS surface feature but a different anchor EP dhash -> separate group,
+  // making A's DS surface "common" (2 groups) versus C's DS "rare" (1 group).
   const shared = feature('shared');
   const { meta } = buildGroupedData({
-    A: { diamond_sword: shared, hotbar_widget: feature('unique-a') },
-    ACopy: { diamond_sword: shared, hotbar_widget: feature('unique-a') },
-    B: { diamond_sword: shared, hotbar_widget: feature('unique-b') },
-    C: { diamond_sword: feature('rare'), hotbar_widget: feature('unique-c') },
+    A: { diamond_sword: shared, ender_pearl: feature('ep'), hotbar_widget: feature('unique-a') },
+    ACopy: { diamond_sword: shared, ender_pearl: feature('ep'), hotbar_widget: feature('unique-a') },
+    B: { diamond_sword: shared, ender_pearl: feature('ep'), hotbar_widget: feature('unique-b') },
+    D: { diamond_sword: shared, ender_pearl: feature('other-ep'), hotbar_widget: feature('unique-d') },
+    C: { diamond_sword: feature('rare'), ender_pearl: feature('ep'), hotbar_widget: feature('unique-c') },
   });
   const aGroupId = Object.keys(meta.groups).find(id => meta.groups[id].members.includes('A'));
   const cGroupId = Object.keys(meta.groups).find(id => meta.groups[id].members.includes('C'));
+  // A/ACopy/B merged into one group; D is a second group sharing the DS surface feature.
+  assert.equal(meta.groups[aGroupId].members.length, 3);
+  // rarity.count is how many GROUPS share that surface feature (A's group + D's group = 2)
   assert.equal(meta.rarity[aGroupId].diamond_sword.count, 2);
   assert.equal(meta.rarity[cGroupId].diamond_sword.count, 1);
   assert.ok(meta.rarity[cGroupId].diamond_sword.weight > meta.rarity[aGroupId].diamond_sword.weight);
