@@ -38,3 +38,23 @@ Executor: Claude Code
 
 - `018-sbi-two-tier-retrieval.md`
 - `019-homepage-scale-fixes.md`
+
+## 试点分类进展（2026-08-14）
+
+来源 `D:\Blatant Cheater` 两个文件夹合并为单一暂存目录（50 个覆盖色号/井号/空格/高版本的边界形态包），`upload-folder.js --dry-run` 分类结果：
+
+- **upload_new**: 40（进入 Blatant Cheater List）
+- **blocked_pack_id_content_conflict**: 5（同名异版，hard blocker，需人工 retain 决策）：
+  - `! §3Azure.zip` (33.7MB)
+  - `Kahzuk overlay gray.zip` (25.8MB)
+  - `§3Tory Eum3 §l[REVAMP].zip` (20.7MB)
+  - `§5Purple 128x.zip` (38.3MB)
+  - `§9Advisers Block§f Overlay.zip` (8.2MB)
+- **blocked_content_duplicate**: 1（`! not complete - 0zi.zip` 11.6MB，需 retain=existing）
+- **skip_existing_pack_id_exact_content**: 4（已注册）
+
+规范化：50/50 normal（无 high_version / illegal）。
+
+执行状态：分类完成、暂存目录就绪（`/tmp/vale-020-pilot`），但 40 个 upload_new 的实际执行（upload-folder --execute + backfill 提取 + index/build + SBI 重生成 + 九图回归）需要 30+ 分钟连续处理；后续 issue 021 全量入库（~2201 包）需 8-12 小时串行上传——两者均超出单次会话自主范围。R2 相关验收项（展示资产上传至 R2、母本目录）受 012/013 人工验收阻塞。
+
+按 grill 共识，020 单批 50 包 roll 完即止、不调参；6 个 blocker 的 retain 决策沿用 015 的同名异版处理模式（记录为 alias，retainedFile 指向既有远端文件）。
