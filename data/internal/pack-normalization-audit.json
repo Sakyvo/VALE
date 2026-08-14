@@ -4,6 +4,1221 @@
   "registryDigest": "a495de83be1f79c6275185f18542661d038230f76d9d5d8bd362a69e08585a06",
   "entries": [
     {
+      "key": "file:!                                                not complete - 0zi.zip:676d01f74f83aea9f0f23be8f156ef5fe13026e5bc864a68e3ee64c9c897ec56",
+      "sourceFile": "!                                                not complete - 0zi.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "676d01f74f83aea9f0f23be8f156ef5fe13026e5bc864a68e3ee64c9c897ec56",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!                                                not complete - 0zi.zip",
+          "archiveSha256": "676d01f74f83aea9f0f23be8f156ef5fe13026e5bc864a68e3ee64c9c897ec56"
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!                            §9§lStrafe §8§l[128x].zip:d1bc8ac24b8cf94626962fa479057062ce4a42f43ffcd5d2f83c7f6b75f57d27",
+      "sourceFile": "!                            §9§lStrafe §8§l[128x].zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "d1bc8ac24b8cf94626962fa479057062ce4a42f43ffcd5d2f83c7f6b75f57d27",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!                            §9§lStrafe §8§l[128x].zip",
+          "archiveSha256": "d1bc8ac24b8cf94626962fa479057062ce4a42f43ffcd5d2f83c7f6b75f57d27",
+          "sourceFile": "!                            §9§lStrafe §8§l[128x].zip",
+          "sourceArchiveSha256": "d1bc8ac24b8cf94626962fa479057062ce4a42f43ffcd5d2f83c7f6b75f57d27",
+          "productFile": "!                            §9§lStrafe §8§l[128x].zip",
+          "originalProductFile": "!                            §9§lStrafe §8§l[128x].zip",
+          "productPackId": "Strafe_128x",
+          "productArchiveSha256": "d1bc8ac24b8cf94626962fa479057062ce4a42f43ffcd5d2f83c7f6b75f57d27",
+          "visualContentHash": "83a9c35431b07393ca9961e1bea4ca77ce5b6a6e9fccba425211f27197a32727",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!                          x_x.zip:dd8d9d6a6665cbb59533abd3c123a15e7e545d0112dda51070f42c973b87b0bc",
+      "sourceFile": "!                          x_x.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "dd8d9d6a6665cbb59533abd3c123a15e7e545d0112dda51070f42c973b87b0bc",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!                          x_x.zip",
+          "archiveSha256": "dd8d9d6a6665cbb59533abd3c123a15e7e545d0112dda51070f42c973b87b0bc"
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!                       §bkenos §3Faithful §6[32x].zip:bd12af113578e8c3a33b063aad5d8b03e148ccb26385dae17079f6b40b25eee3",
+      "sourceFile": "!                       §bkenos §3Faithful §6[32x].zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "bd12af113578e8c3a33b063aad5d8b03e148ccb26385dae17079f6b40b25eee3",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!                       §bkenos §3Faithful §6[32x].zip",
+          "archiveSha256": "bd12af113578e8c3a33b063aad5d8b03e148ccb26385dae17079f6b40b25eee3",
+          "sourceFile": "!                       §bkenos §3Faithful §6[32x].zip",
+          "sourceArchiveSha256": "bd12af113578e8c3a33b063aad5d8b03e148ccb26385dae17079f6b40b25eee3",
+          "productFile": "!                       §bkenos §3Faithful §6[32x].zip",
+          "originalProductFile": "!                       §bkenos §3Faithful §6[32x].zip",
+          "productPackId": "kenos_Faithful_32x",
+          "productArchiveSha256": "bd12af113578e8c3a33b063aad5d8b03e148ccb26385dae17079f6b40b25eee3",
+          "visualContentHash": "56c1abc73b52262dfa8b611b5b8b7022a6d87dd4fef888341b76cdb77e9832e2",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!                  §5Galaxy §b32x (Limon Green).zip:7a52cd9ac834df57277d89d3ab6fb233073947e87b481714219dced17bb8c13f",
+      "sourceFile": "!                  §5Galaxy §b32x (Limon Green).zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "7a52cd9ac834df57277d89d3ab6fb233073947e87b481714219dced17bb8c13f",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!                  §5Galaxy §b32x (Limon Green).zip",
+          "archiveSha256": "7a52cd9ac834df57277d89d3ab6fb233073947e87b481714219dced17bb8c13f",
+          "sourceFile": "!                  §5Galaxy §b32x (Limon Green).zip",
+          "sourceArchiveSha256": "7a52cd9ac834df57277d89d3ab6fb233073947e87b481714219dced17bb8c13f",
+          "productFile": "!                  §5Galaxy §b32x (Limon Green).zip",
+          "originalProductFile": "!                  §5Galaxy §b32x (Limon Green).zip",
+          "productPackId": "Galaxy_32x_Limon_Green",
+          "productArchiveSha256": "7a52cd9ac834df57277d89d3ab6fb233073947e87b481714219dced17bb8c13f",
+          "visualContentHash": "c4ee26350281e189c975766b692d55cc0cf050810c33269d902a07ee11aa79d9",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!                  R3Tard.zip:f737fff720de44b75744152e336109200ae0405a4a3300f2bdca3dd29f6f6509",
+      "sourceFile": "!                  R3Tard.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "f737fff720de44b75744152e336109200ae0405a4a3300f2bdca3dd29f6f6509",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!                  R3Tard.zip",
+          "archiveSha256": "f737fff720de44b75744152e336109200ae0405a4a3300f2bdca3dd29f6f6509",
+          "sourceFile": "!                  R3Tard.zip",
+          "sourceArchiveSha256": "f737fff720de44b75744152e336109200ae0405a4a3300f2bdca3dd29f6f6509",
+          "productFile": "!                  R3Tard.zip",
+          "originalProductFile": "!                  R3Tard.zip",
+          "productPackId": "R3Tard",
+          "productArchiveSha256": "f737fff720de44b75744152e336109200ae0405a4a3300f2bdca3dd29f6f6509",
+          "visualContentHash": "1f64b13c42b0a4fc50c006106c82a5c582bbe590acdbb1f7dab757bfc04dd636",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!                 §5Fade §616x.zip:287f6a6841780c75c6124adf2ede6ab4f14e83702558f826ead00e3002bbc5a7",
+      "sourceFile": "!                 §5Fade §616x.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "287f6a6841780c75c6124adf2ede6ab4f14e83702558f826ead00e3002bbc5a7",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!                 §5Fade §616x.zip",
+          "archiveSha256": "287f6a6841780c75c6124adf2ede6ab4f14e83702558f826ead00e3002bbc5a7",
+          "sourceFile": "!                 §5Fade §616x.zip",
+          "sourceArchiveSha256": "287f6a6841780c75c6124adf2ede6ab4f14e83702558f826ead00e3002bbc5a7",
+          "productFile": "!                 §5Fade §616x.zip",
+          "originalProductFile": "!                 §5Fade §616x.zip",
+          "productPackId": "Fade_16x",
+          "productArchiveSha256": "287f6a6841780c75c6124adf2ede6ab4f14e83702558f826ead00e3002bbc5a7",
+          "visualContentHash": "8f8253785157063e5f8f84e8fcfec6ada5f6601423a95286c93866e5d46d8ab3",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!               §9§lCJNG.zip:d4d81f8215cac14ae9757580af51d6ec9867da5445d043fd49592c0376c18230",
+      "sourceFile": "!               §9§lCJNG.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "d4d81f8215cac14ae9757580af51d6ec9867da5445d043fd49592c0376c18230",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!               §9§lCJNG.zip",
+          "archiveSha256": "d4d81f8215cac14ae9757580af51d6ec9867da5445d043fd49592c0376c18230",
+          "sourceFile": "!               §9§lCJNG.zip",
+          "sourceArchiveSha256": "d4d81f8215cac14ae9757580af51d6ec9867da5445d043fd49592c0376c18230",
+          "productFile": "!               §9§lCJNG.zip",
+          "originalProductFile": "!               §9§lCJNG.zip",
+          "productPackId": "CJNG",
+          "productArchiveSha256": "d4d81f8215cac14ae9757580af51d6ec9867da5445d043fd49592c0376c18230",
+          "visualContentHash": "292c8008a3bf876e88443f31871fafb42d20ee71817a313f631ee6a5561eb2df",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!               Batman V1.zip:f0366ba0bdec66251e1d31988dcc6843467661c58d62e1680140c6c887d6f1ab",
+      "sourceFile": "!               Batman V1.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "f0366ba0bdec66251e1d31988dcc6843467661c58d62e1680140c6c887d6f1ab",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!               Batman V1.zip",
+          "archiveSha256": "f0366ba0bdec66251e1d31988dcc6843467661c58d62e1680140c6c887d6f1ab",
+          "sourceFile": "!               Batman V1.zip",
+          "sourceArchiveSha256": "f0366ba0bdec66251e1d31988dcc6843467661c58d62e1680140c6c887d6f1ab",
+          "productFile": "!               Batman V1.zip",
+          "originalProductFile": "!               Batman V1.zip",
+          "productPackId": "Batman_V1",
+          "productArchiveSha256": "f0366ba0bdec66251e1d31988dcc6843467661c58d62e1680140c6c887d6f1ab",
+          "visualContentHash": "54bc1c1ec295a54c2ffa661baa03d349899f028c7521cbbfd43f5c7425a1db7e",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!               Kahzuk overlay gray.zip:2388fea38b34cb6b58fe2d9cb856ff9dc53c53f0a0c37d4a8d40bfc595821294",
+      "sourceFile": "!               Kahzuk overlay gray.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "2388fea38b34cb6b58fe2d9cb856ff9dc53c53f0a0c37d4a8d40bfc595821294",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!               Kahzuk overlay gray.zip",
+          "archiveSha256": "2388fea38b34cb6b58fe2d9cb856ff9dc53c53f0a0c37d4a8d40bfc595821294"
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T05:31:55.667Z"
+    },
+    {
+      "key": "file:!              _  dynamic duo venexis iceblue.zip:9e068d8c0079fabcb243c4c53fc817d113a402423bf9e80310f421c3cacfe3d7",
+      "sourceFile": "!              _  dynamic duo venexis iceblue.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "9e068d8c0079fabcb243c4c53fc817d113a402423bf9e80310f421c3cacfe3d7",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!              _  dynamic duo venexis iceblue.zip",
+          "archiveSha256": "9e068d8c0079fabcb243c4c53fc817d113a402423bf9e80310f421c3cacfe3d7"
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!              §bHope Blue.zip:a2d1e3aafafad345a3c6fc0670c837ec0f74107aa94a38f07d1f4f3881ca5113",
+      "sourceFile": "!              §bHope Blue.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "a2d1e3aafafad345a3c6fc0670c837ec0f74107aa94a38f07d1f4f3881ca5113",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!              §bHope Blue.zip",
+          "archiveSha256": "a2d1e3aafafad345a3c6fc0670c837ec0f74107aa94a38f07d1f4f3881ca5113",
+          "sourceFile": "!              §bHope Blue.zip",
+          "sourceArchiveSha256": "a2d1e3aafafad345a3c6fc0670c837ec0f74107aa94a38f07d1f4f3881ca5113",
+          "productFile": "!              §bHope Blue.zip",
+          "originalProductFile": "!              §bHope Blue.zip",
+          "productPackId": "Hope_Blue",
+          "productArchiveSha256": "a2d1e3aafafad345a3c6fc0670c837ec0f74107aa94a38f07d1f4f3881ca5113",
+          "visualContentHash": "f9f5bc2311ead4f808b8419f0c00e7fd45b111607d8800e126a64a04e843a3b0",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!              §dBubbleGum §7[32x].zip:a4d1902632be8cf030cf0603e8d85251110de772933c32a0f19d73ea092649ec",
+      "sourceFile": "!              §dBubbleGum §7[32x].zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "a4d1902632be8cf030cf0603e8d85251110de772933c32a0f19d73ea092649ec",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!              §dBubbleGum §7[32x].zip",
+          "archiveSha256": "a4d1902632be8cf030cf0603e8d85251110de772933c32a0f19d73ea092649ec"
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!              Â§bIce Â§7[32x].zip:a9310b793c8e6be7d7360a1a9a2977f4659b6dcc9f6e24ab4ea990af66db5545",
+      "sourceFile": "!              Â§bIce Â§7[32x].zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "a9310b793c8e6be7d7360a1a9a2977f4659b6dcc9f6e24ab4ea990af66db5545",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!              Â§bIce Â§7[32x].zip",
+          "archiveSha256": "a9310b793c8e6be7d7360a1a9a2977f4659b6dcc9f6e24ab4ea990af66db5545",
+          "sourceFile": "!              Â§bIce Â§7[32x].zip",
+          "sourceArchiveSha256": "a9310b793c8e6be7d7360a1a9a2977f4659b6dcc9f6e24ab4ea990af66db5545",
+          "productFile": "!              Â§bIce Â§7[32x].zip",
+          "originalProductFile": "!              Â§bIce Â§7[32x].zip",
+          "productPackId": "Ice_Â32x",
+          "productArchiveSha256": "a9310b793c8e6be7d7360a1a9a2977f4659b6dcc9f6e24ab4ea990af66db5545",
+          "visualContentHash": "d99fa3bd1010fa2b5a4d7b44a867b4be9f01094e17ec48b2b7fa3fcd7eec27bb",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!              Red Oasis.zip:1925f3c4573bc4f91378f9049bc29992d56c0914b07607d8eb085ce6e09f513c",
+      "sourceFile": "!              Red Oasis.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "1925f3c4573bc4f91378f9049bc29992d56c0914b07607d8eb085ce6e09f513c",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!              Red Oasis.zip",
+          "archiveSha256": "1925f3c4573bc4f91378f9049bc29992d56c0914b07607d8eb085ce6e09f513c",
+          "sourceFile": "!              Red Oasis.zip",
+          "sourceArchiveSha256": "1925f3c4573bc4f91378f9049bc29992d56c0914b07607d8eb085ce6e09f513c",
+          "productFile": "!              Red Oasis.zip",
+          "originalProductFile": "!              Red Oasis.zip",
+          "productPackId": "Red_Oasis",
+          "productArchiveSha256": "1925f3c4573bc4f91378f9049bc29992d56c0914b07607d8eb085ce6e09f513c",
+          "visualContentHash": "ffef7e436bc1b03d32e3ac1ed43cbd261e7539954ccb7c04446fc3384d19f301",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!             §5Jitter Private.zip:13fc86827213664e82831ee702aeb25efa8a2783b4eaf6ab4151c529ab1b70bc",
+      "sourceFile": "!             §5Jitter Private.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "13fc86827213664e82831ee702aeb25efa8a2783b4eaf6ab4151c529ab1b70bc",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!             §5Jitter Private.zip",
+          "archiveSha256": "13fc86827213664e82831ee702aeb25efa8a2783b4eaf6ab4151c529ab1b70bc",
+          "sourceFile": "!             §5Jitter Private.zip",
+          "sourceArchiveSha256": "13fc86827213664e82831ee702aeb25efa8a2783b4eaf6ab4151c529ab1b70bc",
+          "productFile": "!             §5Jitter Private.zip",
+          "originalProductFile": "!             §5Jitter Private.zip",
+          "productPackId": "Jitter_Private",
+          "productArchiveSha256": "13fc86827213664e82831ee702aeb25efa8a2783b4eaf6ab4151c529ab1b70bc",
+          "visualContentHash": "b165b9726d15ca37af4d11e86e9ca786b48ef5732225bbbf5aadf59a0348334f",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!             §cHellboi.zip:6f7a7d0c77e200a7f8ac95d115c2fa162a5cc803031296c108215649393d553f",
+      "sourceFile": "!             §cHellboi.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "6f7a7d0c77e200a7f8ac95d115c2fa162a5cc803031296c108215649393d553f",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!             §cHellboi.zip",
+          "archiveSha256": "6f7a7d0c77e200a7f8ac95d115c2fa162a5cc803031296c108215649393d553f",
+          "sourceFile": "!             §cHellboi.zip",
+          "sourceArchiveSha256": "6f7a7d0c77e200a7f8ac95d115c2fa162a5cc803031296c108215649393d553f",
+          "productFile": "!             §cHellboi.zip",
+          "originalProductFile": "!             §cHellboi.zip",
+          "productPackId": "Hellboi",
+          "productArchiveSha256": "6f7a7d0c77e200a7f8ac95d115c2fa162a5cc803031296c108215649393d553f",
+          "visualContentHash": "6fd01496074e10c712b1d7e4da03739cc37f0d8d99ade666a3d81715b58ddd24",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!            §3Tory Eum3 §l[REVAMP].zip:6a05bd626c5432a5d5a22ce5ccf8bf6fa04af5e327d5508bac6acb49167e3de2",
+      "sourceFile": "!            §3Tory Eum3 §l[REVAMP].zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "6a05bd626c5432a5d5a22ce5ccf8bf6fa04af5e327d5508bac6acb49167e3de2",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!            §3Tory Eum3 §l[REVAMP].zip",
+          "archiveSha256": "6a05bd626c5432a5d5a22ce5ccf8bf6fa04af5e327d5508bac6acb49167e3de2"
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T05:31:55.667Z"
+    },
+    {
+      "key": "file:!            §4§lcoler red x128.zip:9f3f3b17ddadd042ce6d66d212d914b0b41062639fa33ddb80e00eae54449537",
+      "sourceFile": "!            §4§lcoler red x128.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "9f3f3b17ddadd042ce6d66d212d914b0b41062639fa33ddb80e00eae54449537",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!            §4§lcoler red x128.zip",
+          "archiveSha256": "9f3f3b17ddadd042ce6d66d212d914b0b41062639fa33ddb80e00eae54449537",
+          "sourceFile": "!            §4§lcoler red x128.zip",
+          "sourceArchiveSha256": "9f3f3b17ddadd042ce6d66d212d914b0b41062639fa33ddb80e00eae54449537",
+          "productFile": "!            §4§lcoler red x128.zip",
+          "originalProductFile": "!            §4§lcoler red x128.zip",
+          "productPackId": "coler_red_x128",
+          "productArchiveSha256": "9f3f3b17ddadd042ce6d66d212d914b0b41062639fa33ddb80e00eae54449537",
+          "visualContentHash": "2973ad0b6093aa60bd95b1ad588b42754eab5978c86634ac3579668672ee60eb",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!            §5§liBeanboy Pack.zip:1d31476b958a73ebe767b63ef901d559ffcdff3434bfa79e3799d1f20026232c",
+      "sourceFile": "!            §5§liBeanboy Pack.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "1d31476b958a73ebe767b63ef901d559ffcdff3434bfa79e3799d1f20026232c",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!            §5§liBeanboy Pack.zip",
+          "archiveSha256": "1d31476b958a73ebe767b63ef901d559ffcdff3434bfa79e3799d1f20026232c",
+          "sourceFile": "!            §5§liBeanboy Pack.zip",
+          "sourceArchiveSha256": "1d31476b958a73ebe767b63ef901d559ffcdff3434bfa79e3799d1f20026232c",
+          "productFile": "!            §5§liBeanboy Pack.zip",
+          "originalProductFile": "!            §5§liBeanboy Pack.zip",
+          "productPackId": "iBeanboy_Pack",
+          "productArchiveSha256": "1d31476b958a73ebe767b63ef901d559ffcdff3434bfa79e3799d1f20026232c",
+          "visualContentHash": "06957f5c4057d41cac00f7e8a8777c05cecfa3525f0eac8cbdaa5e33fc1f6f29",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!            §5§liStrafe Baby Pluto Edit.zip:de67f64bfeec2f1c2d7b55512237fe62612b8e1a98ed0d8d4ae4deb547ff49ef",
+      "sourceFile": "!            §5§liStrafe Baby Pluto Edit.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "de67f64bfeec2f1c2d7b55512237fe62612b8e1a98ed0d8d4ae4deb547ff49ef",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!            §5§liStrafe Baby Pluto Edit.zip",
+          "archiveSha256": "de67f64bfeec2f1c2d7b55512237fe62612b8e1a98ed0d8d4ae4deb547ff49ef",
+          "sourceFile": "!            §5§liStrafe Baby Pluto Edit.zip",
+          "sourceArchiveSha256": "de67f64bfeec2f1c2d7b55512237fe62612b8e1a98ed0d8d4ae4deb547ff49ef",
+          "productFile": "!            §5§liStrafe Baby Pluto Edit.zip",
+          "originalProductFile": "!            §5§liStrafe Baby Pluto Edit.zip",
+          "productPackId": "iStrafe_Baby_Pluto_Edit",
+          "productArchiveSha256": "de67f64bfeec2f1c2d7b55512237fe62612b8e1a98ed0d8d4ae4deb547ff49ef",
+          "visualContentHash": "7a3e4793f1c78e03dbcb191f6644ecfc9031b15e0a849bcdb4cabbd1f5c17acb",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!            §5§lTahmn HCF.zip:243342ecb5db207bdc997ac340d636759f96c9b77f433e87e1661e63dfd73c35",
+      "sourceFile": "!            §5§lTahmn HCF.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "243342ecb5db207bdc997ac340d636759f96c9b77f433e87e1661e63dfd73c35",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!            §5§lTahmn HCF.zip",
+          "archiveSha256": "243342ecb5db207bdc997ac340d636759f96c9b77f433e87e1661e63dfd73c35",
+          "sourceFile": "!            §5§lTahmn HCF.zip",
+          "sourceArchiveSha256": "243342ecb5db207bdc997ac340d636759f96c9b77f433e87e1661e63dfd73c35",
+          "productFile": "!            §5§lTahmn HCF.zip",
+          "originalProductFile": "!            §5§lTahmn HCF.zip",
+          "productPackId": "Tahmn_HCF",
+          "productArchiveSha256": "243342ecb5db207bdc997ac340d636759f96c9b77f433e87e1661e63dfd73c35",
+          "visualContentHash": "2973ad0b6093aa60bd95b1ad588b42754eab5978c86634ac3579668672ee60eb",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!            §7§l Nypos carry.zip:44ab3d99d549a492dc4ce64915cf1c2b257d7cbe21ca69e9035ec2758af7dc55",
+      "sourceFile": "!            §7§l Nypos carry.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "44ab3d99d549a492dc4ce64915cf1c2b257d7cbe21ca69e9035ec2758af7dc55",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!            §7§l Nypos carry.zip",
+          "archiveSha256": "44ab3d99d549a492dc4ce64915cf1c2b257d7cbe21ca69e9035ec2758af7dc55",
+          "sourceFile": "!            §7§l Nypos carry.zip",
+          "sourceArchiveSha256": "44ab3d99d549a492dc4ce64915cf1c2b257d7cbe21ca69e9035ec2758af7dc55",
+          "productFile": "!            §7§l Nypos carry.zip",
+          "originalProductFile": "!            §7§l Nypos carry.zip",
+          "productPackId": "Nypos_carry",
+          "productArchiveSha256": "44ab3d99d549a492dc4ce64915cf1c2b257d7cbe21ca69e9035ec2758af7dc55",
+          "visualContentHash": "bbc98bc59d3ee74f87bdb3c15368ca0177ba76bb51e108a34740eab350a5b833",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!            §aStrafe Baby Pluto Edit.zip:dfa91199417f60db44452c7f6089aa57d196dfde9312a1de81a87aecb83e9789",
+      "sourceFile": "!            §aStrafe Baby Pluto Edit.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "dfa91199417f60db44452c7f6089aa57d196dfde9312a1de81a87aecb83e9789",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!            §aStrafe Baby Pluto Edit.zip",
+          "archiveSha256": "dfa91199417f60db44452c7f6089aa57d196dfde9312a1de81a87aecb83e9789",
+          "sourceFile": "!            §aStrafe Baby Pluto Edit.zip",
+          "sourceArchiveSha256": "dfa91199417f60db44452c7f6089aa57d196dfde9312a1de81a87aecb83e9789",
+          "productFile": "!            §aStrafe Baby Pluto Edit.zip",
+          "originalProductFile": "!            §aStrafe Baby Pluto Edit.zip",
+          "productPackId": "Strafe_Baby_Pluto_Edit",
+          "productArchiveSha256": "dfa91199417f60db44452c7f6089aa57d196dfde9312a1de81a87aecb83e9789",
+          "visualContentHash": "891a71cab7f28d1d2273f14bbae1bc2591b7ab601da6ac240e48e754ef09ea11",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!            §bteiko - sacrity recolor.zip:96b0988ae374b287828f4f47a125cc51a7c8bcb1f94f9da29c79ce3fa291029e",
+      "sourceFile": "!            §bteiko - sacrity recolor.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "96b0988ae374b287828f4f47a125cc51a7c8bcb1f94f9da29c79ce3fa291029e",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!            §bteiko - sacrity recolor.zip",
+          "archiveSha256": "96b0988ae374b287828f4f47a125cc51a7c8bcb1f94f9da29c79ce3fa291029e",
+          "sourceFile": "!            §bteiko - sacrity recolor.zip",
+          "sourceArchiveSha256": "96b0988ae374b287828f4f47a125cc51a7c8bcb1f94f9da29c79ce3fa291029e",
+          "productFile": "!            §bteiko - sacrity recolor.zip",
+          "originalProductFile": "!            §bteiko - sacrity recolor.zip",
+          "productPackId": "teiko_-_sacrity_recolor",
+          "productArchiveSha256": "96b0988ae374b287828f4f47a125cc51a7c8bcb1f94f9da29c79ce3fa291029e",
+          "visualContentHash": "c17b513b6ee85e68a7ce7f80c2da145c26387eae8d41fe58cbaf16c7625ae1e4",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!            §dViolation§f Remake.zip:faec016597eb41a0a814f886834f18a24c0e5fb71513ec7c2ad8aa267247974d",
+      "sourceFile": "!            §dViolation§f Remake.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "faec016597eb41a0a814f886834f18a24c0e5fb71513ec7c2ad8aa267247974d",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!            §dViolation§f Remake.zip",
+          "archiveSha256": "faec016597eb41a0a814f886834f18a24c0e5fb71513ec7c2ad8aa267247974d",
+          "sourceFile": "!            §dViolation§f Remake.zip",
+          "sourceArchiveSha256": "faec016597eb41a0a814f886834f18a24c0e5fb71513ec7c2ad8aa267247974d",
+          "productFile": "!            §dViolation§f Remake.zip",
+          "originalProductFile": "!            §dViolation§f Remake.zip",
+          "productPackId": "Violation_Remake",
+          "productArchiveSha256": "faec016597eb41a0a814f886834f18a24c0e5fb71513ec7c2ad8aa267247974d",
+          "visualContentHash": "bc32654cc34bac84fe9c16d68ecd10a4daf49da45d978bb3ee30e5330236a7c0",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!            §fETR§8 Pack.zip:8a102afd3788c0a4042ffb345323812800fdcbabd085c1e5daf4bdf0071b1c7a",
+      "sourceFile": "!            §fETR§8 Pack.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "8a102afd3788c0a4042ffb345323812800fdcbabd085c1e5daf4bdf0071b1c7a",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!            §fETR§8 Pack.zip",
+          "archiveSha256": "8a102afd3788c0a4042ffb345323812800fdcbabd085c1e5daf4bdf0071b1c7a",
+          "sourceFile": "!            §fETR§8 Pack.zip",
+          "sourceArchiveSha256": "8a102afd3788c0a4042ffb345323812800fdcbabd085c1e5daf4bdf0071b1c7a",
+          "productFile": "!            §fETR§8 Pack.zip",
+          "originalProductFile": "!            §fETR§8 Pack.zip",
+          "productPackId": "ETR_Pack",
+          "productArchiveSha256": "8a102afd3788c0a4042ffb345323812800fdcbabd085c1e5daf4bdf0071b1c7a",
+          "visualContentHash": "215282e34ea517e0596662cfa945774bd0e5fb981485a92c78f3849241eb1c22",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!            §LDay Overlay 2.zip:a81c7d9c3e3ef572efb832351a701dd224df1b8f7f1163b59df3139acbd4d1be",
+      "sourceFile": "!            §LDay Overlay 2.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "a81c7d9c3e3ef572efb832351a701dd224df1b8f7f1163b59df3139acbd4d1be",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!            §LDay Overlay 2.zip",
+          "archiveSha256": "a81c7d9c3e3ef572efb832351a701dd224df1b8f7f1163b59df3139acbd4d1be",
+          "sourceFile": "!            §LDay Overlay 2.zip",
+          "sourceArchiveSha256": "a81c7d9c3e3ef572efb832351a701dd224df1b8f7f1163b59df3139acbd4d1be",
+          "productFile": "!            §LDay Overlay 2.zip",
+          "originalProductFile": "!            §LDay Overlay 2.zip",
+          "productPackId": "Day_Overlay_2",
+          "productArchiveSha256": "a81c7d9c3e3ef572efb832351a701dd224df1b8f7f1163b59df3139acbd4d1be",
+          "visualContentHash": "ae54b4bcd5d7a6724ccbbcad36569d5145b0f57fad58d21c5025b01e6ef8d1e9",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!            #tanzelcore.zip:3cdca17984aaa2b79f5a7f869638f4e3c68dbc122e293c697fd0b4a60ab23828",
+      "sourceFile": "!            #tanzelcore.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "3cdca17984aaa2b79f5a7f869638f4e3c68dbc122e293c697fd0b4a60ab23828",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!            #tanzelcore.zip",
+          "archiveSha256": "3cdca17984aaa2b79f5a7f869638f4e3c68dbc122e293c697fd0b4a60ab23828",
+          "sourceFile": "!            #tanzelcore.zip",
+          "sourceArchiveSha256": "3cdca17984aaa2b79f5a7f869638f4e3c68dbc122e293c697fd0b4a60ab23828",
+          "productFile": "!            #tanzelcore.zip",
+          "originalProductFile": "!            #tanzelcore.zip",
+          "productPackId": "tanzelcore",
+          "productArchiveSha256": "3cdca17984aaa2b79f5a7f869638f4e3c68dbc122e293c697fd0b4a60ab23828",
+          "visualContentHash": "c690c3344ce5664fd872c1edf3d3cbe3edfcdd6bb943f88dc8880abdfdb9cbb8",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!            Deaths Ascension.zip:545bd3692c870af02acf2dbc1b5e414b9fac75665524ffe7be22b8e2f4863783",
+      "sourceFile": "!            Deaths Ascension.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "545bd3692c870af02acf2dbc1b5e414b9fac75665524ffe7be22b8e2f4863783",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!            Deaths Ascension.zip",
+          "archiveSha256": "545bd3692c870af02acf2dbc1b5e414b9fac75665524ffe7be22b8e2f4863783",
+          "sourceFile": "!            Deaths Ascension.zip",
+          "sourceArchiveSha256": "545bd3692c870af02acf2dbc1b5e414b9fac75665524ffe7be22b8e2f4863783",
+          "productFile": "!            Deaths Ascension.zip",
+          "originalProductFile": "!            Deaths Ascension.zip",
+          "productPackId": "Deaths_Ascension",
+          "productArchiveSha256": "545bd3692c870af02acf2dbc1b5e414b9fac75665524ffe7be22b8e2f4863783",
+          "visualContentHash": "01ded240b90abce7889971cae244b91b55aac92bed845c76299dd913b69bc940",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!            madtoni red helmet.zip:32862feb0ce1c52c501f60978e64c4fcdd38b5cc4b1d300a3ae11f867f9a9010",
+      "sourceFile": "!            madtoni red helmet.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "32862feb0ce1c52c501f60978e64c4fcdd38b5cc4b1d300a3ae11f867f9a9010",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!            madtoni red helmet.zip",
+          "archiveSha256": "32862feb0ce1c52c501f60978e64c4fcdd38b5cc4b1d300a3ae11f867f9a9010",
+          "sourceFile": "!            madtoni red helmet.zip",
+          "sourceArchiveSha256": "32862feb0ce1c52c501f60978e64c4fcdd38b5cc4b1d300a3ae11f867f9a9010",
+          "productFile": "!            madtoni red helmet.zip",
+          "originalProductFile": "!            madtoni red helmet.zip",
+          "productPackId": "madtoni_red_helmet",
+          "productArchiveSha256": "32862feb0ce1c52c501f60978e64c4fcdd38b5cc4b1d300a3ae11f867f9a9010",
+          "visualContentHash": "8390e1ef34accc0e36cb9dc0b74ed5bbaa9fcce84940efffff5d75d56222d82d",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!            RNO Private Default Edit.zip:53a49e3ec4df8445fd93ade785fbcb04cd3aa050a3dd39a8b86cd4646f711dbb",
+      "sourceFile": "!            RNO Private Default Edit.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "53a49e3ec4df8445fd93ade785fbcb04cd3aa050a3dd39a8b86cd4646f711dbb",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!            RNO Private Default Edit.zip",
+          "archiveSha256": "53a49e3ec4df8445fd93ade785fbcb04cd3aa050a3dd39a8b86cd4646f711dbb",
+          "sourceFile": "!            RNO Private Default Edit.zip",
+          "sourceArchiveSha256": "53a49e3ec4df8445fd93ade785fbcb04cd3aa050a3dd39a8b86cd4646f711dbb",
+          "productFile": "!            RNO Private Default Edit.zip",
+          "originalProductFile": "!            RNO Private Default Edit.zip",
+          "productPackId": "RNO_Private_Default_Edit",
+          "productArchiveSha256": "53a49e3ec4df8445fd93ade785fbcb04cd3aa050a3dd39a8b86cd4646f711dbb",
+          "visualContentHash": "4506bc2234feb761e0a8a5e451babf428dd31ab7756f18a4128f363eb2cdbd52",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!           §3Kiro FPS V1 Revamp [FPS Friendly].zip:21d5d279b1bc4fc39f6586311961be92dd2517b2944ac9800a7d2e2469ed3357",
+      "sourceFile": "!           §3Kiro FPS V1 Revamp [FPS Friendly].zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "21d5d279b1bc4fc39f6586311961be92dd2517b2944ac9800a7d2e2469ed3357",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!           §3Kiro FPS V1 Revamp [FPS Friendly].zip",
+          "archiveSha256": "21d5d279b1bc4fc39f6586311961be92dd2517b2944ac9800a7d2e2469ed3357",
+          "sourceFile": "!           §3Kiro FPS V1 Revamp [FPS Friendly].zip",
+          "sourceArchiveSha256": "21d5d279b1bc4fc39f6586311961be92dd2517b2944ac9800a7d2e2469ed3357",
+          "productFile": "!           §3Kiro FPS V1 Revamp [FPS Friendly].zip",
+          "originalProductFile": "!           §3Kiro FPS V1 Revamp [FPS Friendly].zip",
+          "productPackId": "Kiro_FPS_V1_Revamp_FPS_Friendly",
+          "productArchiveSha256": "21d5d279b1bc4fc39f6586311961be92dd2517b2944ac9800a7d2e2469ed3357",
+          "visualContentHash": "9a74ae37fd6056fbcd24559d297923598d923443d270f88d04305be04a0e0563",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!           §3Kiro FPS V1 Revamp.zip:c80b818bd73ef46e39655b9f720527af584fc74fd9a50c793c7b1ca1e9e62dff",
+      "sourceFile": "!           §3Kiro FPS V1 Revamp.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "c80b818bd73ef46e39655b9f720527af584fc74fd9a50c793c7b1ca1e9e62dff",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!           §3Kiro FPS V1 Revamp.zip",
+          "archiveSha256": "c80b818bd73ef46e39655b9f720527af584fc74fd9a50c793c7b1ca1e9e62dff",
+          "sourceFile": "!           §3Kiro FPS V1 Revamp.zip",
+          "sourceArchiveSha256": "c80b818bd73ef46e39655b9f720527af584fc74fd9a50c793c7b1ca1e9e62dff",
+          "productFile": "!           §3Kiro FPS V1 Revamp.zip",
+          "originalProductFile": "!           §3Kiro FPS V1 Revamp.zip",
+          "productPackId": "Kiro_FPS_V1_Revamp",
+          "productArchiveSha256": "c80b818bd73ef46e39655b9f720527af584fc74fd9a50c793c7b1ca1e9e62dff",
+          "visualContentHash": "b433a8432cdf38611687ea335548ae0ff585374f05cd57ed9370fc68042a8e18",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!           §4loyalty so priceless.zip:c06df68bdff3738b8b330a16016bdaadbfdd878b60dcf012ee0940ee74d52c3e",
+      "sourceFile": "!           §4loyalty so priceless.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "c06df68bdff3738b8b330a16016bdaadbfdd878b60dcf012ee0940ee74d52c3e",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!           §4loyalty so priceless.zip",
+          "archiveSha256": "c06df68bdff3738b8b330a16016bdaadbfdd878b60dcf012ee0940ee74d52c3e",
+          "sourceFile": "!           §4loyalty so priceless.zip",
+          "sourceArchiveSha256": "c06df68bdff3738b8b330a16016bdaadbfdd878b60dcf012ee0940ee74d52c3e",
+          "productFile": "!           §4loyalty so priceless.zip",
+          "originalProductFile": "!           §4loyalty so priceless.zip",
+          "productPackId": "loyalty_so_priceless",
+          "productArchiveSha256": "c06df68bdff3738b8b330a16016bdaadbfdd878b60dcf012ee0940ee74d52c3e",
+          "visualContentHash": "2b408a00e0464cd1ca100ec4832d1e04730ef2435f9eda6ef241240204981b52",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!           §5Purple 128x.zip:48192f15bb75f73134f8f911d43f4e8cb912d6a10684da0dfd739fc62e8d1330",
+      "sourceFile": "!           §5Purple 128x.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "48192f15bb75f73134f8f911d43f4e8cb912d6a10684da0dfd739fc62e8d1330",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!           §5Purple 128x.zip",
+          "archiveSha256": "48192f15bb75f73134f8f911d43f4e8cb912d6a10684da0dfd739fc62e8d1330"
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T05:31:55.667Z"
+    },
+    {
+      "key": "file:!           §7Xetha§fFaith§f[§4C§2E§f] §f3.1.zip:22ae5235cf5a4977b2c506ef31d22229c48982e47bc336a2c88889bbbdf030ee",
+      "sourceFile": "!           §7Xetha§fFaith§f[§4C§2E§f] §f3.1.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "22ae5235cf5a4977b2c506ef31d22229c48982e47bc336a2c88889bbbdf030ee",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!           §7Xetha§fFaith§f[§4C§2E§f] §f3.1.zip",
+          "archiveSha256": "22ae5235cf5a4977b2c506ef31d22229c48982e47bc336a2c88889bbbdf030ee",
+          "sourceFile": "!           §7Xetha§fFaith§f[§4C§2E§f] §f3.1.zip",
+          "sourceArchiveSha256": "22ae5235cf5a4977b2c506ef31d22229c48982e47bc336a2c88889bbbdf030ee",
+          "productFile": "!           §7Xetha§fFaith§f[§4C§2E§f] §f3.1.zip",
+          "originalProductFile": "!           §7Xetha§fFaith§f[§4C§2E§f] §f3.1.zip",
+          "productPackId": "XethaFaithCE_3.1",
+          "productArchiveSha256": "22ae5235cf5a4977b2c506ef31d22229c48982e47bc336a2c88889bbbdf030ee",
+          "visualContentHash": "f61614b3e18a819ecfa859cd5f9ab0e03a7871d857e75b0ab592c5f1f7facb8f",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!           §9Advisers Block§f Overlay.zip:b54bc7bcb7e7d158cacc3f21e5dcd2064fd8c2b75c090263957182d2b24864e7",
+      "sourceFile": "!           §9Advisers Block§f Overlay.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "b54bc7bcb7e7d158cacc3f21e5dcd2064fd8c2b75c090263957182d2b24864e7",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!           §9Advisers Block§f Overlay.zip",
+          "archiveSha256": "b54bc7bcb7e7d158cacc3f21e5dcd2064fd8c2b75c090263957182d2b24864e7"
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T05:31:55.667Z"
+    },
+    {
+      "key": "file:!           §achevyfps.zip:78f7e1558fa1fa36033ec57bedfa61878c01d183f42a08decc18e94dbb808a5b",
+      "sourceFile": "!           §achevyfps.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "78f7e1558fa1fa36033ec57bedfa61878c01d183f42a08decc18e94dbb808a5b",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!           §achevyfps.zip",
+          "archiveSha256": "78f7e1558fa1fa36033ec57bedfa61878c01d183f42a08decc18e94dbb808a5b",
+          "sourceFile": "!           §achevyfps.zip",
+          "sourceArchiveSha256": "78f7e1558fa1fa36033ec57bedfa61878c01d183f42a08decc18e94dbb808a5b",
+          "productFile": "!           §achevyfps.zip",
+          "originalProductFile": "!           §achevyfps.zip",
+          "productPackId": "chevyfps",
+          "productArchiveSha256": "78f7e1558fa1fa36033ec57bedfa61878c01d183f42a08decc18e94dbb808a5b",
+          "visualContentHash": "6e5a5087cfffdc1522c0e43e4052694fe24585c7cb0835d0aa4db5627265be77",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!           Aspecti 250 subs pack.zip:50b96e820e2dd7ea3515f9cef4a037eefb0e490a2f9cf610d5faea3cd6854877",
+      "sourceFile": "!           Aspecti 250 subs pack.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "50b96e820e2dd7ea3515f9cef4a037eefb0e490a2f9cf610d5faea3cd6854877",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!           Aspecti 250 subs pack.zip",
+          "archiveSha256": "50b96e820e2dd7ea3515f9cef4a037eefb0e490a2f9cf610d5faea3cd6854877"
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!          §3Color§bDerp §8[§7Private§8].zip:feb0da54f953d6e249f78d4f995c811a644626ae3b926e11fcb966d0691b2762",
+      "sourceFile": "!          §3Color§bDerp §8[§7Private§8].zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "feb0da54f953d6e249f78d4f995c811a644626ae3b926e11fcb966d0691b2762",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!          §3Color§bDerp §8[§7Private§8].zip",
+          "archiveSha256": "feb0da54f953d6e249f78d4f995c811a644626ae3b926e11fcb966d0691b2762",
+          "sourceFile": "!          §3Color§bDerp §8[§7Private§8].zip",
+          "sourceArchiveSha256": "feb0da54f953d6e249f78d4f995c811a644626ae3b926e11fcb966d0691b2762",
+          "productFile": "!          §3Color§bDerp §8[§7Private§8].zip",
+          "originalProductFile": "!          §3Color§bDerp §8[§7Private§8].zip",
+          "productPackId": "ColorDerp_Private",
+          "productArchiveSha256": "feb0da54f953d6e249f78d4f995c811a644626ae3b926e11fcb966d0691b2762",
+          "visualContentHash": "680b2e8c04a3e331e74ffa3c3cc40a5db4e0a6eb0a37405c6402233cc728d82b",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!          §4Shinomiya §8[§464§7x§8]§0.zip:fad6a0f978e3e8dc1b4989fab9107dcf3cb7e696e9d4622cfb3b2d652789f423",
+      "sourceFile": "!          §4Shinomiya §8[§464§7x§8]§0.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "fad6a0f978e3e8dc1b4989fab9107dcf3cb7e696e9d4622cfb3b2d652789f423",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!          §4Shinomiya §8[§464§7x§8]§0.zip",
+          "archiveSha256": "fad6a0f978e3e8dc1b4989fab9107dcf3cb7e696e9d4622cfb3b2d652789f423",
+          "sourceFile": "!          §4Shinomiya §8[§464§7x§8]§0.zip",
+          "sourceArchiveSha256": "fad6a0f978e3e8dc1b4989fab9107dcf3cb7e696e9d4622cfb3b2d652789f423",
+          "productFile": "!          §4Shinomiya §8[§464§7x§8]§0.zip",
+          "originalProductFile": "!          §4Shinomiya §8[§464§7x§8]§0.zip",
+          "productPackId": "Shinomiya_64x",
+          "productArchiveSha256": "fad6a0f978e3e8dc1b4989fab9107dcf3cb7e696e9d4622cfb3b2d652789f423",
+          "visualContentHash": "fe230be1eb323b6a09696fb2f04785e9bf2e66431e8f1a4f2a8a2c932f834a74",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!          KAKORRHAPHIOPHOBIA.zip:ba4d5031ed31680d706bb4d6c5b7f85e25b67da5d3fad0fa29303952941f2041",
+      "sourceFile": "!          KAKORRHAPHIOPHOBIA.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "ba4d5031ed31680d706bb4d6c5b7f85e25b67da5d3fad0fa29303952941f2041",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!          KAKORRHAPHIOPHOBIA.zip",
+          "archiveSha256": "ba4d5031ed31680d706bb4d6c5b7f85e25b67da5d3fad0fa29303952941f2041",
+          "sourceFile": "!          KAKORRHAPHIOPHOBIA.zip",
+          "sourceArchiveSha256": "ba4d5031ed31680d706bb4d6c5b7f85e25b67da5d3fad0fa29303952941f2041",
+          "productFile": "!          KAKORRHAPHIOPHOBIA.zip",
+          "originalProductFile": "!          KAKORRHAPHIOPHOBIA.zip",
+          "productPackId": "KAKORRHAPHIOPHOBIA",
+          "productArchiveSha256": "ba4d5031ed31680d706bb4d6c5b7f85e25b67da5d3fad0fa29303952941f2041",
+          "visualContentHash": "bcb5dee64cca9a4b0690ad01010657f41bd9538007cfd5f25863882ccf46f4ae",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!          VENE FPS V2.zip:a59b535e4fb0922f91bc987ee35367e90c7d4844ab665fe0ee36adead43161d8",
+      "sourceFile": "!          VENE FPS V2.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "a59b535e4fb0922f91bc987ee35367e90c7d4844ab665fe0ee36adead43161d8",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!          VENE FPS V2.zip",
+          "archiveSha256": "a59b535e4fb0922f91bc987ee35367e90c7d4844ab665fe0ee36adead43161d8",
+          "sourceFile": "!          VENE FPS V2.zip",
+          "sourceArchiveSha256": "a59b535e4fb0922f91bc987ee35367e90c7d4844ab665fe0ee36adead43161d8",
+          "productFile": "!          VENE FPS V2.zip",
+          "originalProductFile": "!          VENE FPS V2.zip",
+          "productPackId": "VENE_FPS_V2",
+          "productArchiveSha256": "a59b535e4fb0922f91bc987ee35367e90c7d4844ab665fe0ee36adead43161d8",
+          "visualContentHash": "1ebe4269ea55bfc01b37bbc78faf6735692cd37e9b4ec6cd41c6d0ee9d88aec7",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!          Xetha Faith 16x.zip:363feea27a499985637305ad0819408b5b2f1d6c0a93fdd69f0770bc4968b6a2",
+      "sourceFile": "!          Xetha Faith 16x.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "363feea27a499985637305ad0819408b5b2f1d6c0a93fdd69f0770bc4968b6a2",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!          Xetha Faith 16x.zip",
+          "archiveSha256": "363feea27a499985637305ad0819408b5b2f1d6c0a93fdd69f0770bc4968b6a2",
+          "sourceFile": "!          Xetha Faith 16x.zip",
+          "sourceArchiveSha256": "363feea27a499985637305ad0819408b5b2f1d6c0a93fdd69f0770bc4968b6a2",
+          "productFile": "!          Xetha Faith 16x.zip",
+          "originalProductFile": "!          Xetha Faith 16x.zip",
+          "productPackId": "Xetha_Faith_16x",
+          "productArchiveSha256": "363feea27a499985637305ad0819408b5b2f1d6c0a93fdd69f0770bc4968b6a2",
+          "visualContentHash": "ebfff36d801089e7daf386e579c3ae6b8b21a5404fd739ce5f28455a3fbd47d6",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
       "key": "file:!     §3Tory eum3 Revamp.zip:792bb539268cd8a95b97a6691edf2bf1b92a9d0294fd29429a81c49cc44ff39c",
       "sourceFile": "!     §3Tory eum3 Revamp.zip",
       "sourceType": "file",
@@ -40,6 +1255,25 @@
       "status": "planned",
       "firstSeenAt": "2026-08-09T05:48:14.170Z",
       "updatedAt": "2026-08-09T05:48:14.170Z"
+    },
+    {
+      "key": "file:! §3Azure.zip:4901a88b311f99c378ca2352a6a069f44ee4a7aebff18e9b20621e7e7dc69d74",
+      "sourceFile": "! §3Azure.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "4901a88b311f99c378ca2352a6a069f44ee4a7aebff18e9b20621e7e7dc69d74",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "! §3Azure.zip",
+          "archiveSha256": "4901a88b311f99c378ca2352a6a069f44ee4a7aebff18e9b20621e7e7dc69d74"
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T05:31:55.667Z"
     },
     {
       "key": "file:! §6Cayden Remastered.zip:990bf455e9082b9fe602aeff6d4586405826be8bf2b5ce93ab71603fe1ee8b4a",
@@ -103,6 +1337,35 @@
       "updatedAt": "2026-08-09T05:48:14.170Z"
     },
     {
+      "key": "file:! Cayden remake.zip:8ad137dbc33faf21f26605d58214a2bcffa3b2d876243ed3ed01ad0a9369b48a",
+      "sourceFile": "! Cayden remake.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "8ad137dbc33faf21f26605d58214a2bcffa3b2d876243ed3ed01ad0a9369b48a",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "! Cayden remake.zip",
+          "archiveSha256": "8ad137dbc33faf21f26605d58214a2bcffa3b2d876243ed3ed01ad0a9369b48a",
+          "sourceFile": "! Cayden remake.zip",
+          "sourceArchiveSha256": "8ad137dbc33faf21f26605d58214a2bcffa3b2d876243ed3ed01ad0a9369b48a",
+          "productFile": "! Cayden remake.zip",
+          "originalProductFile": "! Cayden remake.zip",
+          "productPackId": "Cayden_remake",
+          "productArchiveSha256": "8ad137dbc33faf21f26605d58214a2bcffa3b2d876243ed3ed01ad0a9369b48a",
+          "visualContentHash": "b45c8204dd635a3b7c255231d6e95a2673230a63218a0def69e47810a4fdcea7",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
       "key": "file:! Yokabi Edit.zip:d8dc4341805bc3f5cbb2f973f95df8ccebf3b38c5bdd8c4347593c493f977d08",
       "sourceFile": "! Yokabi Edit.zip",
       "sourceType": "file",
@@ -120,6 +1383,93 @@
       "status": "planned",
       "firstSeenAt": "2026-08-09T05:48:14.170Z",
       "updatedAt": "2026-08-09T05:48:14.170Z"
+    },
+    {
+      "key": "file:! Zayji and Shene PRIVATE.zip:90a253796fd902ef28adf14ab027ff42c44e8d2f482690c01b0cca66d75cd7bf",
+      "sourceFile": "! Zayji and Shene PRIVATE.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "90a253796fd902ef28adf14ab027ff42c44e8d2f482690c01b0cca66d75cd7bf",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "! Zayji and Shene PRIVATE.zip",
+          "archiveSha256": "90a253796fd902ef28adf14ab027ff42c44e8d2f482690c01b0cca66d75cd7bf",
+          "sourceFile": "! Zayji and Shene PRIVATE.zip",
+          "sourceArchiveSha256": "90a253796fd902ef28adf14ab027ff42c44e8d2f482690c01b0cca66d75cd7bf",
+          "productFile": "! Zayji and Shene PRIVATE.zip",
+          "originalProductFile": "! Zayji and Shene PRIVATE.zip",
+          "productPackId": "Zayji_and_Shene_PRIVATE",
+          "productArchiveSha256": "90a253796fd902ef28adf14ab027ff42c44e8d2f482690c01b0cca66d75cd7bf",
+          "visualContentHash": "1c9af8a6d989857df2b59926adea04bc2288881a528eeb38d2eac859c0ad64b5",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!!§aF§bH§cZ§dR §e1.7.2.zip:b45493f40adc3c48bdfaf99d1e3d7c1b7e3de7b2276dacc28f243c887e7fb607",
+      "sourceFile": "!!§aF§bH§cZ§dR §e1.7.2.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "b45493f40adc3c48bdfaf99d1e3d7c1b7e3de7b2276dacc28f243c887e7fb607",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!!§aF§bH§cZ§dR §e1.7.2.zip",
+          "archiveSha256": "b45493f40adc3c48bdfaf99d1e3d7c1b7e3de7b2276dacc28f243c887e7fb607",
+          "sourceFile": "!!§aF§bH§cZ§dR §e1.7.2.zip",
+          "sourceArchiveSha256": "b45493f40adc3c48bdfaf99d1e3d7c1b7e3de7b2276dacc28f243c887e7fb607",
+          "productFile": "!!§aF§bH§cZ§dR §e1.7.2.zip",
+          "originalProductFile": "!!§aF§bH§cZ§dR §e1.7.2.zip",
+          "productPackId": "FHZR_1.7.2",
+          "productArchiveSha256": "b45493f40adc3c48bdfaf99d1e3d7c1b7e3de7b2276dacc28f243c887e7fb607",
+          "visualContentHash": "5e5a52b842214aa95ebeb65a833938b99ee0ebdc4bfe2ca8ffaf9bf5b99b0661",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
+    },
+    {
+      "key": "file:!# §8NightCorePack 128x128.zip:baf6acdfd3bc62f75634e37674930798a09483996fe2521d361bb2571eb478b7",
+      "sourceFile": "!# §8NightCorePack 128x128.zip",
+      "sourceType": "file",
+      "sourceArchiveSha256": "baf6acdfd3bc62f75634e37674930798a09483996fe2521d361bb2571eb478b7",
+      "normalizationSchemaVersion": 1,
+      "classification": "normal",
+      "label": null,
+      "causes": [],
+      "products": [
+        {
+          "file": "!# §8NightCorePack 128x128.zip",
+          "archiveSha256": "baf6acdfd3bc62f75634e37674930798a09483996fe2521d361bb2571eb478b7",
+          "sourceFile": "!# §8NightCorePack 128x128.zip",
+          "sourceArchiveSha256": "baf6acdfd3bc62f75634e37674930798a09483996fe2521d361bb2571eb478b7",
+          "productFile": "!# §8NightCorePack 128x128.zip",
+          "originalProductFile": "!# §8NightCorePack 128x128.zip",
+          "productPackId": "NightCorePack_128x128",
+          "productArchiveSha256": "baf6acdfd3bc62f75634e37674930798a09483996fe2521d361bb2571eb478b7",
+          "visualContentHash": "087beb5e4b8734cf90b544cdc4fe49781bd2bfe8759f39cea7a935a979f9c39e",
+          "action": "upload_new",
+          "targetRepo": "packs-006",
+          "targetRepoNum": 6
+        }
+      ],
+      "status": "planned",
+      "firstSeenAt": "2026-08-14T05:25:45.644Z",
+      "updatedAt": "2026-08-14T06:11:21.110Z"
     },
     {
       "key": "file:!#Fire.zip:d28c6210d4ee7a3a98aeacd6c7bf208852d8942822fb7d3f8e3f5ac0358a8e27",

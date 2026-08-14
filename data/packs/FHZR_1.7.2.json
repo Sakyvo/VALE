@@ -1,0 +1,61 @@
+{
+  "id": "!!§aF§bH§cZ§dR §e1.7.2",
+  "name": "FHZR_1.7.2",
+  "displayName": "FHZR 1.7.2",
+  "coloredName": "<span style=\"color:#55FF55\">F</span><span style=\"color:#55FFFF\">H</span><span style=\"color:#FF5555\">Z</span><span style=\"color:#FF55FF\">R</span><span style=\"color:#FF55FF\"> </span><span style=\"color:#FFFF55\">1</span><span style=\"color:#FFFF55\">.</span><span style=\"color:#FFFF55\">7</span><span style=\"color:#FFFF55\">.</span><span style=\"color:#FFFF55\">2</span>",
+  "description": "Tek Pak",
+  "cover": "/thumbnails/FHZR_1.7.2/cover.png",
+  "packPng": "/thumbnails/FHZR_1.7.2/pack.png",
+  "icon": null,
+  "file": "resourcepacks/!!§aF§bH§cZ§dR §e1.7.2.zip",
+  "fileSize": "30.4MB",
+  "uploadDate": "2026-08-14",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/!!%C2%A7aF%C2%A7bH%C2%A7cZ%C2%A7dR%20%C2%A7e1.7.2.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/!!%C2%A7aF%C2%A7bH%C2%A7cZ%C2%A7dR%20%C2%A7e1.7.2.zip"
+  }
+}

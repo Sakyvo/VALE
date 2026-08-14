@@ -2,6 +2,56 @@
   "schemaVersion": 1,
   "entries": [
     {
+      "sourceFile": "!                                                not complete - 0zi.zip",
+      "sourcePackId": "not_complete_-_0zi",
+      "archiveSha256": "676d01f74f83aea9f0f23be8f156ef5fe13026e5bc864a68e3ee64c9c897ec56",
+      "visualContentHash": "4847ae6251963b5c02f0c889d3e57813c5c1ce5a535a64107ac000df9b4e53cc",
+      "retainedFile": "aye.zip",
+      "retainedPackId": "aye",
+      "reason": "issue_020_pilot_duplicate_retain_existing",
+      "resolvedAt": "2026-08-14T06:17:22.434Z"
+    },
+    {
+      "sourceFile": "!                          x_x.zip",
+      "sourcePackId": "x_x",
+      "archiveSha256": "dd8d9d6a6665cbb59533abd3c123a15e7e545d0112dda51070f42c973b87b0bc",
+      "visualContentHash": "ff52f7f99f4561f64949595e661e1f1a7d7a3a66eca6e668fe96fb069954abae",
+      "retainedFile": "! x_x.zip",
+      "retainedPackId": "x_x",
+      "reason": "existing_pack_id_exact_content",
+      "resolvedAt": "2026-08-14T06:17:22.434Z"
+    },
+    {
+      "sourceFile": "!              _  dynamic duo venexis iceblue.zip",
+      "sourcePackId": "Dynamic_Duo_venexis_iceblue",
+      "archiveSha256": "9e068d8c0079fabcb243c4c53fc817d113a402423bf9e80310f421c3cacfe3d7",
+      "visualContentHash": "5ad8d5fe550f791f52dc903941f2fc4259b6a8350285f63344f9349cb684c2fc",
+      "retainedFile": "!  Dynamic Duo venexis iceblue.zip",
+      "retainedPackId": "Dynamic_Duo_venexis_iceblue",
+      "reason": "existing_pack_id_exact_content",
+      "resolvedAt": "2026-08-14T06:17:22.434Z"
+    },
+    {
+      "sourceFile": "!              §dBubbleGum §7[32x].zip",
+      "sourcePackId": "BubbleGum_32x",
+      "archiveSha256": "a4d1902632be8cf030cf0603e8d85251110de772933c32a0f19d73ea092649ec",
+      "visualContentHash": "ca867c7cdf377a0d6db7e714fd5fa300cbf7a049bbdcb2f4a85c6eabe771fdea",
+      "retainedFile": "! §dBubbleGum §7[32x].zip",
+      "retainedPackId": "BubbleGum_32x",
+      "reason": "existing_pack_id_exact_content",
+      "resolvedAt": "2026-08-14T06:17:22.434Z"
+    },
+    {
+      "sourceFile": "!           Aspecti 250 subs pack.zip",
+      "sourcePackId": "Aspecti_250_subs_pack",
+      "archiveSha256": "50b96e820e2dd7ea3515f9cef4a037eefb0e490a2f9cf610d5faea3cd6854877",
+      "visualContentHash": "a6f238c29c45a67d8edbbdb0737157e57a137f0c93f53eb58d7fb08525666cc4",
+      "retainedFile": "!           Aspecti 250 subs pack.zip",
+      "retainedPackId": "Aspecti_250_subs_pack",
+      "reason": "existing_pack_id_exact_content",
+      "resolvedAt": "2026-08-14T06:17:22.434Z"
+    },
+    {
       "sourceFile": "!       §1TEST.zip",
       "sourcePackId": "TEST",
       "archiveSha256": "efc3257ff82cd5ae396acf3a1fb618264a9eb9fa1a038377a2d458d3aaba3e09",

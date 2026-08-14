@@ -1,0 +1,61 @@
+{
+  "id": "!            RNO Private Default Edit",
+  "name": "RNO_Private_Default_Edit",
+  "displayName": "RNO Private Default Edit",
+  "coloredName": "RNO Private Default Edit",
+  "description": "Made By: lastings",
+  "cover": "/thumbnails/RNO_Private_Default_Edit/cover.png",
+  "packPng": "/thumbnails/RNO_Private_Default_Edit/pack.png",
+  "icon": null,
+  "file": "resourcepacks/!            RNO Private Default Edit.zip",
+  "fileSize": "7.5MB",
+  "uploadDate": "2026-08-14",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/!%20%20%20%20%20%20%20%20%20%20%20%20RNO%20Private%20Default%20Edit.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/!%20%20%20%20%20%20%20%20%20%20%20%20RNO%20Private%20Default%20Edit.zip"
+  }
+}

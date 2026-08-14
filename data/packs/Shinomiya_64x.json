@@ -1,0 +1,61 @@
+{
+  "id": "!          §4Shinomiya §8[§464§7x§8]§0",
+  "name": "Shinomiya_64x",
+  "displayName": "Shinomiya [64x]",
+  "coloredName": "<span style=\"color:#AA0000\">S</span><span style=\"color:#AA0000\">h</span><span style=\"color:#AA0000\">i</span><span style=\"color:#AA0000\">n</span><span style=\"color:#AA0000\">o</span><span style=\"color:#AA0000\">m</span><span style=\"color:#AA0000\">i</span><span style=\"color:#AA0000\">y</span><span style=\"color:#AA0000\">a</span><span style=\"color:#AA0000\"> </span><span style=\"color:#555555\">[</span><span style=\"color:#AA0000\">6</span><span style=\"color:#AA0000\">4</span><span style=\"color:#AAAAAA\">x</span><span style=\"color:#555555\">]</span>",
+  "description": "",
+  "cover": "/thumbnails/Shinomiya_64x/cover.png",
+  "packPng": "/thumbnails/Shinomiya_64x/pack.png",
+  "icon": null,
+  "file": "resourcepacks/!          §4Shinomiya §8[§464§7x§8]§0.zip",
+  "fileSize": "19.7MB",
+  "uploadDate": "2026-08-14",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/!%20%20%20%20%20%20%20%20%20%20%C2%A74Shinomiya%20%C2%A78%5B%C2%A7464%C2%A77x%C2%A78%5D%C2%A70.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/!%20%20%20%20%20%20%20%20%20%20%C2%A74Shinomiya%20%C2%A78%5B%C2%A7464%C2%A77x%C2%A78%5D%C2%A70.zip"
+  }
+}
