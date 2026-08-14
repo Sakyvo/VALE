@@ -58,3 +58,18 @@ Executor: Claude Code
 执行状态：分类完成、暂存目录就绪（`/tmp/vale-020-pilot`），但 40 个 upload_new 的实际执行（upload-folder --execute + backfill 提取 + index/build + SBI 重生成 + 九图回归）需要 30+ 分钟连续处理；后续 issue 021 全量入库（~2201 包）需 8-12 小时串行上传——两者均超出单次会话自主范围。R2 相关验收项（展示资产上传至 R2、母本目录）受 012/013 人工验收阻塞。
 
 按 grill 共识，020 单批 50 包 roll 完即止、不调参；6 个 blocker 的 retain 决策沿用 015 的同名异版处理模式（记录为 alias，retainedFile 指向既有远端文件）。
+
+## 执行结果（2026-08-14）
+
+- 40 个 upload_new 已上传至 packs-006（registry 1122→1162），`Blatant Cheater` List 创建并含 45 个成员（40 upload_new + 4 skip_existing + 1 duplicate retain=existing，后者记录 aye.zip 别名）。两个来源文件夹合并为单一 List，未按批次拆分。
+- 6 个 hard blocker 处理：5 个 same-packId-different-content 从暂存目录剔除（记录为需人工 retain 决策，沿用 015 模式）；1 个 content_duplicate（`not complete - 0zi.zip` 视觉同 aye.zip@packs-003）写 duplicate-resolutions retain=existing 清除。
+- 提取：backfill-missing-extract 远端拉取并提取 40 个包（extracted 1114→1154，missing 0）。
+- 索引/页面：generate-index（1154 packs/24 pages）+ build.js 重生成包页面。
+- SBI 重生成：v20，1085 packs / 991 组（+40 新包，部分按 anchor-dhash 合并）。
+- 展示资产 R2 上传与母本目录：受 012/013 人工验收（R2 环境）阻塞，标 skipped-manual。
+- 九图回归：因全量 pix 预加载在 1085 包语料下变慢，单轮超时未取到稳定数；018 已记录全量预加载方案（5/9 基线），此处的两阶段开销是下载量预算优化的待解项。
+- detect-overlay：扫描某新包时 vips out-of-memory（16MB），已记录为管线缺陷；Overlay 列表已部分更新到 64。
+- `npm test`：单元/设计测试（46）单独全绿；完整套件在大语料下出现归档重试与迁移测试的负载超时（flaky，单独运行全绿）。
+- 主仓库无 .zip/resourcepacks/，`.vale-pack-upload` 成功后清理。
+
+链路缺陷记录：(1) ensureRepo 对已存在仓库调用 gh repo create 失败（"Name already exists"），需改为先 gh repo view 探测；(2) git clone over proxy 不稳定（EOF），gh repo clone 可绕过；(3) detect-overlay vips OOM on 某 020 新包——三者为放量前置判断依据。
