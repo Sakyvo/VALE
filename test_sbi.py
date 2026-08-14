@@ -354,6 +354,13 @@ async def main():
             # Wait for SBI page ready
             try:
                 await wait_for(ws, "!!window.__sbiTest && !!document.getElementById('sbi-results')", timeout=30)
+                # Issue 018: headless Edge may serve a stale cached sbi.js across runs
+                # (the profile dir is fresh but the shared code cache is not). Force one
+                # cache-busting reload so the JS under test is the freshly built one.
+                await cdp_call(ws, "Network.enable")
+                await cdp_call(ws, "Network.setCacheDisabled", {"cacheDisabled": True})
+                await cdp_call(ws, "Page.reload", {"ignoreCache": True})
+                await wait_for(ws, "!!window.__sbiTest && !!document.getElementById('sbi-results')", timeout=30)
             except TimeoutError:
                 state = await cdp_eval(ws, """
                     JSON.stringify({

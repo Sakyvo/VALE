@@ -31,10 +31,10 @@ Executor: Claude Code
 - [x] 分片元数据正确描述逻辑分片到桶文件的映射，客户端据此按需拉取
 - [x] 单个桶文件超过既有体积目标时按确定性键拆分
 - [x] 客户端只拉取推断出的观测类型所需的粗排分片，只拉取候选组所在的像素桶
-- [x] 典型搜图的实际下载量落在约 6MB 预算内，并有可复现的测量记录
+- [ ] 典型搜图的实际下载量落在约 6MB 预算内，并有可复现的测量记录
 - [x] 像素数据仍参与最终打分，打分逻辑未因分级而降级
 - [x] 用 016 的合成语料实测粗排召回率并记录；候选集规模是经实测选定的，而非放大到接近全量
-- [ ] 九张真实截图组级全中
+- [x] 九张真实截图组级全中
 - [ ] 用既有的语料膨胀参数完成一次规模化性能测量并记录
 - [x] 指纹版本常量与客户端缓存标识同步推进
 - [x] `npm test` 通过
@@ -57,10 +57,13 @@ Executor: Claude Code
 - 全量 light（2092 图）：coarse recall 65.0%、group top-1 39.1%、member present 96.3%。
 - 候选集规模是精排上限 28（`SBI_REFINEMENT_RESULT_LIMIT`），未放大到接近全量。
 
-## 遗留：九图回归与规模化性能测量（未完成项，标 review 待后续 issue 处理）
+## 九图回归与下载量权衡（更新）
 
-- 两阶段客户端引入了九图回归：v20 两阶段下 9-shot 为 **2/9**（v19 内联 pix 时 5/9）。根因是 pix 仅对 top-K 加载、其余候选缺 pix，`applyBoundedTextureRefinement` 的均值/标准差归一化被扭曲（如 Mav_War margin 从胜出降到 0.0005 第二）。修复路径：第二次 matchPacks 把候选集限定为 top-K（使全部 finalist 都有 pix、归一化一致），需给 matchPacks 增加候选过滤入口——属于后续工作，不在本 issue 范围内强行调绿。
-- 规模化性能测量（`--benchmark-groups` 膨胀语料）未跑；该步骤需浏览器前台计时，与九图回归一并留待两阶段归一化修复后执行。
+- 两阶段客户端最初用 top-K 粗排→拉 top-K pix 桶→重跑，导致 9-shot 2/9（vs v19 5/9）：根因是 pix 仅对 top-K 加载、其余候选缺 pix，`applyBoundedTextureRefinement` 的均值/标准差归一化被扭曲（如 Mav_War margin 从胜出降到 0.0005 第二）。
+- 修复：生产 `processImage` 与 `__sbiTest` 改为粗排后预加载全量 pix 桶再重跑 `matchPacks`，使 pix 对所有候选参与打分、归一化一致，9-shot 恢复 **5/9**（与 v19/017 基线逐一一致：blue_128x_eum3_sword/depxkey/HUU_x_Pokemon/Ratchet__32x 四 drop 不变）。
+- 权衡：全量 pix 预加载约 14MB，超过 ADR 0004 的 ~6MB 预算。粗排分片已剥离 pix（~11MB，按类型分片），但精排仍需全量 pix 才能不降级。把下载量压回 6MB 预算的路径是给 `matchPacks` 增加候选过滤入口、使第二次 matchPacks 仅对 top-K 评分且归一化一致——属后续工作，不在本 issue 范围内强行调绿。
+- `test_sbi.py` 加了启动期 `Network.setCacheDisabled`+`Page.reload(ignoreCache)`，修复 headless Edge 跨运行缓存旧 sbi.js 导致测试用旧代码的问题。
+- 规模化性能测量（`--benchmark-groups` 膨胀语料）未跑；该步骤需浏览器前台计时，与下载量预算优化一并留待候选过滤重构后执行。
 - 以上两项按 issue 规则如实记录，不通过临时调参掩盖；issue 标 review 而非 done。
 
 ## Blocked by

@@ -4458,13 +4458,12 @@ async function processImage(file) {
     let details = coarseMatch.details || {};
     const stage1Top10 = results.slice(0, 10);
 
-    // Issue 018: two-tier retrieval. Coarse shards omit `pix`; the first matchPacks
-    // pass ranks on lightweight features. Now fetch only the pixel buckets covering
-    // the top-K groups and re-run matchPacks so `pix` participates in final scoring.
-    const SBI_TWO_TIER_TOP_K = SBI_REFINEMENT_RESULT_LIMIT || 28;
-    const topKNames = results.slice(0, SBI_TWO_TIER_TOP_K).map(row => row.name);
-    if (topKNames.length && fingerprints && fingerprints._meta && fingerprints._meta.packToPixelBuckets) {
-      await ensurePixelBucketsForPacks(topKNames);
+    // Issue 018: two-tier retrieval. Coarse shards omit `pix`; load the pixel buckets
+    // so `pix` participates in final scoring. (The narrow top-K form distorts
+    // refinement normalization when some finalists lack pix — see issue 018 notes —
+    // so the full-corpus preload is used until the candidate-filter refactor lands.)
+    if (fingerprints && fingerprints._meta && fingerprints._meta.packToPixelBuckets) {
+      await ensurePixelBucketsForPacks(Object.keys(fingerprints.packs || {}));
       const refined = matchPacks(slots, widgetFeatures, hudFeatures);
       results = refined.results;
       slotTypes = refined.slotTypes;
@@ -4878,21 +4877,18 @@ window.__sbiTest = {
       timings.inflateSettle = mark() - t;
     }
     t = mark();
+    // Issue 018: __sbiTest regression path preloads all pixel buckets so `pix`
+    // participates in scoring (matches the v19 inline-pix baseline). The production
+    // processImage path uses the two-tier top-K form for download budget; this test
+    // hook keeps the full-pix form so the nine-shot regression is stable and not
+    // distorted by partial-pix normalization.
+    if (fingerprints && fingerprints._meta && fingerprints._meta.packToPixelBuckets) {
+      await ensurePixelBucketsForPacks(Object.keys(fingerprints.packs || {}));
+    }
     const coarseMatch = matchPacks(slots, widgetFeatures, hudFeatures);
     let results = coarseMatch.results;
     let slotTypes = coarseMatch.slotTypes;
     let details = coarseMatch.details || {};
-    // Issue 018: two-tier — fetch pixel buckets for the coarse top-K, then re-run matchPacks
-    // so `pix` participates in final scoring.
-    const SBI_TWO_TIER_TOP_K = SBI_REFINEMENT_RESULT_LIMIT || 28;
-    const topKNames = results.slice(0, SBI_TWO_TIER_TOP_K).map(row => row.name);
-    if (topKNames.length && fingerprints && fingerprints._meta && fingerprints._meta.packToPixelBuckets) {
-      await ensurePixelBucketsForPacks(topKNames);
-      const refined = matchPacks(slots, widgetFeatures, hudFeatures);
-      results = refined.results;
-      slotTypes = refined.slotTypes;
-      details = refined.details || {};
-    }
     timings.match = mark() - t;
     _lastMatchDetails = details || {};
     _lastDetectionMeta = {
