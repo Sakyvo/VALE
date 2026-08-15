@@ -54,3 +54,19 @@ Executor: Claude Code
 - 管线缺陷（020 记录的 3 项）需在放量前修复：ensureRepo 探测已存在仓库、gh repo clone 绕过 proxy、detect-overlay vips OOM。
 
 剩余验收项（R2 相关 + 九图 + 全量评估 + 性能测量）受 012/013 R2 人工验收与 8-12 小时上传阻塞，按 issue 规则如实记录、不调参。
+
+## 放量执行尝试与阻塞（2026-08-15，autonomous continuation #66-#81）
+
+本轮在 016-020 全部完成并推送后，继续推进 021 的自主可完成部分，遇到三道无法在会话内自主跨过的硬墙：
+
+1. **全量 dry-run 无法在前台跑完**：`node scripts/upload-folder.js --source "D:/Blatant Cheater" --recursive --list 'Blatant Cheater' --dry-run` 在后台 nohup 运行 ~85 分钟仍未写出任何分类输出；CPU 时间累计 ≥2h53m（zip-unpack 内容指纹对 2754 个归档逐个串行计算，重 CPU）。前台 600s 超时写不出 manifest（与之前一致）。该分类是识别同名异版(content_conflict)与视觉重复(content_duplicate)的输入，无它则无法排定 retain 决策与剔除文件。
+
+2. **content_conflict 同名异版需人工 retain 决策**：packId 已存在但视觉内容相异的包，按项目二阶段核验流程与「用户决策至上」法则，AI 不得自动 retain/替换（015/020 已留为人工 review）。全量 2754 包中此类 content_differs 的数量与清单，正需墙 1 的 dry-run 产出——而它在前台跑不完。
+
+3. **全量上传 8-12 小时串行**：upload-folder.js 无并发选项，~2000 个 upload_new 包需 8-12 小时串行上传至 packs-007~010。按项目 AGENTS「不要在前台测试上阻塞目标，跳过扰桌面的事、最后移交一份人工验收清单」，此步须人工分批监控执行。
+
+**本轮自主完成的 021 前置工作（均已 commit + push 到 origin/main）**：
+- 修复 020 暴露的 3 个管线缺陷（commit b6046486）：ensureRepo 对已存在仓库先 `gh repo view` 探测再 `gh repo create`；git clone over proxy EOF 时 fallback 到 `gh repo clone`（已验证可绕过 proxy 拉满 packs-006）；detect-overlay `pixelHash` 对 8MB+ 原始缓冲加超尺寸守卫（消除 vips 16MB OOM），Overlay 列表 63→68。
+- 新增 `--recursive` 标志（commit 252deb72）：upload-folder 可直接读 `D:/Blatant Cheater` 下 less/ more/ 子目录，无需 63GB 重复拷贝（D 盘无 126GB 空间，拷贝测过 No space left on device）。
+
+至此 016-020 end-to-end 完成；021 的所有可自主完成的前置都已落地，剩余三道墙需用户行动：(a) 在能跑完整前台的机器或分批源上跑出 dry-run 分类；(b) 对 content_differs 同名异版逐条人工 retain；(c) 接受 8-12 小时串行上传并分批执行。
