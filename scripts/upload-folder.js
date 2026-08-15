@@ -54,6 +54,7 @@ function parseArgs(argv) {
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
     if (arg === '--source') out.source = argv[++i];
+    else if (arg === '--recursive') out.recursive = true;
     else if (arg === '--list') out.list = argv[++i];
     else if (arg === '--workdir') out.workdir = argv[++i];
     else if (arg === '--manifest') out.manifest = argv[++i];
@@ -75,7 +76,7 @@ function parseArgs(argv) {
     }
     else throw new Error(`Unknown argument: ${arg}`);
   }
-  if (!out.source) throw new Error('Usage: node scripts/upload-folder.js --source <folder> [--list Sakyvo] [--execute]');
+  if (!out.source) throw new Error('Usage: node scripts/upload-folder.js --source <folder> [--list Sakyvo] [--execute] [--recursive]');
   return out;
 }
 
@@ -102,21 +103,25 @@ function writeJson(file, data) {
   fs.writeFileSync(file, JSON.stringify(data, null, 2));
 }
 
-function getSourceFiles(source) {
-  return fs.readdirSync(source, { withFileTypes: true })
-    .filter(entry => !isJunkName(entry.name))
-    .map(entry => {
-      const file = entry.name;
-      const fullPath = path.join(source, file);
+function getSourceFiles(source, recursive = false) {
+  const gather = (dir, acc) => {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      if (isJunkName(entry.name)) continue;
+      const fullPath = path.join(dir, entry.name);
+      if (entry.isDirectory() && recursive) { gather(fullPath, acc); continue; }
+      if (!entry.isFile() && !entry.isSymbolicLink()) continue;
       const stat = fs.lstatSync(fullPath);
-      return {
-        file,
+      acc.push({
+        file: entry.name,
         path: fullPath,
         size: stat.size,
         mtime: stat.mtimeMs,
-        packId: getPackIdFromZipName(file),
-      };
-    })
+        packId: getPackIdFromZipName(entry.name),
+      });
+    }
+    return acc;
+  };
+  return gather(source, [])
     .sort((a, b) => a.mtime - b.mtime || a.file.localeCompare(b.file));
 }
 
@@ -358,7 +363,7 @@ async function buildPlan(opts, services = {}) {
   const registry = readJson(registryPath, {});
   const index = readJson(siteIndexPath, { items: [] });
   const existingIds = new Map(index.items.map(p => [p.name.toLowerCase(), p.name]));
-  const sourceFiles = getSourceFiles(opts.source);
+  const sourceFiles = getSourceFiles(opts.source, opts.recursive);
   const normalized = await normalizeSourceFiles(sourceFiles, opts, services);
   const normalizedFiles = normalized.products;
   const fingerprintFn = services.fingerprintPack || fingerprintPack;
