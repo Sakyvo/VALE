@@ -70,3 +70,9 @@ Executor: Claude Code
 - 新增 `--recursive` 标志（commit 252deb72）：upload-folder 可直接读 `D:/Blatant Cheater` 下 less/ more/ 子目录，无需 63GB 重复拷贝（D 盘无 126GB 空间，拷贝测过 No space left on device）。
 
 至此 016-020 end-to-end 完成；021 的所有可自主完成的前置都已落地，剩余三道墙需用户行动：(a) 在能跑完整前台的机器或分批源上跑出 dry-run 分类；(b) 对 content_differs 同名异版逐条人工 retain；(c) 接受 8-12 小时串行上传并分批执行。
+
+## R2 链路已实测（2026-08-15 更新）
+
+[推动 012 翻done] 012 的人工信验收已由用户在 Cloudflare 控制台完成（bucket+域名+CORS+token），`$hyGuy$` 34 个纹理已通过 `node scripts/upload-assets.js` 真实上传到 `vale-assets` bucket，验证了抽屉 URL（`/%24hyGuy%24/cover.png`）返回 HTTP 200、`Access-Control-Allow-Origin: https://vale.cc.cd` 生效、重跑幂等。account 中已记录：`data/asset-base.json` 的 `remote.packs` 含 `$hyGuy$`，index.json 对应条目已注入 `assetBase` 字段。ENTRY 视为通过。
+
+021 的 R2 相关验收项（全量的展示资产迁移、母本目录、及最终四倍规模评估）仍与 012/013 人工信验收并行，不阻塞上传执行；012 done 意味着 021 无须再等 R2 环境基建。

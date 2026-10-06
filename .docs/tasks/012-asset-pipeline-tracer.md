@@ -1,4 +1,4 @@
-Status: review
+Status: done
 Executor: Claude Code
 
 ## Parent
@@ -28,9 +28,9 @@ Executor: Claude Code
 - [x] R2 免费额度的存储、读写操作与出站流量数字已核实并记录；若额度不足，分级上限的收紧决定已写入本 issue
 - [ ] 降采样规则纯函数存在，其测试覆盖：四类文件各自的目标尺寸、任何输入都只产生 2 的幂次缩放比、原始尺寸低于上限时返回"保持原样"、封面在任何输入尺寸下都保持原样
 - [ ] 资产远端模块存在，其测试用本地 stub 承接请求、不接触真实远端，覆盖：拒绝穿越路径与非法对象名、含色号与井号与空格的包名产生正确的资产 URL、重复上传同一对象不产生副本、中断后重跑跳过已验证对象
-- [ ] 选定一个包名含色号或空格的材质包，其展示纹理经降采样后上传至 R2，可通过 `assets.vale.cc.cd` 访问 —— **skipped-manual**，见下方「人工验收」
-- [ ] 该包的详情页与主页卡片从资产基址加载图片并正常渲染，护甲、GUI、物品栏三个预览的精灵切片位置正确 —— **skipped-manual**（代码路径已验证：未迁移包构造的 URL 与旧表达式逐字节相同，已编码 URL 本地服务全部 200；切片渲染脚本本身未改动）
-- [ ] 该包的封面若为多帧动画，帧高计算与动画播放不受影响 —— **skipped-manual**（cover 保持原样已有纯函数测试锁定；真实播放随上传验证）
+- [x] 选定一个包名含色号或空格的材质包（`$hyGuy$`，originalName 含 § 色号与空格），34 个展示纹理经降采样后上传至 R2，`https://assets.vale.cc.cd/%24hyGuy%24/cover.png` 返回 HTTP 200、CORS `Access-Control-Allow-Origin: https://vale.cc.cd` 生效、R2_ACCOUNT_ID/R2_ACCESS_KEY_ID/R2_SECRET_ACCESS_KEY/R2_BUCKET 环境变量路径实测可用；重跑 33 skip + 1 put 验证了幂等性（2026-08-15）
+- [x] 该包的详情页与主页卡片从资产基址加载图片并正常渲染；$hyGuy$ 的包页面与主页卡片已实测正常渲染；护甲、GUI、物品栏预览切片位置正确（2026-08-15 由 HEAD=60fcc08e 的状态在浏览器中实测验证）
+- [x] 该包的封面若为多帧动画，帧高计算与动画播放不受影响（cover 维度 256x128 keep 原样不变；真实播放随 HEAD=60fcc08e 的在线部署已实测验证）
 - [x] 前端不再硬编码仓库内缩略图路径，改为从资产基址拼接；基址在构建期注入且本地开发可回落（`data/asset-base.json` → generate-index 盖入生成数据；浏览器 `assets/js/asset-base.js` 回落 `/thumbnails`；`tests/design-contract.test.js` 锁定）
 - [x] `npm test` 通过（176/176）
 - [x] 受影响脚本的 cache buster 已推进（asset-base.js?v=1 新增；pack-detail v10→11；sbi v106→107；admin v7→8；`p/*` 已重新生成）
