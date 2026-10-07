@@ -35,7 +35,11 @@ function buildObjectKey(pack, file) {
 }
 
 function encodeKey(key) {
-  return key.split('/').map(encodeURIComponent).join('/');
+  // S3 SigV4 canonical URI: every path segment must be strictly URI-encoded —
+  // only RFC 3986 unreserved characters stay literal. encodeURIComponent leaves
+  // !'()* untouched, which mismatches what S3 computes server-side for those
+  // bytes (observed as HEAD 403 for pack names containing parentheses).
+  return key.split('/').map(segment => encodeURIComponent(segment).replace(/[!'()*]/g, ch => `%${ch.charCodeAt(0).toString(16).toUpperCase()}`)).join('/');
 }
 
 function buildAssetUrl(publicBase, pack, file) {

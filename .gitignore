@@ -4,5 +4,13 @@ node_modules/@huggingface/transformers/.cache/
 __pycache__/
 /extract-retry/
 
+# Issue 013: display textures no longer enter the repo or the Pages artifact.
+# The authoritative full-resolution masters live in D:/vale-masters/ (outside the
+# repo); this local copy is a working cache for extraction/SBI/uploads and is
+# recoverable from the masters dir or from packs-NNN at any time.
+/thumbnails/
+D:/vale-masters/
+
 # Synthetic SBI evaluation corpus (regenerated on demand by scripts/generate-synthetic-corpus.js)
 /test_img/synthetic/
+
