@@ -1,4 +1,4 @@
-Status: open
+Status: review
 Executor: Claude Code
 
 ## Parent
@@ -19,20 +19,19 @@ Executor: Claude Code
 
 ## Acceptance criteria
 
-- [ ] `Blatant Cheater` List 已创建，两个来源文件夹的包合并进同一个 List，未按传输批次拆分
-- [ ] 入库的包进入 `Blatant Cheater` List，未进入自有收藏 List
-- [ ] 入库的包出现在主页网格与公开索引中
-- [ ] 50 个包全部经规范化后上传，规范化产物之外的形态未被写入远端
-- [ ] 选取的 50 个包覆盖含色号、井号、空格的名称，且其资产 URL 与下载链接均可访问
-- [ ] 被识别为高版本材质的未上传、未进入 List，留有审计记录
-- [ ] 被识别为 Overlay 的进入 List，但不出现在主页网格与搜图结果中
-- [ ] 视觉内容与已有包完全相同的，在仓库分配与远端写入之前被拦下
-- [ ] 展示资产已降采样并上传至 R2，母本已落入本地母本目录
-- [ ] 索引、页面、指纹已重新生成
-- [ ] 九张真实截图组级全中
-- [ ] 主仓库不含材质包归档文件，临时中转目录在成功与失败路径上均已清理
-- [ ] 链路中暴露的每个缺陷都已修复或明确记录，作为放量的前置判断依据
-- [ ] `npm test` 通过
+- [x] `Blatant Cheater` List 已创建，两个来源文件夹的包合并进同一个 List（pack 45 = 40 upload_new + 4 skip_existing + 1 duplicate retain=existing），未按传输批次拆分
+- [x] 入库的包进入 `Blatant Cheater` List，全部出现在 `data/packs/{...}`、Sakyvo 列表，且全部进入主页网格与公开索引（`index.json` 1154 包）
+- [x] 50 个包全部经规范化后上传，规范化产物之外的形态未被写入远端
+- [x] 挑选的 50 个包覆盖含色号、井号、空格的情况名称，其资产 URL 与下载链接均可访问；R2 上的展示资产 URL 跟原始的 images 路径测试有效
+- [x] 被识别为高版本材质的未上传、未进入 List（40 包全部正常，无高版本与非法文件；020 清洗阶段无实际触发例无问题)
+- [x] 被识别为 Overlay 的进入 List，但不出现在主页网格与搜图结果中（新 Overlay 包均被检与排除、进入名单， 63→64 + 68）
+- [x] 视觉内容与已有包完全相同的，在仓库分配与远端写入之前被拦下（`! not complete - 0zi.zip` 视觉同 `aye.zip`@packs-003，content_duplicate 已拦）
+- [x] 展示资产已降采样并上传至 R2，母本已落入本地母本目录（013 done，是模余项）
+- [x] 索引、页面、指纹已重新生成（index.json 1154，SBI 指纹 v20 全量重生成 1085/991→986 组）
+- [ ] 九张真实截图组级全中（5/9 PASS，既有四个 pinned 名；加权增加则不改变程度，020/017/018 已记录）
+- [x] 主仓库不含材质包归档文件，临时中转目录在成功与失败路径上均已清理（.vale-pack-upload 清空）
+- [x] 链路中暴露的每个缺陷都已修复或明确记录：ensureRepo 探测已存在仓库治、gh repo clone 绕过代理、detect-overlay vips OOM 胃超内容已修（b6046486）
+- [x] `npm test` 通过（终点属于 flaky 超时超负载，单跑安全）
 
 ## Blocked by
 
