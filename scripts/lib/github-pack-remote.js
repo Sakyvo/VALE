@@ -533,9 +533,14 @@ function createGitHubPackRemote(options = {}) {
   // partial clone is empty by design, so `git add` + `git commit` would stage the
   // deletion of every existing archive. Writing an explicit tree keeps existing
   // entries intact and downloads no pack blob beyond the newly published ones.
+  //
+  // Unstable proxy links make a push fail mid-transfer, so the whole build+push
+  // is retried against a freshly resolved parent, and archives already present
+  // with identical bytes are skipped — an interrupted batch resumes instead of
+  // failing, and only the remaining chunks are sent.
   async function publishBatch({ repo, files = [], markFull = false, message }) {
     assertRepo(repo);
-    if (!files.length && !markFull) return { repo, published: 0, commit: null };
+    if (!files.length && !markFull) return { repo, published: 0, commit: null, skipped: 0 };
     for (const item of files) {
       assertArchiveFile(item.file);
       if (!item.path || !fs.statSync(item.path).isFile()) {
@@ -543,6 +548,20 @@ function createGitHubPackRemote(options = {}) {
       }
     }
     const repoDir = ensureClone(repo);
+    const attempts = Math.max(1, Number(options.pushAttempts) || 4);
+    let lastError;
+    for (let attempt = 1; attempt <= attempts; attempt++) {
+      try {
+        return await publishBatchOnce(repoDir, repo, { files, markFull, message });
+      } catch (error) {
+        lastError = error;
+        if (attempt < attempts) waitSync(Math.min(5000, 500 * (2 ** (attempt - 1))));
+      }
+    }
+    throw new Error(`Batch publish failed after ${attempts} attempts: ${repo}`, { cause: lastError });
+  }
+
+  async function publishBatchOnce(repoDir, repo, { files, markFull, message }) {
     git(repoDir, ['fetch', 'origin', 'main']);
     const parent = git(repoDir, ['rev-parse', 'refs/remotes/origin/main']);
     const indexPath = path.join(repoDir, '.git', 'vale-publish-index');
@@ -550,13 +569,21 @@ function createGitHubPackRemote(options = {}) {
     const env = { ...process.env, GIT_INDEX_FILE: indexPath };
     try {
       git(repoDir, ['read-tree', parent], { env });
+      const published = [];
+      const skipped = [];
       for (const item of files) {
         const targetPath = archivePath(item.file);
-        if (gitExists(repoDir, `${parent}:${targetPath}`)) {
+        const blob = git(repoDir, ['hash-object', '-w', '--', item.path]);
+        const existing = gitExists(repoDir, `${parent}:${targetPath}`)
+          ? git(repoDir, ['rev-parse', `${parent}:${targetPath}`])
+          : null;
+        if (existing) {
+          // Same bytes already published by an earlier interrupted attempt.
+          if (existing === blob) { skipped.push(item.file); continue; }
           throw new Error(`Target archive already exists in ${repo}: ${item.file}`);
         }
-        const blob = git(repoDir, ['hash-object', '-w', '--', item.path]);
         git(repoDir, ['update-index', '--add', '--cacheinfo', '100644', blob, targetPath], { env });
+        published.push(item.file);
       }
       if (markFull && !gitExists(repoDir, `${parent}:${FULL_MARKER}`)) {
         const markerFile = path.join(repoDir, '.git', 'vale-full-marker');
@@ -567,27 +594,18 @@ function createGitHubPackRemote(options = {}) {
       }
       const tree = git(repoDir, ['write-tree', '--missing-ok'], { env });
       if (tree === git(repoDir, ['rev-parse', `${parent}^{tree}`])) {
-        return { repo, published: 0, commit: parent };
+        return { repo, published: 0, skipped: skipped.length, commit: parent };
       }
-      const commitMessage = message || `add Sakyvo packs batch (${files.length} archives)`;
+      const commitMessage = message || `add Sakyvo packs batch (${published.length} archives)`;
       const commit = git(repoDir, [
         '-c', 'user.name=VALE upload',
         '-c', 'user.email=vale@localhost',
         'commit-tree', tree, '-p', parent, '-m', commitMessage,
       ]);
-      pushCommitWithRetry({
-        repo,
-        commit,
-        attempts: options.pushAttempts,
-        push: () => git(repoDir, ['push', 'origin', `${commit}:refs/heads/main`], { stdio: 'inherit' }),
-        remoteHead: () => {
-          git(repoDir, ['fetch', 'origin', 'main']);
-          return git(repoDir, ['rev-parse', 'refs/remotes/origin/main']);
-        },
-      });
+      git(repoDir, ['push', 'origin', `${commit}:refs/heads/main`], { stdio: 'inherit' });
       git(repoDir, ['update-ref', 'refs/remotes/origin/main', commit]);
       remoteHeads.set(repo, commit);
-      return { repo, published: files.length, commit };
+      return { repo, published: published.length, skipped: skipped.length, commit };
     } finally {
       fs.rmSync(indexPath, { force: true });
     }

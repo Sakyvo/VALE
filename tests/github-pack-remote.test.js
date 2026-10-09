@@ -529,3 +529,64 @@ test('publishes a batch as one commit without staging deletions from the empty w
     fs.rmSync(root, { recursive: true, force: true, maxRetries: 5, retryDelay: 50 });
   }
 });
+
+test('resumes an interrupted batch by skipping archives already published', async () => {
+  const root = await fs.promises.mkdtemp(path.join(os.tmpdir(), 'vale-github-remote-resume-'));
+  const bare = path.join(root, 'packs-008.git');
+  const seed = path.join(root, 'seed');
+  try {
+    git(['init', '--bare', bare]);
+    git(['--git-dir', bare, 'config', 'uploadpack.allowFilter', 'true']);
+    git(['init', '-b', 'main', seed]);
+    git(['-C', seed, 'config', 'user.name', 'VALE test']);
+    git(['-C', seed, 'config', 'user.email', 'vale-test@localhost']);
+    fs.writeFileSync(path.join(seed, 'README.md'), '# packs-008\n');
+    git(['-C', seed, 'add', 'README.md']);
+    git(['-C', seed, 'commit', '-m', 'init']);
+    git(['-C', seed, 'remote', 'add', 'origin', bare]);
+    git(['-C', seed, 'push', '-u', 'origin', 'main']);
+
+    const published = path.join(root, 'Published.zip');
+    const pending = path.join(root, 'Pending.zip');
+    fs.writeFileSync(published, Buffer.concat([Buffer.from('PK\x03\x04'), Buffer.alloc(256, 3)]));
+    fs.writeFileSync(pending, Buffer.concat([Buffer.from('PK\x03\x04'), Buffer.alloc(256, 4)]));
+
+    // First attempt publishes only the first archive, simulating a mid-batch failure.
+    const first = createGitHubPackRemote({
+      allowCreateRepo: false, mutation: true, repoUrl: () => pathToFileURL(bare).href,
+      workdir: path.join(root, 'work-a'),
+    });
+    try {
+      const result = await first.publishBatch({
+        repo: 'packs-008',
+        files: [{ file: 'Published.zip', path: published }],
+      });
+      assert.equal(result.published, 1);
+    } finally {
+      first.close();
+    }
+
+    // Second attempt re-sends both; the already-published one is skipped.
+    const second = createGitHubPackRemote({
+      allowCreateRepo: false, mutation: true, repoUrl: () => pathToFileURL(bare).href,
+      workdir: path.join(root, 'work-b'),
+    });
+    try {
+      const result = await second.publishBatch({
+        repo: 'packs-008',
+        files: [{ file: 'Published.zip', path: published }, { file: 'Pending.zip', path: pending }],
+      });
+      assert.equal(result.published, 1);
+      assert.equal(result.skipped, 1);
+    } finally {
+      second.close();
+    }
+
+    const tree = git(['--git-dir', bare, 'ls-tree', '-r', '--name-only', 'main'], { encoding: 'utf8' }).toString();
+    assert.match(tree, /resourcepacks\/Published\.zip/);
+    assert.match(tree, /resourcepacks\/Pending\.zip/);
+    assert.equal(git(['--git-dir', bare, 'rev-list', '--count', 'main'], { encoding: 'utf8' }).toString().trim(), '3');
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true, maxRetries: 5, retryDelay: 50 });
+  }
+});
