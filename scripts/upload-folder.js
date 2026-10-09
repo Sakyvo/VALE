@@ -6,6 +6,7 @@ const { SCHEMA_VERSION: FINGERPRINT_SCHEMA_VERSION, fingerprintPack } = require(
 const { HIGH_VERSION_CAUSE, NORMALIZATION_SCHEMA_VERSION, normalizePack } = require('./lib/pack-normalizer');
 const { OVERLAY_LIST_NAME, isOverlayByName } = require('./lib/overlay-membership');
 const { isJunkName } = require('./lib/pack-normalizer');
+const { createGitHubPackRemote } = require('./lib/github-pack-remote');
 const {
   buildVisualHashLookup,
   refreshContentIndexMetadata,
@@ -49,7 +50,10 @@ function parseArgs(argv) {
     repoState: REPO_STATE_PATH,
     execute: false,
     skipBlockers: false,
-    onlyRepoNum: null,
+
+    onlyRepoNums: null,
+    fromPlan: null,
+    keepWorkdir: false,
   };
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
@@ -68,11 +72,16 @@ function parseArgs(argv) {
     else if (arg === '--normalization-audit') out.normalizationAudit = path.resolve(argv[++i]);
     else if (arg === '--repo-state') out.repoState = path.resolve(argv[++i]);
     else if (arg === '--execute') out.execute = true;
+    else if (arg === '--from-plan') { out.fromPlan = path.resolve(argv[++i]); out.execute = true; }
+    else if (arg === '--keep-workdir') out.keepWorkdir = true;
     else if (arg === '--dry-run') out.execute = false;
     else if (arg === '--skip-blockers') out.skipBlockers = true;
     else if (arg === '--only-repo') {
-      const raw = argv[++i];
-      out.onlyRepoNum = Number(String(raw).replace(/^packs-/, ''));
+      if (!out.onlyRepoNums) out.onlyRepoNums = new Set();
+      for (const part of String(argv[++i]).split(',')) {
+        const num = Number(part.trim().replace(/^packs-/, ''));
+        if (Number.isInteger(num) && num > 0) out.onlyRepoNums.add(num);
+      }
     }
     else throw new Error(`Unknown argument: ${arg}`);
   }
@@ -133,6 +142,7 @@ async function normalizeSourceFiles(sourceFiles, opts, services = {}) {
   const outcomes = [];
   for (let index = 0; index < sourceFiles.length; index++) {
     const source = sourceFiles[index];
+    if (index % 25 === 0) console.log(`[normalize] ${index}/${sourceFiles.length} ${source.file}`);
     const result = await normalize(source.path, {
       outputDir: path.join(root, String(index)),
       limits: opts.normalizationLimits,
@@ -1067,7 +1077,14 @@ function executePlan(opts, plan, services = {}) {
     throw new Error(`Dry-run has ${plan.blockers.length} blocker(s); resolve them before --execute.`);
   }
 
-  const registryPath = opts.registryPath || REGISTRY_PATH;
+  // Production uploads go through the blobless partial-clone remote: it fetches no
+  // existing pack blobs (a plain clone of a multi-GB pack repository fails over an
+  // unstable proxy) and writes each batch as an explicit tree, so existing
+  // archives are never staged for deletion by an empty working tree.
+  const uploadRemote = services.remote || createProductionUploadRemote(opts);
+  const ownsUploadRemote = !services.remote;
+  try {
+    const registryPath = opts.registryPath || REGISTRY_PATH;
   const listsPath = opts.listsPath || LISTS_PATH;
   const contentIndexPath = opts.contentIndex || CONTENT_INDEX_PATH;
   const contentAliasesPath = opts.contentAliases || CONTENT_ALIASES_PATH;
@@ -1076,21 +1093,51 @@ function executePlan(opts, plan, services = {}) {
   const contentIndex = validateContentIndex(readJson(contentIndexPath, null), registry, FINGERPRINT_SCHEMA_VERSION);
   if (contentIndex.registryDigest !== plan.contentIndexDigest) throw new Error('Content index changed after dry-run; rebuild the upload plan.');
   const byRepo = new Map();
-  const executedUploads = plan.uploadEntries.filter(item => !opts.onlyRepoNum || item.repoNum === opts.onlyRepoNum);
+  const executedUploads = plan.uploadEntries.filter(item => !opts.onlyRepoNums || opts.onlyRepoNums.has(item.repoNum));
   for (const item of executedUploads) {
     if (!byRepo.has(item.repoNum)) byRepo.set(item.repoNum, []);
     byRepo.get(item.repoNum).push(item);
   }
 
-  const repoNums = new Set([...byRepo.keys(), ...plan.summary.fullRepoNums]);
+  // Uploading to a subset of repos must not require cloning every other repo in
+  // the plan (transient clones are the slow, proxy-fragile part of a run).
+  // Without a repo filter, the sticky full-marker contract still applies: every
+  // planned full repo is republished so a missing remote marker is restored.
+  const repoNums = opts.onlyRepoNums
+    ? new Set(executedUploads.map(item => item.repoNum))
+    : new Set([...byRepo.keys(), ...plan.summary.fullRepoNums]);
   for (const num of [...repoNums].sort((a, b) => a - b)) {
-    if (opts.onlyRepoNum && num !== opts.onlyRepoNum) continue;
+    if (opts.onlyRepoNums && !opts.onlyRepoNums.has(num)) continue;
     const files = byRepo.get(num) || [];
     const markFull = plan.summary.fullRepoNums.includes(num);
-    if (services.remote) {
+    if (uploadRemote) {
       if (files.length || markFull) {
-        services.remote.publishBatch({ repo: repoName(num), repoNum: num, files, markFull });
-        for (const item of files) services.remote.verifyArchive(item);
+        // Mirror the git path's batch contract: publish in bounded chunks so an
+        // interrupted push only invalidates one chunk, and mark the repo full on
+        // the last chunk.
+        const chunks = [];
+        let batch = [];
+        let size = 0;
+        for (const item of files) {
+          batch.push(item);
+          size += item.size;
+          if (size >= BATCH_SIZE) {
+            chunks.push(batch);
+            batch = [];
+            size = 0;
+          }
+        }
+        if (batch.length || !chunks.length) chunks.push(batch);
+        chunks.forEach((chunk, index) => {
+          uploadRemote.publishBatch({
+            repo: repoName(num),
+            repoNum: num,
+            files: chunk,
+            markFull: markFull && index === chunks.length - 1,
+            message: `add Sakyvo packs batch ${index + 1}`,
+          });
+        });
+        for (const item of files) uploadRemote.verifyArchive(item);
       }
       continue;
     }
@@ -1136,6 +1183,25 @@ function executePlan(opts, plan, services = {}) {
   updateLists(opts.list, listPackIds, executedReplacements, listsPath);
   persistAliasUpdates(contentAliasesPath, plan.aliasUpdates);
   persistPendingReplacements(pendingReplacementsPath, executedReplacements, executedUploads);
+  } finally {
+    if (ownsUploadRemote) uploadRemote.close();
+  }
+}
+
+// Adapter over the reviewed-normalization remote: one call shape for both the
+// production blobless path and the services.remote test seam.
+function createProductionUploadRemote(opts) {
+  const remote = createGitHubPackRemote({
+    owner: REPO_OWNER,
+    mutation: true,
+    workdir: path.join(opts.workdir, 'remote'),
+    transport: 'curl',
+  });
+  return {
+    publishBatch: batch => remote.publishBatch(batch),
+    verifyArchive: item => verifyRemoteUpload(item),
+    close: () => remote.close(),
+  };
 }
 
 async function runIngestion(opts, services = {}) {
@@ -1143,13 +1209,21 @@ async function runIngestion(opts, services = {}) {
   const normalizationWorkdir = path.join(workdir, '.normalized');
   const runOpts = { ...opts, workdir, normalizationWorkdir };
   try {
-    const plan = await buildPlan(runOpts, services);
+    // --from-plan reuses a previously saved plan (and its retained normalization
+    // workdir) so an interrupted or blocker-resolved run does not pay for content
+    // fingerprinting again — the classification is bound to source identity and
+    // is only valid while contentIndexDigest still matches.
+    const plan = opts.fromPlan
+      ? JSON.parse(fs.readFileSync(path.resolve(opts.fromPlan), 'utf-8'))
+      : await buildPlan(runOpts, services);
     if (opts.manifest) writeJson(path.resolve(opts.manifest), plan);
     if (opts.execute) executePlan(runOpts, plan, services);
     return plan;
   } finally {
-    fs.rmSync(normalizationWorkdir, { recursive: true, force: true });
-    if (fs.existsSync(workdir) && fs.readdirSync(workdir).length === 0) {
+    if (!opts.keepWorkdir) {
+      fs.rmSync(normalizationWorkdir, { recursive: true, force: true });
+    }
+    if (!opts.keepWorkdir && fs.existsSync(workdir) && fs.readdirSync(workdir).length === 0) {
       fs.rmSync(workdir, { recursive: true, force: true });
     }
   }

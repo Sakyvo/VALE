@@ -8,6 +8,7 @@ const { Readable } = require('node:stream');
 const ROOT = path.join(__dirname, '..', '..');
 const DEFAULT_WORKDIR = path.resolve(ROOT, '..', '.vale-pack-upload');
 const MARKER = '.vale-reviewed-normalization';
+const FULL_MARKER = '!  FULL  !';
 
 function assertRepo(repo) {
   if (!/^packs-\d{3}$/.test(String(repo || ''))) {
@@ -527,6 +528,71 @@ function createGitHubPackRemote(options = {}) {
     mutateRepository(repo, file, 'add', sourcePath);
   }
 
+  // Publishes many archives of one repository as a single commit. Built on the
+  // same index-tree plumbing as mutateRepository: the working tree of a blobless
+  // partial clone is empty by design, so `git add` + `git commit` would stage the
+  // deletion of every existing archive. Writing an explicit tree keeps existing
+  // entries intact and downloads no pack blob beyond the newly published ones.
+  async function publishBatch({ repo, files = [], markFull = false, message }) {
+    assertRepo(repo);
+    if (!files.length && !markFull) return { repo, published: 0, commit: null };
+    for (const item of files) {
+      assertArchiveFile(item.file);
+      if (!item.path || !fs.statSync(item.path).isFile()) {
+        throw new Error(`Archive to publish is missing: ${item.file} (${item.path})`);
+      }
+    }
+    const repoDir = ensureClone(repo);
+    git(repoDir, ['fetch', 'origin', 'main']);
+    const parent = git(repoDir, ['rev-parse', 'refs/remotes/origin/main']);
+    const indexPath = path.join(repoDir, '.git', 'vale-publish-index');
+    fs.rmSync(indexPath, { force: true });
+    const env = { ...process.env, GIT_INDEX_FILE: indexPath };
+    try {
+      git(repoDir, ['read-tree', parent], { env });
+      for (const item of files) {
+        const targetPath = archivePath(item.file);
+        if (gitExists(repoDir, `${parent}:${targetPath}`)) {
+          throw new Error(`Target archive already exists in ${repo}: ${item.file}`);
+        }
+        const blob = git(repoDir, ['hash-object', '-w', '--', item.path]);
+        git(repoDir, ['update-index', '--add', '--cacheinfo', '100644', blob, targetPath], { env });
+      }
+      if (markFull && !gitExists(repoDir, `${parent}:${FULL_MARKER}`)) {
+        const markerFile = path.join(repoDir, '.git', 'vale-full-marker');
+        fs.writeFileSync(markerFile, 'This repository has reached its storage limit.\n');
+        const blob = git(repoDir, ['hash-object', '-w', '--', markerFile]);
+        fs.rmSync(markerFile, { force: true });
+        git(repoDir, ['update-index', '--add', '--cacheinfo', '100644', blob, FULL_MARKER], { env });
+      }
+      const tree = git(repoDir, ['write-tree', '--missing-ok'], { env });
+      if (tree === git(repoDir, ['rev-parse', `${parent}^{tree}`])) {
+        return { repo, published: 0, commit: parent };
+      }
+      const commitMessage = message || `add Sakyvo packs batch (${files.length} archives)`;
+      const commit = git(repoDir, [
+        '-c', 'user.name=VALE upload',
+        '-c', 'user.email=vale@localhost',
+        'commit-tree', tree, '-p', parent, '-m', commitMessage,
+      ]);
+      pushCommitWithRetry({
+        repo,
+        commit,
+        attempts: options.pushAttempts,
+        push: () => git(repoDir, ['push', 'origin', `${commit}:refs/heads/main`], { stdio: 'inherit' }),
+        remoteHead: () => {
+          git(repoDir, ['fetch', 'origin', 'main']);
+          return git(repoDir, ['rev-parse', 'refs/remotes/origin/main']);
+        },
+      });
+      git(repoDir, ['update-ref', 'refs/remotes/origin/main', commit]);
+      remoteHeads.set(repo, commit);
+      return { repo, published: files.length, commit };
+    } finally {
+      fs.rmSync(indexPath, { force: true });
+    }
+  }
+
   async function verifyArchive(expected) {
     const attempts = Math.max(1, Number(options.verifyAttempts) || 10);
     let actual = null;
@@ -565,6 +631,7 @@ function createGitHubPackRemote(options = {}) {
     getArchiveIdentity,
     getRepositoryReference,
     publishArchive,
+    publishBatch,
     verifyArchive,
     workdir,
   };

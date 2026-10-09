@@ -469,3 +469,63 @@ test('publishes without materializing existing promisor blobs', async () => {
     fs.rmSync(root, { recursive: true, force: true });
   }
 });
+
+test('publishes a batch as one commit without staging deletions from the empty worktree', async () => {
+  const root = await fs.promises.mkdtemp(path.join(os.tmpdir(), 'vale-github-remote-batch-'));
+  const bare = path.join(root, 'packs-007.git');
+  const seed = path.join(root, 'seed');
+  const workdir = path.join(root, 'upload-work');
+  try {
+    git(['init', '--bare', bare]);
+    git(['--git-dir', bare, 'config', 'uploadpack.allowFilter', 'true']);
+    git(['init', '-b', 'main', seed]);
+    git(['-C', seed, 'config', 'user.name', 'VALE test']);
+    git(['-C', seed, 'config', 'user.email', 'vale-test@localhost']);
+    fs.mkdirSync(path.join(seed, 'resourcepacks'));
+    fs.writeFileSync(path.join(seed, 'README.md'), '# packs-007\n');
+    fs.writeFileSync(path.join(seed, 'resourcepacks', 'Existing.zip'), Buffer.alloc(2048, 7));
+    git(['-C', seed, 'add', 'README.md', 'resourcepacks/Existing.zip']);
+    git(['-C', seed, 'commit', '-m', 'seed existing pack']);
+    git(['-C', seed, 'remote', 'add', 'origin', bare]);
+    git(['-C', seed, 'push', '-u', 'origin', 'main']);
+
+    const first = path.join(root, 'First §New.zip');
+    const second = path.join(root, 'Second.zip');
+    fs.writeFileSync(first, Buffer.concat([Buffer.from('PK\x03\x04'), Buffer.alloc(512, 11)]));
+    fs.writeFileSync(second, Buffer.concat([Buffer.from('PK\x03\x04'), Buffer.alloc(1024, 22)]));
+
+    const remote = createGitHubPackRemote({
+      allowCreateRepo: false,
+      mutation: true,
+      repoUrl: () => pathToFileURL(bare).href,
+      workdir,
+    });
+    let result;
+    try {
+      result = await remote.publishBatch({
+        repo: 'packs-007',
+        files: [{ file: 'First §New.zip', path: first }, { file: 'Second.zip', path: second }],
+        markFull: true,
+      });
+    } finally {
+      remote.close();
+    }
+    assert.equal(result.published, 2);
+
+    // Existing archive and the full marker survive; the new archives are present.
+    // core.quotepath=false keeps the non-ASCII pack name literal instead of escaped.
+    const tree = git(
+      ['--git-dir', bare, '-c', 'core.quotepath=false', 'ls-tree', '-r', '--name-only', 'main'],
+      { encoding: 'utf8' }
+    ).toString();
+    assert.match(tree, /resourcepacks\/Existing\.zip/);
+    assert.match(tree, /resourcepacks\/First §New\.zip/);
+    assert.match(tree, /resourcepacks\/Second\.zip/);
+    assert.match(tree, /! {2}FULL {2}!/);
+    // One batch is one commit on top of the seed commit.
+    const count = git(['--git-dir', bare, 'rev-list', '--count', 'main'], { encoding: 'utf8' }).toString().trim();
+    assert.equal(count, '2');
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true, maxRetries: 5, retryDelay: 50 });
+  }
+});
