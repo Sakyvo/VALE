@@ -54,6 +54,7 @@ function parseArgs(argv) {
     onlyRepoNums: null,
     fromPlan: null,
     keepWorkdir: false,
+    remoteBatchSize: 96 * 1024 * 1024,
   };
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
@@ -74,6 +75,7 @@ function parseArgs(argv) {
     else if (arg === '--execute') out.execute = true;
     else if (arg === '--from-plan') { out.fromPlan = path.resolve(argv[++i]); out.execute = true; }
     else if (arg === '--keep-workdir') out.keepWorkdir = true;
+    else if (arg === '--remote-batch-mb') out.remoteBatchSize = Number(argv[++i]) * 1024 * 1024;
     else if (arg === '--dry-run') out.execute = false;
     else if (arg === '--skip-blockers') out.skipBlockers = true;
     else if (arg === '--only-repo') {
@@ -1106,6 +1108,9 @@ function executePlan(opts, plan, services = {}) {
   const repoNums = opts.onlyRepoNums
     ? new Set(executedUploads.map(item => item.repoNum))
     : new Set([...byRepo.keys(), ...plan.summary.fullRepoNums]);
+  // Remote pushes over this network time out on large packs, so the blobless
+  // path publishes in smaller chunks than the local git path.
+  const remoteBatchSize = Number.isFinite(opts.remoteBatchSize) ? opts.remoteBatchSize : 96 * 1024 * 1024;
   for (const num of [...repoNums].sort((a, b) => a - b)) {
     if (opts.onlyRepoNums && !opts.onlyRepoNums.has(num)) continue;
     const files = byRepo.get(num) || [];
@@ -1121,7 +1126,7 @@ function executePlan(opts, plan, services = {}) {
         for (const item of files) {
           batch.push(item);
           size += item.size;
-          if (size >= BATCH_SIZE) {
+          if (size >= remoteBatchSize) {
             chunks.push(batch);
             batch = [];
             size = 0;
