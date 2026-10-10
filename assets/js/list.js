@@ -4,7 +4,7 @@ let sortByDate = false;
 let saveQueue = Promise.resolve();
 
 // Issue 019: build-versioned cache key for lists.json (generate-index.js rewrites it).
-const VALE_LISTS_VERSION = '3c7637cb';
+const VALE_LISTS_VERSION = '563fb933';
 
 const LIST_PAGE_HTML = `<!DOCTYPE html>
 <html lang="zh-CN">
