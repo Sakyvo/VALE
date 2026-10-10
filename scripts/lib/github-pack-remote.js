@@ -209,7 +209,15 @@ function createGitHubPackRemote(options = {}) {
 
   function ensureWorkspace() {
     if (ownsWorkdir) return;
-    if (fs.existsSync(workdir)) throw new Error(`Temporary upload workspace already exists: ${workdir}`);
+    if (fs.existsSync(workdir)) {
+      // A leftover workspace from an interrupted run is only reclaimable when it
+      // carries the VALE marker; anything else may belong to a concurrent run.
+      const markerPath = path.join(workdir, MARKER);
+      if (!fs.existsSync(markerPath)) {
+        throw new Error(`Temporary upload workspace already exists: ${workdir}`);
+      }
+      fs.rmSync(workdir, { recursive: true, force: true, maxRetries: 5, retryDelay: 100 });
+    }
     fs.mkdirSync(workdir, { recursive: true });
     fs.writeFileSync(path.join(workdir, MARKER), markerToken);
     ownsWorkdir = true;
@@ -239,7 +247,11 @@ function createGitHubPackRemote(options = {}) {
 
   function ensureClone(repo) {
     assertRepo(repo);
-    if (clones.has(repo)) return clones.get(repo);
+    const cached = clones.get(repo);
+    // A temp workdir can be reclaimed between batches (cleanup, reboot, disk
+    // pressure), so a cached path is re-validated instead of trusted.
+    if (cached && fs.existsSync(path.join(cached, '.git'))) return cached;
+    if (cached) clones.delete(repo);
     ensureWorkspace();
     const repoDir = path.join(workdir, repo);
     try {
