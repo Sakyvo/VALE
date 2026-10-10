@@ -2,14 +2,44 @@
   "schemaVersion": 1,
   "entries": [
     {
+      "sourceFile": "_3_lMiami _b_l4k.zip.zip",
+      "sourcePackId": "3_lMiami__b_l4k.zip",
+      "archiveSha256": "5bb9019a6ad64557adaaa42df6c824696f6b807134d2fa1547a2e1fac5a8e7a4",
+      "visualContentHash": "80055f878062905af868c22660cb5a3cecc05a2ff584d8a0f0a474c59cb99ae6",
+      "retainedFile": "Miami 4k.zip",
+      "retainedPackId": "Miami_4k",
+      "reason": "exact_visual_duplicate_keep_existing",
+      "resolvedAt": "2026-10-10T07:32:16.597Z"
+    },
+    {
+      "sourceFile": "_9clare azert.zip",
+      "sourcePackId": "9clare_azert",
+      "archiveSha256": "2eadbc68c87d7263eb730343f82670d8ae05d04144c9de6238c59a60e61f1cea",
+      "visualContentHash": "1761be7c8fdb014d8eec3dd5acb732972543b817718fa246ad1295a268b28ccb",
+      "retainedFile": "! clare azert.zip",
+      "retainedPackId": "clare_azert",
+      "reason": "exact_visual_duplicate_keep_existing",
+      "resolvedAt": "2026-10-10T07:32:16.597Z"
+    },
+    {
+      "sourceFile": "_baaa.zip",
+      "sourcePackId": "baaa",
+      "archiveSha256": "0ae4bf82484940d1743579ccc25d4a73c0f908b316d1f1c400e05d9c47d1ee13",
+      "visualContentHash": "fb4f375331332a57a9ab1bbd30eedfaaf6b3dbdbdf3cf40c267b8242b4fc60e4",
+      "retainedFile": "§baaa.zip",
+      "retainedPackId": "aaa",
+      "reason": "exact_visual_duplicate_keep_existing",
+      "resolvedAt": "2026-10-10T07:32:16.597Z"
+    },
+    {
       "sourceFile": "!                                                not complete - 0zi.zip",
       "sourcePackId": "not_complete_-_0zi",
       "archiveSha256": "676d01f74f83aea9f0f23be8f156ef5fe13026e5bc864a68e3ee64c9c897ec56",
       "visualContentHash": "4847ae6251963b5c02f0c889d3e57813c5c1ce5a535a64107ac000df9b4e53cc",
       "retainedFile": "aye.zip",
       "retainedPackId": "aye",
-      "reason": "issue_020_pilot_duplicate_retain_existing",
-      "resolvedAt": "2026-08-14T06:17:22.434Z"
+      "reason": "resolved_alias",
+      "resolvedAt": "2026-10-10T07:32:16.597Z"
     },
     {
       "sourceFile": "!                          x_x.zip",
@@ -52,6 +82,26 @@
       "resolvedAt": "2026-08-14T06:17:22.434Z"
     },
     {
+      "sourceFile": "!         §4DSPRITE.zip",
+      "sourcePackId": "DSPRITE",
+      "archiveSha256": "2f1e6836358b10a85e83483b31f065620ee76f1ab9d0e0197d7159472aa921ac",
+      "visualContentHash": "2c6eda89c4eca302042543b78e3d43f7ff1c764b601f760bbf297a1c0226bf46",
+      "retainedFile": "4DSPRITE.zip",
+      "retainedPackId": "4DSPRITE",
+      "reason": "exact_visual_duplicate_keep_existing",
+      "resolvedAt": "2026-10-10T07:32:16.597Z"
+    },
+    {
+      "sourceFile": "!         §cDragneel is UnPhair(2).zip",
+      "sourcePackId": "Dragneel_is_UnPhair(2)",
+      "archiveSha256": "4871b05cd4244a9662eef8fafed2bb0ec3fea67e1f177a49ba9dae729a0ae7b3",
+      "visualContentHash": "81c22b7cf603b2f18c8df7bd23ebf1dbf317bfdf9f09f661f724f0164afa1bdc",
+      "retainedFile": "!         §cDragneel is UnPhair.zip",
+      "retainedPackId": "Dragneel_is_UnPhair",
+      "reason": "exact_visual_duplicate_keep_existing",
+      "resolvedAt": "2026-10-10T07:32:16.597Z"
+    },
+    {
       "sourceFile": "!       §1TEST.zip",
       "sourcePackId": "TEST",
       "archiveSha256": "efc3257ff82cd5ae396acf3a1fb618264a9eb9fa1a038377a2d458d3aaba3e09",
@@ -60,6 +110,96 @@
       "retainedPackId": "Azert_DarkBlue_Revamp",
       "reason": "user_approved_delete_TEST_keep_Azert_DarkBlue_Revamp",
       "resolvedAt": "2026-07-14T05:43:58.750Z"
+    },
+    {
+      "sourceFile": "!   §6Smooth Block Overlay §4[#9].zip",
+      "sourcePackId": "Smooth_Block_Overlay_9",
+      "archiveSha256": "f325b66ca6a386346e8a1a9717836209d69deae1303e5ef263f81c70b3964574",
+      "visualContentHash": "7589a83f344cd193fbd976ecdf4f23d136c5966bdcaf2938ab32cbc9f925839c",
+      "retainedFile": "!  Tory block overlay.zip",
+      "retainedPackId": "Tory_block_overlay",
+      "reason": "exact_visual_duplicate_keep_existing",
+      "resolvedAt": "2026-10-10T07:32:16.597Z"
+    },
+    {
+      "sourceFile": "!  Johkeh Default(2).zip",
+      "sourcePackId": "Johkeh_Default(2)",
+      "archiveSha256": "795961fe1e434276248c5c3e683bad323ec8e1f832566bde07822c66549767d0",
+      "visualContentHash": "59a443d53a3ca5cda1d08be9b52996cba4aebc5ebe09eea1cc58824fe982de6e",
+      "retainedFile": "#43.zip",
+      "retainedPackId": "43",
+      "reason": "exact_visual_duplicate_keep_existing",
+      "resolvedAt": "2026-10-10T07:32:16.597Z"
+    },
+    {
+      "sourceFile": "! §1heures §9Dark Blue 128x §bEdit.zip.zip",
+      "sourcePackId": "heures_Dark_Blue_128x_Edit.zip",
+      "archiveSha256": "46b1daadffa9c1e5c55c6f50da6260b81c1f69307fb3d9b54db316d28977df56",
+      "visualContentHash": "435941524b643a449484eca173913316ce5b8a4c5d47d0612909b50289282a59",
+      "retainedFile": "! §1heures §9Dark Blue 128x §bEdit.zip",
+      "retainedPackId": "heures_Dark_Blue_128x_Edit",
+      "reason": "exact_visual_duplicate_keep_existing",
+      "resolvedAt": "2026-10-10T07:32:16.597Z"
+    },
+    {
+      "sourceFile": "! §6NoLimit FPS.zip",
+      "sourcePackId": "NoLimit_FPS",
+      "archiveSha256": "f45b467a2c44d4911147f58185dc6289e41f2cbe259246e4a7f3a5aebe033a2c",
+      "visualContentHash": "786660ddd9b8277b61167a26680895eabd36c7837f5aa04784d1ba0b670ed08d",
+      "retainedFile": "! _6NoLimit FPS.zip",
+      "retainedPackId": "6NoLimit_FPS",
+      "reason": "exact_visual_duplicate_keep_existing",
+      "resolvedAt": "2026-10-10T07:32:16.597Z"
+    },
+    {
+      "sourceFile": "! §8Verzide §5[V5](2).zip",
+      "sourcePackId": "Verzide_V5(2)",
+      "archiveSha256": "1ac8c3aba5240e1d27a537daf0624994039c945094a915be180648b8765fab3f",
+      "visualContentHash": "9ddbf06ce5c356160c355cfb156158bc5ece7e00cb2ced1ccc3d65b902d0cd87",
+      "retainedFile": "! §8Verzide §5[V5].zip",
+      "retainedPackId": "Verzide_V5",
+      "reason": "exact_visual_duplicate_keep_existing",
+      "resolvedAt": "2026-10-10T07:32:16.597Z"
+    },
+    {
+      "sourceFile": "! §d§lA§f§lYEAR V3 [暗粒子].zip",
+      "sourcePackId": "AYEAR_V3_暗粒子",
+      "archiveSha256": "20a4fb8b5d55776f178c04c6fb83ffed7da2d2dd56a872fee7c067a78c85d410",
+      "visualContentHash": "dd8fe638c4e15bac68697ae7dc4fc73cb740bb4849ef1774e63c5e36bd27bf45",
+      "retainedFile": "!AYEAR V3[CLOUD].zip",
+      "retainedPackId": "AYEAR_V3CLOUD",
+      "reason": "exact_visual_duplicate_keep_existing",
+      "resolvedAt": "2026-10-10T07:32:16.597Z"
+    },
+    {
+      "sourceFile": "! &4Stimpy Private.zip",
+      "sourcePackId": "4Stimpy_Private",
+      "archiveSha256": "b9aa7601c8316bd86f688642c05e9012ab9c393ad54d8075d73bcbe6b8b7d37b",
+      "visualContentHash": "c079a3077e770f1902c408ce9fa1161b7f762f7f85152c37797ae59840701aae",
+      "retainedFile": "! Stimpy Private.zip",
+      "retainedPackId": "Stimpy_Private",
+      "reason": "exact_visual_duplicate_keep_existing",
+      "resolvedAt": "2026-10-10T07:32:16.597Z"
+    },
+    {
+      "sourceFile": "! Dynamic Duo 128x [updated] (2).zip",
+      "sourcePackId": "Dynamic_Duo_128x_updated(2)",
+      "archiveSha256": "567127bc0a3b093b82b5a99a7e1472e9bf77ca0e1393169b37a5cfc7170a0a00",
+      "visualContentHash": "0931c83845575894947a0a02335fdd75a30620ef4c333b6180f98bd001a10e72",
+      "retainedFile": "! Dynamic Duo 128x [updated].zip",
+      "retainedPackId": "Dynamic_Duo_128x_updated",
+      "reason": "exact_visual_duplicate_keep_existing",
+      "resolvedAt": "2026-10-10T07:32:16.597Z"
+    },
+    {
+      "sourceFile": "! Eum3 Blue.zip",
+      "sourcePackId": "Eum3_Blue",
+      "archiveSha256": "15a249df135f742bcc31ce2112c13a4900936e01ef520d25a59819c6a6740074",
+      "visualContentHash": "9a13b11cfb4f774a265089d9e5c4a6b6957748f3662babdfee6d570ccaaf06fc",
+      "retainedFile": "! Eum3 Blue Edit.zip",
+      "retainedPackId": "Eum3_Blue_Edit",
+      "reason": "exact_visual_duplicate_keep_existing",
+      "resolvedAt": "2026-10-10T07:32:16.597Z"
     }
   ]
 }
