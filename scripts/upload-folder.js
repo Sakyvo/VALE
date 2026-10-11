@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 const { execFileSync } = require('child_process');
 const { getPackIdFromZipName } = require('./pack-utils');
 const { SCHEMA_VERSION: FINGERPRINT_SCHEMA_VERSION, fingerprintPack } = require('./lib/pack-content-fingerprint');
@@ -48,6 +49,7 @@ function parseArgs(argv) {
     pendingReplacements: PENDING_REPLACEMENTS_PATH,
     normalizationAudit: NORMALIZATION_AUDIT_PATH,
     repoState: REPO_STATE_PATH,
+    fingerprintCache: null,
     execute: false,
     skipBlockers: false,
 
@@ -76,6 +78,7 @@ function parseArgs(argv) {
     else if (arg === '--from-plan') { out.fromPlan = path.resolve(argv[++i]); out.execute = true; }
     else if (arg === '--keep-workdir') out.keepWorkdir = true;
     else if (arg === '--remote-batch-mb') out.remoteBatchSize = Number(argv[++i]) * 1024 * 1024;
+    else if (arg === '--fingerprint-cache') out.fingerprintCache = path.resolve(argv[++i]);
     else if (arg === '--dry-run') out.execute = false;
     else if (arg === '--skip-blockers') out.skipBlockers = true;
     else if (arg === '--only-repo') {
@@ -274,6 +277,48 @@ function summarize(entries) {
   return counts;
 }
 
+// Content fingerprinting is the multi-hour part of classification. A long batch
+// run is routinely interrupted (machine suspend, workspace reclaim), so results
+// are cached by file identity and replayed on the next run instead of recomputed.
+// The key is path + size + mtime: source archives under a staging directory are
+// immutable copies, so identity is stable while content hashing stays truthful.
+function withFingerprintCache(opts, fingerprintFn) {
+  const cachePath = opts.fingerprintCache;
+  if (!cachePath) return fingerprintFn;
+  let store = {};
+  try {
+    store = JSON.parse(fs.readFileSync(cachePath, 'utf-8'));
+  } catch {
+    store = {};
+  }
+  let pending = 0;
+  const persist = () => {
+    if (!pending) return;
+    fs.mkdirSync(path.dirname(path.resolve(cachePath)), { recursive: true });
+    fs.writeFileSync(cachePath, JSON.stringify(store));
+    pending = 0;
+  };
+  const cached = async (file, options = {}) => {
+    let stat;
+    try {
+      stat = fs.statSync(file);
+    } catch {
+      return fingerprintFn(file, options);
+    }
+    const key = crypto.createHash('sha256')
+      .update(`${path.resolve(file)}|${stat.size}|${Math.round(stat.mtimeMs)}|${options.normalizationSource ? 'source' : 'product'}`)
+      .digest('hex');
+    if (store[key] !== undefined) return store[key];
+    const result = await fingerprintFn(file, options);
+    store[key] = result;
+    pending += 1;
+    if (pending >= 100) persist();
+    return result;
+  };
+  cached.persist = persist;
+  return cached;
+}
+
 function compactFingerprint(fingerprint) {
   return {
     schemaVersion: fingerprint.schemaVersion,
@@ -376,9 +421,10 @@ async function buildPlan(opts, services = {}) {
   const index = readJson(siteIndexPath, { items: [] });
   const existingIds = new Map(index.items.map(p => [p.name.toLowerCase(), p.name]));
   const sourceFiles = getSourceFiles(opts.source, opts.recursive);
-  const normalized = await normalizeSourceFiles(sourceFiles, opts, services);
+  const fingerprintFn = withFingerprintCache(opts, services.fingerprintPack || fingerprintPack);
+  const normalized = await normalizeSourceFiles(sourceFiles, opts, { ...services, fingerprintPack: fingerprintFn });
+  fingerprintFn.persist?.();
   const normalizedFiles = normalized.products;
-  const fingerprintFn = services.fingerprintPack || fingerprintPack;
   const groups = new Map();
   const aliases = loadAliases(contentAliasesPath);
   let resolutions = null;
@@ -867,6 +913,7 @@ async function buildPlan(opts, services = {}) {
     contentIndexDigest: contentIndex ? contentIndex.registryDigest : null,
     entries,
   };
+  fingerprintFn.persist?.();
   persistNormalizationAudit(getNormalizationAuditPath(opts), normalized.outcomes, provenance);
   return plan;
 }

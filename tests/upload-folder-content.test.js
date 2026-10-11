@@ -212,3 +212,66 @@ test('migrates all List memberships without creating duplicates', async () => wi
   assert.deepEqual(lists.find(row => row.name === 'Sakyvo').packs, ['Renamed']);
   assert.deepEqual(lists.find(row => row.name === 'Other').packs, ['Renamed', 'Keep']);
 }));
+
+test('fingerprint cache replays results for unchanged archives and persists across runs', async () => {
+  const dir = await fs.promises.mkdtemp(path.join(os.tmpdir(), 'vale-upload-plan-cache-'));
+  const source = path.join(dir, 'source');
+  fs.mkdirSync(source);
+  const incoming = path.join(source, 'Existing.zip');
+  await createPack(incoming);
+  const registry = { 'Existing.zip': { repo: 'packs-001', repoNum: 1, size: 10 } };
+  const repoState = { schemaVersion: 1, fullRepoNums: [] };
+  const cachePath = path.join(dir, 'fp-cache.json');
+  const paths = {
+    source,
+    workdir: path.join(dir, 'workdir'),
+    registryPath: path.join(dir, 'registry.json'),
+    siteIndexPath: path.join(dir, 'site-index.json'),
+    listsPath: path.join(dir, 'lists.json'),
+    contentIndex: path.join(dir, 'content-index.json'),
+    contentAliases: path.join(dir, 'aliases.json'),
+    pendingReplacements: path.join(dir, 'pending.json'),
+    normalizationAudit: path.join(dir, 'audit.json'),
+    repoState: path.join(dir, 'repo-state.json'),
+  };
+  const calls = [];
+  const fingerprintFn = async (file, options) => {
+    calls.push(file);
+    return fingerprintPack(file, options);
+  };
+  try {
+    fs.writeFileSync(paths.registryPath, JSON.stringify(registry));
+    fs.writeFileSync(paths.siteIndexPath, JSON.stringify({ items: [{ name: 'Existing' }] }));
+    fs.writeFileSync(paths.listsPath, '[]');
+    fs.writeFileSync(paths.repoState, JSON.stringify(repoState));
+    fs.writeFileSync(paths.contentIndex, JSON.stringify({
+      schemaVersion: 1,
+      fingerprintSchemaVersion: 1,
+      complete: true,
+      registryDigest: computeRegistryDigest(registry),
+      failures: [],
+      packs: {
+        'Existing.zip': {
+          packId: 'Existing',
+          repo: 'packs-001',
+          repoNum: 1,
+          size: 10,
+          sourceKey: sourceKey('Existing.zip', registry['Existing.zip']),
+          archiveSha256: 'a-different-archive',
+          visualContentHash: 'a-different-visual-content',
+        },
+      },
+    }));
+
+    const opts = options(paths, { fingerprintCache: cachePath });
+    await buildPlan(opts, { fingerprintPack: fingerprintFn });
+    assert.ok(calls.length > 0, 'the first run fingerprints the incoming archive');
+    assert.ok(fs.existsSync(cachePath), 'the cache file is written');
+
+    calls.length = 0;
+    await buildPlan(opts, { fingerprintPack: fingerprintFn });
+    assert.equal(calls.length, 0, 'the second run replays every fingerprint from the cache');
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true, maxRetries: 5, retryDelay: 50 });
+  }
+});

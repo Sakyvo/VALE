@@ -114,7 +114,9 @@ function main() {
       id: e.originalName,
       name: e.packId,
       displayName: cleanMinecraftText(e.originalName) || e.packId,
-      coloredName: toColoredHtml(e.originalName),
+      // A name made only of symbols (e.g. `-_-`) cleans to nothing; falling back
+      // to the pack id keeps the card from rendering an empty label.
+      coloredName: toColoredHtml(e.originalName) || e.packId,
       description: e.description || '',
       cover: buildAssetUrl(assetBase, e.packId, 'cover.png'),
       packPng: buildAssetUrl(assetBase, e.packId, 'pack.png'),

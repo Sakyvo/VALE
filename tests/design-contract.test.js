@@ -351,3 +351,9 @@ test('test list is hidden from list navigation (issue 019)', () => {
   const list = fs.readFileSync(path.join(ROOT, 'assets', 'js', 'list.js'), 'utf-8');
   assert.match(list, /l\.name !== 'test'/, 'list navigation filters out the test scaffold list');
 });
+
+test('a pack whose name is only symbols still renders a non-empty label (021)', () => {
+  const generator = fs.readFileSync(path.join(ROOT, 'scripts', 'generate-index.js'), 'utf-8');
+  assert.match(generator, /coloredName: toColoredHtml\(e\.originalName\) \|\| e\.packId/,
+    'coloredName falls back to the pack id instead of rendering an empty label');
+});
