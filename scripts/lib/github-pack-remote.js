@@ -245,6 +245,24 @@ function createGitHubPackRemote(options = {}) {
     });
   }
 
+  function clonePartial(repo, repoDir) {
+    // The proxy intermittently fails a clone mid-transfer (handshake, EOF,
+    // index-pack); retry before treating the repository as missing.
+    const attempts = Math.max(1, Number(options.cloneAttempts) || 5);
+    let lastError;
+    for (let attempt = 1; attempt <= attempts; attempt++) {
+      try {
+        run('git', ['clone', '--filter=blob:none', '--no-checkout', repoUrl(repo), repoDir], { stdio: 'inherit' });
+        return;
+      } catch (error) {
+        lastError = error;
+        if (fs.existsSync(repoDir)) fs.rmSync(repoDir, { recursive: true, force: true, maxRetries: 5, retryDelay: 100 });
+        if (attempt < attempts) waitSync(Math.min(30000, 1000 * (2 ** (attempt - 1))));
+      }
+    }
+    throw lastError;
+  }
+
   function ensureClone(repo) {
     assertRepo(repo);
     const cached = clones.get(repo);
@@ -255,11 +273,11 @@ function createGitHubPackRemote(options = {}) {
     ensureWorkspace();
     const repoDir = path.join(workdir, repo);
     try {
-      run('git', ['clone', '--filter=blob:none', '--no-checkout', repoUrl(repo), repoDir], { stdio: 'inherit' });
+      clonePartial(repo, repoDir);
     } catch (cloneError) {
       if (fs.existsSync(repoDir)) fs.rmSync(repoDir, { recursive: true, force: true });
       createRepository(repo);
-      run('git', ['clone', '--filter=blob:none', '--no-checkout', repoUrl(repo), repoDir], { stdio: 'inherit' });
+      clonePartial(repo, repoDir);
     }
     if (!gitExists(repoDir, 'refs/remotes/origin/main')) initializeEmptyRepo(repo, repoDir);
     clones.set(repo, repoDir);
@@ -560,14 +578,16 @@ function createGitHubPackRemote(options = {}) {
       }
     }
     const repoDir = ensureClone(repo);
-    const attempts = Math.max(1, Number(options.pushAttempts) || 4);
+    const attempts = Math.max(1, Number(options.pushAttempts) || 8);
     let lastError;
     for (let attempt = 1; attempt <= attempts; attempt++) {
       try {
         return await publishBatchOnce(repoDir, repo, { files, markFull, message });
       } catch (error) {
         lastError = error;
-        if (attempt < attempts) waitSync(Math.min(5000, 500 * (2 ** (attempt - 1))));
+        // This link drops mid-transfer routinely; back off up to 30s so a flaky
+        // window is waited out instead of the whole batch failing.
+        if (attempt < attempts) waitSync(Math.min(30000, 1000 * (2 ** (attempt - 1))));
       }
     }
     throw new Error(`Batch publish failed after ${attempts} attempts: ${repo}`, { cause: lastError });
@@ -624,8 +644,7 @@ function createGitHubPackRemote(options = {}) {
   }
 
   async function verifyArchive(expected) {
-    const attempts = Math.max(1, Number(options.verifyAttempts) || 10);
-    let actual = null;
+    const attempts = Math.max(1, Number(options.verifyAttempts) || 10);    let actual = null;
     for (let attempt = 1; attempt <= attempts; attempt++) {
       actual = await getArchiveIdentity(expected);
       if (actual && Number(actual.size) === Number(expected.size) &&
