@@ -279,9 +279,14 @@ function summarize(entries) {
 
 // Content fingerprinting is the multi-hour part of classification. A long batch
 // run is routinely interrupted (machine suspend, workspace reclaim), so results
-// are cached by file identity and replayed on the next run instead of recomputed.
-// The key is path + size + mtime: source archives under a staging directory are
-// immutable copies, so identity is stable while content hashing stays truthful.
+// are cached and replayed on the next run instead of recomputed.
+//
+// The key is basename + size + mtime, not the full path: a batch is classified
+// first on its source directory, then re-classified on a filtered copy of the
+// same archives, and the two directories hold identical files. Including the
+// directory would miss every entry and re-pay the whole cost. Source archives
+// are immutable copies, so size+mtime (ms) plus the name identifies content in
+// practice; a same-name same-size same-mtime rewrite is the only false hit.
 function withFingerprintCache(opts, fingerprintFn) {
   const cachePath = opts.fingerprintCache;
   if (!cachePath) return fingerprintFn;
@@ -305,12 +310,22 @@ function withFingerprintCache(opts, fingerprintFn) {
     } catch {
       return fingerprintFn(file, options);
     }
-    const key = crypto.createHash('sha256')
-      .update(`${path.resolve(file)}|${stat.size}|${Math.round(stat.mtimeMs)}|${options.normalizationSource ? 'source' : 'product'}`)
+    const kind = options.normalizationSource ? 'source' : 'product';
+    const nameKey = crypto.createHash('sha256')
+      .update(`${path.basename(file)}|${stat.size}|${Math.round(stat.mtimeMs)}|${kind}`)
       .digest('hex');
-    if (store[key] !== undefined) return store[key];
+    // Earlier runs keyed on the absolute path; keep reading those entries so a
+    // cache built before this change is not thrown away.
+    const pathKey = crypto.createHash('sha256')
+      .update(`${path.resolve(file)}|${stat.size}|${Math.round(stat.mtimeMs)}|${kind}`)
+      .digest('hex');
+    if (store[nameKey] !== undefined) return store[nameKey];
+    if (store[pathKey] !== undefined) {
+      store[nameKey] = store[pathKey];
+      return store[pathKey];
+    }
     const result = await fingerprintFn(file, options);
-    store[key] = result;
+    store[nameKey] = result;
     pending += 1;
     if (pending >= 100) persist();
     return result;
