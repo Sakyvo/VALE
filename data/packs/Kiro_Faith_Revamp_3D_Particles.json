@@ -1,0 +1,61 @@
+{
+  "id": "§8!  §7Kiro §3Faith §8Revamp [3D Particles]",
+  "name": "Kiro_Faith_Revamp_3D_Particles",
+  "displayName": "Kiro Faith Revamp [3D Particles]",
+  "coloredName": "<span style=\"color:#AAAAAA\">K</span><span style=\"color:#AAAAAA\">i</span><span style=\"color:#AAAAAA\">r</span><span style=\"color:#AAAAAA\">o</span><span style=\"color:#AAAAAA\"> </span><span style=\"color:#00AAAA\">F</span><span style=\"color:#00AAAA\">a</span><span style=\"color:#00AAAA\">i</span><span style=\"color:#00AAAA\">t</span><span style=\"color:#00AAAA\">h</span><span style=\"color:#00AAAA\"> </span><span style=\"color:#555555\">R</span><span style=\"color:#555555\">e</span><span style=\"color:#555555\">v</span><span style=\"color:#555555\">a</span><span style=\"color:#555555\">m</span><span style=\"color:#555555\">p</span><span style=\"color:#555555\"> </span><span style=\"color:#555555\">[</span><span style=\"color:#555555\">3</span><span style=\"color:#555555\">D</span><span style=\"color:#555555\"> </span><span style=\"color:#555555\">P</span><span style=\"color:#555555\">a</span><span style=\"color:#555555\">r</span><span style=\"color:#555555\">t</span><span style=\"color:#555555\">i</span><span style=\"color:#555555\">c</span><span style=\"color:#555555\">l</span><span style=\"color:#555555\">e</span><span style=\"color:#555555\">s</span><span style=\"color:#555555\">]</span>",
+  "description": "By iSparkton",
+  "cover": "/thumbnails/Kiro_Faith_Revamp_3D_Particles/cover.png",
+  "packPng": "/thumbnails/Kiro_Faith_Revamp_3D_Particles/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§8!  §7Kiro §3Faith §8Revamp [3D Particles].zip",
+  "fileSize": "12.9MB",
+  "uploadDate": "2026-10-12",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-009/main/resourcepacks/%C2%A78!%20%20%C2%A77Kiro%20%C2%A73Faith%20%C2%A78Revamp%20%5B3D%20Particles%5D.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-009/main/resourcepacks/%C2%A78!%20%20%C2%A77Kiro%20%C2%A73Faith%20%C2%A78Revamp%20%5B3D%20Particles%5D.zip"
+  }
+}

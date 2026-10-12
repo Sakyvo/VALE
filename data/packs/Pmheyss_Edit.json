@@ -1,0 +1,61 @@
+{
+  "id": "!!!Pmheys's Edit",
+  "name": "Pmheyss_Edit",
+  "displayName": "Pmheys's Edit",
+  "coloredName": "Pmheys's Edit",
+  "description": "v1.7",
+  "cover": "/thumbnails/Pmheyss_Edit/cover.png",
+  "packPng": "/thumbnails/Pmheyss_Edit/pack.png",
+  "icon": null,
+  "file": "resourcepacks/!!!Pmheys's Edit.zip",
+  "fileSize": "20.7MB",
+  "uploadDate": "2026-10-12",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-008/main/resourcepacks/!!!Pmheys's%20Edit.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-008/main/resourcepacks/!!!Pmheys's%20Edit.zip"
+  }
+}

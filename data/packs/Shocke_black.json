@@ -1,0 +1,61 @@
+{
+  "id": "§8Shocke black",
+  "name": "Shocke_black",
+  "displayName": "Shocke black",
+  "coloredName": "<span style=\"color:#555555\">S</span><span style=\"color:#555555\">h</span><span style=\"color:#555555\">o</span><span style=\"color:#555555\">c</span><span style=\"color:#555555\">k</span><span style=\"color:#555555\">e</span><span style=\"color:#555555\"> </span><span style=\"color:#555555\">b</span><span style=\"color:#555555\">l</span><span style=\"color:#555555\">a</span><span style=\"color:#555555\">c</span><span style=\"color:#555555\">k</span>",
+  "description": "SHOCKE MASHUP",
+  "cover": "/thumbnails/Shocke_black/cover.png",
+  "packPng": "/thumbnails/Shocke_black/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§8Shocke black.zip",
+  "fileSize": "5.3MB",
+  "uploadDate": "2026-10-12",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-009/main/resourcepacks/%C2%A78Shocke%20black.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-009/main/resourcepacks/%C2%A78Shocke%20black.zip"
+  }
+}

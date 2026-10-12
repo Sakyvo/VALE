@@ -1,0 +1,61 @@
+{
+  "id": "§5Lastro §68k §1Blue",
+  "name": "Lastro_8k_Blue",
+  "displayName": "Lastro 8k Blue",
+  "coloredName": "<span style=\"color:#AA00AA\">L</span><span style=\"color:#AA00AA\">a</span><span style=\"color:#AA00AA\">s</span><span style=\"color:#AA00AA\">t</span><span style=\"color:#AA00AA\">r</span><span style=\"color:#AA00AA\">o</span><span style=\"color:#AA00AA\"> </span><span style=\"color:#FFAA00\">8</span><span style=\"color:#FFAA00\">k</span><span style=\"color:#FFAA00\"> </span><span style=\"color:#0000AA\">B</span><span style=\"color:#0000AA\">l</span><span style=\"color:#0000AA\">u</span><span style=\"color:#0000AA\">e</span>",
+  "description": "Made by Acruse",
+  "cover": "/thumbnails/Lastro_8k_Blue/cover.png",
+  "packPng": "/thumbnails/Lastro_8k_Blue/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§5Lastro §68k §1Blue.zip",
+  "fileSize": "17.0MB",
+  "uploadDate": "2026-10-12",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-009/main/resourcepacks/%C2%A75Lastro%20%C2%A768k%20%C2%A71Blue.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-009/main/resourcepacks/%C2%A75Lastro%20%C2%A768k%20%C2%A71Blue.zip"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "id": "§6runkulusS",
+  "name": "runkulusS",
+  "displayName": "runkulusS",
+  "coloredName": "<span style=\"color:#FFAA00\">r</span><span style=\"color:#FFAA00\">u</span><span style=\"color:#FFAA00\">n</span><span style=\"color:#FFAA00\">k</span><span style=\"color:#FFAA00\">u</span><span style=\"color:#FFAA00\">l</span><span style=\"color:#FFAA00\">u</span><span style=\"color:#FFAA00\">s</span><span style=\"color:#FFAA00\">S</span>",
+  "description": "BMJ",
+  "cover": "/thumbnails/runkulusS/cover.png",
+  "packPng": "/thumbnails/runkulusS/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§6runkulusS.zip",
+  "fileSize": "18.5MB",
+  "uploadDate": "2026-10-12",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-010/main/resourcepacks/%C2%A76runkulusS.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-010/main/resourcepacks/%C2%A76runkulusS.zip"
+  }
+}

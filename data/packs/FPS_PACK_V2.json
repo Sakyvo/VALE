@@ -1,0 +1,61 @@
+{
+  "id": "!FPS PACK V2",
+  "name": "FPS_PACK_V2",
+  "displayName": "FPS PACK V2",
+  "coloredName": "FPS PACK V2",
+  "description": "youtube.com/kylesmilestv",
+  "cover": "/thumbnails/FPS_PACK_V2/cover.png",
+  "packPng": "/thumbnails/FPS_PACK_V2/pack.png",
+  "icon": null,
+  "file": "resourcepacks/!FPS PACK V2.zip",
+  "fileSize": "3.8MB",
+  "uploadDate": "2026-10-12",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-009/main/resourcepacks/!FPS%20PACK%20V2.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-009/main/resourcepacks/!FPS%20PACK%20V2.zip"
+  }
+}

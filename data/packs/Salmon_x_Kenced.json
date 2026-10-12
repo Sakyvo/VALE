@@ -1,0 +1,61 @@
+{
+  "id": "§1Salmon x Kenced",
+  "name": "Salmon_x_Kenced",
+  "displayName": "Salmon x Kenced",
+  "coloredName": "<span style=\"color:#0000AA\">S</span><span style=\"color:#0000AA\">a</span><span style=\"color:#0000AA\">l</span><span style=\"color:#0000AA\">m</span><span style=\"color:#0000AA\">o</span><span style=\"color:#0000AA\">n</span><span style=\"color:#0000AA\"> </span><span style=\"color:#0000AA\">x</span><span style=\"color:#0000AA\"> </span><span style=\"color:#0000AA\">K</span><span style=\"color:#0000AA\">e</span><span style=\"color:#0000AA\">n</span><span style=\"color:#0000AA\">c</span><span style=\"color:#0000AA\">e</span><span style=\"color:#0000AA\">d</span>",
+  "description": "revamp by  HENRY",
+  "cover": "/thumbnails/Salmon_x_Kenced/cover.png",
+  "packPng": "/thumbnails/Salmon_x_Kenced/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§1Salmon x Kenced.zip",
+  "fileSize": "19.0MB",
+  "uploadDate": "2026-10-12",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-010/main/resourcepacks/%C2%A71Salmon%20x%20Kenced.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-010/main/resourcepacks/%C2%A71Salmon%20x%20Kenced.zip"
+  }
+}

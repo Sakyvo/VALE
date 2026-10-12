@@ -1,0 +1,61 @@
+{
+  "id": "§5dynamic§5§lPurple",
+  "name": "dynamicPurple",
+  "displayName": "dynamicPurple",
+  "coloredName": "<span style=\"color:#AA00AA\">d</span><span style=\"color:#AA00AA\">y</span><span style=\"color:#AA00AA\">n</span><span style=\"color:#AA00AA\">a</span><span style=\"color:#AA00AA\">m</span><span style=\"color:#AA00AA\">i</span><span style=\"color:#AA00AA\">c</span><span style=\"color:#AA00AA\">P</span><span style=\"color:#AA00AA\">u</span><span style=\"color:#AA00AA\">r</span><span style=\"color:#AA00AA\">p</span><span style=\"color:#AA00AA\">l</span><span style=\"color:#AA00AA\">e</span>",
+  "description": "-finer",
+  "cover": "/thumbnails/dynamicPurple/cover.png",
+  "packPng": "/thumbnails/dynamicPurple/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§5dynamic§5§lPurple.zip",
+  "fileSize": "18.0MB",
+  "uploadDate": "2026-10-12",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-010/main/resourcepacks/%C2%A75dynamic%C2%A75%C2%A7lPurple.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-010/main/resourcepacks/%C2%A75dynamic%C2%A75%C2%A7lPurple.zip"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "id": "§7KiroV2 HD §4DarkRed Fade",
+  "name": "KiroV2_HD_DarkRed_Fade",
+  "displayName": "KiroV2 HD DarkRed Fade",
+  "coloredName": "<span style=\"color:#AAAAAA\">K</span><span style=\"color:#AAAAAA\">i</span><span style=\"color:#AAAAAA\">r</span><span style=\"color:#AAAAAA\">o</span><span style=\"color:#AAAAAA\">V</span><span style=\"color:#AAAAAA\">2</span><span style=\"color:#AAAAAA\"> </span><span style=\"color:#AAAAAA\">H</span><span style=\"color:#AAAAAA\">D</span><span style=\"color:#AAAAAA\"> </span><span style=\"color:#AA0000\">D</span><span style=\"color:#AA0000\">a</span><span style=\"color:#AA0000\">r</span><span style=\"color:#AA0000\">k</span><span style=\"color:#AA0000\">R</span><span style=\"color:#AA0000\">e</span><span style=\"color:#AA0000\">d</span><span style=\"color:#AA0000\"> </span><span style=\"color:#AA0000\">F</span><span style=\"color:#AA0000\">a</span><span style=\"color:#AA0000\">d</span><span style=\"color:#AA0000\">e</span>",
+  "description": "edited by Yukki",
+  "cover": "/thumbnails/KiroV2_HD_DarkRed_Fade/cover.png",
+  "packPng": "/thumbnails/KiroV2_HD_DarkRed_Fade/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§7KiroV2 HD §4DarkRed Fade.zip",
+  "fileSize": "21.0MB",
+  "uploadDate": "2026-10-12",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-009/main/resourcepacks/%C2%A77KiroV2%20HD%20%C2%A74DarkRed%20Fade.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-009/main/resourcepacks/%C2%A77KiroV2%20HD%20%C2%A74DarkRed%20Fade.zip"
+  }
+}

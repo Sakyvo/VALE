@@ -1,0 +1,61 @@
+{
+  "id": "§4Kalulthan [500]",
+  "name": "Kalulthan_500",
+  "displayName": "Kalulthan [500]",
+  "coloredName": "<span style=\"color:#AA0000\">K</span><span style=\"color:#AA0000\">a</span><span style=\"color:#AA0000\">l</span><span style=\"color:#AA0000\">u</span><span style=\"color:#AA0000\">l</span><span style=\"color:#AA0000\">t</span><span style=\"color:#AA0000\">h</span><span style=\"color:#AA0000\">a</span><span style=\"color:#AA0000\">n</span><span style=\"color:#AA0000\"> </span><span style=\"color:#AA0000\">[</span><span style=\"color:#AA0000\">5</span><span style=\"color:#AA0000\">0</span><span style=\"color:#AA0000\">0</span><span style=\"color:#AA0000\">]</span>",
+  "description": "By Kalulthan",
+  "cover": "/thumbnails/Kalulthan_500/cover.png",
+  "packPng": "/thumbnails/Kalulthan_500/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§4Kalulthan [500].zip",
+  "fileSize": "6.8MB",
+  "uploadDate": "2026-10-12",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-010/main/resourcepacks/%C2%A74Kalulthan%20%5B500%5D.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-010/main/resourcepacks/%C2%A74Kalulthan%20%5B500%5D.zip"
+  }
+}

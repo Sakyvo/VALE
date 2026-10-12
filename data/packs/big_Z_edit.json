@@ -1,0 +1,61 @@
+{
+  "id": "§a§l big Z edit",
+  "name": "big_Z_edit",
+  "displayName": "big Z edit",
+  "coloredName": "<span style=\"color:#55FF55\"> </span><span style=\"color:#55FF55\">b</span><span style=\"color:#55FF55\">i</span><span style=\"color:#55FF55\">g</span><span style=\"color:#55FF55\"> </span><span style=\"color:#55FF55\">Z</span><span style=\"color:#55FF55\"> </span><span style=\"color:#55FF55\">e</span><span style=\"color:#55FF55\">d</span><span style=\"color:#55FF55\">i</span><span style=\"color:#55FF55\">t</span>",
+  "description": "- Toblerone",
+  "cover": "/thumbnails/big_Z_edit/cover.png",
+  "packPng": "/thumbnails/big_Z_edit/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§a§l big Z edit.zip",
+  "fileSize": "22.1MB",
+  "uploadDate": "2026-10-12",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-010/main/resourcepacks/%C2%A7a%C2%A7l%20big%20Z%20edit.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-010/main/resourcepacks/%C2%A7a%C2%A7l%20big%20Z%20edit.zip"
+  }
+}

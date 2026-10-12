@@ -1,0 +1,61 @@
+{
+  "id": "§2VerGreen §7Revamp",
+  "name": "VerGreen_Revamp",
+  "displayName": "VerGreen Revamp",
+  "coloredName": "<span style=\"color:#00AA00\">V</span><span style=\"color:#00AA00\">e</span><span style=\"color:#00AA00\">r</span><span style=\"color:#00AA00\">G</span><span style=\"color:#00AA00\">r</span><span style=\"color:#00AA00\">e</span><span style=\"color:#00AA00\">e</span><span style=\"color:#00AA00\">n</span><span style=\"color:#00AA00\"> </span><span style=\"color:#AAAAAA\">R</span><span style=\"color:#AAAAAA\">e</span><span style=\"color:#AAAAAA\">v</span><span style=\"color:#AAAAAA\">a</span><span style=\"color:#AAAAAA\">m</span><span style=\"color:#AAAAAA\">p</span>",
+  "description": "by Cliantha & kamiefu",
+  "cover": "/thumbnails/VerGreen_Revamp/cover.png",
+  "packPng": "/thumbnails/VerGreen_Revamp/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§2VerGreen §7Revamp.zip",
+  "fileSize": "33.2MB",
+  "uploadDate": "2026-10-12",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-010/main/resourcepacks/%C2%A72VerGreen%20%C2%A77Revamp.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-010/main/resourcepacks/%C2%A72VerGreen%20%C2%A77Revamp.zip"
+  }
+}

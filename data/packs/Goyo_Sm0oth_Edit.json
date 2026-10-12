@@ -1,0 +1,61 @@
+{
+  "id": "§9Goyo §cSm0oth §f§lEdit",
+  "name": "Goyo_Sm0oth_Edit",
+  "displayName": "Goyo Sm0oth Edit",
+  "coloredName": "<span style=\"color:#5555FF\">G</span><span style=\"color:#5555FF\">o</span><span style=\"color:#5555FF\">y</span><span style=\"color:#5555FF\">o</span><span style=\"color:#5555FF\"> </span><span style=\"color:#FF5555\">S</span><span style=\"color:#FF5555\">m</span><span style=\"color:#FF5555\">0</span><span style=\"color:#FF5555\">o</span><span style=\"color:#FF5555\">t</span><span style=\"color:#FF5555\">h</span><span style=\"color:#FF5555\"> </span><span style=\"color:#FFFFFF\">E</span><span style=\"color:#FFFFFF\">d</span><span style=\"color:#FFFFFF\">i</span><span style=\"color:#FFFFFF\">t</span>",
+  "description": "By K4siKs",
+  "cover": "/thumbnails/Goyo_Sm0oth_Edit/cover.png",
+  "packPng": "/thumbnails/Goyo_Sm0oth_Edit/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§9Goyo §cSm0oth §f§lEdit.zip",
+  "fileSize": "13.7MB",
+  "uploadDate": "2026-10-12",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-010/main/resourcepacks/%C2%A79Goyo%20%C2%A7cSm0oth%20%C2%A7f%C2%A7lEdit.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-010/main/resourcepacks/%C2%A79Goyo%20%C2%A7cSm0oth%20%C2%A7f%C2%A7lEdit.zip"
+  }
+}

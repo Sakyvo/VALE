@@ -1,0 +1,61 @@
+{
+  "id": "§4M0DIFIER §cFire §8Private §7V2",
+  "name": "M0DIFIER_Fire_Private_V2",
+  "displayName": "M0DIFIER Fire Private V2",
+  "coloredName": "<span style=\"color:#AA0000\">M</span><span style=\"color:#AA0000\">0</span><span style=\"color:#AA0000\">D</span><span style=\"color:#AA0000\">I</span><span style=\"color:#AA0000\">F</span><span style=\"color:#AA0000\">I</span><span style=\"color:#AA0000\">E</span><span style=\"color:#AA0000\">R</span><span style=\"color:#AA0000\"> </span><span style=\"color:#FF5555\">F</span><span style=\"color:#FF5555\">i</span><span style=\"color:#FF5555\">r</span><span style=\"color:#FF5555\">e</span><span style=\"color:#FF5555\"> </span><span style=\"color:#555555\">P</span><span style=\"color:#555555\">r</span><span style=\"color:#555555\">i</span><span style=\"color:#555555\">v</span><span style=\"color:#555555\">a</span><span style=\"color:#555555\">t</span><span style=\"color:#555555\">e</span><span style=\"color:#555555\"> </span><span style=\"color:#AAAAAA\">V</span><span style=\"color:#AAAAAA\">2</span>",
+  "description": "by Arissi & Kamiefu - For M0DIFIER",
+  "cover": "/thumbnails/M0DIFIER_Fire_Private_V2/cover.png",
+  "packPng": "/thumbnails/M0DIFIER_Fire_Private_V2/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§4M0DIFIER §cFire §8Private §7V2.zip",
+  "fileSize": "42.3MB",
+  "uploadDate": "2026-10-12",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-009/main/resourcepacks/%C2%A74M0DIFIER%20%C2%A7cFire%20%C2%A78Private%20%C2%A77V2.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-009/main/resourcepacks/%C2%A74M0DIFIER%20%C2%A7cFire%20%C2%A78Private%20%C2%A77V2.zip"
+  }
+}

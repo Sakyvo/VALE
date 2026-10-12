@@ -1,0 +1,61 @@
+{
+  "id": "§7[1.7] §6Sphax §4P§7v§4P",
+  "name": "1.7_Sphax_PvP",
+  "displayName": "1.7] Sphax PvP",
+  "coloredName": "<span style=\"color:#AAAAAA\">[</span><span style=\"color:#AAAAAA\">1</span><span style=\"color:#AAAAAA\">.</span><span style=\"color:#AAAAAA\">7</span><span style=\"color:#AAAAAA\">]</span><span style=\"color:#AAAAAA\"> </span><span style=\"color:#FFAA00\">S</span><span style=\"color:#FFAA00\">p</span><span style=\"color:#FFAA00\">h</span><span style=\"color:#FFAA00\">a</span><span style=\"color:#FFAA00\">x</span><span style=\"color:#FFAA00\"> </span><span style=\"color:#AA0000\">P</span><span style=\"color:#AAAAAA\">v</span><span style=\"color:#AA0000\">P</span>",
+  "description": "",
+  "cover": "/thumbnails/1.7_Sphax_PvP/cover.png",
+  "packPng": "/thumbnails/1.7_Sphax_PvP/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§7[1.7] §6Sphax §4P§7v§4P.zip",
+  "fileSize": "34.2MB",
+  "uploadDate": "2026-10-12",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-009/main/resourcepacks/%C2%A77%5B1.7%5D%20%C2%A76Sphax%20%C2%A74P%C2%A77v%C2%A74P.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-009/main/resourcepacks/%C2%A77%5B1.7%5D%20%C2%A76Sphax%20%C2%A74P%C2%A77v%C2%A74P.zip"
+  }
+}

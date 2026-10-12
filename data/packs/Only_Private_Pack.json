@@ -1,0 +1,61 @@
+{
+  "id": "§5Only §dPrivate §5Pack",
+  "name": "Only_Private_Pack",
+  "displayName": "Only Private Pack",
+  "coloredName": "<span style=\"color:#AA00AA\">O</span><span style=\"color:#AA00AA\">n</span><span style=\"color:#AA00AA\">l</span><span style=\"color:#AA00AA\">y</span><span style=\"color:#AA00AA\"> </span><span style=\"color:#FF55FF\">P</span><span style=\"color:#FF55FF\">r</span><span style=\"color:#FF55FF\">i</span><span style=\"color:#FF55FF\">v</span><span style=\"color:#FF55FF\">a</span><span style=\"color:#FF55FF\">t</span><span style=\"color:#FF55FF\">e</span><span style=\"color:#FF55FF\"> </span><span style=\"color:#AA00AA\">P</span><span style=\"color:#AA00AA\">a</span><span style=\"color:#AA00AA\">c</span><span style=\"color:#AA00AA\">k</span>",
+  "description": "by qunc",
+  "cover": "/thumbnails/Only_Private_Pack/cover.png",
+  "packPng": "/thumbnails/Only_Private_Pack/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§5Only §dPrivate §5Pack.zip",
+  "fileSize": "10.3MB",
+  "uploadDate": "2026-10-12",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-009/main/resourcepacks/%C2%A75Only%20%C2%A7dPrivate%20%C2%A75Pack.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-009/main/resourcepacks/%C2%A75Only%20%C2%A7dPrivate%20%C2%A75Pack.zip"
+  }
+}

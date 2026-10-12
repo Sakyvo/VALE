@@ -1,0 +1,61 @@
+{
+  "id": "!SirYellowFade -1.5k Pack",
+  "name": "SirYellowFade_-1.5k_Pack",
+  "displayName": "SirYellowFade -1.5k Pack",
+  "coloredName": "SirYellowFade -1.5k Pack",
+  "description": "SirYellowFade by ZlordaPvP",
+  "cover": "/thumbnails/SirYellowFade_-1.5k_Pack/cover.png",
+  "packPng": "/thumbnails/SirYellowFade_-1.5k_Pack/pack.png",
+  "icon": null,
+  "file": "resourcepacks/!SirYellowFade -1.5k Pack.zip",
+  "fileSize": "19.0MB",
+  "uploadDate": "2026-10-12",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-008/main/resourcepacks/!SirYellowFade%20-1.5k%20Pack.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-008/main/resourcepacks/!SirYellowFade%20-1.5k%20Pack.zip"
+  }
+}

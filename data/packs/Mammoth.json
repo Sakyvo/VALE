@@ -1,0 +1,61 @@
+{
+  "id": "§9Mammoth",
+  "name": "Mammoth",
+  "displayName": "Mammoth",
+  "coloredName": "<span style=\"color:#5555FF\">M</span><span style=\"color:#5555FF\">a</span><span style=\"color:#5555FF\">m</span><span style=\"color:#5555FF\">m</span><span style=\"color:#5555FF\">o</span><span style=\"color:#5555FF\">t</span><span style=\"color:#5555FF\">h</span>",
+  "description": "BMJ",
+  "cover": "/thumbnails/Mammoth/cover.png",
+  "packPng": "/thumbnails/Mammoth/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§9Mammoth.zip",
+  "fileSize": "28.0MB",
+  "uploadDate": "2026-10-12",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-009/main/resourcepacks/%C2%A79Mammoth.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-009/main/resourcepacks/%C2%A79Mammoth.zip"
+  }
+}

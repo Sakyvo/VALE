@@ -1,0 +1,61 @@
+{
+  "id": "§cRed §bEum3 FPS §fEdit",
+  "name": "Red_Eum3_FPS_Edit",
+  "displayName": "Red Eum3 FPS Edit",
+  "coloredName": "<span style=\"color:#FF5555\">R</span><span style=\"color:#FF5555\">e</span><span style=\"color:#FF5555\">d</span><span style=\"color:#FF5555\"> </span><span style=\"color:#55FFFF\">E</span><span style=\"color:#55FFFF\">u</span><span style=\"color:#55FFFF\">m</span><span style=\"color:#55FFFF\">3</span><span style=\"color:#55FFFF\"> </span><span style=\"color:#55FFFF\">F</span><span style=\"color:#55FFFF\">P</span><span style=\"color:#55FFFF\">S</span><span style=\"color:#55FFFF\"> </span><span style=\"color:#FFFFFF\">E</span><span style=\"color:#FFFFFF\">d</span><span style=\"color:#FFFFFF\">i</span><span style=\"color:#FFFFFF\">t</span>",
+  "description": "Duelling and Feid",
+  "cover": "/thumbnails/Red_Eum3_FPS_Edit/cover.png",
+  "packPng": "/thumbnails/Red_Eum3_FPS_Edit/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§cRed §bEum3 FPS §fEdit.zip",
+  "fileSize": "36.2MB",
+  "uploadDate": "2026-10-12",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-009/main/resourcepacks/%C2%A7cRed%20%C2%A7bEum3%20FPS%20%C2%A7fEdit.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-009/main/resourcepacks/%C2%A7cRed%20%C2%A7bEum3%20FPS%20%C2%A7fEdit.zip"
+  }
+}

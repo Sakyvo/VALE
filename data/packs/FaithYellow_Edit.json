@@ -1,0 +1,61 @@
+{
+  "id": "§6#§eFaithYellow §6Edit",
+  "name": "FaithYellow_Edit",
+  "displayName": "FaithYellow Edit",
+  "coloredName": "<span style=\"color:#FFFF55\">F</span><span style=\"color:#FFFF55\">a</span><span style=\"color:#FFFF55\">i</span><span style=\"color:#FFFF55\">t</span><span style=\"color:#FFFF55\">h</span><span style=\"color:#FFFF55\">Y</span><span style=\"color:#FFFF55\">e</span><span style=\"color:#FFFF55\">l</span><span style=\"color:#FFFF55\">l</span><span style=\"color:#FFFF55\">o</span><span style=\"color:#FFFF55\">w</span><span style=\"color:#FFFF55\"> </span><span style=\"color:#FFAA00\">E</span><span style=\"color:#FFAA00\">d</span><span style=\"color:#FFAA00\">i</span><span style=\"color:#FFAA00\">t</span>",
+  "description": "- xeuza",
+  "cover": "/thumbnails/FaithYellow_Edit/cover.png",
+  "packPng": "/thumbnails/FaithYellow_Edit/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§6#§eFaithYellow §6Edit.zip",
+  "fileSize": "4.7MB",
+  "uploadDate": "2026-10-12",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-010/main/resourcepacks/%C2%A76%23%C2%A7eFaithYellow%20%C2%A76Edit.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-010/main/resourcepacks/%C2%A76%23%C2%A7eFaithYellow%20%C2%A76Edit.zip"
+  }
+}

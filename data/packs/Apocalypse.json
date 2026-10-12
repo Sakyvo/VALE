@@ -1,0 +1,61 @@
+{
+  "id": "§2Apocalypse",
+  "name": "Apocalypse",
+  "displayName": "Apocalypse",
+  "coloredName": "<span style=\"color:#00AA00\">A</span><span style=\"color:#00AA00\">p</span><span style=\"color:#00AA00\">o</span><span style=\"color:#00AA00\">c</span><span style=\"color:#00AA00\">a</span><span style=\"color:#00AA00\">l</span><span style=\"color:#00AA00\">y</span><span style=\"color:#00AA00\">p</span><span style=\"color:#00AA00\">s</span><span style=\"color:#00AA00\">e</span>",
+  "description": "by IceDreamed",
+  "cover": "/thumbnails/Apocalypse/cover.png",
+  "packPng": "/thumbnails/Apocalypse/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§2Apocalypse.zip",
+  "fileSize": "13.0MB",
+  "uploadDate": "2026-10-12",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-010/main/resourcepacks/%C2%A72Apocalypse.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-010/main/resourcepacks/%C2%A72Apocalypse.zip"
+  }
+}

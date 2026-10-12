@@ -1,0 +1,61 @@
+{
+  "id": "§cEmmy does damage§d (128x)",
+  "name": "Emmy_does_damage_128x",
+  "displayName": "Emmy does damage (128x)",
+  "coloredName": "<span style=\"color:#FF5555\">E</span><span style=\"color:#FF5555\">m</span><span style=\"color:#FF5555\">m</span><span style=\"color:#FF5555\">y</span><span style=\"color:#FF5555\"> </span><span style=\"color:#FF5555\">d</span><span style=\"color:#FF5555\">o</span><span style=\"color:#FF5555\">e</span><span style=\"color:#FF5555\">s</span><span style=\"color:#FF5555\"> </span><span style=\"color:#FF5555\">d</span><span style=\"color:#FF5555\">a</span><span style=\"color:#FF5555\">m</span><span style=\"color:#FF5555\">a</span><span style=\"color:#FF5555\">g</span><span style=\"color:#FF5555\">e</span><span style=\"color:#FF55FF\"> </span><span style=\"color:#FF55FF\">(</span><span style=\"color:#FF55FF\">1</span><span style=\"color:#FF55FF\">2</span><span style=\"color:#FF55FF\">8</span><span style=\"color:#FF55FF\">x</span><span style=\"color:#FF55FF\">)</span>",
+  "description": ";; By Kitprotecting ;;",
+  "cover": "/thumbnails/Emmy_does_damage_128x/cover.png",
+  "packPng": "/thumbnails/Emmy_does_damage_128x/pack.png",
+  "icon": null,
+  "file": "resourcepacks/§cEmmy does damage§d (128x).zip",
+  "fileSize": "34.1MB",
+  "uploadDate": "2026-10-12",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-009/main/resourcepacks/%C2%A7cEmmy%20does%20damage%C2%A7d%20(128x).zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-009/main/resourcepacks/%C2%A7cEmmy%20does%20damage%C2%A7d%20(128x).zip"
+  }
+}
