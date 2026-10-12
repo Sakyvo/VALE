@@ -577,11 +577,13 @@ function createGitHubPackRemote(options = {}) {
         throw new Error(`Archive to publish is missing: ${item.file} (${item.path})`);
       }
     }
-    const repoDir = ensureClone(repo);
     const attempts = Math.max(1, Number(options.pushAttempts) || 8);
     let lastError;
     for (let attempt = 1; attempt <= attempts; attempt++) {
       try {
+        // The whole workspace can be reclaimed between retries (cleanup,
+        // suspend, disk pressure); re-ensure the clone on every attempt.
+        const repoDir = ensureClone(repo);
         return await publishBatchOnce(repoDir, repo, { files, markFull, message });
       } catch (error) {
         lastError = error;
