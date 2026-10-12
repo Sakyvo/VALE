@@ -1,0 +1,61 @@
+{
+  "id": "!        §1Xenovia §3Quarta",
+  "name": "Xenovia_Quarta",
+  "displayName": "Xenovia Quarta",
+  "coloredName": "<span style=\"color:#0000AA\">X</span><span style=\"color:#0000AA\">e</span><span style=\"color:#0000AA\">n</span><span style=\"color:#0000AA\">o</span><span style=\"color:#0000AA\">v</span><span style=\"color:#0000AA\">i</span><span style=\"color:#0000AA\">a</span><span style=\"color:#0000AA\"> </span><span style=\"color:#00AAAA\">Q</span><span style=\"color:#00AAAA\">u</span><span style=\"color:#00AAAA\">a</span><span style=\"color:#00AAAA\">r</span><span style=\"color:#00AAAA\">t</span><span style=\"color:#00AAAA\">a</span>",
+  "description": "Original by Aussi - Mintas",
+  "cover": "/thumbnails/Xenovia_Quarta/cover.png",
+  "packPng": "/thumbnails/Xenovia_Quarta/pack.png",
+  "icon": null,
+  "file": "resourcepacks/!        §1Xenovia §3Quarta.zip",
+  "fileSize": "48.4MB",
+  "uploadDate": "2026-10-10",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-008/main/resourcepacks/!%20%20%20%20%20%20%20%20%C2%A71Xenovia%20%C2%A73Quarta.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-008/main/resourcepacks/!%20%20%20%20%20%20%20%20%C2%A71Xenovia%20%C2%A73Quarta.zip"
+  }
+}

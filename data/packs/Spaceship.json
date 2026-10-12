@@ -1,0 +1,61 @@
+{
+  "id": "! §8§lSpace§f§lship",
+  "name": "Spaceship",
+  "displayName": "Spaceship",
+  "coloredName": "<span style=\"color:#555555\">S</span><span style=\"color:#555555\">p</span><span style=\"color:#555555\">a</span><span style=\"color:#555555\">c</span><span style=\"color:#555555\">e</span><span style=\"color:#FFFFFF\">s</span><span style=\"color:#FFFFFF\">h</span><span style=\"color:#FFFFFF\">i</span><span style=\"color:#FFFFFF\">p</span>",
+  "description": "by Plyflex",
+  "cover": "/thumbnails/Spaceship/cover.png",
+  "packPng": "/thumbnails/Spaceship/pack.png",
+  "icon": null,
+  "file": "resourcepacks/! §8§lSpace§f§lship.zip",
+  "fileSize": "37.7MB",
+  "uploadDate": "2026-10-10",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-008/main/resourcepacks/!%20%C2%A78%C2%A7lSpace%C2%A7f%C2%A7lship.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-008/main/resourcepacks/!%20%C2%A78%C2%A7lSpace%C2%A7f%C2%A7lship.zip"
+  }
+}

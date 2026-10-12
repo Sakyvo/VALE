@@ -1,0 +1,61 @@
+{
+  "id": "!       §dsmuj pack (motion edit)",
+  "name": "smuj_pack_motion_edit",
+  "displayName": "smuj pack (motion edit)",
+  "coloredName": "<span style=\"color:#FF55FF\">s</span><span style=\"color:#FF55FF\">m</span><span style=\"color:#FF55FF\">u</span><span style=\"color:#FF55FF\">j</span><span style=\"color:#FF55FF\"> </span><span style=\"color:#FF55FF\">p</span><span style=\"color:#FF55FF\">a</span><span style=\"color:#FF55FF\">c</span><span style=\"color:#FF55FF\">k</span><span style=\"color:#FF55FF\"> </span><span style=\"color:#FF55FF\">(</span><span style=\"color:#FF55FF\">m</span><span style=\"color:#FF55FF\">o</span><span style=\"color:#FF55FF\">t</span><span style=\"color:#FF55FF\">i</span><span style=\"color:#FF55FF\">o</span><span style=\"color:#FF55FF\">n</span><span style=\"color:#FF55FF\"> </span><span style=\"color:#FF55FF\">e</span><span style=\"color:#FF55FF\">d</span><span style=\"color:#FF55FF\">i</span><span style=\"color:#FF55FF\">t</span><span style=\"color:#FF55FF\">)</span>",
+  "description": "edit by motion :>",
+  "cover": "/thumbnails/smuj_pack_motion_edit/cover.png",
+  "packPng": "/thumbnails/smuj_pack_motion_edit/pack.png",
+  "icon": null,
+  "file": "resourcepacks/!       §dsmuj pack (motion edit).zip",
+  "fileSize": "30.7MB",
+  "uploadDate": "2026-10-10",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-008/main/resourcepacks/!%20%20%20%20%20%20%20%C2%A7dsmuj%20pack%20(motion%20edit).zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-008/main/resourcepacks/!%20%20%20%20%20%20%20%C2%A7dsmuj%20pack%20(motion%20edit).zip"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "id": "! Indigo 64x",
+  "name": "Indigo_64x",
+  "displayName": "Indigo 64x",
+  "coloredName": "Indigo 64x",
+  "description": "By Cibay",
+  "cover": "/thumbnails/Indigo_64x/cover.png",
+  "packPng": "/thumbnails/Indigo_64x/pack.png",
+  "icon": null,
+  "file": "resourcepacks/! Indigo 64x.zip",
+  "fileSize": "13.6MB",
+  "uploadDate": "2026-10-10",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-007/main/resourcepacks/!%20Indigo%2064x.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-007/main/resourcepacks/!%20Indigo%2064x.zip"
+  }
+}

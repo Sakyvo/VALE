@@ -1,0 +1,61 @@
+{
+  "id": "! §7Kiro FPS V2 (White)",
+  "name": "Kiro_FPS_V2_White",
+  "displayName": "Kiro FPS V2 (White)",
+  "coloredName": "<span style=\"color:#AAAAAA\">K</span><span style=\"color:#AAAAAA\">i</span><span style=\"color:#AAAAAA\">r</span><span style=\"color:#AAAAAA\">o</span><span style=\"color:#AAAAAA\"> </span><span style=\"color:#AAAAAA\">F</span><span style=\"color:#AAAAAA\">P</span><span style=\"color:#AAAAAA\">S</span><span style=\"color:#AAAAAA\"> </span><span style=\"color:#AAAAAA\">V</span><span style=\"color:#AAAAAA\">2</span><span style=\"color:#AAAAAA\"> </span><span style=\"color:#AAAAAA\">(</span><span style=\"color:#AAAAAA\">W</span><span style=\"color:#AAAAAA\">h</span><span style=\"color:#AAAAAA\">i</span><span style=\"color:#AAAAAA\">t</span><span style=\"color:#AAAAAA\">e</span><span style=\"color:#AAAAAA\">)</span>",
+  "description": "edited by dosieky",
+  "cover": "/thumbnails/Kiro_FPS_V2_White/cover.png",
+  "packPng": "/thumbnails/Kiro_FPS_V2_White/pack.png",
+  "icon": null,
+  "file": "resourcepacks/! §7Kiro FPS V2 (White).zip",
+  "fileSize": "18.6MB",
+  "uploadDate": "2026-10-10",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-007/main/resourcepacks/!%20%C2%A77Kiro%20FPS%20V2%20(White).zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-007/main/resourcepacks/!%20%C2%A77Kiro%20FPS%20V2%20(White).zip"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "id": "!     §8Venom §fPack",
+  "name": "Venom_Pack",
+  "displayName": "Venom Pack",
+  "coloredName": "<span style=\"color:#555555\">V</span><span style=\"color:#555555\">e</span><span style=\"color:#555555\">n</span><span style=\"color:#555555\">o</span><span style=\"color:#555555\">m</span><span style=\"color:#555555\"> </span><span style=\"color:#FFFFFF\">P</span><span style=\"color:#FFFFFF\">a</span><span style=\"color:#FFFFFF\">c</span><span style=\"color:#FFFFFF\">k</span>",
+  "description": "By Metar0X",
+  "cover": "/thumbnails/Venom_Pack/cover.png",
+  "packPng": "/thumbnails/Venom_Pack/pack.png",
+  "icon": null,
+  "file": "resourcepacks/!     §8Venom §fPack.zip",
+  "fileSize": "14.1MB",
+  "uploadDate": "2026-10-10",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/!%20%20%20%20%20%C2%A78Venom%20%C2%A7fPack.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/!%20%20%20%20%20%C2%A78Venom%20%C2%A7fPack.zip"
+  }
+}

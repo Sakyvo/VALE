@@ -1,0 +1,61 @@
+{
+  "id": "! §l§4Vers Eum3",
+  "name": "Vers_Eum3",
+  "displayName": "Vers Eum3",
+  "coloredName": "<span style=\"color:#AA0000\">V</span><span style=\"color:#AA0000\">e</span><span style=\"color:#AA0000\">r</span><span style=\"color:#AA0000\">s</span><span style=\"color:#AA0000\"> </span><span style=\"color:#AA0000\">E</span><span style=\"color:#AA0000\">u</span><span style=\"color:#AA0000\">m</span><span style=\"color:#AA0000\">3</span>",
+  "description": "By Metar0X",
+  "cover": "/thumbnails/Vers_Eum3/cover.png",
+  "packPng": "/thumbnails/Vers_Eum3/pack.png",
+  "icon": null,
+  "file": "resourcepacks/! §l§4Vers Eum3.zip",
+  "fileSize": "11.1MB",
+  "uploadDate": "2026-10-10",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-007/main/resourcepacks/!%20%C2%A7l%C2%A74Vers%20Eum3.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-007/main/resourcepacks/!%20%C2%A7l%C2%A74Vers%20Eum3.zip"
+  }
+}

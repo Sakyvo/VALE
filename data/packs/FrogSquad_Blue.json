@@ -1,0 +1,61 @@
+{
+  "id": "!     §2FrogSquad §aBlue",
+  "name": "FrogSquad_Blue",
+  "displayName": "FrogSquad Blue",
+  "coloredName": "<span style=\"color:#00AA00\">F</span><span style=\"color:#00AA00\">r</span><span style=\"color:#00AA00\">o</span><span style=\"color:#00AA00\">g</span><span style=\"color:#00AA00\">S</span><span style=\"color:#00AA00\">q</span><span style=\"color:#00AA00\">u</span><span style=\"color:#00AA00\">a</span><span style=\"color:#00AA00\">d</span><span style=\"color:#00AA00\"> </span><span style=\"color:#55FF55\">B</span><span style=\"color:#55FF55\">l</span><span style=\"color:#55FF55\">u</span><span style=\"color:#55FF55\">e</span>",
+  "description": "By Metar0X",
+  "cover": "/thumbnails/FrogSquad_Blue/cover.png",
+  "packPng": "/thumbnails/FrogSquad_Blue/pack.png",
+  "icon": null,
+  "file": "resourcepacks/!     §2FrogSquad §aBlue.zip",
+  "fileSize": "11.9MB",
+  "uploadDate": "2026-10-10",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/!%20%20%20%20%20%C2%A72FrogSquad%20%C2%A7aBlue.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/!%20%20%20%20%20%C2%A72FrogSquad%20%C2%A7aBlue.zip"
+  }
+}

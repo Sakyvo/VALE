@@ -200,6 +200,146 @@
       "retainedPackId": "Eum3_Blue_Edit",
       "reason": "exact_visual_duplicate_keep_existing",
       "resolvedAt": "2026-10-10T07:32:16.597Z"
+    },
+    {
+      "sourceFile": "! Tory Eum3 Blue 16x.zip",
+      "sourcePackId": "Tory_Eum3_Blue_16x",
+      "archiveSha256": "0812ca6700a39b77aab28b32c036a6cb8e0c1d3ac7956371e13ccfe373897a5b",
+      "visualContentHash": "cfe0304cae42ada8adfa8ca82537656dc693506165f965f05cc736c2ff91dab0",
+      "retainedFile": "5 ! Tory Eum3 Blue 16x.zip",
+      "retainedPackId": "5_Tory_Eum3_Blue_16x",
+      "reason": "exact_visual_duplicate_keep_existing",
+      "resolvedAt": "2026-10-12T09:15:49.552Z"
+    },
+    {
+      "sourceFile": "! woooh.zip",
+      "sourcePackId": "woooh",
+      "archiveSha256": "4bd26df6bef5a9bef2758cef5be7261dca2e3ea29c0b27a6720fa621b419da50",
+      "visualContentHash": "50b3c78596637de9fc4b231ea3ce63a1435623e7233691fd41b28509c211129b",
+      "retainedFile": "! woooah.zip",
+      "retainedPackId": "woooah",
+      "reason": "exact_visual_duplicate_keep_existing",
+      "resolvedAt": "2026-10-12T09:15:49.552Z"
+    },
+    {
+      "sourceFile": "! Yokabi v4(1).zip",
+      "sourcePackId": "Yokabi_v4(1)",
+      "archiveSha256": "f0fef6e983eadd0c59404b535160f2c247d5f0da1bbfc86f20d55796f1e264fe",
+      "visualContentHash": "b3f2b486ec6fbd7c7b6b23a08f67f63774f914ab9e1e9a525c71949dbf632104",
+      "retainedFile": "! Yokabi v4.zip",
+      "retainedPackId": "Yokabi_v4",
+      "reason": "exact_visual_duplicate_keep_existing",
+      "resolvedAt": "2026-10-12T09:15:49.552Z"
+    },
+    {
+      "sourceFile": "!§4Byrez!§cPrivate.zip",
+      "sourcePackId": "ByrezPrivate",
+      "archiveSha256": "631fc8ef6de6c459bc7dafc6cbc37637fbff0ce28b63b7be8c0feee85eda1aae",
+      "visualContentHash": "24a4b5de3d41eeeb58de9cbdabad349b12a41b5b26d85e27f8def51fe7cd913c",
+      "retainedFile": "!   §4Byrez !§cPrivate.zip",
+      "retainedPackId": "Byrez_Private",
+      "reason": "exact_visual_duplicate_keep_existing",
+      "resolvedAt": "2026-10-12T09:15:49.552Z"
+    },
+    {
+      "sourceFile": "!Default eum3.zip",
+      "sourcePackId": "Default_eum3",
+      "archiveSha256": "69bd4c4e9eda7a144df69a474a6ff1fd2264a0c052fffca0226e62b6e816b223",
+      "visualContentHash": "2dad2eccbf904cbe63ee2d2fd1f565a87223b900ca26cd557b0bf165da018b3d",
+      "retainedFile": "!Default eum3part.zip",
+      "retainedPackId": "Default_eum3part",
+      "reason": "exact_visual_duplicate_keep_existing",
+      "resolvedAt": "2026-10-12T09:15:49.552Z"
+    },
+    {
+      "sourceFile": "!Deqal64x64v2.zip",
+      "sourcePackId": "Deqal64x64v2",
+      "archiveSha256": "a7bd1d892f79fb31a8a2ddaf5a48678655611bbb30a805c2aaede9157dd186af",
+      "visualContentHash": "be651179b096d99c7afd9fc2c5c6412391e9631be575b836fb4f6741eac626d3",
+      "retainedFile": "!Deqal64x64v2 [Square Crosshair].zip",
+      "retainedPackId": "Deqal64x64v2_Square_Crosshair",
+      "reason": "exact_visual_duplicate_keep_existing",
+      "resolvedAt": "2026-10-12T09:15:49.552Z"
+    },
+    {
+      "sourceFile": "!Dynamic Duo (2).zip",
+      "sourcePackId": "Dynamic_Duo(2)",
+      "archiveSha256": "bd64c101007b1325e6071b3d0a580ecef4229acc471ea870f5019fdabeaf6208",
+      "visualContentHash": "fd0afdc63e62ebbe5452c8cd76c47fc19a2bdaaa4b3fefa93a0b9a515a689dd8",
+      "retainedFile": "!Dynamic Duo 32x.zip",
+      "retainedPackId": "Dynamic_Duo_32x",
+      "reason": "exact_visual_duplicate_keep_existing",
+      "resolvedAt": "2026-10-12T09:15:49.552Z"
+    },
+    {
+      "sourceFile": "!eum3edit(2).zip",
+      "sourcePackId": "eum3edit(2)",
+      "archiveSha256": "c7ab029c5a82781879cfd3c5f8fc617e78b515509ebe5faa2a69adac723e23c6",
+      "visualContentHash": "3ac641f48ba9a5eb21129a782f277be512cffdde38be5a0cea19944db3b22661",
+      "retainedFile": "!eum3 brown.zip",
+      "retainedPackId": "eum3_brown",
+      "reason": "exact_visual_duplicate_keep_existing",
+      "resolvedAt": "2026-10-12T09:15:49.552Z"
+    },
+    {
+      "sourceFile": "!Revedents Azure FaithFul (1).zip",
+      "sourcePackId": "Revedents_Azure_FaithFul(1)",
+      "archiveSha256": "6c73dc17a7838cf3ed4fe629cd10906282e4e492e1039fe761211272fa2b66f2",
+      "visualContentHash": "35b071797ae04c240dbdcadec8419c38f165160ebd5d346ddc5890eac7126060",
+      "retainedFile": "!Revedents Azure FaithFul.zip",
+      "retainedPackId": "Revedents_Azure_FaithFul",
+      "reason": "exact_visual_duplicate_keep_existing",
+      "resolvedAt": "2026-10-12T09:15:49.552Z"
+    },
+    {
+      "sourceFile": "!Zeynah Remake.zip",
+      "sourcePackId": "Zeynah_Remake",
+      "archiveSha256": "b770cac6aa0aedb4ae34eace5e79949a787e166c6960fa73e5d06a67def78cf7",
+      "visualContentHash": "d404702026dbcbf33b2ac19887b42d2af13b3fcc7a5c556b554f662fc3dc59dc",
+      "retainedFile": "!Vene Aphotic.zip",
+      "retainedPackId": "Vene_Aphotic",
+      "reason": "exact_visual_duplicate_keep_existing",
+      "resolvedAt": "2026-10-12T09:15:49.552Z"
+    },
+    {
+      "sourceFile": "!Zylowh eum.zip",
+      "sourcePackId": "Zylowh_eum",
+      "archiveSha256": "193c0ce5b75f6ef35da1a5eda93d0f251707bea490b0e64d9b5231dbef4ef2c1",
+      "visualContentHash": "0762f7951a3e6f5171b11e3b99618746e3a8e8420cf26dc6a9f617881c50d514",
+      "retainedFile": "!Zylowh Eum3.zip",
+      "retainedPackId": "Zylowh_Eum3",
+      "reason": "exact_visual_duplicate_keep_existing",
+      "resolvedAt": "2026-10-12T09:15:49.552Z"
+    },
+    {
+      "sourceFile": "§8! §fDynamic Duo §8V2 [§4Red§5&amp;§1Blue].zip",
+      "sourcePackId": "Dynamic_Duo_V2_RedampBlue",
+      "archiveSha256": "be737685742c435823ac15bc12e6a693210b3250ef180d5eb8dbab0afe64bc25",
+      "visualContentHash": "5ead727911023c15e86e02b7d885d4b60c2b21d323048c408a149b8e064d48ea",
+      "retainedFile": "! Dynamic Duo V2 [§4Red §5& §1Blue].zip",
+      "retainedPackId": "Dynamic_Duo_V2_Red_Blue",
+      "reason": "exact_visual_duplicate_keep_existing",
+      "resolvedAt": "2026-10-12T09:15:49.552Z"
+    },
+    {
+      "sourceFile": "§bOnly.zip",
+      "sourcePackId": "Only",
+      "archiveSha256": "cee70391dd6c40c607d1a4d2e00d641f857e5f597492798691951376375a800b",
+      "visualContentHash": "36f865cc2b45738d4cd18ce90f4e99032ab34d20f87b39892c55f2e3db8b15a2",
+      "retainedFile": "OnlyFans.zip",
+      "retainedPackId": "OnlyFans",
+      "reason": "exact_visual_duplicate_keep_existing",
+      "resolvedAt": "2026-10-12T09:15:49.552Z"
+    },
+    {
+      "sourceFile": "§bRatchet §8[32x].zip",
+      "sourcePackId": "Ratchet_32x",
+      "archiveSha256": "e0b54e3a6f2ec43e1da42b9758996f51de99da85915fbaf4e1bf4916b0688fe8",
+      "visualContentHash": "b09c98dcee0241abd92a7097f46ca08d07680aa67a85cc07242d5d767d0d9f6a",
+      "retainedFile": "Ratchet _[32x].zip",
+      "retainedPackId": "Ratchet__32x",
+      "reason": "exact_visual_duplicate_keep_existing",
+      "resolvedAt": "2026-10-12T09:15:49.552Z"
     }
   ]
 }

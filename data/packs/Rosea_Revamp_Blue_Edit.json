@@ -1,0 +1,61 @@
+{
+  "id": "!  §5Rosea §cRevamp §3[Blue Edit]",
+  "name": "Rosea_Revamp_Blue_Edit",
+  "displayName": "Rosea Revamp [Blue Edit]",
+  "coloredName": "<span style=\"color:#AA00AA\">R</span><span style=\"color:#AA00AA\">o</span><span style=\"color:#AA00AA\">s</span><span style=\"color:#AA00AA\">e</span><span style=\"color:#AA00AA\">a</span><span style=\"color:#AA00AA\"> </span><span style=\"color:#FF5555\">R</span><span style=\"color:#FF5555\">e</span><span style=\"color:#FF5555\">v</span><span style=\"color:#FF5555\">a</span><span style=\"color:#FF5555\">m</span><span style=\"color:#FF5555\">p</span><span style=\"color:#FF5555\"> </span><span style=\"color:#00AAAA\">[</span><span style=\"color:#00AAAA\">B</span><span style=\"color:#00AAAA\">l</span><span style=\"color:#00AAAA\">u</span><span style=\"color:#00AAAA\">e</span><span style=\"color:#00AAAA\"> </span><span style=\"color:#00AAAA\">E</span><span style=\"color:#00AAAA\">d</span><span style=\"color:#00AAAA\">i</span><span style=\"color:#00AAAA\">t</span><span style=\"color:#00AAAA\">]</span>",
+  "description": "Ricardoh x Spores x Prez recolored by PatouZ",
+  "cover": "/thumbnails/Rosea_Revamp_Blue_Edit/cover.png",
+  "packPng": "/thumbnails/Rosea_Revamp_Blue_Edit/pack.png",
+  "icon": null,
+  "file": "resourcepacks/!  §5Rosea §cRevamp §3[Blue Edit].zip",
+  "fileSize": "11.0MB",
+  "uploadDate": "2026-10-10",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-007/main/resourcepacks/!%20%20%C2%A75Rosea%20%C2%A7cRevamp%20%C2%A73%5BBlue%20Edit%5D.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-007/main/resourcepacks/!%20%20%C2%A75Rosea%20%C2%A7cRevamp%20%C2%A73%5BBlue%20Edit%5D.zip"
+  }
+}

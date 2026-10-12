@@ -1,0 +1,62 @@
+{
+  "id": "_6_lGOLD SUNSET SKY OVERLAY",
+  "name": "6_lGOLD_SUNSET_SKY_OVERLAY",
+  "displayName": "6_lGOLD SUNSET SKY OVERLAY",
+  "coloredName": "6_lGOLD SUNSET SKY OVERLAY",
+  "description": "➥ Made by BearyyWins",
+  "cover": "/thumbnails/6_lGOLD_SUNSET_SKY_OVERLAY/cover.png",
+  "packPng": "/thumbnails/6_lGOLD_SUNSET_SKY_OVERLAY/pack.png",
+  "icon": null,
+  "file": "resourcepacks/_6_lGOLD SUNSET SKY OVERLAY.zip",
+  "fileSize": "25.7MB",
+  "uploadDate": "2026-10-10",
+  "lists": [
+    "Overlay",
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-008/main/resourcepacks/_6_lGOLD%20SUNSET%20SKY%20OVERLAY.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-008/main/resourcepacks/_6_lGOLD%20SUNSET%20SKY%20OVERLAY.zip"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "id": "!  sqwibs shant",
+  "name": "sqwibs_shant",
+  "displayName": "sqwibs shant",
+  "coloredName": "sqwibs shant",
+  "description": "Shant Pack V4 created by jdegoederen",
+  "cover": "/thumbnails/sqwibs_shant/cover.png",
+  "packPng": "/thumbnails/sqwibs_shant/pack.png",
+  "icon": null,
+  "file": "resourcepacks/!  sqwibs shant.zip",
+  "fileSize": "9.9MB",
+  "uploadDate": "2026-10-10",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-008/main/resourcepacks/!%20%20sqwibs%20shant.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-008/main/resourcepacks/!%20%20sqwibs%20shant.zip"
+  }
+}

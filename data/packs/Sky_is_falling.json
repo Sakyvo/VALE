@@ -1,0 +1,61 @@
+{
+  "id": "! §1 Sky is falling",
+  "name": "Sky_is_falling",
+  "displayName": "Sky is falling",
+  "coloredName": "<span style=\"color:#0000AA\"> </span><span style=\"color:#0000AA\">S</span><span style=\"color:#0000AA\">k</span><span style=\"color:#0000AA\">y</span><span style=\"color:#0000AA\"> </span><span style=\"color:#0000AA\">i</span><span style=\"color:#0000AA\">s</span><span style=\"color:#0000AA\"> </span><span style=\"color:#0000AA\">f</span><span style=\"color:#0000AA\">a</span><span style=\"color:#0000AA\">l</span><span style=\"color:#0000AA\">l</span><span style=\"color:#0000AA\">i</span><span style=\"color:#0000AA\">n</span><span style=\"color:#0000AA\">g</span>",
+  "description": "Dark",
+  "cover": "/thumbnails/Sky_is_falling/cover.png",
+  "packPng": "/thumbnails/Sky_is_falling/pack.png",
+  "icon": null,
+  "file": "resourcepacks/! §1 Sky is falling.zip",
+  "fileSize": "36.1MB",
+  "uploadDate": "2026-10-10",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-007/main/resourcepacks/!%20%C2%A71%20Sky%20is%20falling.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-007/main/resourcepacks/!%20%C2%A71%20Sky%20is%20falling.zip"
+  }
+}

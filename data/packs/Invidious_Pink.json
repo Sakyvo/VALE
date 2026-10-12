@@ -1,0 +1,61 @@
+{
+  "id": "!  §f§oInvidious §f[§dPink§f]",
+  "name": "Invidious_Pink",
+  "displayName": "Invidious [Pink]",
+  "coloredName": "<span style=\"color:#FFFFFF\">I</span><span style=\"color:#FFFFFF\">n</span><span style=\"color:#FFFFFF\">v</span><span style=\"color:#FFFFFF\">i</span><span style=\"color:#FFFFFF\">d</span><span style=\"color:#FFFFFF\">i</span><span style=\"color:#FFFFFF\">o</span><span style=\"color:#FFFFFF\">u</span><span style=\"color:#FFFFFF\">s</span><span style=\"color:#FFFFFF\"> </span><span style=\"color:#FFFFFF\">[</span><span style=\"color:#FF55FF\">P</span><span style=\"color:#FF55FF\">i</span><span style=\"color:#FF55FF\">n</span><span style=\"color:#FF55FF\">k</span><span style=\"color:#FFFFFF\">]</span>",
+  "description": "-denqy",
+  "cover": "/thumbnails/Invidious_Pink/cover.png",
+  "packPng": "/thumbnails/Invidious_Pink/pack.png",
+  "icon": null,
+  "file": "resourcepacks/!  §f§oInvidious §f[§dPink§f].zip",
+  "fileSize": "25.2MB",
+  "uploadDate": "2026-10-10",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-007/main/resourcepacks/!%20%20%C2%A7f%C2%A7oInvidious%20%C2%A7f%5B%C2%A7dPink%C2%A7f%5D.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-007/main/resourcepacks/!%20%20%C2%A7f%C2%A7oInvidious%20%C2%A7f%5B%C2%A7dPink%C2%A7f%5D.zip"
+  }
+}

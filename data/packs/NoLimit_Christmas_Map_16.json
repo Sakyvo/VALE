@@ -1,0 +1,61 @@
+{
+  "id": "! §2NoLimit §c[Christmas] §2Map 16",
+  "name": "NoLimit_Christmas_Map_16",
+  "displayName": "NoLimit [Christmas] Map 16",
+  "coloredName": "<span style=\"color:#00AA00\">N</span><span style=\"color:#00AA00\">o</span><span style=\"color:#00AA00\">L</span><span style=\"color:#00AA00\">i</span><span style=\"color:#00AA00\">m</span><span style=\"color:#00AA00\">i</span><span style=\"color:#00AA00\">t</span><span style=\"color:#00AA00\"> </span><span style=\"color:#FF5555\">[</span><span style=\"color:#FF5555\">C</span><span style=\"color:#FF5555\">h</span><span style=\"color:#FF5555\">r</span><span style=\"color:#FF5555\">i</span><span style=\"color:#FF5555\">s</span><span style=\"color:#FF5555\">t</span><span style=\"color:#FF5555\">m</span><span style=\"color:#FF5555\">a</span><span style=\"color:#FF5555\">s</span><span style=\"color:#FF5555\">]</span><span style=\"color:#FF5555\"> </span><span style=\"color:#00AA00\">M</span><span style=\"color:#00AA00\">a</span><span style=\"color:#00AA00\">p</span><span style=\"color:#00AA00\"> </span><span style=\"color:#00AA00\">1</span><span style=\"color:#00AA00\">6</span>",
+  "description": "-Latenci x PhilipMyCup",
+  "cover": "/thumbnails/NoLimit_Christmas_Map_16/cover.png",
+  "packPng": "/thumbnails/NoLimit_Christmas_Map_16/pack.png",
+  "icon": null,
+  "file": "resourcepacks/! §2NoLimit §c[Christmas] §2Map 16.zip",
+  "fileSize": "16.7MB",
+  "uploadDate": "2026-10-10",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-008/main/resourcepacks/!%20%C2%A72NoLimit%20%C2%A7c%5BChristmas%5D%20%C2%A72Map%2016.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-008/main/resourcepacks/!%20%C2%A72NoLimit%20%C2%A7c%5BChristmas%5D%20%C2%A72Map%2016.zip"
+  }
+}

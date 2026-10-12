@@ -1,0 +1,61 @@
+{
+  "id": "! §e§lZNNUDI FV PACK",
+  "name": "ZNNUDI_FV_PACK",
+  "displayName": "ZNNUDI FV PACK",
+  "coloredName": "<span style=\"color:#FFFF55\">Z</span><span style=\"color:#FFFF55\">N</span><span style=\"color:#FFFF55\">N</span><span style=\"color:#FFFF55\">U</span><span style=\"color:#FFFF55\">D</span><span style=\"color:#FFFF55\">I</span><span style=\"color:#FFFF55\"> </span><span style=\"color:#FFFF55\">F</span><span style=\"color:#FFFF55\">V</span><span style=\"color:#FFFF55\"> </span><span style=\"color:#FFFF55\">P</span><span style=\"color:#FFFF55\">A</span><span style=\"color:#FFFF55\">C</span><span style=\"color:#FFFF55\">K</span>",
+  "description": "Lavet af Jyttah",
+  "cover": "/thumbnails/ZNNUDI_FV_PACK/cover.png",
+  "packPng": "/thumbnails/ZNNUDI_FV_PACK/pack.png",
+  "icon": null,
+  "file": "resourcepacks/! §e§lZNNUDI FV PACK.zip",
+  "fileSize": "41.7MB",
+  "uploadDate": "2026-10-10",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-008/main/resourcepacks/!%20%C2%A7e%C2%A7lZNNUDI%20FV%20PACK.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-008/main/resourcepacks/!%20%C2%A7e%C2%A7lZNNUDI%20FV%20PACK.zip"
+  }
+}

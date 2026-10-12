@@ -1,0 +1,61 @@
+{
+  "id": "!  Jolyne #eum3edit",
+  "name": "Jolyne_eum3edit",
+  "displayName": "Jolyne #eum3edit",
+  "coloredName": "Jolyne #eum3edit",
+  "description": "",
+  "cover": "/thumbnails/Jolyne_eum3edit/cover.png",
+  "packPng": "/thumbnails/Jolyne_eum3edit/pack.png",
+  "icon": null,
+  "file": "resourcepacks/!  Jolyne #eum3edit.zip",
+  "fileSize": "20.9MB",
+  "uploadDate": "2026-10-10",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-007/main/resourcepacks/!%20%20Jolyne%20%23eum3edit.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-007/main/resourcepacks/!%20%20Jolyne%20%23eum3edit.zip"
+  }
+}
