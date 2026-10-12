@@ -1082,7 +1082,10 @@ function updateLists(listName, packIds, replacements = [], listsPath = LISTS_PAT
 }
 
 function verifyRemoteUpload(item) {
-  const endpoint = `repos/${REPO_OWNER}/${encodeURIComponent(item.repo)}/contents/resourcepacks/${encodeURIComponent(item.file)}?ref=main`;
+  // GitHub's contents API returns 404 for raw `!` / `'` / `(` / `)` in paths;
+  // strict URI-component encoding is required (matches scripts/lib/asset-remote.js).
+  const strictEncode = value => encodeURIComponent(value).replace(/[!'()*]/g, c => '%' + c.charCodeAt(0).toString(16).toUpperCase());
+  const endpoint = `repos/${REPO_OWNER}/${strictEncode(item.repo)}/contents/resourcepacks/${strictEncode(item.file)}?ref=main`;
   let lastError;
   for (let attempt = 1; attempt <= 5; attempt++) {
     try {
