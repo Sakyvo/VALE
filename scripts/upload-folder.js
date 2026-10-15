@@ -1139,7 +1139,7 @@ function persistPendingReplacements(filePath, replacements, uploads) {
   writeJsonAtomic(filePath, pending);
 }
 
-function executePlan(opts, plan, services = {}) {
+async function executePlan(opts, plan, services = {}) {
   if (plan.hardBlockers.length) {
     throw new Error(`Dry-run has ${plan.hardBlockers.length} non-bypassable content blocker(s).`);
   }
@@ -1292,7 +1292,7 @@ async function runIngestion(opts, services = {}) {
       ? JSON.parse(fs.readFileSync(path.resolve(opts.fromPlan), 'utf-8'))
       : await buildPlan(runOpts, services);
     if (opts.manifest) writeJson(path.resolve(opts.manifest), plan);
-    if (opts.execute) executePlan(runOpts, plan, services);
+    if (opts.execute) await executePlan(runOpts, plan, services);
     return plan;
   } finally {
     if (!opts.keepWorkdir) {
