@@ -652,7 +652,8 @@ function createGitHubPackRemote(options = {}) {
   }
 
   async function verifyArchive(expected) {
-    const attempts = Math.max(1, Number(options.verifyAttempts) || 10);    let actual = null;
+    const attempts = Math.max(1, Number(options.verifyAttempts) || 10);
+    let actual = null;
     for (let attempt = 1; attempt <= attempts; attempt++) {
       actual = await getArchiveIdentity(expected);
       if (actual && Number(actual.size) === Number(expected.size) &&

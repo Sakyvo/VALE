@@ -1086,8 +1086,11 @@ function verifyRemoteUpload(item) {
   // strict URI-component encoding is required (matches scripts/lib/asset-remote.js).
   const strictEncode = value => encodeURIComponent(value).replace(/[!'()*]/g, c => '%' + c.charCodeAt(0).toString(16).toUpperCase());
   const endpoint = `repos/${REPO_OWNER}/${strictEncode(item.repo)}/contents/resourcepacks/${strictEncode(item.file)}?ref=main`;
+  // A freshly pushed file is briefly absent from the contents API while the
+  // repository's tree settles; retry before declaring the upload lost.
   let lastError;
-  for (let attempt = 1; attempt <= 5; attempt++) {
+  const attempts = Math.max(1, Number(process.env.VALE_VERIFY_ATTEMPTS) || 10);
+  for (let attempt = 1; attempt <= attempts; attempt++) {
     try {
       const remoteSize = Number(run('gh', ['api', endpoint, '--jq', '.size'], { timeout: 120000 }));
       if (remoteSize !== item.size) {
@@ -1096,7 +1099,7 @@ function verifyRemoteUpload(item) {
       return;
     } catch (error) {
       lastError = error;
-      if (attempt < 5) run(process.execPath, ['-e', `setTimeout(() => {}, ${attempt * 1000})`], { timeout: attempt * 1000 + 5000 });
+      if (attempt < attempts) run(process.execPath, ['-e', `setTimeout(() => {}, ${Math.min(8000, 1000 * attempt)})`], { timeout: 15000 });
     }
   }
   throw new Error(`Remote verification failed for ${item.repo}/${item.file}: ${lastError.message}`);
@@ -1207,7 +1210,9 @@ function executePlan(opts, plan, services = {}) {
             message: `add Sakyvo packs batch ${index + 1}`,
           });
         });
-        for (const item of files) uploadRemote.verifyArchive(item);
+        // verifyArchive retries the read-back because a repo's git tree lags
+        // right after a push.
+        for (const item of files) await uploadRemote.verifyArchive(item);
       }
       continue;
     }
