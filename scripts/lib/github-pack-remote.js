@@ -203,9 +203,9 @@ function createGitHubPackRemote(options = {}) {
   const markerToken = crypto.randomBytes(16).toString('hex');
   let ownsWorkdir = false;
 
-  if (mutation && fs.existsSync(workdir)) {
-    throw new Error(`Temporary upload workspace already exists: ${workdir}`);
-  }
+  // The workdir is the upload's private namespace under --workdir. When it still
+  // exists, ensureWorkspace reclaims it only if it carries our marker; a foreign
+  // or concurrent workspace is reported by ensureWorkspace instead of here.
 
   function ensureWorkspace() {
     if (ownsWorkdir) return;

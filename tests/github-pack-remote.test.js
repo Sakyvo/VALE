@@ -372,11 +372,20 @@ test('publishes and deletes archives through an owned temporary partial clone', 
     }
     assert.equal(fs.existsSync(workdir), false);
 
+    // A foreign (unmarked) directory is never silently reclaimed.
     fs.mkdirSync(workdir);
-    assert.throws(
-      () => createGitHubPackRemote({ mutation: true, workdir }),
+    const foreign = createGitHubPackRemote({ mutation: true, workdir });
+    const foreignFile = path.join(root, 'Foreign.zip');
+    fs.writeFileSync(foreignFile, Buffer.concat([Buffer.from('PK\x03\x04'), Buffer.alloc(64, 70)]));
+    await assert.rejects(
+      foreign.publishArchive({ repo: 'packs-005', file: 'Foreign.zip', path: foreignFile }),
       /already exists/
     );
+    // A marked workspace left by an interrupted run is reclaimed instead.
+    fs.writeFileSync(path.join(workdir, '.vale-reviewed-normalization'), 'x');
+    const reclaimed = createGitHubPackRemote({ mutation: true, workdir });
+    reclaimed.getRepositoryReference('packs-005');
+    reclaimed.close();
   } finally {
     fs.rmSync(root, { recursive: true, force: true });
   }
