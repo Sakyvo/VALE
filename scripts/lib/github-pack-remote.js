@@ -272,6 +272,12 @@ function createGitHubPackRemote(options = {}) {
     if (cached) clones.delete(repo);
     ensureWorkspace();
     const repoDir = path.join(workdir, repo);
+    // This link aborts clones mid-pack-transfer (RPC 55), leaving a half-written
+    // .git that would be accepted by gitExists and later fail every publish.
+    // A validated clone is only usable once origin/main is known locally.
+    if (fs.existsSync(repoDir) && !gitExists(repoDir, 'refs/remotes/origin/main')) {
+      fs.rmSync(repoDir, { recursive: true, force: true, maxRetries: 5, retryDelay: 100 });
+    }
     try {
       clonePartial(repo, repoDir);
     } catch (cloneError) {
