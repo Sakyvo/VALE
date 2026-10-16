@@ -1201,18 +1201,18 @@ async function executePlan(opts, plan, services = {}) {
           }
         }
         if (batch.length || !chunks.length) chunks.push(batch);
-        chunks.forEach((chunk, index) => {
-          uploadRemote.publishBatch({
+        for (let index = 0; index < chunks.length; index++) {
+          const chunk = chunks[index];
+          await uploadRemote.publishBatch({
             repo: repoName(num),
             repoNum: num,
             files: chunk,
             markFull: markFull && index === chunks.length - 1,
             message: `add Sakyvo packs batch ${index + 1}`,
           });
-        });
-        // verifyArchive retries the read-back because a repo's git tree lags
-        // right after a push.
-        for (const item of files) await uploadRemote.verifyArchive(item);
+          for (const item of chunk) await uploadRemote.verifyArchive(item);
+          console.log(`[upload] ${repoName(num)} chunk ${index + 1}/${chunks.length} verified (${chunk.length} packs)`);
+        }
       }
       continue;
     }
