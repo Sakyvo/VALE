@@ -1,18 +1,16 @@
 {
-  "id": "vene_FPS",
-  "name": "vene_FPS",
-  "displayName": "vene_FPS",
-  "coloredName": "vene_FPS",
+  "id": "#vene fps",
+  "name": "vene_fps",
+  "displayName": "vene fps",
+  "coloredName": "vene fps",
   "description": "VENEZUELA FOREVER",
-  "cover": "/thumbnails/vene_FPS/cover.png",
-  "packPng": "/thumbnails/vene_FPS/pack.png",
+  "cover": "/thumbnails/vene_fps/cover.png",
+  "packPng": "/thumbnails/vene_fps/pack.png",
   "icon": null,
-  "file": "resourcepacks/vene_FPS.zip",
-  "fileSize": "18.9MB",
+  "file": "resourcepacks/#vene fps.zip",
+  "fileSize": "19.0MB",
   "uploadDate": "2026-10-17",
-  "lists": [
-    "Blatant Cheater"
-  ],
+  "lists": [],
   "textures": {
     "items": [
       "diamond_sword.png",
@@ -55,7 +53,7 @@
     ]
   },
   "downloads": {
-    "github": "https://raw.githubusercontent.com/Sakyvo/packs-010/main/resourcepacks/vene_FPS.zip",
-    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-010/main/resourcepacks/vene_FPS.zip"
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-010/main/resourcepacks/%23vene%20fps.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-010/main/resourcepacks/%23vene%20fps.zip"
   }
 }
