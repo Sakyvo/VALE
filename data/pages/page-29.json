@@ -2,6 +2,129 @@
   "page": 29,
   "items": [
     {
+      "id": "# pokemon shamm",
+      "name": "pokemon_shamm",
+      "displayName": "pokemon shamm",
+      "coloredName": "pokemon shamm",
+      "description": "",
+      "cover": "https://assets.vale.cc.cd/pokemon_shamm/cover.png",
+      "packPng": "https://assets.vale.cc.cd/pokemon_shamm/pack.png",
+      "icon": null,
+      "assetBase": "https://assets.vale.cc.cd",
+      "file": "resourcepacks/# pokemon shamm.zip",
+      "fileSize": "18.8MB",
+      "uploadDate": "2026-08-08",
+      "lists": [
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "stone_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/%23%20pokemon%20shamm.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/%23%20pokemon%20shamm.zip"
+      }
+    },
+    {
+      "id": "! §f§lPokémon!",
+      "name": "Pokémon",
+      "displayName": "Pokémon!",
+      "coloredName": "<span style=\"color:#FFFFFF\">P</span><span style=\"color:#FFFFFF\">o</span><span style=\"color:#FFFFFF\">k</span><span style=\"color:#FFFFFF\">é</span><span style=\"color:#FFFFFF\">m</span><span style=\"color:#FFFFFF\">o</span><span style=\"color:#FFFFFF\">n</span><span style=\"color:#FFFFFF\">!</span>",
+      "description": "~ by Oken",
+      "cover": "/thumbnails/Pok%C3%A9mon/cover.png",
+      "packPng": "/thumbnails/Pok%C3%A9mon/pack.png",
+      "icon": null,
+      "file": "resourcepacks/! §f§lPokémon!.zip",
+      "fileSize": "20.5MB",
+      "uploadDate": "2026-10-10",
+      "lists": [
+        "Blatant Cheater"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "stone_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-007/main/resourcepacks/!%20%C2%A7f%C2%A7lPok%C3%A9mon!.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-007/main/resourcepacks/!%20%C2%A7f%C2%A7lPok%C3%A9mon!.zip"
+      }
+    },
+    {
       "id": "!    §bPotfast 5kay",
       "name": "Potfast_5kay",
       "displayName": "Potfast 5kay",
@@ -2761,6 +2884,67 @@
       }
     },
     {
+      "id": "R3m4k3",
+      "name": "R3m4k3",
+      "displayName": "R3m4k3",
+      "coloredName": "R3m4k3",
+      "description": "Mostly done by Zackaey with edits by Denal.",
+      "cover": "/thumbnails/R3m4k3/cover.png",
+      "packPng": "/thumbnails/R3m4k3/pack.png",
+      "icon": null,
+      "file": "resourcepacks/R3m4k3.zip",
+      "fileSize": "16.5MB",
+      "uploadDate": "2026-10-17",
+      "lists": [
+        "Blatant Cheater"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "stone_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-013/main/resourcepacks/R3m4k3.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-013/main/resourcepacks/R3m4k3.zip"
+      }
+    },
+    {
       "id": "!                  R3Tard",
       "name": "R3Tard",
       "displayName": "R3Tard",
@@ -2881,189 +3065,6 @@
       "downloads": {
         "github": "https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/%C2%A71R%C2%A72A%C2%A73I%C2%A74N%C2%A75B%C2%A76O%C2%A77W%20%C2%A78Dynamic%20%C2%A79Duo%20%C2%A7f%C2%A7l%5B%C2%A7a128x%C2%A7f%C2%A7l%5D.zip",
         "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-003/main/resourcepacks/%C2%A71R%C2%A72A%C2%A73I%C2%A74N%C2%A75B%C2%A76O%C2%A77W%20%C2%A78Dynamic%20%C2%A79Duo%20%C2%A7f%C2%A7l%5B%C2%A7a128x%C2%A7f%C2%A7l%5D.zip"
-      }
-    },
-    {
-      "id": "§4R§6A§eI§2N§3B§1O§5W§8[§7256x§8]",
-      "name": "RAINBOW256x",
-      "displayName": "RAINBOW[256x]",
-      "coloredName": "<span style=\"color:#AA0000\">R</span><span style=\"color:#FFAA00\">A</span><span style=\"color:#FFFF55\">I</span><span style=\"color:#00AA00\">N</span><span style=\"color:#00AAAA\">B</span><span style=\"color:#0000AA\">O</span><span style=\"color:#AA00AA\">W</span><span style=\"color:#555555\">[</span><span style=\"color:#AAAAAA\">2</span><span style=\"color:#AAAAAA\">5</span><span style=\"color:#AAAAAA\">6</span><span style=\"color:#AAAAAA\">x</span><span style=\"color:#555555\">]</span>",
-      "description": "By Mellor",
-      "cover": "/thumbnails/RAINBOW256x/cover.png",
-      "packPng": "/thumbnails/RAINBOW256x/pack.png",
-      "icon": null,
-      "file": "resourcepacks/§4R§6A§eI§2N§3B§1O§5W§8[§7256x§8].zip",
-      "fileSize": "19.3MB",
-      "uploadDate": "2026-10-12",
-      "lists": [
-        "Blatant Cheater"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "stone_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-009/main/resourcepacks/%C2%A74R%C2%A76A%C2%A7eI%C2%A72N%C2%A73B%C2%A71O%C2%A75W%C2%A78%5B%C2%A77256x%C2%A78%5D.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-009/main/resourcepacks/%C2%A74R%C2%A76A%C2%A7eI%C2%A72N%C2%A73B%C2%A71O%C2%A75W%C2%A78%5B%C2%A77256x%C2%A78%5D.zip"
-      }
-    },
-    {
-      "id": "! [Rainbow] Eum3 Edit V2",
-      "name": "Rainbow_Eum3_Edit_V2",
-      "displayName": "Rainbow] Eum3 Edit V2",
-      "coloredName": "Rainbow] Eum3 Edit V2",
-      "description": "OmgItsDam's Edit (From Tory)",
-      "cover": "/thumbnails/Rainbow_Eum3_Edit_V2/cover.png",
-      "packPng": "/thumbnails/Rainbow_Eum3_Edit_V2/pack.png",
-      "icon": null,
-      "file": "resourcepacks/! [Rainbow] Eum3 Edit V2.zip",
-      "fileSize": "24.5MB",
-      "uploadDate": "2026-10-10",
-      "lists": [
-        "Blatant Cheater"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "stone_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-007/main/resourcepacks/!%20%5BRainbow%5D%20Eum3%20Edit%20V2.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-007/main/resourcepacks/!%20%5BRainbow%5D%20Eum3%20Edit%20V2.zip"
-      }
-    },
-    {
-      "id": "!  rajnold2",
-      "name": "rajnold2",
-      "displayName": "rajnold2",
-      "coloredName": "rajnold2",
-      "description": "yt/rajnold",
-      "cover": "/thumbnails/rajnold2/cover.png",
-      "packPng": "/thumbnails/rajnold2/pack.png",
-      "icon": null,
-      "file": "resourcepacks/!  rajnold2.zip",
-      "fileSize": "19.4MB",
-      "uploadDate": "2026-10-10",
-      "lists": [
-        "Blatant Cheater"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "stone_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-008/main/resourcepacks/!%20%20rajnold2.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-008/main/resourcepacks/!%20%20rajnold2.zip"
       }
     }
   ]

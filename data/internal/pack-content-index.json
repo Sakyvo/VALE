@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
   "fingerprintSchemaVersion": 1,
-  "registryDigest": "88d7e5388ed5c62690e2c0dc9dd3f4de7b4fc8352ad64c4e5a6c84d200acea43",
-  "registryCount": 2088,
-  "selectedCount": 2088,
+  "registryDigest": "44db25b0b32ea383b5bee2f3e3bdd3e3eab8d68ae82077753b57c606fb2725dc",
+  "registryCount": 2102,
+  "selectedCount": 2102,
   "complete": true,
-  "generatedAt": "2026-10-12T09:15:49.504Z",
+  "generatedAt": "2026-10-17T08:48:04.757Z",
   "packs": {
     "!                     §o§7Andy §c32x §l§4[RED].zip": {
       "packId": "Andy_32x_RED",
@@ -31325,6 +31325,216 @@
         "stone": "e4ef444a7064527fa1f2cb1a00f6b8503a40579bebee498f07dbb7ae8fc676f4",
         "iron": "8a661f87f74d2efc3955628da96725dc942fd88702ab0c0fee3b15ac9d3dc92f",
         "diamond": "cb47ca1f68b4afd95719ae5872b210d8d64652849df14ef2490fe2c655744f84"
+      }
+    },
+    "Weebs FPS.zip": {
+      "packId": "Weebs_FPS",
+      "repo": "packs-013",
+      "repoNum": 13,
+      "size": 34879825,
+      "sourceKey": "9bdabccbe82e65078216e15ee86cdfe4b003114599f0f362f887771eab582800",
+      "archiveSha256": "aaeda066210f02b3d2932553a2862d11b4ed9f4ed1bb1f7c2bd15870390c1dfc",
+      "visualContentHash": "3fa63de03f7b4b966c2cd51c55efb5d892b8f5b2393372b2a764619cdc67097c",
+      "visualEntryCount": 4046,
+      "swords": {
+        "stone": "717998d1303e606fdc7570161deb86b23e315d29b39b3a89b27a88dd2eec858f",
+        "iron": "ff752a8de80300fa5d4fb8aeb53f12a6a5a4415831bddd69d8f3900c8271aa66",
+        "diamond": "e35e202948f044e05549a67ee0b798ea4587b8a6cd3f2f4963ea2a6d89bdbbe0"
+      }
+    },
+    "Whitey white and thats alright.zip": {
+      "packId": "Whitey_white_and_thats_alright",
+      "repo": "packs-013",
+      "repoNum": 13,
+      "size": 20325783,
+      "sourceKey": "529df459082b2abdea160fe6c6cdd17e2c8e475e709ddec4060f6b3cad01bc7e",
+      "archiveSha256": "ee10906992e5146dc444690634f137a58addee9af7b1760358f397402662f89f",
+      "visualContentHash": "fa8f41162ada4a7b5d581f88f0f5916e3390ac53fd079b5c10439e45df900478",
+      "visualEntryCount": 1584,
+      "swords": {
+        "stone": "de960b1f0f38c8461a5351bc11604028a3abee76e34a560d13fc0e638e485ba7",
+        "iron": "d4d04c699f642fe1eab821558e49a31a45f3d48f7f12fb9d3f1f4a47f422ea23",
+        "diamond": "613732eff494ffc7acfbb88526d21ba51ba291265bb20201a40720191c6c3c05"
+      }
+    },
+    "xTroll128x.zip": {
+      "packId": "xTroll128x",
+      "repo": "packs-013",
+      "repoNum": 13,
+      "size": 39272961,
+      "sourceKey": "09b9ae376deda0767ad482e1654e3ff98366dc8568e03ed78ac506914ac8aebf",
+      "archiveSha256": "c11e328bf0d0ff15aba53c5592399f6b45143d11fa07eada59eb1735b19de19f",
+      "visualContentHash": "2f0086adaa14e4da0cb7be5acd995d9d79b43a5c86ecaa9eada33f4029486148",
+      "visualEntryCount": 3141,
+      "swords": {
+        "stone": "4746ee833477dfa6a9dafbe884014277800f720a7546b68487a96a2e9622c733",
+        "iron": "3f401e72302d75124160078554f5ef94a7662e7dda20e06356f40ea1219314be",
+        "diamond": "d550b8f21f6afefa90f7004ebbf97192483ad75169861e1c50bed0e42c3f4077"
+      }
+    },
+    "xTroll_Edit.zip": {
+      "packId": "xTroll_Edit",
+      "repo": "packs-013",
+      "repoNum": 13,
+      "size": 32960151,
+      "sourceKey": "efacbc0e1f6af67bf68a038fbc87b3849123e1f0c7f12eb651d2413d41e59e8e",
+      "archiveSha256": "ad2c5e461ea6cbf00e465139b35e54a11b3a559a68c71f807e06fc4e5fec6072",
+      "visualContentHash": "6cad5492ebf04b72082f197eb74416b6e4b049d0dbcb1e3a6e5a7d7a63dab0ed",
+      "visualEntryCount": 3128,
+      "swords": {
+        "stone": "4746ee833477dfa6a9dafbe884014277800f720a7546b68487a96a2e9622c733",
+        "iron": "3f401e72302d75124160078554f5ef94a7662e7dda20e06356f40ea1219314be",
+        "diamond": "2b532450ff59e544f762838b794957f8245dad8c485f269426d6e1fc3e30bb51"
+      }
+    },
+    "yune Private Pack 784128x8.zip": {
+      "packId": "yune_Private_Pack_784128x8",
+      "repo": "packs-013",
+      "repoNum": 13,
+      "size": 23726257,
+      "sourceKey": "061cd3fd2938a0e8413674e76e5da5f48ba3782d74fff29aeedee42365551f56",
+      "archiveSha256": "f155fe6efc8ec448a3682a9febe6053e98b164b2966e472e6ce47034842f7a34",
+      "visualContentHash": "72130189fa6e5a380b493b6fbf4e7f320644e07427a7472a7528e45be2108b20",
+      "visualEntryCount": 2073,
+      "swords": {
+        "stone": "d32088fa8ea8088e3b5ffa9009230a9f0ab648a35326742631349040a675440a",
+        "iron": "6a29a0989b1eb6bd0bab6f726eea149957d12a61611d51b2c23d363481d36f66",
+        "diamond": "4697137bea723c1e3d5b305170a0a63f44e9b3fb01078e0cdb8e2e13d57f3dd9"
+      }
+    },
+    "yunic - private pack V2.zip": {
+      "packId": "yunic_-_private_pack_V2",
+      "repo": "packs-013",
+      "repoNum": 13,
+      "size": 42957330,
+      "sourceKey": "1cdedd8b6e5c3e2cd7f16748a7674cf81d4652415bb4fd11ba326c3a858f9be5",
+      "archiveSha256": "35c69ec3b0277ebc110289cd3d6f5b4c033e104014f53f25b237c77b0fadb00e",
+      "visualContentHash": "27c91f7003841691a4168b8ebea55aca9d6db64ff31168731b11649ded6527dc",
+      "visualEntryCount": 3415,
+      "swords": {
+        "stone": "9897827a3d05c192d945b59dd220e9514fc773b20cf380ba329718707bc68ac9",
+        "iron": "6fbe1e7fe46f089f2a6ba3cf383ed9e74094e0bd447ada82ec33a251c040dca4",
+        "diamond": "e6033f03fd006f03c87edf1511f5de912c2455f0d9fab09995ee462118fb969b"
+      }
+    },
+    "zitraks32x v2.zip": {
+      "packId": "zitraks32x_v2",
+      "repo": "packs-013",
+      "repoNum": 13,
+      "size": 19349387,
+      "sourceKey": "b8aee36b0e3df953bacfbd0b941a47c424d1ce03092605be5bf45e2574855657",
+      "archiveSha256": "131211b7c8a755e6b8880206795f7c9b6b2660e4bb91a81a93ff4d244e2e5dc7",
+      "visualContentHash": "a11355d4a24c24edfff08df7f3a9eae2942a238b3ff86f75734906230c0fab32",
+      "visualEntryCount": 3553,
+      "swords": {
+        "stone": "339b740170716c4ceffd4c79befbd8f75da836a00e5bc77764c30aa281e4777c",
+        "iron": "d5d6934f05eeaf40a2705c70a24d796ecdbc4f81f00fc0328fc96cc9c80eba77",
+        "diamond": "85b5244636407773510583347a40de3fe204750d06cc068dcaed6a95b1b7696f"
+      }
+    },
+    "Kawaii Desu Ne.zip": {
+      "packId": "Kawaii_Desu_Ne",
+      "repo": "packs-013",
+      "repoNum": 13,
+      "size": 16404990,
+      "sourceKey": "6f83f0b789327257d624e13d428928f0287ddb7ee4439d83c78a04f92c16017f",
+      "archiveSha256": "1be6892bf387fe89a8f45c1fe27d4c1aa0e08d64d1f5feb4b6d29cf7e5858e8f",
+      "visualContentHash": "aa0020d81268aa75af1941c83c4a29f3ea0181cf456fc339b5dae0257c7f3f7e",
+      "visualEntryCount": 701,
+      "swords": {
+        "stone": "941d5d94883d34c587a3c0ec236828629d0ddaea8dd39555214af32e7ee1c367",
+        "iron": "7e1df1d4c831c0eb8011b3ddb0194038f5aa6c0fef4bb9f6d5c3041aa2cc7e8a",
+        "diamond": "7aae6933234fc28db3890149c6756c17b8d67180cf5f4eb498dfe806bcff1684"
+      }
+    },
+    "MegaMilk.zip": {
+      "packId": "MegaMilk",
+      "repo": "packs-013",
+      "repoNum": 13,
+      "size": 32323379,
+      "sourceKey": "04a1666015d5a86a512dfaa82ed2de5216528d5c996f294efdeee9c18b1ea7f6",
+      "archiveSha256": "8d92fe606ababc5f8208ae0499e5e431350912552b50a4ac0f68392615b371c6",
+      "visualContentHash": "dbceb4a830f1cca8bb45af71dffd988964d1f1cc5c62db2d0c2bf5a16f9d0af2",
+      "visualEntryCount": 781,
+      "swords": {
+        "stone": "46c8a06798fc2dcd2591fccf8f161bcaf47f5d61d732107b6375df37ac061d31",
+        "iron": "5f66d9ae91da510ff97031b37ea5b37fc559ee26cc921f914533d2305d1fabe9",
+        "diamond": "5a54ecaf64fd1ba9e0550b1b07495c09239092864f87c405691bb9c235fb2206"
+      }
+    },
+    "R3m4k3.zip": {
+      "packId": "R3m4k3",
+      "repo": "packs-013",
+      "repoNum": 13,
+      "size": 17331337,
+      "sourceKey": "6defc777195e192778d10b32850e7dda4772a66b9e16fdb8e67122d20035c539",
+      "archiveSha256": "743b0dbf9c36ba8674104b322fe26c81beb068cd6d367677f87de52597e13b95",
+      "visualContentHash": "97455edf0348ca11d649f436a778bdeacc6eebf82e660ebda6d13a68fad56c5f",
+      "visualEntryCount": 2224,
+      "swords": {
+        "stone": "b89afd1a9b8896a9769e466b95e31daec0913efb93bd3217bba267d04ba03350",
+        "iron": "d1124ea8289690a9663e1e84205d8f4bb7354bee3ba6be1d9bb4b4b94772d08a",
+        "diamond": "87bb8ba602ad822d6301d709c33c27ae2f0cec4bbd9cd0f0bd2ba5c625286002"
+      }
+    },
+    "StimpyPvP Edited.zip": {
+      "packId": "StimpyPvP_Edited",
+      "repo": "packs-013",
+      "repoNum": 13,
+      "size": 13966491,
+      "sourceKey": "90a2787ac3f91b1c8cc862a4da26271d930cfc7ff0fc60da3797d7b22c68ef91",
+      "archiveSha256": "7d396bc72a87d6e39c403fb3454bc0a526cbedcc0b1e99fe245e57d76b039521",
+      "visualContentHash": "6b16cdfb6f84a428036dfdc5c3da9a628365ae0e455d78906556a1ffa6a6a0ef",
+      "visualEntryCount": 913,
+      "swords": {
+        "stone": "d469f75e2599796adab6b7e9c3007d3b14c59a5ecd31dfcb664e6bae439e88ef",
+        "iron": "90247af52ba5b14fb7eaa770de6cc3b38efe30c366c5de41975bcfe1a22c5b7b",
+        "diamond": "4f0e36da84c8c8af7ea64d94a8f0f0c879f6adc3f0fc241173470991a92391a0"
+      }
+    },
+    "Venom editted.zip": {
+      "packId": "Venom_editted",
+      "repo": "packs-013",
+      "repoNum": 13,
+      "size": 40922289,
+      "sourceKey": "f4f296f231e8d6b3878944a0c58cff15c6945fc1860f1a157f8365634d935a17",
+      "archiveSha256": "129a65483185442de18481de5c99335639d5e738df88ea8ee9f896312874d227",
+      "visualContentHash": "d1b2bd33486d01b7305d450fb81ec3d5127ce7b1797bea969ed7d7a1c71a4594",
+      "visualEntryCount": 843,
+      "swords": {
+        "stone": "14e18539b8979cfab7291a01970351b642e41b3b6a4b829a6578fd1d567be6ef",
+        "iron": "5aad0e93af6a24e7a6c2ad60cb581cba76f8e76e8fce67efcbdfc5f5ddc2ce43",
+        "diamond": "533bd5ca5402d7e4f36237128d8c8e37b03e92f6beed5c7d36328186d7bfc758"
+      }
+    },
+    "Yandere (2).zip": {
+      "packId": "Yandere(2)",
+      "repo": "packs-013",
+      "repoNum": 13,
+      "size": 46830016,
+      "sourceKey": "94d64d5b1946e8b3a56e2571e3e131b3f9de4d0cb6cad62f9fcb781210a85af1",
+      "archiveSha256": "853eb1ec0aa2bf65ad3ccdc04487622b97665e63d87ff288957066c20619dbb6",
+      "visualContentHash": "16c431144fbd4dd86b799bafed6d78a63dcb676154f33a6bb5815e2250e42f6e",
+      "visualEntryCount": 1143,
+      "swords": {
+        "stone": "dcd8ebd37390a282a9161e8ae33772c95bb6946bbca914a63fbaae6ae908012a",
+        "iron": "5e644088af26ac2f7f8efa4b0ea6776741ca0dec05fd98b491900f6be78953f7",
+        "diamond": "845a3f74fbc20ba68d158d7fd8049fbed9cd02016346e4f6bc48a43694475ef1"
+      }
+    },
+    "Yandere.zip": {
+      "packId": "Yandere",
+      "repo": "packs-013",
+      "repoNum": 13,
+      "size": 46848239,
+      "sourceKey": "59d37dfdca78fc107935f2b291c248fcc2ee8b233de74893ec60a976e7e6504a",
+      "archiveSha256": "21b68476c89a912b7a137c5f4f9bcea076bf186ffa7d78d850e72aef1fa54b0c",
+      "visualContentHash": "a6de853c7cde7c5d0c7b521254543d13c2c1ecfbee9c9189589137ba7151d217",
+      "visualEntryCount": 1144,
+      "swords": {
+        "stone": "dcd8ebd37390a282a9161e8ae33772c95bb6946bbca914a63fbaae6ae908012a",
+        "iron": "5e644088af26ac2f7f8efa4b0ea6776741ca0dec05fd98b491900f6be78953f7",
+        "diamond": "8b51a265874e2d30b1120ed8d9879e155b51bbec6149887f13e5eb90d3d78af1"
       }
     }
   },

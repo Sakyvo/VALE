@@ -1,0 +1,61 @@
+{
+  "id": "Whitey white and thats alright",
+  "name": "Whitey_white_and_thats_alright",
+  "displayName": "Whitey white and thats alright",
+  "coloredName": "Whitey white and thats alright",
+  "description": "by Nable",
+  "cover": "/thumbnails/Whitey_white_and_thats_alright/cover.png",
+  "packPng": "/thumbnails/Whitey_white_and_thats_alright/pack.png",
+  "icon": null,
+  "file": "resourcepacks/Whitey white and thats alright.zip",
+  "fileSize": "19.4MB",
+  "uploadDate": "2026-10-17",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-013/main/resourcepacks/Whitey%20white%20and%20thats%20alright.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-013/main/resourcepacks/Whitey%20white%20and%20thats%20alright.zip"
+  }
+}

@@ -2,6 +2,192 @@
   "page": 34,
   "items": [
     {
+      "id": "§aSoupSkidz Map 7 Pack (1)",
+      "name": "SoupSkidz_Map_7_Pack(1)",
+      "displayName": "SoupSkidz Map 7 Pack (1)",
+      "coloredName": "<span style=\"color:#55FF55\">S</span><span style=\"color:#55FF55\">o</span><span style=\"color:#55FF55\">u</span><span style=\"color:#55FF55\">p</span><span style=\"color:#55FF55\">S</span><span style=\"color:#55FF55\">k</span><span style=\"color:#55FF55\">i</span><span style=\"color:#55FF55\">d</span><span style=\"color:#55FF55\">z</span><span style=\"color:#55FF55\"> </span><span style=\"color:#55FF55\">M</span><span style=\"color:#55FF55\">a</span><span style=\"color:#55FF55\">p</span><span style=\"color:#55FF55\"> </span><span style=\"color:#55FF55\">7</span><span style=\"color:#55FF55\"> </span><span style=\"color:#55FF55\">P</span><span style=\"color:#55FF55\">a</span><span style=\"color:#55FF55\">c</span><span style=\"color:#55FF55\">k</span><span style=\"color:#55FF55\"> </span><span style=\"color:#55FF55\">(</span><span style=\"color:#55FF55\">1</span><span style=\"color:#55FF55\">)</span>",
+      "description": "~Cardio",
+      "cover": "https://assets.vale.cc.cd/SoupSkidz_Map_7_Pack%281%29/cover.png",
+      "packPng": "https://assets.vale.cc.cd/SoupSkidz_Map_7_Pack%281%29/pack.png",
+      "icon": null,
+      "assetBase": "https://assets.vale.cc.cd",
+      "file": "resourcepacks/§aSoupSkidz Map 7 Pack (1).zip",
+      "fileSize": "Unknown",
+      "uploadDate": "2026-08-08",
+      "lists": [
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "stone_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/VALE/main/resourcepacks/%C2%A7aSoupSkidz%20Map%207%20Pack%20(1).zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/VALE/main/resourcepacks/%C2%A7aSoupSkidz%20Map%207%20Pack%20(1).zip"
+      }
+    },
+    {
+      "id": "§aSoupSkidz Map 7 Pack [CSGOv]",
+      "name": "SoupSkidz_Map_7_Pack_CSGOv",
+      "displayName": "SoupSkidz Map 7 Pack [CSGOv]",
+      "coloredName": "<span style=\"color:#55FF55\">S</span><span style=\"color:#55FF55\">o</span><span style=\"color:#55FF55\">u</span><span style=\"color:#55FF55\">p</span><span style=\"color:#55FF55\">S</span><span style=\"color:#55FF55\">k</span><span style=\"color:#55FF55\">i</span><span style=\"color:#55FF55\">d</span><span style=\"color:#55FF55\">z</span><span style=\"color:#55FF55\"> </span><span style=\"color:#55FF55\">M</span><span style=\"color:#55FF55\">a</span><span style=\"color:#55FF55\">p</span><span style=\"color:#55FF55\"> </span><span style=\"color:#55FF55\">7</span><span style=\"color:#55FF55\"> </span><span style=\"color:#55FF55\">P</span><span style=\"color:#55FF55\">a</span><span style=\"color:#55FF55\">c</span><span style=\"color:#55FF55\">k</span><span style=\"color:#55FF55\"> </span><span style=\"color:#55FF55\">[</span><span style=\"color:#55FF55\">C</span><span style=\"color:#55FF55\">S</span><span style=\"color:#55FF55\">G</span><span style=\"color:#55FF55\">O</span><span style=\"color:#55FF55\">v</span><span style=\"color:#55FF55\">]</span>",
+      "description": "~Cardio",
+      "cover": "https://assets.vale.cc.cd/SoupSkidz_Map_7_Pack_CSGOv/cover.png",
+      "packPng": "https://assets.vale.cc.cd/SoupSkidz_Map_7_Pack_CSGOv/pack.png",
+      "icon": null,
+      "assetBase": "https://assets.vale.cc.cd",
+      "file": "resourcepacks/§aSoupSkidz Map 7 Pack [CSGOv].zip",
+      "fileSize": "28.5MB",
+      "uploadDate": "2026-07-03",
+      "lists": [
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/%C2%A7aSoupSkidz%20Map%207%20Pack%20%5BCSGOv%5D.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-002/main/resourcepacks/%C2%A7aSoupSkidz%20Map%207%20Pack%20%5BCSGOv%5D.zip"
+      }
+    },
+    {
+      "id": "#SoupSkidz4Life",
+      "name": "SoupSkidz4Life",
+      "displayName": "SoupSkidz4Life",
+      "coloredName": "SoupSkidz4Life",
+      "description": "YoloPack",
+      "cover": "https://assets.vale.cc.cd/SoupSkidz4Life/cover.png",
+      "packPng": "https://assets.vale.cc.cd/SoupSkidz4Life/pack.png",
+      "icon": null,
+      "assetBase": "https://assets.vale.cc.cd",
+      "file": "resourcepacks/#SoupSkidz4Life.zip",
+      "fileSize": "10.9MB",
+      "uploadDate": "2026-04-09",
+      "lists": [
+        "Jewdah pf",
+        "Sakyvo"
+      ],
+      "textures": {
+        "items": [
+          "diamond_sword.png",
+          "ender_pearl.png",
+          "splash_potion_of_healing.png",
+          "steak.png",
+          "iron_sword.png",
+          "stone_sword.png",
+          "fishing_rod_uncast.png",
+          "apple_golden.png",
+          "golden_carrot.png"
+        ],
+        "blocks": [
+          "grass_side.png",
+          "stone.png",
+          "cobblestone.png",
+          "wool_colored_white.png",
+          "dirt.png",
+          "planks_oak.png",
+          "log_oak.png",
+          "diamond_ore.png"
+        ],
+        "armor": [
+          "diamond_layer_1.png",
+          "diamond_layer_2.png"
+        ],
+        "gui": [
+          "icons.png",
+          "widgets.png",
+          "inventory.png"
+        ],
+        "font": [
+          "ascii.png"
+        ],
+        "skin": [
+          "steve.png"
+        ],
+        "particle": [
+          "particles.png"
+        ]
+      },
+      "downloads": {
+        "github": "https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/%23SoupSkidz4Life.zip",
+        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/%23SoupSkidz4Life.zip"
+      }
+    },
+    {
       "id": "§4SoupSkidz4LIFE",
       "name": "SoupSkidz4LIFE_v2",
       "displayName": "SoupSkidz4LIFE",
@@ -2888,190 +3074,6 @@
       "downloads": {
         "github": "https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/StimpyHCFpack.zip",
         "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/StimpyHCFpack.zip"
-      }
-    },
-    {
-      "id": "StimpyRemake",
-      "name": "StimpyRemake",
-      "displayName": "StimpyRemake",
-      "coloredName": "StimpyRemake",
-      "description": "RedEdit",
-      "cover": "https://assets.vale.cc.cd/StimpyRemake/cover.png",
-      "packPng": "https://assets.vale.cc.cd/StimpyRemake/pack.png",
-      "icon": null,
-      "assetBase": "https://assets.vale.cc.cd",
-      "file": "resourcepacks/StimpyRemake.zip",
-      "fileSize": "16.5MB",
-      "uploadDate": "2026-08-08",
-      "lists": [
-        "Sakyvo"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "stone_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/StimpyRemake.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-006/main/resourcepacks/StimpyRemake.zip"
-      }
-    },
-    {
-      "id": "!    §9§l§nStitch",
-      "name": "Stitch",
-      "displayName": "Stitch",
-      "coloredName": "<span style=\"color:#5555FF\">S</span><span style=\"color:#5555FF\">t</span><span style=\"color:#5555FF\">i</span><span style=\"color:#5555FF\">t</span><span style=\"color:#5555FF\">c</span><span style=\"color:#5555FF\">h</span>",
-      "description": "Foul",
-      "cover": "/thumbnails/Stitch/cover.png",
-      "packPng": "/thumbnails/Stitch/pack.png",
-      "icon": null,
-      "file": "resourcepacks/!    §9§l§nStitch.zip",
-      "fileSize": "16.3MB",
-      "uploadDate": "2026-10-10",
-      "lists": [
-        "Blatant Cheater"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "stone_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-008/main/resourcepacks/!%20%20%20%20%C2%A79%C2%A7l%C2%A7nStitch.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-008/main/resourcepacks/!%20%20%20%20%C2%A79%C2%A7l%C2%A7nStitch.zip"
-      }
-    },
-    {
-      "id": "! Stoack32x",
-      "name": "Stoack32x",
-      "displayName": "Stoack32x",
-      "coloredName": "Stoack32x",
-      "description": "by Failess and iSparkton",
-      "cover": "/thumbnails/Stoack32x/cover.png",
-      "packPng": "/thumbnails/Stoack32x/pack.png",
-      "icon": null,
-      "file": "resourcepacks/! Stoack32x.zip",
-      "fileSize": "15.6MB",
-      "uploadDate": "2026-10-12",
-      "lists": [
-        "Blatant Cheater"
-      ],
-      "textures": {
-        "items": [
-          "diamond_sword.png",
-          "ender_pearl.png",
-          "splash_potion_of_healing.png",
-          "steak.png",
-          "iron_sword.png",
-          "stone_sword.png",
-          "fishing_rod_uncast.png",
-          "apple_golden.png",
-          "golden_carrot.png"
-        ],
-        "blocks": [
-          "grass_side.png",
-          "stone.png",
-          "cobblestone.png",
-          "wool_colored_white.png",
-          "dirt.png",
-          "planks_oak.png",
-          "log_oak.png",
-          "diamond_ore.png"
-        ],
-        "armor": [
-          "diamond_layer_1.png",
-          "diamond_layer_2.png"
-        ],
-        "gui": [
-          "icons.png",
-          "widgets.png",
-          "inventory.png"
-        ],
-        "font": [
-          "ascii.png"
-        ],
-        "skin": [
-          "steve.png"
-        ],
-        "particle": [
-          "particles.png"
-        ]
-      },
-      "downloads": {
-        "github": "https://raw.githubusercontent.com/Sakyvo/packs-010/main/resourcepacks/!%20Stoack32x.zip",
-        "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-010/main/resourcepacks/!%20Stoack32x.zip"
       }
     }
   ]
