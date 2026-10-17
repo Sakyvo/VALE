@@ -1,0 +1,59 @@
+{
+  "id": "#N17 Kuribo",
+  "name": "N17_Kuribo",
+  "displayName": "N17 Kuribo",
+  "coloredName": "N17 Kuribo",
+  "description": "www.youtube.com/user/N17PvP",
+  "cover": "/thumbnails/N17_Kuribo/cover.png",
+  "packPng": "/thumbnails/N17_Kuribo/pack.png",
+  "icon": null,
+  "file": "resourcepacks/#N17 Kuribo.zip",
+  "fileSize": "44.1MB",
+  "uploadDate": "2026-10-17",
+  "lists": [],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-012/main/resourcepacks/%23N17%20Kuribo.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-012/main/resourcepacks/%23N17%20Kuribo.zip"
+  }
+}

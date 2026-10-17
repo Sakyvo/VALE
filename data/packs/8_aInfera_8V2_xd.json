@@ -1,0 +1,59 @@
+{
+  "id": "8_aInfera_8V2_xd",
+  "name": "8_aInfera_8V2_xd",
+  "displayName": "8_aInfera_8V2_xd",
+  "coloredName": "8_aInfera_8V2_xd",
+  "description": "By iSparkton",
+  "cover": "/thumbnails/8_aInfera_8V2_xd/cover.png",
+  "packPng": "/thumbnails/8_aInfera_8V2_xd/pack.png",
+  "icon": null,
+  "file": "resourcepacks/8_aInfera_8V2_xd.zip",
+  "fileSize": "13.2MB",
+  "uploadDate": "2026-10-17",
+  "lists": [],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-011/main/resourcepacks/8_aInfera_8V2_xd.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-011/main/resourcepacks/8_aInfera_8V2_xd.zip"
+  }
+}

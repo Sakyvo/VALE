@@ -1,0 +1,61 @@
+{
+  "id": "im not good with names",
+  "name": "im_not_good_with_names",
+  "displayName": "im not good with names",
+  "coloredName": "im not good with names",
+  "description": "- tsuke",
+  "cover": "/thumbnails/im_not_good_with_names/cover.png",
+  "packPng": "/thumbnails/im_not_good_with_names/pack.png",
+  "icon": null,
+  "file": "resourcepacks/im not good with names.zip",
+  "fileSize": "27.0MB",
+  "uploadDate": "2026-10-17",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-010/main/resourcepacks/im%20not%20good%20with%20names.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-010/main/resourcepacks/im%20not%20good%20with%20names.zip"
+  }
+}

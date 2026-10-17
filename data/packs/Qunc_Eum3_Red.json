@@ -1,0 +1,61 @@
+{
+  "id": "Qunc Eum3 Red",
+  "name": "Qunc_Eum3_Red",
+  "displayName": "Qunc Eum3 Red",
+  "coloredName": "Qunc Eum3 Red",
+  "description": "Tory Edit by Dilnat",
+  "cover": "/thumbnails/Qunc_Eum3_Red/cover.png",
+  "packPng": "/thumbnails/Qunc_Eum3_Red/pack.png",
+  "icon": null,
+  "file": "resourcepacks/Qunc Eum3 Red.zip",
+  "fileSize": "39.8MB",
+  "uploadDate": "2026-10-17",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-011/main/resourcepacks/Qunc%20Eum3%20Red.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-011/main/resourcepacks/Qunc%20Eum3%20Red.zip"
+  }
+}

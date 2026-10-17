@@ -1,0 +1,59 @@
+{
+  "id": "#thread4k edit",
+  "name": "thread4k_edit",
+  "displayName": "thread4k edit",
+  "coloredName": "thread4k edit",
+  "description": "brouken",
+  "cover": "/thumbnails/thread4k_edit/cover.png",
+  "packPng": "/thumbnails/thread4k_edit/pack.png",
+  "icon": null,
+  "file": "resourcepacks/#thread4k edit.zip",
+  "fileSize": "49.0MB",
+  "uploadDate": "2026-10-17",
+  "lists": [],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-012/main/resourcepacks/%23thread4k%20edit.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-012/main/resourcepacks/%23thread4k%20edit.zip"
+  }
+}

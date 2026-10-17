@@ -1,0 +1,59 @@
+{
+  "id": "BETTER THAN NAEUKI PACK",
+  "name": "BETTER_THAN_NAEUKI_PACK",
+  "displayName": "BETTER THAN NAEUKI PACK",
+  "coloredName": "BETTER THAN NAEUKI PACK",
+  "description": "SexyIzBaky0",
+  "cover": "/thumbnails/BETTER_THAN_NAEUKI_PACK/cover.png",
+  "packPng": "/thumbnails/BETTER_THAN_NAEUKI_PACK/pack.png",
+  "icon": null,
+  "file": "resourcepacks/BETTER THAN NAEUKI PACK.zip",
+  "fileSize": "5.2MB",
+  "uploadDate": "2026-10-17",
+  "lists": [],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-011/main/resourcepacks/BETTER%20THAN%20NAEUKI%20PACK.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-011/main/resourcepacks/BETTER%20THAN%20NAEUKI%20PACK.zip"
+  }
+}

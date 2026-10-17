@@ -1,0 +1,59 @@
+{
+  "id": "Cevis x Jt Red Edit",
+  "name": "Cevis_x_Jt_Red_Edit",
+  "displayName": "Cevis x Jt Red Edit",
+  "coloredName": "Cevis x Jt Red Edit",
+  "description": "",
+  "cover": "/thumbnails/Cevis_x_Jt_Red_Edit/cover.png",
+  "packPng": "/thumbnails/Cevis_x_Jt_Red_Edit/pack.png",
+  "icon": null,
+  "file": "resourcepacks/Cevis x Jt Red Edit.zip",
+  "fileSize": "21.0MB",
+  "uploadDate": "2026-10-17",
+  "lists": [],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-011/main/resourcepacks/Cevis%20x%20Jt%20Red%20Edit.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-011/main/resourcepacks/Cevis%20x%20Jt%20Red%20Edit.zip"
+  }
+}

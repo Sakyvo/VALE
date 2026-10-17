@@ -1,0 +1,59 @@
+{
+  "id": "###Jimstain 3.0 (LowRes)",
+  "name": "Jimstain_3.0_LowRes",
+  "displayName": "Jimstain 3.0 (LowRes)",
+  "coloredName": "Jimstain 3.0 (LowRes)",
+  "description": "Faithful edit - Sectioned MC",
+  "cover": "/thumbnails/Jimstain_3.0_LowRes/cover.png",
+  "packPng": "/thumbnails/Jimstain_3.0_LowRes/pack.png",
+  "icon": null,
+  "file": "resourcepacks/###Jimstain 3.0 (LowRes).zip",
+  "fileSize": "44.0MB",
+  "uploadDate": "2026-10-17",
+  "lists": [],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-010/main/resourcepacks/%23%23%23Jimstain%203.0%20(LowRes).zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-010/main/resourcepacks/%23%23%23Jimstain%203.0%20(LowRes).zip"
+  }
+}

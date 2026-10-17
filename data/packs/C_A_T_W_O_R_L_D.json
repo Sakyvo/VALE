@@ -1,0 +1,61 @@
+{
+  "id": "C A T W O R L D",
+  "name": "C_A_T_W_O_R_L_D",
+  "displayName": "C A T W O R L D",
+  "coloredName": "C A T W O R L D",
+  "description": "yagi pserson > cat person",
+  "cover": "/thumbnails/C_A_T_W_O_R_L_D/cover.png",
+  "packPng": "/thumbnails/C_A_T_W_O_R_L_D/pack.png",
+  "icon": null,
+  "file": "resourcepacks/C A T W O R L D.zip",
+  "fileSize": "38.9MB",
+  "uploadDate": "2026-10-17",
+  "lists": [
+    "Overlay"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-011/main/resourcepacks/C%20A%20T%20W%20O%20R%20L%20D.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-011/main/resourcepacks/C%20A%20T%20W%20O%20R%20L%20D.zip"
+  }
+}

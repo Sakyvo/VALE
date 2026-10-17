@@ -1,0 +1,61 @@
+{
+  "id": "plast recolor MCBEPORT",
+  "name": "plast_recolor_MCBEPORT",
+  "displayName": "plast recolor MCBEPORT",
+  "coloredName": "plast recolor MCBEPORT",
+  "description": "Ported From MCPE Using Swimfan72's Pack Porter",
+  "cover": "/thumbnails/plast_recolor_MCBEPORT/cover.png",
+  "packPng": "/thumbnails/plast_recolor_MCBEPORT/pack.png",
+  "icon": null,
+  "file": "resourcepacks/plast recolor MCBEPORT.zip",
+  "fileSize": "3.2MB",
+  "uploadDate": "2026-10-17",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-012/main/resourcepacks/plast%20recolor%20MCBEPORT.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-012/main/resourcepacks/plast%20recolor%20MCBEPORT.zip"
+  }
+}

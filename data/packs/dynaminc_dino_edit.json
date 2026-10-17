@@ -1,0 +1,59 @@
+{
+  "id": "dynaminc dino edit",
+  "name": "dynaminc_dino_edit",
+  "displayName": "dynaminc dino edit",
+  "coloredName": "dynaminc dino edit",
+  "description": "Edited by Dinofer",
+  "cover": "/thumbnails/dynaminc_dino_edit/cover.png",
+  "packPng": "/thumbnails/dynaminc_dino_edit/pack.png",
+  "icon": null,
+  "file": "resourcepacks/dynaminc dino edit.zip",
+  "fileSize": "34.0MB",
+  "uploadDate": "2026-10-17",
+  "lists": [],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-011/main/resourcepacks/dynaminc%20dino%20edit.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-011/main/resourcepacks/dynaminc%20dino%20edit.zip"
+  }
+}

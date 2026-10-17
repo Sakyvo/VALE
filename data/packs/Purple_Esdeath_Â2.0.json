@@ -1,0 +1,59 @@
+{
+  "id": "Â§5Purple Esdeath Â§d2.0",
+  "name": "Purple_Esdeath_Â2.0",
+  "displayName": "Purple Esdeath Â2.0",
+  "coloredName": "<span style=\"color:#AA00AA\">P</span><span style=\"color:#AA00AA\">u</span><span style=\"color:#AA00AA\">r</span><span style=\"color:#AA00AA\">p</span><span style=\"color:#AA00AA\">l</span><span style=\"color:#AA00AA\">e</span><span style=\"color:#AA00AA\"> </span><span style=\"color:#AA00AA\">E</span><span style=\"color:#AA00AA\">s</span><span style=\"color:#AA00AA\">d</span><span style=\"color:#AA00AA\">e</span><span style=\"color:#AA00AA\">a</span><span style=\"color:#AA00AA\">t</span><span style=\"color:#AA00AA\">h</span><span style=\"color:#AA00AA\"> </span><span style=\"color:#AA00AA\">Â</span><span style=\"color:#FF55FF\">2</span><span style=\"color:#FF55FF\">.</span><span style=\"color:#FF55FF\">0</span>",
+  "description": "",
+  "cover": "/thumbnails/Purple_Esdeath_%C3%822.0/cover.png",
+  "packPng": "/thumbnails/Purple_Esdeath_%C3%822.0/pack.png",
+  "icon": null,
+  "file": "resourcepacks/Â§5Purple Esdeath Â§d2.0.zip",
+  "fileSize": "21.7MB",
+  "uploadDate": "2026-10-17",
+  "lists": [],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-012/main/resourcepacks/%C3%82%C2%A75Purple%20Esdeath%20%C3%82%C2%A7d2.0.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-012/main/resourcepacks/%C3%82%C2%A75Purple%20Esdeath%20%C3%82%C2%A7d2.0.zip"
+  }
+}

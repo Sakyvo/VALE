@@ -1,0 +1,59 @@
+{
+  "id": "b_byee_baykoris - purple",
+  "name": "b_byee_baykoris_-_purple",
+  "displayName": "b_byee_baykoris - purple",
+  "coloredName": "b_byee_baykoris - purple",
+  "description": "-Promisiing",
+  "cover": "/thumbnails/b_byee_baykoris_-_purple/cover.png",
+  "packPng": "/thumbnails/b_byee_baykoris_-_purple/pack.png",
+  "icon": null,
+  "file": "resourcepacks/b_byee_baykoris - purple.zip",
+  "fileSize": "41.5MB",
+  "uploadDate": "2026-10-17",
+  "lists": [],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-011/main/resourcepacks/b_byee_baykoris%20-%20purple.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-011/main/resourcepacks/b_byee_baykoris%20-%20purple.zip"
+  }
+}

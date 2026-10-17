@@ -1,0 +1,59 @@
+{
+  "id": "girl dies at rave",
+  "name": "girl_dies_at_rave",
+  "displayName": "girl dies at rave",
+  "coloredName": "girl dies at rave",
+  "description": "girl dies at rave",
+  "cover": "/thumbnails/girl_dies_at_rave/cover.png",
+  "packPng": "/thumbnails/girl_dies_at_rave/pack.png",
+  "icon": null,
+  "file": "resourcepacks/girl dies at rave.zip",
+  "fileSize": "5.7MB",
+  "uploadDate": "2026-10-17",
+  "lists": [],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-012/main/resourcepacks/girl%20dies%20at%20rave.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-012/main/resourcepacks/girl%20dies%20at%20rave.zip"
+  }
+}

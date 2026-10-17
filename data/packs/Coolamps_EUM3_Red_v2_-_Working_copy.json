@@ -1,0 +1,59 @@
+{
+  "id": "Coolamp's EUM3 Red v2 - Working copy",
+  "name": "Coolamps_EUM3_Red_v2_-_Working_copy",
+  "displayName": "Coolamp's EUM3 Red v2 - Working copy",
+  "coloredName": "Coolamp's EUM3 Red v2 - Working copy",
+  "description": "USE OPTIFINE FOR SPRUCE/BIRCH COLORMAPS! -coolamp",
+  "cover": "/thumbnails/Coolamps_EUM3_Red_v2_-_Working_copy/cover.png",
+  "packPng": "/thumbnails/Coolamps_EUM3_Red_v2_-_Working_copy/pack.png",
+  "icon": null,
+  "file": "resourcepacks/Coolamp's EUM3 Red v2 - Working copy.zip",
+  "fileSize": "12.9MB",
+  "uploadDate": "2026-10-17",
+  "lists": [],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-011/main/resourcepacks/Coolamp's%20EUM3%20Red%20v2%20-%20Working%20copy.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-011/main/resourcepacks/Coolamp's%20EUM3%20Red%20v2%20-%20Working%20copy.zip"
+  }
+}

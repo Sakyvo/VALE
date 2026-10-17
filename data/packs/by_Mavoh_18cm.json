@@ -1,0 +1,59 @@
+{
+  "id": "by Mavoh [18cm]",
+  "name": "by_Mavoh_18cm",
+  "displayName": "by Mavoh [18cm]",
+  "coloredName": "by Mavoh [18cm]",
+  "description": "",
+  "cover": "/thumbnails/by_Mavoh_18cm/cover.png",
+  "packPng": "/thumbnails/by_Mavoh_18cm/pack.png",
+  "icon": null,
+  "file": "resourcepacks/by Mavoh [18cm].zip",
+  "fileSize": "11.7MB",
+  "uploadDate": "2026-10-17",
+  "lists": [],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-011/main/resourcepacks/by%20Mavoh%20%5B18cm%5D.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-011/main/resourcepacks/by%20Mavoh%20%5B18cm%5D.zip"
+  }
+}

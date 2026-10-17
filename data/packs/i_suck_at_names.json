@@ -1,0 +1,59 @@
+{
+  "id": "i suck at names",
+  "name": "i_suck_at_names",
+  "displayName": "i suck at names",
+  "coloredName": "i suck at names",
+  "description": "MADE BY RES!",
+  "cover": "/thumbnails/i_suck_at_names/cover.png",
+  "packPng": "/thumbnails/i_suck_at_names/pack.png",
+  "icon": null,
+  "file": "resourcepacks/i suck at names.zip",
+  "fileSize": "16.7MB",
+  "uploadDate": "2026-10-17",
+  "lists": [],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-011/main/resourcepacks/i%20suck%20at%20names.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-011/main/resourcepacks/i%20suck%20at%20names.zip"
+  }
+}

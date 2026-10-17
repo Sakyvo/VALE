@@ -1,0 +1,59 @@
+{
+  "id": "aphotic x jtjammers",
+  "name": "aphotic_x_jtjammers",
+  "displayName": "aphotic x jtjammers",
+  "coloredName": "aphotic x jtjammers",
+  "description": "",
+  "cover": "/thumbnails/aphotic_x_jtjammers/cover.png",
+  "packPng": "/thumbnails/aphotic_x_jtjammers/pack.png",
+  "icon": null,
+  "file": "resourcepacks/aphotic x jtjammers.zip",
+  "fileSize": "20.9MB",
+  "uploadDate": "2026-10-17",
+  "lists": [],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-012/main/resourcepacks/aphotic%20x%20jtjammers.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-012/main/resourcepacks/aphotic%20x%20jtjammers.zip"
+  }
+}

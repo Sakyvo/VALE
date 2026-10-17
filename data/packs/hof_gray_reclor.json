@@ -1,0 +1,59 @@
+{
+  "id": "hof gray reclor",
+  "name": "hof_gray_reclor",
+  "displayName": "hof gray reclor",
+  "coloredName": "hof gray reclor",
+  "description": "I don't listen to niggers",
+  "cover": "/thumbnails/hof_gray_reclor/cover.png",
+  "packPng": "/thumbnails/hof_gray_reclor/pack.png",
+  "icon": null,
+  "file": "resourcepacks/hof gray reclor.zip",
+  "fileSize": "39.4MB",
+  "uploadDate": "2026-10-17",
+  "lists": [],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-011/main/resourcepacks/hof%20gray%20reclor.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-011/main/resourcepacks/hof%20gray%20reclor.zip"
+  }
+}

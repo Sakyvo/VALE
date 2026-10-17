@@ -1,0 +1,61 @@
+{
+  "id": "Pizza Eaters MAP 7 edit",
+  "name": "Pizza_Eaters_MAP_7_edit",
+  "displayName": "Pizza Eaters MAP 7 edit",
+  "coloredName": "Pizza Eaters MAP 7 edit",
+  "description": "$hyguys Mashup by romanceh -edit by w0s",
+  "cover": "/thumbnails/Pizza_Eaters_MAP_7_edit/cover.png",
+  "packPng": "/thumbnails/Pizza_Eaters_MAP_7_edit/pack.png",
+  "icon": null,
+  "file": "resourcepacks/Pizza Eaters MAP 7 edit.zip",
+  "fileSize": "18.8MB",
+  "uploadDate": "2026-10-17",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-011/main/resourcepacks/Pizza%20Eaters%20MAP%207%20edit.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-011/main/resourcepacks/Pizza%20Eaters%20MAP%207%20edit.zip"
+  }
+}

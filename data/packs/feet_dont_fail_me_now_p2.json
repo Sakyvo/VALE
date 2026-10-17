@@ -1,0 +1,59 @@
+{
+  "id": "feet dont fail me now p2",
+  "name": "feet_dont_fail_me_now_p2",
+  "displayName": "feet dont fail me now p2",
+  "coloredName": "feet dont fail me now p2",
+  "description": "koala",
+  "cover": "/thumbnails/feet_dont_fail_me_now_p2/cover.png",
+  "packPng": "/thumbnails/feet_dont_fail_me_now_p2/pack.png",
+  "icon": null,
+  "file": "resourcepacks/feet dont fail me now p2.zip",
+  "fileSize": "23.0MB",
+  "uploadDate": "2026-10-17",
+  "lists": [],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-011/main/resourcepacks/feet%20dont%20fail%20me%20now%20p2.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-011/main/resourcepacks/feet%20dont%20fail%20me%20now%20p2.zip"
+  }
+}

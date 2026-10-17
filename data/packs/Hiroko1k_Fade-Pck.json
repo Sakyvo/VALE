@@ -1,0 +1,59 @@
+{
+  "id": "Hiroko1k Fade-P@ck",
+  "name": "Hiroko1k_Fade-Pck",
+  "displayName": "Hiroko1k Fade-P@ck",
+  "coloredName": "Hiroko1k Fade-P@ck",
+  "description": "",
+  "cover": "/thumbnails/Hiroko1k_Fade-Pck/cover.png",
+  "packPng": "/thumbnails/Hiroko1k_Fade-Pck/pack.png",
+  "icon": null,
+  "file": "resourcepacks/Hiroko1k Fade-P@ck.zip",
+  "fileSize": "17.9MB",
+  "uploadDate": "2026-10-17",
+  "lists": [],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-011/main/resourcepacks/Hiroko1k%20Fade-P%40ck.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-011/main/resourcepacks/Hiroko1k%20Fade-P%40ck.zip"
+  }
+}

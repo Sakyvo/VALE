@@ -1,0 +1,61 @@
+{
+  "id": "JACK_HEIN_128X",
+  "name": "JACK_HEIN_128X",
+  "displayName": "JACK_HEIN_128X",
+  "coloredName": "JACK_HEIN_128X",
+  "description": "By Cian",
+  "cover": "/thumbnails/JACK_HEIN_128X/cover.png",
+  "packPng": "/thumbnails/JACK_HEIN_128X/pack.png",
+  "icon": null,
+  "file": "resourcepacks/JACK_HEIN_128X.zip",
+  "fileSize": "26.3MB",
+  "uploadDate": "2026-10-17",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-010/main/resourcepacks/JACK_HEIN_128X.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-010/main/resourcepacks/JACK_HEIN_128X.zip"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "id": "aEmerald_732x",
+  "name": "aEmerald_732x",
+  "displayName": "aEmerald_732x",
+  "coloredName": "aEmerald_732x",
+  "description": "-Latenci",
+  "cover": "/thumbnails/aEmerald_732x/cover.png",
+  "packPng": "/thumbnails/aEmerald_732x/pack.png",
+  "icon": null,
+  "file": "resourcepacks/aEmerald_732x.zip",
+  "fileSize": "19.8MB",
+  "uploadDate": "2026-10-17",
+  "lists": [],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-010/main/resourcepacks/aEmerald_732x.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-010/main/resourcepacks/aEmerald_732x.zip"
+  }
+}

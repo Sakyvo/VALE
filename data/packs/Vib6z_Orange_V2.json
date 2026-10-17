@@ -1,0 +1,61 @@
+{
+  "id": "Vib6z Orange [V2]",
+  "name": "Vib6z_Orange_V2",
+  "displayName": "Vib6z Orange [V2]",
+  "coloredName": "Vib6z Orange [V2]",
+  "description": "BMJ",
+  "cover": "/thumbnails/Vib6z_Orange_V2/cover.png",
+  "packPng": "/thumbnails/Vib6z_Orange_V2/pack.png",
+  "icon": null,
+  "file": "resourcepacks/Vib6z Orange [V2].zip",
+  "fileSize": "25.3MB",
+  "uploadDate": "2026-10-17",
+  "lists": [
+    "Blatant Cheater"
+  ],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-012/main/resourcepacks/Vib6z%20Orange%20%5BV2%5D.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-012/main/resourcepacks/Vib6z%20Orange%20%5BV2%5D.zip"
+  }
+}

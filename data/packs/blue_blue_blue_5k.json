@@ -1,0 +1,59 @@
+{
+  "id": "blue blue  blue 5k",
+  "name": "blue_blue_blue_5k",
+  "displayName": "blue blue  blue 5k",
+  "coloredName": "blue blue  blue 5k",
+  "description": "- superman edittt",
+  "cover": "/thumbnails/blue_blue_blue_5k/cover.png",
+  "packPng": "/thumbnails/blue_blue_blue_5k/pack.png",
+  "icon": null,
+  "file": "resourcepacks/blue blue  blue 5k.zip",
+  "fileSize": "41.6MB",
+  "uploadDate": "2026-10-17",
+  "lists": [],
+  "textures": {
+    "items": [
+      "diamond_sword.png",
+      "ender_pearl.png",
+      "splash_potion_of_healing.png",
+      "steak.png",
+      "iron_sword.png",
+      "stone_sword.png",
+      "fishing_rod_uncast.png",
+      "apple_golden.png",
+      "golden_carrot.png"
+    ],
+    "blocks": [
+      "grass_side.png",
+      "stone.png",
+      "cobblestone.png",
+      "wool_colored_white.png",
+      "dirt.png",
+      "planks_oak.png",
+      "log_oak.png",
+      "diamond_ore.png"
+    ],
+    "armor": [
+      "diamond_layer_1.png",
+      "diamond_layer_2.png"
+    ],
+    "gui": [
+      "icons.png",
+      "widgets.png",
+      "inventory.png"
+    ],
+    "font": [
+      "ascii.png"
+    ],
+    "skin": [
+      "steve.png"
+    ],
+    "particle": [
+      "particles.png"
+    ]
+  },
+  "downloads": {
+    "github": "https://raw.githubusercontent.com/Sakyvo/packs-012/main/resourcepacks/blue%20blue%20%20blue%205k.zip",
+    "mirror": "https://ghfast.top/https://raw.githubusercontent.com/Sakyvo/packs-012/main/resourcepacks/blue%20blue%20%20blue%205k.zip"
+  }
+}
