@@ -76,3 +76,25 @@ Executor: Claude Code
 [推动 012 翻done] 012 的人工信验收已由用户在 Cloudflare 控制台完成（bucket+域名+CORS+token），`$hyGuy$` 34 个纹理已通过 `node scripts/upload-assets.js` 真实上传到 `vale-assets` bucket，验证了抽屉 URL（`/%24hyGuy%24/cover.png`）返回 HTTP 200、`Access-Control-Allow-Origin: https://vale.cc.cd` 生效、重跑幂等。account 中已记录：`data/asset-base.json` 的 `remote.packs` 含 `$hyGuy$`，index.json 对应条目已注入 `assetBase` 字段。ENTRY 视为通过。
 
 021 的 R2 相关验收项（全量的展示资产迁移、母本目录、及最终四倍规模评估）仍与 012/013 人工信验收并行，不阻塞上传执行；012 done 意味着 021 无须再等 R2 环境基建。
+
+## 全量入库完成（2026-10-17，autonomous goal 完成）
+
+三道墙全部以工程方案跨过并执行完毕，021 全量入库 end-to-end 完成：
+
+1. **dry-run 重指纹 → 可续跑指纹缓存**：给 upload-folder 增加 `--fingerprint-cache`（commit f5852646/64e0a25c 一系），按 basename+size+mtime 身份缓存视觉指纹（后续 f1c149f5 改为内容身份键以支持 -up 重分类复用），中断后重跑不再重算；1153 个硬链接分四批逐批分类（batch-1 689 / batch-2 688 / batch-3 658 / batch-4 669 = 2666 唯一名，88 个跨目录同名同内容归档自动归并）。
+2. **conflict/duplicate 自动分类 + retain 决策文件**：每批 dry-run 产出分类后，packId 冲突（同名异版）整体排除并记录 `batch-N-conflicts.json` 待人工 retain；视觉重复写 `batch-N-duplicates.json`（retain=existing），0 blocker 后用保存的 plan `--from-plan` 执行，不再重复分类。
+3. **8-12 小时串行上传**：blobless partial clone + `publishBatch` 分块推送（408 断连重试 8 次退避、每 chunk 推后逐包 verify、失败仅损一块）+ `--only-repo` 列表 + 硬链接暂存免 63GB 拷贝。网络反复中断（RPC 55 / 408 / TLS handshake failure）由重试与断点续传消化，跨 5 天多轮会话完成。
+
+**最终账目（全部有远程 tree / registry / extracted 三方核验）**：
+- 上传：batch-1 443 → packs-007/008；batch-2 482 → packs-008/009/010；batch-3 510 → packs-010/011/012；batch-4 538 → packs-010/011/012/013。远程 packs-007~013 合计 1887 个归档（另 packs-006 承载 020 pilot 40 包）。
+- registry 3136 = 远程全量（曾因 CI auto-build 覆盖丢账，后以远程 tree 为权威重建 1034 条并补 sourceKey）；extracted 3127 / missing 0；Blatant Cheater List 1537 包（剩余为冲突/重复的 skip 与 retain）。
+- 排除项：packId 冲突未上传待人工 retain ~150 个（各批 conflicts.json 汇总），视觉重复 retain=existing ~40 个， Oversize(>100MB) 2 个，high_version 若干。
+- SBI：全量 3000 包重指纹 v23（2694 组，客户端 sbi.js v115）；Overlay 重检 104→119。
+- index 63 页 / 3127 包（origin/main + 线上验证），CI Build Site + Pages deployment 全绿，线上 `data/index.json` total=3127、Shene_New/zitraks32x_v2 等 b3/b4 新包页面与封面全部 200。
+
+**遗留人工项**（不阻塞本 issue 的入库验收）：
+- ~150 个同名异版 conflict 的 retain 决策（各批 `D:/_vale-plans/batch-N-conflicts.json`）；
+- 016-019 review 翻转与九图回归 2/9 的组等价/检索优化（归 017/018 已记录的方向）；
+- Blue_32x/BLUE_32x 等 5 对大小写碰撞在 Windows 工作树的 M 噪音（线上/CI 正常，013 已记录）。
+
+Status: review
