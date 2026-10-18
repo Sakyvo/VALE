@@ -29,7 +29,7 @@
 
 @font-face {
   font-family: 'Minecraft AE';
-  src: url('../fonts/minecraft-ae.woff2') format('woff2');
+  src: url('../fonts/minecraft-ae.woff2?v=2') format('woff2');
   font-display: swap;
 }
 

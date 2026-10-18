@@ -1,5 +1,5 @@
 # Subset site webfonts into assets/fonts/:
-#   Minecraft-AE.ttf     -> minecraft-ae.woff2   (names: Basic Latin + Latin-1 + every pack/List name char)
+#   MinecraftAE-Bold.ttf -> minecraft-ae.woff2   (names: Basic Latin + Latin-1 + every pack/List name char)
 #   HarmonyOS_Sans.ttf   -> harmonyos-sans.woff2 (UI text: Basic Latin + Latin-1, variable wght kept)
 # Rerun after adding packs or lists whose names contain new non-Latin characters:
 #   python scripts/subset-font.py
@@ -13,8 +13,8 @@ sys.stdout.reconfigure(encoding='utf-8')
 from fontTools.subset import Options, Subsetter
 from fontTools.ttLib import TTFont
 
-SRC = 'C:/Users/ASUS/AppData/Local/Microsoft/Windows/Fonts/Minecraft-AE.ttf'
-UI_SRC = 'C:/Users/ASUS/Desktop/HarmonyOS Sans/HarmonyOS_Sans.ttf'
+SRC = 'K:/PvP/MinecraftAE-Bold.ttf'
+UI_SRC = 'C:/Users/ASUS/AppData/Local/Microsoft/Windows/Fonts/HarmonyOS_Sans.ttf'
 ROOT = os.path.join(os.path.dirname(__file__), '..')
 OUT = os.path.join(ROOT, 'assets', 'fonts', 'minecraft-ae.woff2')
 UI_OUT = os.path.join(ROOT, 'assets', 'fonts', 'harmonyos-sans.woff2')
