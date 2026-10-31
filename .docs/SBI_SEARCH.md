@@ -49,5 +49,6 @@ The client loads only the shards required by the detected observation types.
 
 - Keep `SBI_FINGERPRINT_VERSION` synchronized in `scripts/generate-sbi-data.js` and `assets/js/sbi.js`.
 - After fingerprint or matcher changes, advance the `sbi.js` cache buster in `sbi/index.html`.
-- Run `python test_sbi.py`; the current labeled corpus contains nine screenshots and each must retain a number-one match.
+- Run `python test_sbi.py`; the labeled corpus contains nine screenshots and each must retain a group-level number-one match.
+- Acceptance for matcher work is **9/9 on the real screenshots plus group-level top-1 ≥ 80% on the synthetic light corpus** (`test_img/synthetic/`), measured through the offline evaluation bench — not in-browser. See ADR-0006 for the rewrite plan.
 - Do not report broader accuracy than the labeled corpus actually verifies.
