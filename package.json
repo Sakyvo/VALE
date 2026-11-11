@@ -12,6 +12,7 @@
     "packs:finalize-replacements": "node scripts/finalize-pack-replacements.js",
     "fix:preview-alpha": "node scripts/fix-thumbnail-preview-alpha.js",
     "sbi:data": "node scripts/generate-sbi-data.js",
+    "sbi:eval": "node scripts/sbi-eval-bench.js current",
     "overlay:detect": "node scripts/detect-overlay.js"
   },
   "dependencies": {
@@ -19,5 +20,8 @@
     "adm-zip": "^0.5.10",
     "pngjs": "^7.0.0",
     "sharp": "^0.33.0"
+  },
+  "devDependencies": {
+    "@napi-rs/canvas": "^1.1.0"
   }
 }

@@ -2,7 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 const sharp = require('sharp');
-const { sanitizePreviewPngBuffer } = require('./thumbnail-preview-utils');
+const { sanitizePreviewPngBuffer, sanitizeFirstFrameBuffer } = require('./thumbnail-preview-utils');
+const { resampleItemArea } = require('../assets/js/sbi-engine');
 const { stableStringify } = require('./lib/pack-content-fingerprint');
 const { computeGroupKey, OBSERVABLE_GROUP_SURFACES } = require('./lib/group-equivalence');
 
@@ -10,7 +11,7 @@ const THUMB_DIR = path.join(__dirname, '..', 'thumbnails');
 const OUT_FILE = path.join(__dirname, '..', 'data', 'sbi-fingerprints.json');
 const SHARD_DIR = path.join(__dirname, '..', 'data', 'sbi-fp');
 const META_FILE = path.join(SHARD_DIR, 'meta.json');
-const SBI_FINGERPRINT_VERSION = 23;
+const SBI_FINGERPRINT_VERSION = 24;
 const SBI_GROUP_SCHEMA_VERSION = 1;
 const DEFAULT_SHARD_TARGET_BYTES = 32 * 1024 * 1024;
 const GITHUB_FILE_LIMIT_BYTES = 100 * 1024 * 1024;
@@ -785,6 +786,45 @@ function loadExcludedPacks() {
   return buildExclusionSet(JSON.parse(fs.readFileSync(listsPath, 'utf-8')));
 }
 
+async function writeAlignedReferences(meta, options = {}) {
+  const thumbsRoot = options.thumbsRoot || THUMB_DIR;
+  const outputDir = options.outputDir || path.join(SHARD_DIR, 'aligned');
+  fs.mkdirSync(path.join(outputDir, 'textures'), { recursive: true });
+  const textures = [], groups = {}, byContent = new Map(), bySource = new Map();
+  for (const [groupId, group] of Object.entries(meta.groups).sort(([a], [b]) => a.localeCompare(b))) {
+    const items = {};
+    for (const member of group.members) for (const type of TEXTURES) {
+      const file = (type.files || [type.file]).map(name => path.join(thumbsRoot, member, name)).find(name => fs.existsSync(name));
+      if (!file) continue;
+      let id = bySource.get(file);
+      if (id === undefined) {
+        const source = await fs.promises.readFile(file);
+        const png = await sanitizeFirstFrameBuffer(source);
+        const { data, info } = await sharp(png).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+        const hash = crypto.createHash('sha256').update(`${info.width}x${info.height}:`).update(data).digest('hex');
+        id = byContent.get(hash);
+        if (id === undefined) {
+          id = textures.length;
+          const compact = resampleItemArea({ width: info.width, height: info.height, pixels: data }, Math.min(16, info.width, info.height));
+          const relative = `textures/${hash}.png`;
+          await fs.promises.writeFile(path.join(outputDir, relative), png);
+          textures.push({ file: relative, sha256: sha256Text(png), width: info.width, height: info.height,
+            frameIndex: 0, bytes: png.length, coarseSize: compact.width,
+            coarse: Buffer.from(Uint8Array.from(compact.pixels)).toString('base64') });
+          byContent.set(hash, id);
+        }
+        bySource.set(file, id);
+      }
+      if (!items[type.key]) items[type.key] = [];
+      if (!items[type.key].includes(id)) items[type.key].push(id);
+    }
+    groups[groupId] = { representative: group.representative, members: group.members.slice(), items };
+  }
+  const index = { version: SBI_FINGERPRINT_VERSION, alignmentVersion: 1, textures, groups };
+  await fs.promises.writeFile(path.join(outputDir, 'index.json'), JSON.stringify(index));
+  return index;
+}
+
 async function main(argv = process.argv.slice(2)) {
   const args = parseArgs(argv);
   const packAllowlist = loadPackAllowlist(args.packList);
@@ -834,6 +874,7 @@ async function main(argv = process.argv.slice(2)) {
   }
   const { groupPacks, meta } = buildGroupedData(packs, excluded.counts);
   const outputMeta = writeShards(groupPacks, meta);
+  await writeAlignedReferences(outputMeta);
   const result = { version: SBI_FINGERPRINT_VERSION, schemaVersion: SBI_GROUP_SCHEMA_VERSION, packs: groupPacks, meta: outputMeta };
   console.log(`Done. ${Object.keys(packs).length} packs in ${meta.groupCount} exact groups -> ${SHARD_DIR}`);
   return result;
@@ -852,4 +893,5 @@ module.exports = {
   main,
   surfaceKey,
   writeShards,
+  writeAlignedReferences,
 };

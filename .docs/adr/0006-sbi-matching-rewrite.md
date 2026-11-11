@@ -1,5 +1,28 @@
-# SBI 匹配重写:评测台先行,嵌入优先于手工指纹
+# SBI Matching: Verify Input Alignment Before Choosing a New Matcher
 
-v23 手工指纹(dHash/hist/moments/sig)在 2694 组语料下崩溃:九图回归 2/9、合成语料组级 top-1 仅 39.1%。根因是最弱的特征承担了粗排召回(最强的 pix 逐像素比对只在 top-28 精排参与),加上数十条过拟合的类型推断硬规则;调权重已证明互相牵制,此路不通。决定先建**离线评测台**(不开浏览器,直接在合成语料上出指标),同尺度 bake-off 两条路线:**经典强化**(pix 进入粗排、类型硬规则退出匹配)vs **学习嵌入**(自监督小 CNN 在包语料上训练,增强管线 = 截图像素级退化;ONNX int8 ≤3MB 浏览器推理,128d fp16 嵌入,全 slot × 全类型余弦检索)。经典路线若达成验收(9-shot 9/9 + synthetic light 组级 top-1 ≥ 80%)即停、不引入模型;否则落**混合架构**:嵌入做召回与主排序,pix compareSpatial 做最终验证与平局裁决。类型标签退出匹配层,仅保留 UI 展示;HUD/widget 一期维持经典特征。
+Status: accepted design; not an implementation or delivery claim.
 
-被拒方案:**继续调参 v23**(九图上权重互相牵制已证死路);**VPS 服务端匹配**(打破静态托管核心约束,ADR-0004 已拒);**复用 CLIP 路线**(86MB 模型冷启动、拼图对差异面覆盖不足,决定删除 transformers.min.js/worker/旧 embeddings 遗留,不并行维护)。下载预算从 ADR-0004 的约 6MB 修订为首查 ≤8MB(含懒加载模型);训练脚本入 `scripts/`(Python/torch),`.onnx` 模型提交仓库,嵌入生成经 onnxruntime-node 并入 `npm run sbi:data` 单命令,CI 零训练依赖。
+## Current decision
+
+Repair and verify crop geometry and query/reference preprocessing before choosing between classical matching and retrained embeddings. Preserve native item crops and reference frames; refinement compares each pair at the smaller native size, downsampling only the larger side. Keep compact coarse retrieval separate and measure its actual shortlist recall. The authoritative behavior and measurement contract is [SBI Input Alignment](../spec/sbi-input-alignment.md), implemented through [batch 029](../tasks/029-sbi-input-alignment.md).
+
+This revision supersedes the original automatic transition from a failing classical baseline to a hybrid embedding matcher. Retraining requires verified input alignment and evidence from remaining failures, followed by approval of the bounded retraining proposal; a hit-count cutoff alone is insufficient. If classical matching meets all delivery gates, do not add a model and retire obsolete experiment implementation while preserving conclusions and reproduction provenance.
+
+## Gates and rejected alternatives
+
+Final acceptance remains real-shot group top-1 **9/9** plus **>=80%** over the complete versioned synthetic acceptance corpus, with **<=8MB actual cold-cache downloads** from opening SBI until the first complete refined result. Lazy-loaded refinement, metadata, required scripts and any model/runtime count toward that total. A 7/9 result is progress only. If all gates cannot be met together, present measured alternatives for a user decision rather than silently lowering resolution, recall or the budget.
+
+- Reject compulsory enlargement to 512x512: it does not recover missing source information and increases working-set and transfer costs if published literally.
+- Reject a universal 16px or 48px refinement cap: it discards available detail, including a 96px query compared with a 128px reference. This does not prohibit a compact coarse descriptor.
+- Retain static hosting and browser-side matching rather than adding a VPS/API.
+- Reject automatic adoption of the old CLIP or experimental CNN pipeline. Neither has verified delivery-quality evidence; this is not a claim that all learned descriptors are unsuitable.
+
+## Historical context and evidence corrections
+
+The initial rewrite proposal compared stronger classical features with a small contrastive CNN, with a possible embedding-led hybrid and pixel verification. That was a hypothesis, not an established remedy.
+
+The **39.1%** synthetic top-1 figure comes from the older v20-era reports in [016](../tasks/016-synthetic-evaluation-corpus.md) and [018](../tasks/018-sbi-two-tier-retrieval.md), not a newly measured full v23 baseline. Those records also differ in denominator labeling (2090 evaluated versus 2092 generated), which must be reconciled before numerical comparison.
+
+Later session experiments reported 2/9 then 3/9 on the real screenshots, and 1621/2092 (77.5%) for the standalone palette scorer. That palette result is not proof of the complete browser path's accuracy or of a causal gain from any single patch. Sampling, replay fidelity and crop geometry need validation before the experiments can support an architecture verdict.
+
+Poor ranks do not prove wrong source textures. The 32/16 pixel-size mismatch, inconsistent crop scale and assumed empty-slot plate are testable failure hypotheses, not evidence that hand-crafted features are exhausted or that changing reference sources is the only solution. Likewise, sampled compression estimates, including 5.6MB plus 2.5MB before other assets, do not establish compliance with the 8MB first-query gate.

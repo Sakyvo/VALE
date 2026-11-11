@@ -434,7 +434,7 @@ async function extractPack(zipPath) {
   return { packId, originalName, extracted, outputDir, description };
 }
 
-async function renderMcText(asciiPath, text, targetCellH) {
+async function renderMcText(asciiPath, text, targetCellH, color = [64, 64, 64]) {
   const meta = await sharp(asciiPath).metadata();
   const srcCellW = Math.round(meta.width / 16);
   const srcCellH = Math.round(meta.height / 16);
@@ -494,7 +494,7 @@ async function renderMcText(asciiPath, text, targetCellH) {
   const pixels = textBuf.data;
   for (let i = 0; i < pixels.length; i += 4) {
     if (pixels[i + 3] > 0) {
-      pixels[i] = 64; pixels[i + 1] = 64; pixels[i + 2] = 64;
+      pixels[i] = color[0]; pixels[i + 1] = color[1]; pixels[i + 2] = color[2];
     }
   }
 
@@ -804,6 +804,7 @@ if (require.main === module) {
 }
 
 module.exports = {
+  renderMcText,
   main,
   parseArgs,
   upsertExtraction,

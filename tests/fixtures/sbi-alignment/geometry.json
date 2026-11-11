@@ -1,0 +1,292 @@
+[
+  {
+    "file": "verzide-sparse.png",
+    "groupId": "g:016fbb6abff715d06a0103b9262dad9e0387925a6ac03d8a8b83419f16402fa0",
+    "packId": "Verzide_v4",
+    "role": "development",
+    "tier": "light",
+    "profile": "sparse",
+    "seed": 1732031747,
+    "preset": "large",
+    "sourceFiles": {
+      "diamond_sword": "diamond_sword.png",
+      "ender_pearl": "ender_pearl.png",
+      "splash_potion": "splash_potion_of_healing.png",
+      "steak": "steak.png",
+      "golden_carrot": "golden_carrot.png",
+      "widgets": "widgets.png",
+      "icons": "icons.png",
+      "font": "ascii.png"
+    },
+    "sourceHashes": {
+      "diamond_sword": "c3464a453951072ad6c20d22cc6537188646cbbc33c4991496af9330abd96a29",
+      "ender_pearl": "5eb2d9bf38839301feadc721ee9a6d5be0b9e04c3a72238d7050b25fbe05dd1e",
+      "splash_potion": "8c5a820cd6916904835ae079db1b6b0280bd38cdad5049b3a924b30d33fae5cc",
+      "steak": "7b33ea4ab7d1b4c86b7f3b823e29cd75dec987557866cdb670cce13dfa00afed",
+      "golden_carrot": "cb4a1866afaa6ed7cb2a0667379e5d58af16e42682c4f177e93dc08c08fb134f",
+      "widgets": "8c58018370d2ea989a6b76700e57531d04d53eb976f99cbb70fe59a6acf311b4",
+      "icons": "9197fe07ef1adbe9bedec8bc190263cdaa21e11766eef0714ad1398e12aba228",
+      "font": "da6d8b279b5336f9d6a4a9874fd609d29c5b294633fb360aaf95244fbf3f2adf"
+    },
+    "slots": [
+      {
+        "index": 0,
+        "textureName": "diamond_sword",
+        "durability": 0.55
+      },
+      {
+        "index": 1,
+        "textureName": "ender_pearl",
+        "count": 12
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      {
+        "index": 8,
+        "textureName": "golden_carrot",
+        "count": 62
+      }
+    ],
+    "perturbation": {
+      "name": "sparse",
+      "unit": 3,
+      "bottomOffset": 0,
+      "scale": 1,
+      "jpegQuality": 95,
+      "brightnessDelta": 0.02,
+      "contrastDelta": 0.02
+    },
+    "sampleIndex": 0,
+    "geometry": {
+      "width": 1920,
+      "height": 1080,
+      "effectiveUnit": 3,
+      "widgetRect": {
+        "x": 687,
+        "y": 1014,
+        "w": 546,
+        "h": 66
+      },
+      "slotRects": [
+        {
+          "x": 696,
+          "y": 1023,
+          "w": 48,
+          "h": 48
+        },
+        {
+          "x": 756,
+          "y": 1023,
+          "w": 48,
+          "h": 48
+        },
+        {
+          "x": 816,
+          "y": 1023,
+          "w": 48,
+          "h": 48
+        },
+        {
+          "x": 876,
+          "y": 1023,
+          "w": 48,
+          "h": 48
+        },
+        {
+          "x": 936,
+          "y": 1023,
+          "w": 48,
+          "h": 48
+        },
+        {
+          "x": 996,
+          "y": 1023,
+          "w": 48,
+          "h": 48
+        },
+        {
+          "x": 1056,
+          "y": 1023,
+          "w": 48,
+          "h": 48
+        },
+        {
+          "x": 1116,
+          "y": 1023,
+          "w": 48,
+          "h": 48
+        },
+        {
+          "x": 1176,
+          "y": 1023,
+          "w": 48,
+          "h": 48
+        }
+      ]
+    },
+    "sha256": "53bf87d4ca9b50c2a8d954e4417d7cb5dd14a64dd8ee473dc3b97e984147a1fb",
+    "sourceFile": "development/673cb4d93a46350f9af422b06854dc42f348091542d969643cd6a8edda5ea171.png",
+    "corpusManifestHash": "96c5c4917f424e692f2732a43b7f95fbf9a7c84a0d7af2bd8315a7aec77abc09"
+  },
+  {
+    "file": "verzide-full.png",
+    "groupId": "g:016fbb6abff715d06a0103b9262dad9e0387925a6ac03d8a8b83419f16402fa0",
+    "packId": "Verzide_v4",
+    "role": "development",
+    "tier": "light",
+    "profile": "full",
+    "seed": 3512961360,
+    "preset": "large",
+    "sourceFiles": {
+      "diamond_sword": "diamond_sword.png",
+      "ender_pearl": "ender_pearl.png",
+      "splash_potion": "splash_potion_of_healing.png",
+      "steak": "steak.png",
+      "golden_carrot": "golden_carrot.png",
+      "widgets": "widgets.png",
+      "icons": "icons.png",
+      "font": "ascii.png"
+    },
+    "sourceHashes": {
+      "diamond_sword": "c3464a453951072ad6c20d22cc6537188646cbbc33c4991496af9330abd96a29",
+      "ender_pearl": "5eb2d9bf38839301feadc721ee9a6d5be0b9e04c3a72238d7050b25fbe05dd1e",
+      "splash_potion": "8c5a820cd6916904835ae079db1b6b0280bd38cdad5049b3a924b30d33fae5cc",
+      "steak": "7b33ea4ab7d1b4c86b7f3b823e29cd75dec987557866cdb670cce13dfa00afed",
+      "golden_carrot": "cb4a1866afaa6ed7cb2a0667379e5d58af16e42682c4f177e93dc08c08fb134f",
+      "widgets": "8c58018370d2ea989a6b76700e57531d04d53eb976f99cbb70fe59a6acf311b4",
+      "icons": "9197fe07ef1adbe9bedec8bc190263cdaa21e11766eef0714ad1398e12aba228",
+      "font": "da6d8b279b5336f9d6a4a9874fd609d29c5b294633fb360aaf95244fbf3f2adf"
+    },
+    "slots": [
+      {
+        "index": 0,
+        "textureName": "diamond_sword",
+        "durability": 0.55
+      },
+      {
+        "index": 1,
+        "textureName": "ender_pearl",
+        "count": 12
+      },
+      {
+        "index": 2,
+        "textureName": "splash_potion",
+        "count": 62
+      },
+      {
+        "index": 3,
+        "textureName": "steak",
+        "count": 12
+      },
+      {
+        "index": 4,
+        "textureName": "golden_carrot",
+        "count": 62
+      },
+      {
+        "index": 5,
+        "textureName": "splash_potion",
+        "count": 12
+      },
+      {
+        "index": 6,
+        "textureName": "steak",
+        "count": 62
+      },
+      {
+        "index": 7,
+        "textureName": "ender_pearl",
+        "count": 12
+      },
+      {
+        "index": 8,
+        "textureName": "golden_carrot",
+        "count": 62
+      }
+    ],
+    "perturbation": {
+      "name": "full",
+      "unit": 3,
+      "bottomOffset": 12,
+      "scale": 0.8333333333333334,
+      "jpegQuality": 88,
+      "brightnessDelta": 0.04,
+      "contrastDelta": 0.04
+    },
+    "sampleIndex": 1,
+    "geometry": {
+      "width": 1600,
+      "height": 900,
+      "effectiveUnit": 2.5,
+      "widgetRect": {
+        "x": 572.5,
+        "y": 835,
+        "w": 455,
+        "h": 55
+      },
+      "slotRects": [
+        {
+          "x": 580,
+          "y": 842.5,
+          "w": 40,
+          "h": 40
+        },
+        {
+          "x": 630,
+          "y": 842.5,
+          "w": 40,
+          "h": 40
+        },
+        {
+          "x": 680,
+          "y": 842.5,
+          "w": 40,
+          "h": 40
+        },
+        {
+          "x": 730,
+          "y": 842.5,
+          "w": 40,
+          "h": 40
+        },
+        {
+          "x": 780,
+          "y": 842.5,
+          "w": 40,
+          "h": 40
+        },
+        {
+          "x": 830,
+          "y": 842.5,
+          "w": 40,
+          "h": 40
+        },
+        {
+          "x": 880,
+          "y": 842.5,
+          "w": 40,
+          "h": 40
+        },
+        {
+          "x": 930,
+          "y": 842.5,
+          "w": 40,
+          "h": 40
+        },
+        {
+          "x": 980,
+          "y": 842.5,
+          "w": 40,
+          "h": 40
+        }
+      ]
+    },
+    "sha256": "06b376898d8d78df6dc5fa8320c8ce663add62a0accb152637bd972a2d0158c2",
+    "sourceFile": "development/d1638926b7a26d18b3d0dd38c65694f568fb3212837d4b732b7b4467c17dc97e.png",
+    "corpusManifestHash": "96c5c4917f424e692f2732a43b7f95fbf9a7c84a0d7af2bd8315a7aec77abc09"
+  }
+]

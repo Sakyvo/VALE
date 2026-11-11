@@ -1,54 +1,60 @@
 # Search By Image
 
-SBI identifies the Minecraft PvP resource pack shown in an uploaded screenshot. Matching stays browser-side so the site remains compatible with static GitHub Pages hosting.
+SBI identifies Minecraft PvP resource packs from screenshots. Matching remains browser-side and compatible with static hosting.
 
-## Search Flow
+## Authoritative routes
 
-1. `extractHotbarSlots` extracts hotbar-slot observations from the screenshot.
-2. `inferDisplaySlotTypes` infers item types such as diamond sword, ender pearl, healing potion, steak, and golden carrot.
-3. `matchPacks` compares each observation with the corresponding texture fingerprints for every candidate group.
-4. Slot, HUD, and widget scores are combined and ranked; exact observable groups are displayed together.
+- For crop geometry, sampling, native-resolution refinement, masks, evaluation and first-query transfer, read [SBI Input Alignment](spec/sbi-input-alignment.md).
+- For the architecture decision and superseded assumptions, read [ADR-0006](adr/0006-sbi-matching-rewrite.md).
+- For group identity, follow [ADR-0005](adr/0005-observable-group-equivalence.md); do not alter equivalence to raise evaluation scores.
+- [Batch 029](tasks/029-sbi-input-alignment.md) owns alignment and verified comparison work. [Task 028](tasks/028-ship-sbi-matching-winner.md) remains the final shipping gate.
 
-Packs in the `Overlay` and `Conquest` Lists remain browsable through their Lists but are excluded from SBI generation and results.
+The spec is approved design, not a declaration that the current worktree or deployed site implements it.
 
-## Fingerprints
+## Existing implementation and worktree experiments
 
-`scripts/generate-sbi-data.js` builds fingerprints from `thumbnails/` and writes sharded JSON under `data/sbi-fp/`. Shards are the only durable/runtime SBI fingerprint representation; do not also retain a monolithic `data/sbi-fingerprints.json` copy.
+The original pipeline extracts hotbar slots, infers item types, constructs candidates from fingerprint shards, combines item/HUD/widget evidence and refines a shortlist. Exact observable groups are displayed together. Packs in the `Overlay` and `Conquest` Lists remain browsable through Lists but are excluded from SBI generation and results.
 
-There is no total fingerprint-size ceiling. Keep each generated shard near a 32 MiB target and split it by a deterministic key when it would grow beyond that target, so adding thousands of packs cannot cross GitHub's per-file limit or change shard assignment nondeterministically.
+The current worktree separates the engine into `assets/js/sbi-engine.js` and leaves UI behavior in `assets/js/sbi.js`. It also contains experimental cross-size spatial comparison, median-slot filtering and sparse palette scoring. The complete `matchPacks` path still includes legacy scoring and refinement; calling the palette scorer alone is not an end-to-end browser evaluation. These worktree changes have not been certified as a released winner by this documentation update.
 
-Each texture fingerprint contains:
+`inferDisplaySlotTypes` must ultimately be a display aid, not a hard exclusion gate. Preserve existing HUD/widget capabilities during that migration.
 
-- `dhash`: perceptual difference hash
-- `hist`: color histogram
-- `moments`: RGB moments
-- `edge`: edge strength
-- `sig`: coverage, luminance, color-distribution, and shape features
+## Reference data and generation
 
-## Scoring
+`scripts/generate-sbi-data.js` builds references from the existing extracted-texture inputs through `npm run sbi:data`, writing sharded data under `data/sbi-fp/`. Change the generator and regenerate, rather than hand-editing generated JSON. Do not retain a second durable/runtime monolithic `data/sbi-fingerprints.json` copy.
 
-```text
-Type:  DS=8.0  EP=8.2  HL=4.8  SK/GC=0.45
-HUD:   HP=6.4  Hun=5.4  Arm=5.2
-Mix:   slot=0.44  hud=0.36  widget=0.20
-```
+The current format includes `dhash`, `hist`, `moments`, `edge`, `sig` and separately loaded `pix`. Item shards cover diamond sword, ender pearl, splash potion and food; widget/HUD shards cover the hotbar, health, hunger and armor. Metadata carries groups, rarity, exclusions and version information. Pixel grids and loading behavior in the old format are not the new native-resolution contract.
 
-Diamond sword and ender pearl carry the most distinguishing weight. Healing potion is secondary; food textures have deliberately low weight.
+There is no total stored-corpus size ceiling. Keep each generated shard near a 32 MiB target and split by a deterministic key when needed. This storage rule is independent of the **8MB total cold-cache first-query transfer gate**; a corpus can be large on disk without being downloaded in full by each query. Actual requests, including overfetch from pixel buckets, must be measured.
 
-## Shards
+## Approved design, pending implementation
 
-- `diamond_sword.json`, `ender_pearl.json`, and `splash_potion.json`: high-weight item anchors
-- `food.json`: steak and golden carrot
-- `widget.json`: hotbar widget
-- `health.json`, `hunger.json`, and `armor.json`: HUD observations
-- `meta.json`: group, rarity, exclusion, and version metadata
+The full contract is in the routed spec. In brief:
 
-The client loads only the shards required by the detected observation types.
+- Establish trustworthy browser/offline measurements before judging a matcher.
+- Use one validated geometry for item, widget and HUD extraction and retain native query crops.
+- Use compact coarse retrieval, then pairwise refinement at the smaller native size without upscaling or a universal 16/48px cap.
+- Exclude the approved bottom-row and lower-right overlay regions using common logical coordinates and normalization semantics.
+- Upgrade the synthetic acceptance corpus without overwriting its historical control; diagnose geometry, shortlist recall and ranking separately.
+- Verify the real nine-shot gate, full synthetic gate and actual cold-cache download budget together.
+- Decide on retraining only after alignment correctness is established and remaining failures analyzed.
 
-## Versioning And Regression
+## Historical measurements, not current acceptance
 
-- Keep `SBI_FINGERPRINT_VERSION` synchronized in `scripts/generate-sbi-data.js` and `assets/js/sbi.js`.
-- After fingerprint or matcher changes, advance the `sbi.js` cache buster in `sbi/index.html`.
-- Run `python test_sbi.py`; the labeled corpus contains nine screenshots and each must retain a group-level number-one match.
-- Acceptance for matcher work is **9/9 on the real screenshots plus group-level top-1 ≥ 80% on the synthetic light corpus** (`test_img/synthetic/`), measured through the offline evaluation bench — not in-browser. See ADR-0006 for the rewrite plan.
-- Do not report broader accuracy than the labeled corpus actually verifies.
+| Record | Scope | Interpretation |
+| --- | --- | --- |
+| Tasks 016/018: 39.1% group top-1, 65.0% coarse recall, 96.3% member presence | v20-era light corpus; 2092 generated, 2090 evaluated in 016 | Historical control; reconcile denominator and version before comparison |
+| Session nine-shot runs: 2/9 before experiments; later 3/9 with reported candidate recall 5/9 | Nine real images in the local browser harness | Historical local results, not a deployment claim or a guaranteed current baseline |
+| Session palette run: 1621/2092 (77.5%) | Standalone palette scorer over cached observations | Component result, not the full browser matcher; replay fidelity still requires verification |
+| Session embedding experiments: 0/9; reported mean ranks changed with preprocessing | Experimental model and rendering pipelines | Not accepted for production; not proof against all embedding approaches |
+
+Small-sample results such as 82.9% on 398 usable rows do not satisfy full-corpus acceptance. Do not merge measurements with different denominators, preprocessing, loaded reference coverage or ranking paths into an apparent improvement curve. A low rank does not prove an incorrect source texture, and a median slot is not necessarily empty.
+
+## Versioning and verification
+
+- Keep fingerprint version constants synchronized across the generator and every runtime consumer, including the extracted engine. Reject stale incompatible data.
+- After matcher/fingerprint changes, update SBI HTML cache references; follow the root AGENTS.md linkage rule for shared assets and generated pages.
+- Run `node --check` on changed JavaScript, `npm test`, `python test_sbi.py`, and the task's full offline and transfer checks. Inspect authoritative regeneration diffs when generator/data changes.
+- The current evaluation entry point has `extract`, `current` and `palette` modes. Do not report any mode as validated until its observation round-trip and production-path parity have passed the batch's tests.
+- Final gates are **9/9 real-shot group top-1**, **>=80% full synthetic acceptance group top-1**, and **<=8MB cold-cache first-query download**, as defined by the spec. Seven of nine is progress only.
+- Report `passed`, `failed`, `skipped-manual` and `unverified-environment` separately. Record unrelated baseline failures rather than calling a partially failing suite green. Do not broaden accuracy claims beyond the measured corpus.

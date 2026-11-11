@@ -1,5 +1,6 @@
 import asyncio
 import argparse
+import base64
 import json
 import os
 import re
@@ -110,7 +111,12 @@ def parse_args():
     parser.add_argument("--limit", type=int, default=0,
                        help="Cap the number of evaluated images (0 = no cap). Useful for baseline sampling.")
     parser.add_argument("--headless", default="--headless", help="Browser headless flag, e.g. --headless or --headless=new.")
-    return parser.parse_args()
+    parser.add_argument('--matcher', choices=('legacy', 'aligned'), default='legacy')
+    parser.add_argument('--transfer-report', help='Write CDP transfer evidence; requires --benchmark cold or warm.')
+    args = parser.parse_args()
+    if args.transfer_report and not args.benchmark:
+        parser.error('--transfer-report requires --benchmark cold or warm')
+    return args
 
 
 def filter_tests(tests, args):
@@ -149,6 +155,77 @@ def resolve_browser_path(path):
     raise FileNotFoundError("No supported browser found. Pass --browser <path>.")
 
 
+class NetworkTransferLedger:
+    """Account for HTTP attempts using CDP completion bytes, not decoded size."""
+
+    def __init__(self):
+        self.reset()
+
+    def reset(self):
+        self.requests = []
+        self.active = {}
+
+    def consume(self, event):
+        method, params = event.get("method"), event.get("params", {})
+        request_id = params.get("requestId")
+        if method == "Network.requestWillBeSent":
+            redirect = params.get("redirectResponse")
+            previous = self.active.pop(request_id, None)
+            if previous is not None and redirect is not None:
+                previous.update(status=redirect.get("status"), finished=True,
+                                finalBytes=redirect.get("encodedDataLength"))
+            url = params.get("request", {}).get("url", "")
+            if not url.startswith(("http://", "https://")):
+                return
+            row = {"url": url, "requestId": request_id, "finished": False,
+                   "failed": False, "receivedBytes": 0, "headerBytes": 0,
+                   "finalBytes": None, "fromCache": False}
+            self.requests.append(row)
+            self.active[request_id] = row
+            return
+        row = self.active.get(request_id)
+        if row is None:
+            return
+        if method == "Network.responseReceived":
+            response = params.get("response", {})
+            row.update(status=response.get("status"),
+                       headerBytes=max(0, response.get("encodedDataLength", 0)),
+                       fromCache=bool(response.get("fromDiskCache") or response.get("fromServiceWorker")),
+                       protocol=response.get("protocol"))
+            row["encoding"] = next((value for key, value in response.get("headers", {}).items()
+                                    if key.lower() == "content-encoding"), "identity")
+        elif method == "Network.requestServedFromCache":
+            row["fromCache"] = True
+        elif method == "Network.dataReceived":
+            row["receivedBytes"] += max(0, params.get("encodedDataLength", 0))
+        elif method == "Network.loadingFinished":
+            row.update(finished=True, finalBytes=params.get("encodedDataLength"))
+            self.active.pop(request_id, None)
+        elif method == "Network.loadingFailed":
+            row.update(finished=True, failed=True, error=params.get("errorText", "download failed"))
+            self.active.pop(request_id, None)
+
+    def snapshot(self):
+        rows = [dict(row) for row in self.requests]
+        gaps = 0
+        total = 0
+        for row in rows:
+            value = row["finalBytes"]
+            if not isinstance(value, (int, float)) or value < 0:
+                gaps += 1
+                value = row["headerBytes"] + row["receivedBytes"]
+            row["transferredBytes"] = value
+            total += value
+        pending = sum(not row["finished"] for row in rows)
+        failed = sum(row["failed"] for row in rows)
+        return {"transferredBytes": total, "requests": rows, "pendingRequests": pending,
+                "failedRequests": failed, "unmeasuredRequests": gaps,
+                "complete": pending == 0 and failed == 0 and gaps == 0}
+
+
+NETWORK_TRANSFERS = NetworkTransferLedger()
+
+
 async def cdp_call(ws, method, params=None, recv_timeout=10, _counter=[0]):
     _counter[0] += 1
     msg_id = _counter[0]
@@ -156,6 +233,7 @@ async def cdp_call(ws, method, params=None, recv_timeout=10, _counter=[0]):
     while True:
         raw = await asyncio.wait_for(ws.recv(), timeout=recv_timeout)
         resp = json.loads(raw)
+        NETWORK_TRANSFERS.consume(resp)
         if resp.get("id") == msg_id:
             if "error" in resp:
                 raise RuntimeError(resp["error"].get("message", "CDP error"))
@@ -241,7 +319,7 @@ async def main():
         print("ERROR: --benchmark-groups requires --benchmark and a positive group count")
         return 1
     base = args.base_url.rstrip("/") if args.base_url else f"http://127.0.0.1:{args.port}"
-    sbi_url = f"{base}/sbi/"
+    sbi_url = f"{base}/sbi/?matcher={args.matcher}"
     try:
         browser_path = resolve_browser_path(args.browser)
     except FileNotFoundError as exc:
@@ -268,6 +346,7 @@ async def main():
             [sys.executable, "-m", "http.server", str(args.port), "--bind", "127.0.0.1"],
             cwd=os.path.dirname(os.path.abspath(__file__)),
             stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+            creationflags=subprocess.CREATE_NO_WINDOW if sys.platform == 'win32' else 0,
         )
     if not wait_for_http(sbi_url):
         print(f"ERROR: SBI URL did not become ready at {sbi_url}")
@@ -293,13 +372,15 @@ async def main():
         "--use-gl=swiftshader",
         args.headless,
         sbi_url,
-    ], stdout=edge_log, stderr=edge_log)
+    ], stdout=edge_log, stderr=edge_log,
+       creationflags=subprocess.CREATE_NO_WINDOW if sys.platform == 'win32' else 0)
 
     results = []
     synthetic_records = []  # (file, packId, tier, recalled, topGroupId, expectedGroupId)
     diagnostics = []
     candidate_recalls = []
     benchmark_samples = []
+    transfer_samples = []
     try:
         # Wait for CDP
         ws_url = None
@@ -373,6 +454,8 @@ async def main():
                 print(f"DEBUG page state: {state}")
                 return 1
 
+            if args.benchmark == 'warm':
+                await cdp_call(ws, 'Network.setCacheDisabled', {'cacheDisabled': False})
             print("SBI page ready\n", flush=True)
 
             test_runs = []
@@ -386,9 +469,17 @@ async def main():
 
             for img_name, preset, expected, is_warmup, run_index in test_runs:
                 if args.benchmark == "cold":
+                    await cdp_call(ws, 'Page.navigate', {'url': 'about:blank'})
+                    await wait_for(ws, "location.href === 'about:blank'", timeout=10)
+                    await cdp_call(ws, 'Network.clearBrowserCache')
+                    await cdp_call(ws, 'Network.setBypassServiceWorker', {'bypass': True})
                     await cdp_call(ws, "Network.setCacheDisabled", {"cacheDisabled": True})
-                    await cdp_call(ws, "Page.reload", {"ignoreCache": True})
+                    NETWORK_TRANSFERS.reset()
+                    await cdp_call(ws, 'Page.navigate', {'url': sbi_url})
                     await wait_for(ws, "!!window.__sbiTest && !!document.getElementById('sbi-results')", timeout=30)
+                elif args.transfer_report:
+                    await cdp_eval(ws, 'true', timeout=5)
+                    NETWORK_TRANSFERS.reset()
                 test_t0 = time.monotonic()
                 try:
                     if getattr(args, 'synthetic', False):
@@ -400,13 +491,19 @@ async def main():
                     js_img_url = json.dumps(img_url)
                     js_detail = json.dumps("verbose" if args.verbose else "compact")
                     js_expected = json.dumps(expected)
+                    if args.transfer_report:
+                        source_path = os.path.join(TEST_DIR, 'synthetic', img_name) if args.synthetic else os.path.join(TEST_DIR, img_name)
+                        with open(source_path, 'rb') as source:
+                            encoded_image = base64.b64encode(source.read()).decode('ascii')
+                        mime = 'image/png' if img_name.lower().endswith('.png') else 'image/jpeg'
+                        image_script = f"const blob = new Blob([Uint8Array.from(atob({json.dumps(encoded_image)}), c => c.charCodeAt(0))], {{type:{json.dumps(mime)}}});"
+                    else:
+                        image_script = f"const resp = await fetch({js_img_url}); if (!resp.ok) throw new Error('Fetch ' + resp.status); const blob = await resp.blob();"
                     js = f"""
                     (async () => {{
                       const timings = {{}};
                       const t0 = performance.now();
-                      const resp = await fetch({js_img_url});
-                      if (!resp.ok) throw new Error("Fetch " + resp.status);
-                      const blob = await resp.blob();
+                      {image_script}
                       timings.fetch = performance.now() - t0;
                       const file = new File([blob], {js_img_name}, {{ type: blob.type }});
                       window.__sbiTest.setForceGlobalFallback({str(bool(args.force_fallback)).lower()});
@@ -445,6 +542,33 @@ async def main():
                     """
                     raw = await cdp_eval(ws, js, timeout=90)
                     summary = json.loads(raw) if isinstance(raw, str) else raw
+                    if args.transfer_report:
+                        settle_start = time.monotonic()
+                        stable = 0
+                        previous_count = -1
+                        for _ in range(60):
+                            await asyncio.sleep(0.2)
+                            await cdp_eval(ws, 'true', timeout=5)
+                            snapshot = NETWORK_TRANSFERS.snapshot()
+                            count = len(snapshot['requests'])
+                            stable = stable + 1 if count == previous_count and snapshot['pendingRequests'] == 0 else 0
+                            previous_count = count
+                            if stable >= 3:
+                                break
+                        memory = await cdp_call(ws, 'Runtime.getHeapUsage')
+                        transfer = NETWORK_TRANSFERS.snapshot()
+                        transfer.update(image=img_name, matcher=args.matcher, mode=args.benchmark, run=run_index,
+                                        settleSeconds=time.monotonic() - settle_start, heap=memory,
+                                        summary=summary, inputTransport='local-file-injected')
+                        transfer['budgetPassed'] = bool(transfer['complete'] and transfer['transferredBytes'] <= 8_000_000
+                                                      and (args.benchmark != 'cold' or not any(row['fromCache'] for row in transfer['requests'])))
+                        if not is_warmup:
+                            transfer_samples.append(transfer)
+                            output = os.path.abspath(args.transfer_report)
+                            os.makedirs(os.path.dirname(output), exist_ok=True)
+                            with open(output, 'w', encoding='utf-8') as report:
+                                json.dump(transfer_samples, report, ensure_ascii=False)
+                            print(f"  transfer={transfer['transferredBytes']} bytes complete={transfer['complete']} budget={transfer['budgetPassed']}", flush=True)
 
                     if is_warmup:
                         if "error" in summary:

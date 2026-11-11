@@ -15,4 +15,12 @@ bake-off 候选 B 的训练侧:Python/torch 自监督对比训练管线,入 `scr
 
 ## Blocked by
 
-None - can start immediately
+- `035-sbi-aligned-route-decision.md`
+
+## Conditional activation and status correction
+
+Reopened, not an instruction to train now. The current ADR-0006 requires proven crop/preprocessing correctness, remaining-failure analysis and approval of a bounded retraining proposal before this route is active. Task 035 owns that decision. If approved, remove this decision dependency before scheduling retraining and linking downstream evidence; do not create a cycle back into 035.
+
+The prior session produced an experimental 128d fp32 ONNX export with a separate weight file (reported about 28KB plus 624KB); this is not proof of an int8 model, reproducibility or a committed production artifact. The original quantization, data-split, model-size and quality criteria remain unverified. Do not label the pipeline complete merely because export succeeded.
+
+If the aligned classical route passes all gates, record this task as superseded/not selected rather than checking its unperformed criteria. Retire obsolete experiment implementation through 035 while retaining conclusions and reproduction provenance. The old model is not a valid fallback.

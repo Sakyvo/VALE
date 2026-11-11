@@ -1,4 +1,4 @@
-Status: open
+Status: blocked
 Executor: pi
 
 ## Parent
@@ -9,11 +9,18 @@ Executor: pi
 
 ## Acceptance criteria
 - [ ] `python test_sbi.py` 组级 9/9
-- [ ] 评测台 synthetic light 组级 top-1 ≥ 80%
-- [ ] CLIP 遗留代码/数据/开关全部移除,`npm test` 全绿
-- [ ] 首查下载量 ≤8MB 实测记录(含懒加载模型)
+- [ ] Complete versioned synthetic acceptance corpus group top-1 >=80%, measured through the verified production-equivalent path; keep the legacy light corpus as a separate control.
+- [ ] Remove obsolete CLIP code/data/flags with caller checks; `npm test` has no new in-scope regressions, and any unrelated baseline failures are explicitly documented rather than called green.
+- [ ] Actual cold-cache downloads from page open to the first complete refined result <=8MB, including page/runtime assets, metadata, coarse/refinement data and any model, as specified in `../spec/sbi-input-alignment.md`.
 - [ ] `.docs/SBI_SEARCH.md` 流程章节与实现一致
 
 ## Blocked by
-- `025-classic-fingerprint-bakeoff.md`
-- `027-embedding-retrieval-bakeoff.md`
+- `035-sbi-aligned-route-decision.md`
+
+## Dependency and scope correction
+
+Remains incomplete and waiting on the internal batch-029 prerequisites, not on an established external data-source blocker. Batch 029 owns the alignment repair and trustworthy measurements; 035 supplies a route decision and verified inputs. The obsolete unconditional dependency on 027 is removed: if retraining is approved, add the selected route's implementation evidence as a prerequisite; otherwise do not build an unnecessary model to satisfy an old dependency.
+
+Historical local results were 3/9 on real screenshots and 77.5% for a standalone palette mode, not simultaneous proof of the complete shipping path. Neither meets the final gates, and poor ranks alone do not prove wrong reference textures or an impossible algorithmic problem. Do not lower 9/9 to 7/9 or change truth/group identity to close this card.
+
+Final shipment also requires synchronized generated/reference versions and HTML cache references, verified static loading, preserved UI/HUD/widget behavior and the applicable product acceptance checks. A completed decision report in 035 does not itself mark this shipping task done.

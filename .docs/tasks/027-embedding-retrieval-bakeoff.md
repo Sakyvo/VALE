@@ -14,5 +14,13 @@ Executor: pi
 - [ ] 若嵌入胜出:混合架构 bench 数字 ≥80% 且九图 9/9
 
 ## Blocked by
-- `024-offline-sbi-eval-bench.md`
+- `035-sbi-aligned-route-decision.md`
 - `026-embedding-training-pipeline.md`
+
+## Conditional activation and status correction
+
+Reopened: the authoritative generator integration, transfer-size check and same-scale bake-off are not verified. Task 035 must first justify and obtain approval for retraining. This card does not require a new model pipeline merely to close an old task. If the route is selected, remove its decision prerequisite before activating implementation and update dependencies without a cycle.
+
+Prior probes reported 0/9 real-shot top-1 and different mean ranks (including 1671 and 731) under different preprocessing/filters. Those results reject those experiments as validated delivery candidates; they do not establish that embeddings cannot work after alignment. They are not a completed comparison against the revised full acceptance corpus.
+
+If the classical route is selected, explicitly record this card as superseded/not selected and preserve the experiment evidence instead of marking the unperformed generation/budget criteria passed. If a learned route is approved, complete the original integration and verification gates on the new aligned pipeline.
