@@ -72,7 +72,12 @@ Measured over the full 7335-image acceptance partition through the same ranking 
 | Execution errors | 0 |
 | Failure stages | geometry 1440, retrieval 2866, refinement 555, execution 0 |
 | Peak RSS | 1235 MB sampled peak (per shard process) |
-| End-to-end | two resumable shards — not one contiguous run |
+| Latency per image (7335/7335 measured) | total p50 2188 ms, p95 3565 ms, p99 4487 ms, max 11129 ms |
+| Coarse stage | p50 1021 ms, p95 1431 ms, p99 1726 ms |
+| Refinement stage | p50 1171 ms, p95 2269 ms, p99 3091 ms |
+| Total compute | 16,156 s across the partition |
+
+The partition was scored as two resumable shards (0-3700 and 3700-7335) with every row persisted and fsynced, after earlier single-process runs died during finalization without writing a report. The latency figures above are per-image measurements recorded on every row, so they are unaffected by that sharding; wall-clock throughput of the sharded run is not offered as a single elapsed figure.
 
 The development partition, measured first and with the same engine, gives the tuning-side picture:
 

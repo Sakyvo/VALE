@@ -48,8 +48,9 @@ Complete acceptance partition (7335, no sampling), scored through the same ranki
 | Geometry within 1px | 5895/7335 (80.37%) |
 | Execution errors | 0 |
 | Failure stages | geometry 1440, retrieval 2866, refinement 555, execution 0 |
+| Latency per image | total p50 2188 ms, p95 3565 ms, p99 4487 ms (7335/7335 measured) |
 
-The partition was scored as two resumable shards (0-3700 and 3700-7335) with every row persisted and fsynced, after earlier single-process runs died during finalization without writing a report. Peak sampled process RSS was 1235 MB. This is not one contiguous run, and the report states that explicitly rather than presenting a single elapsed figure.
+The partition was scored as two resumable shards (0-3700 and 3700-7335) with every row persisted and fsynced, after earlier single-process runs died during finalization without writing a report. Peak sampled process RSS was 1235 MB. Per-image latency is recorded on every row so the sharding does not affect it; total compute across the partition was 16,156 s. Wall-clock throughput of the sharded run is not presented as a single elapsed figure.
 
 Stage reading: geometry now clears 80% on the acceptance partition while top-1 sits at 34.30%, so the dominant remaining cause is coarse candidacy (2866 retrieval failures) rather than cropping (1440 geometry failures) or reranking (555 refinement failures). That ordering is the same as on development, which is evidence the two partitions measure the same behaviour.
 
