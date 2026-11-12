@@ -7,9 +7,10 @@ SBI identifies Minecraft PvP resource packs from screenshots. Matching remains b
 - For crop geometry, sampling, native-resolution refinement, masks, evaluation and first-query transfer, read [SBI Input Alignment](spec/sbi-input-alignment.md).
 - For the architecture decision and superseded assumptions, read [ADR-0006](adr/0006-sbi-matching-rewrite.md).
 - For group identity, follow [ADR-0005](adr/0005-observable-group-equivalence.md); do not alter equivalence to raise evaluation scores.
+- For the measured result of the aligned candidate — all three gates, the per-stage failure split and the awaiting-approval retraining proposal — read [SBI 035 Aligned Route Decision](reports/sbi-035-aligned-route-decision.md).
 - [Batch 029](tasks/029-sbi-input-alignment.md) owns alignment and verified comparison work. [Task 028](tasks/028-ship-sbi-matching-winner.md) remains the final shipping gate.
 
-The spec is approved design, not a declaration that the current worktree or deployed site implements it.
+The spec is approved design, not a declaration that the current worktree or deployed site implements it. The 035 report records that the implemented candidate **fails all three delivery gates**; it does not certify a winner.
 
 ## Existing implementation and worktree experiments
 

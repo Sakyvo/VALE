@@ -1,6 +1,8 @@
 # SBI Input Alignment
 
-Status: accepted design; implementation and delivery remain unverified.
+Status: accepted design; implementation measured but gates not met.
+
+The first end-to-end measurement of this contract is recorded in [SBI 035 Aligned Route Decision](../reports/sbi-035-aligned-route-decision.md): all three delivery gates fail, and the report states the per-stage diagnosis together with a bounded retraining proposal awaiting user approval. It supersedes the placeholder claims that preceded it but does not amend this contract.
 
 This is the authoritative contract for the alignment-first revision of [ADR-0006](../adr/0006-sbi-matching-rewrite.md). [Batch 029](../tasks/029-sbi-input-alignment.md) owns the work; [task 028](../tasks/028-ship-sbi-matching-winner.md) owns final shipment. This document does not declare the current worktree or deployed site compliant.
 

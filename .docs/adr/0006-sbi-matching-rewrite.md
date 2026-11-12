@@ -10,6 +10,8 @@ This revision supersedes the original automatic transition from a failing classi
 
 ## Gates and rejected alternatives
 
+Measured outcome: the aligned classical candidate was evaluated end-to-end and **fails all three gates** — nine real screenshots 1/9, complete acceptance corpus below the 80% line, and a complete cold-cache measurement of 10,705,902 bytes against an 8,388,608-byte limit. Evidence, per-stage diagnosis, the recorded reverted experiment and the bounded retraining proposal all live in [SBI 035 Aligned Route Decision](../reports/sbi-035-aligned-route-decision.md). No learned descriptor has been adopted; the retraining branch of this decision requires explicit user approval first.
+
 Final acceptance remains real-shot group top-1 **9/9** plus **>=80%** over the complete versioned synthetic acceptance corpus, with **<=8MB actual cold-cache downloads** from opening SBI until the first complete refined result. Lazy-loaded refinement, metadata, required scripts and any model/runtime count toward that total. A 7/9 result is progress only. If all gates cannot be met together, present measured alternatives for a user decision rather than silently lowering resolution, recall or the budget.
 
 - Reject compulsory enlargement to 512x512: it does not recover missing source information and increases working-set and transfer costs if published literally.

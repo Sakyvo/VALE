@@ -24,3 +24,18 @@ Reopened, not an instruction to train now. The current ADR-0006 requires proven 
 The prior session produced an experimental 128d fp32 ONNX export with a separate weight file (reported about 28KB plus 624KB); this is not proof of an int8 model, reproducibility or a committed production artifact. The original quantization, data-split, model-size and quality criteria remain unverified. Do not label the pipeline complete merely because export succeeded.
 
 If the aligned classical route passes all gates, record this task as superseded/not selected rather than checking its unperformed criteria. Retire obsolete experiment implementation through 035 while retaining conclusions and reproduction provenance. The old model is not a valid fallback.
+
+## Current repository state (recorded by 035, not an activation)
+
+The experiment is half-materialised and asymmetric on purpose; see [the 035 report](../reports/sbi-035-aligned-route-decision.md).
+
+| Path | Git state | Role |
+| --- | --- | --- |
+| `scripts/ml/train_embed.py` | tracked | reproducible training command |
+| `scripts/ml/render_hotbar.py` | tracked | reproducible training-pair renderer |
+| `scripts/lib/sbi-embedding.js` | tracked | inference helper (`require('onnxruntime-node')`) |
+| `assets/models/sbi-embed.onnx` + `.data` | untracked | derived weights, 28,431 + 624,128 bytes |
+
+`scripts/lib/sbi-embedding.js` hard-codes `MODEL_PATH = path.join(ROOT, 'assets', 'models', 'sbi-embed.onnx')`, which is absent at HEAD. Verified there are **no live callers**: nothing under `src/`, `scripts/` or `tests/` imports it, and `node --test "tests/*.test.js"` never loads it. It is dead code relative to both the shipping path and the suite, and must never be offered as a working fallback.
+
+The weights stay out of git as derived output regenerable via `scripts/ml/train_embed.py --out assets/models/sbi-embed.onnx`. Do not check this card's criteria on the strength of that earlier export: int8, ≤3MB, seed-reproducible loss history, 128d/027 alignment and CI-zero-training remain unverified.
