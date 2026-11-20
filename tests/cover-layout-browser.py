@@ -49,16 +49,25 @@ async def main():
         assert ws_url, 'headless CDP did not become ready'
         async with websockets.connect(ws_url, max_size=50_000_000, proxy=None) as ws:
             await cdp_call(ws, 'Page.enable')
-            await cdp_call(ws, 'Network.enable')
-            await cdp_call(ws, 'Network.setCacheDisabled', {'cacheDisabled': True})
+            if local:
+                # Local runs reuse one origin across three viewports and must never
+                # reuse a cached asset between them; the public origin is reached with
+                # a fresh profile, and enabling the Network domain there was observed
+                # to abort the page's own index.json fetch.
+                await cdp_call(ws, 'Network.enable')
+                await cdp_call(ws, 'Network.setCacheDisabled', {'cacheDisabled': True})
             async def navigate(route, ready):
                 await cdp_call(ws, 'Page.navigate', {'url': base + route})
-                await wait_for(ws, ready, timeout=180)
+                try:
+                    await wait_for(ws, ready, timeout=180)
+                except TimeoutError:
+                    state = await cdp_eval(ws, "JSON.stringify({href:location.href,title:document.title,cards:document.querySelectorAll('.pack-card').length,body:document.body?document.body.innerText.slice(0,200):'no body'})")
+                    raise RuntimeError('navigation did not become ready: ' + str(state))
             async def measure(selector, page, width):
                 await wait_for(ws, f"(() => {{const i=document.querySelector({json.dumps(selector)});return i && i.complete;}})()", timeout=240)
                 probe = await cdp_eval(ws, f"(() => {{const i=document.querySelector({json.dumps(selector)});return [i.naturalWidth,i.naturalHeight,i.currentSrc];}})()")
                 if probe[0] == 0:
-                    markup = await cdp_eval(ws, "document.querySelector('#sbi-results').innerHTML.slice(0,400)")
+                    markup = await cdp_eval(ws, "(document.querySelector('#sbi-results')||{}).innerHTML")
                     print('SBI MARKUP', page, width, repr(markup)[:400])
                     diag = await cdp_eval(ws, f"(async () => {{ try {{ const r = await fetch({json.dumps(probe[2])}); return [r.status, r.headers.get('content-type')]; }} catch (e) {{ return ['fetch error', String(e)]; }} }})()")
                     print('IMAGE DIAGNOSTIC', page, width, probe, diag)
