@@ -1570,6 +1570,7 @@ function init() {
 
 window.__sbiTest = {
   handleImageInput,
+  renderResultCard,
   setForceGlobalFallback(value) {
     engine.setForceGlobalFallbackForTest(!!value);
   },

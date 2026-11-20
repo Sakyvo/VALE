@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const sharp = require('sharp');
 
-const ITEM_COVER_TEXTURES = [
+const DETAIL_ITEM_TEXTURES = [
   'diamond_sword.png',
   'ender_pearl.png',
   'splash_potion_of_healing.png',
@@ -14,7 +14,9 @@ const ITEM_COVER_TEXTURES = [
 ];
 
 const PREVIEW_TEXTURE_FILES = new Set([
-  ...ITEM_COVER_TEXTURES,
+  ...DETAIL_ITEM_TEXTURES,
+  'bow.png',
+  'bow_standby.png',
   'potion_overlay.png',
   'potion_bottle_splash.png',
   'grass_side.png',
@@ -29,6 +31,9 @@ const PREVIEW_TEXTURE_FILES = new Set([
   'particle_crit.png',
   'buff_speed.png',
   'buff_fire_resistance.png',
+  'potion_bottle_drinkable.png',
+  'potion_speed.png',
+  'potion_fire_resistance.png',
 ]);
 
 const LOW_ALPHA_MAX = 16;
@@ -114,73 +119,238 @@ async function sanitizeTextureFileInPlace(filePath) {
   return changed;
 }
 
-async function getResized64Frames(inputPath) {
-  if (!fs.existsSync(inputPath)) return null;
-  const buffer = await fs.promises.readFile(inputPath);
+// --- Cover: a Minecraft 1.8 HUD strip -------------------------------------
+//
+// The cover is what identifies a pack on the homepage, on List pages and in SBI
+// results. It is composed here, from the pack's own masters, at 4x of the 182x49
+// HUD so every sprite boundary stays on a whole pixel. Contract:
+// ../../.docs/spec/pack-cover.md
+
+const DEFAULT_TEXTURE_ROOT = path.join(__dirname, '..', 'Default_Texture', 'assets', 'minecraft', 'textures');
+
+const COVER_SCALE = 4;
+const HUD_WIDTH = 182;
+const HUD_HEIGHT = 49;
+const COVER_BACKGROUND = [0x87, 0xce, 0xeb, 0xff];
+
+// Rows, in base units.
+const ARMOR_ROW_Y = 0;
+const STATUS_ROW_Y = 10;
+const XP_BAR_Y = 20;
+const HOTBAR_Y = 27;
+const XP_FILL_WIDTH = 145;
+
+// Text is always drawn at the vanilla 8-unit glyph size, whatever the pack's own
+// ascii.png resolution is: an HD font would overflow a 9-unit HUD row.
+const TEXT_SIZE = 8;
+const DIGIT_ADVANCE = 6;
+const EXP_LEVEL = '15';
+const EXP_LEVEL_Y = 14;
+const EXP_LEVEL_COLOR = [0x80, 0xff, 0x20];
+const STACK_COUNT_COLOR = [0xff, 0xff, 0xff];
+
+const HOTBAR_ITEMS = [
+  { files: ['diamond_sword.png'] },
+  { files: ['ender_pearl.png'], count: 16 },
+  { files: ['potion_speed.png'] },
+  { files: ['potion_fire_resistance.png'] },
+  { files: ['splash_potion_of_healing.png'] },
+  { files: ['bow.png', 'bow_standby.png'] },
+  { files: ['steak.png', 'beef_cooked.png'], count: 64 },
+  { files: ['golden_carrot.png', 'carrot_golden.png'], count: 64 },
+  { files: ['apple_golden.png'], count: 64 },
+];
+
+// Decoding an 8192px atlas to raw RGBA needs hundreds of megabytes, and the cover
+// only ever samples at 4x the 256-base grid. Capping the decode there is lossless for
+// sprite geometry and keeps a bulk rebuild inside a normal memory budget.
+const SPRITE_CAPS = {
+  atlas: 256 * COVER_SCALE,      // icons.png, widgets.png
+  font: 256,                     // ascii.png: one 16x16 cell grid, drawn 8 units tall
+  item: 16 * COVER_SCALE,        // a 16-unit slot at 4x
+};
+
+async function readSprite(filePath, cap) {
+  const buffer = Buffer.isBuffer(filePath) ? filePath : await fs.promises.readFile(filePath);
   const meta = await sharp(buffer).metadata();
-  const animated = meta.height > meta.width && meta.height % meta.width === 0;
-  const frameCount = animated ? meta.height / meta.width : 1;
-  const out = [];
-  for (let f = 0; f < frameCount; f++) {
-    const slice = animated
-      ? await sharp(buffer)
-          .extract({ left: 0, top: f * meta.width, width: meta.width, height: meta.width })
-          .png()
-          .toBuffer()
-      : await ensurePngBuffer(buffer);
-    const { buffer: cleaned } = await sanitizePreviewPngBuffer(slice);
-    const resized = await sharp(cleaned).resize(64, 64, { kernel: 'nearest' }).png().toBuffer();
-    out.push(resized);
-  }
-  return out;
+  // Animated strips stack square frames vertically; a cover shows the first one.
+  const frame = meta.height > meta.width && meta.height % meta.width === 0
+    ? sharp(buffer).extract({ left: 0, top: 0, width: meta.width, height: meta.width })
+    : sharp(buffer);
+  const decoded = meta.width > cap ? frame.resize({ width: cap, kernel: 'nearest' }) : frame;
+  const { data, info } = await decoded.ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  return { data, width: info.width, height: info.height };
 }
 
-async function generateCoverFromOutputDir(outputDir) {
-  const perTexture = [];
-  let maxFrames = 1;
-  for (let i = 0; i < ITEM_COVER_TEXTURES.length; i++) {
-    const inputPath = path.join(outputDir, ITEM_COVER_TEXTURES[i]);
-    const frames = await getResized64Frames(inputPath);
-    perTexture.push(frames);
-    if (frames && frames.length > maxFrames) maxFrames = frames.length;
+async function loadSprite(outputDir, files, defaultDir, cap) {
+  const candidates = [
+    ...files.map(name => path.join(outputDir, name)),
+    ...files.map(name => path.join(DEFAULT_TEXTURE_ROOT, defaultDir, name)),
+  ];
+  for (const candidate of candidates) {
+    if (fs.existsSync(candidate)) return readSprite(candidate, cap);
+  }
+  // Old local masters have raw potion components but no drinkable products.
+  // Compose in memory so the detail-page assets and SBI masters stay unchanged.
+  const { POTION_PRODUCTS, POTION_BOTTLES, POTION_COLORS, POTION_OVERLAY, compositePotion } = require('./lib/potion-composite');
+  const product = POTION_PRODUCTS.find(p => files.includes(p.file));
+  if (product) {
+    const component = async relative => {
+      const local = path.join(outputDir, path.basename(relative));
+      return fs.promises.readFile(fs.existsSync(local) ? local : path.join(DEFAULT_TEXTURE_ROOT, 'items', path.basename(relative)));
+    };
+    const buffer = await compositePotion({
+      bottle: await component(POTION_BOTTLES[product.bottle]),
+      overlay: await component(POTION_OVERLAY),
+      color: POTION_COLORS[product.color],
+    });
+    return readSprite(buffer, cap);
+  }
+  return null;
+}
+
+// Nearest-neighbour blit in output pixels, painted over whatever is already there.
+function blit(target, source, sx, sy, sw, sh, dx, dy, dw, dh, tint) {
+  const stepX = sw / dw;
+  const stepY = sh / dh;
+  for (let y = 0; y < dh; y++) {
+    const targetY = dy + y;
+    if (targetY < 0 || targetY >= target.height) continue;
+    const sourceY = sy + Math.floor(y * stepY);
+    for (let x = 0; x < dw; x++) {
+      const targetX = dx + x;
+      if (targetX < 0 || targetX >= target.width) continue;
+      const si = (sourceY * source.width + sx + Math.floor(x * stepX)) * 4;
+      const alpha = source.data[si + 3];
+      if (alpha === 0) continue;
+      const di = (targetY * target.width + targetX) * 4;
+      const r = tint ? (source.data[si] * tint[0]) / 255 : source.data[si];
+      const g = tint ? (source.data[si + 1] * tint[1]) / 255 : source.data[si + 1];
+      const b = tint ? (source.data[si + 2] * tint[2]) / 255 : source.data[si + 2];
+      if (alpha === 255) {
+        target.data[di] = r;
+        target.data[di + 1] = g;
+        target.data[di + 2] = b;
+        target.data[di + 3] = 255;
+        continue;
+      }
+      const sourceAlpha = alpha / 255;
+      const targetAlpha = target.data[di + 3] / 255;
+      const outAlpha = sourceAlpha + targetAlpha * (1 - sourceAlpha);
+      target.data[di] = Math.round((r * sourceAlpha + target.data[di] * targetAlpha * (1 - sourceAlpha)) / outAlpha);
+      target.data[di + 1] = Math.round((g * sourceAlpha + target.data[di + 1] * targetAlpha * (1 - sourceAlpha)) / outAlpha);
+      target.data[di + 2] = Math.round((b * sourceAlpha + target.data[di + 2] * targetAlpha * (1 - sourceAlpha)) / outAlpha);
+      target.data[di + 3] = Math.round(outAlpha * 255);
+    }
+  }
+}
+
+// Sprite rectangles are addressed in the vanilla 256-base atlas coordinates.
+function drawSprite(target, atlas, u, v, w, h, x, y) {
+  const atlasScale = atlas.width / 256;
+  blit(
+    target, atlas,
+    Math.round(u * atlasScale), Math.round(v * atlasScale),
+    Math.round(w * atlasScale), Math.round(h * atlasScale),
+    x * COVER_SCALE, y * COVER_SCALE, w * COVER_SCALE, h * COVER_SCALE,
+  );
+}
+
+function drawItem(target, sprite, x, y) {
+  blit(target, sprite, 0, 0, sprite.width, sprite.height, x * COVER_SCALE, y * COVER_SCALE, 16 * COVER_SCALE, 16 * COVER_SCALE);
+}
+
+function drawGlyph(target, font, glyphX, glyphY, cell, x, y, color) {
+  blit(target, font, glyphX, glyphY, cell, cell, x * COVER_SCALE, y * COVER_SCALE, TEXT_SIZE * COVER_SCALE, TEXT_SIZE * COVER_SCALE, color);
+}
+
+function textWidth(text) {
+  return text.length * DIGIT_ADVANCE;
+}
+
+function drawText(target, font, text, x, y, color) {
+  const cell = font.width / 16;
+  const shadow = [Math.floor(color[0] / 4), Math.floor(color[1] / 4), Math.floor(color[2] / 4)];
+  let cursor = x;
+  for (const character of text) {
+    const code = character.charCodeAt(0);
+    const glyphX = (code % 16) * cell;
+    const glyphY = Math.floor(code / 16) * cell;
+    drawGlyph(target, font, glyphX, glyphY, cell, cursor + 1, y + 1, shadow);
+    drawGlyph(target, font, glyphX, glyphY, cell, cursor, y, color);
+    cursor += DIGIT_ADVANCE;
+  }
+}
+
+async function generateCoverFromOutputDir(outputDir, outputFile = 'cover.png') {
+  const [icons, widgets, font] = await Promise.all([
+    loadSprite(outputDir, ['icons.png'], 'gui', SPRITE_CAPS.atlas),
+    loadSprite(outputDir, ['widgets.png'], 'gui', SPRITE_CAPS.atlas),
+    loadSprite(outputDir, ['ascii.png'], 'font', SPRITE_CAPS.font),
+  ]);
+  const items = await Promise.all(
+    HOTBAR_ITEMS.map(item => loadSprite(outputDir, item.files, 'items', SPRITE_CAPS.item)),
+  );
+
+  const target = {
+    data: Buffer.alloc(HUD_WIDTH * COVER_SCALE * HUD_HEIGHT * COVER_SCALE * 4),
+    width: HUD_WIDTH * COVER_SCALE,
+    height: HUD_HEIGHT * COVER_SCALE,
+  };
+  for (let i = 0; i < target.data.length; i += 4) {
+    target.data[i] = COVER_BACKGROUND[0];
+    target.data[i + 1] = COVER_BACKGROUND[1];
+    target.data[i + 2] = COVER_BACKGROUND[2];
+    target.data[i + 3] = COVER_BACKGROUND[3];
   }
 
-  if (!perTexture.some(t => t && t.length)) return false;
+  if (icons) {
+    for (let i = 0; i < 10; i++) {
+      drawSprite(target, icons, 16, 9, 9, 9, 1 + i * 8, ARMOR_ROW_Y);
+      drawSprite(target, icons, 34, 9, 9, 9, 1 + i * 8, ARMOR_ROW_Y);
+      drawSprite(target, icons, 16, 0, 9, 9, 1 + i * 8, STATUS_ROW_Y);
+      drawSprite(target, icons, 52, 0, 9, 9, 1 + i * 8, STATUS_ROW_Y);
+      drawSprite(target, icons, 16, 27, 9, 9, HUD_WIDTH - 10 - i * 8, STATUS_ROW_Y);
+      drawSprite(target, icons, 52, 27, 9, 9, HUD_WIDTH - 10 - i * 8, STATUS_ROW_Y);
+    }
+    drawSprite(target, icons, 0, 64, HUD_WIDTH, 5, 0, XP_BAR_Y);
+    drawSprite(target, icons, 0, 69, XP_FILL_WIDTH, 5, 0, XP_BAR_Y);
+  }
 
-  const composites = [];
-  for (let f = 0; f < maxFrames; f++) {
-    for (let i = 0; i < ITEM_COVER_TEXTURES.length; i++) {
-      const tf = perTexture[i];
-      if (!tf || !tf.length) continue;
-      composites.push({
-        input: tf[f % tf.length],
-        left: (i % 4) * 64,
-        top: Math.floor(i / 4) * 64 + f * 128,
-      });
+  if (font) {
+    drawText(target, font, EXP_LEVEL, Math.round((HUD_WIDTH - textWidth(EXP_LEVEL)) / 2), EXP_LEVEL_Y, EXP_LEVEL_COLOR);
+  }
+
+  if (widgets) {
+    drawSprite(target, widgets, 0, 0, HUD_WIDTH, 22, 0, HOTBAR_Y);
+    drawSprite(target, widgets, 0, 22, 24, 24, -1, HOTBAR_Y - 1);
+  }
+
+  for (let i = 0; i < HOTBAR_ITEMS.length; i++) {
+    const sprite = items[i];
+    if (!sprite) continue;
+    const itemX = 1 + i * 20 + 2;
+    const itemY = HOTBAR_Y + 1 + 2;
+    drawItem(target, sprite, itemX, itemY);
+    if (HOTBAR_ITEMS[i].count && font) {
+      const label = String(HOTBAR_ITEMS[i].count);
+      drawText(target, font, label, itemX + 17 - textWidth(label), itemY + 9, STACK_COUNT_COLOR);
     }
   }
 
-  const coverBuffer = await sharp({
-    create: {
-      width: 256,
-      height: 128 * maxFrames,
-      channels: 4,
-      background: { r: 0, g: 0, b: 0, alpha: 0 },
-    },
-  })
-    .composite(composites)
-    .png()
-    .toBuffer();
-
-  const sanitizedCover = await sanitizePreviewPngBuffer(coverBuffer);
-  await fs.promises.writeFile(path.join(outputDir, 'cover.png'), sanitizedCover.buffer);
-
-  return true;
+  const coverBuffer = await sharp(target.data, {
+    raw: { width: target.width, height: target.height, channels: 4 },
+  }).png().toBuffer();
+  await fs.promises.writeFile(path.join(outputDir, outputFile), coverBuffer);
+  return coverBuffer;
 }
 
 module.exports = {
-  ITEM_COVER_TEXTURES,
+  DETAIL_ITEM_TEXTURES,
   PREVIEW_TEXTURE_FILES,
+  HOTBAR_ITEMS,
+  COVER_SCALE,
+  COVER_BACKGROUND,
   shouldSanitizePreviewTexture,
   getFirstFrameBuffer,
   sanitizePreviewPngBuffer,

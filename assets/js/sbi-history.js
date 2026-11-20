@@ -55,7 +55,7 @@ function showDetail(idx) {
       return '<a class="sbi-result-card" href="/p/' + encodeURIComponent(r.name) + '/">' +
         '<div class="sbi-score">' + pct + '%</div>' +
         '<div class="sbi-result-info"><div class="sbi-result-name">' + r.name.replace(/_/g, ' ') + '</div></div>' +
-        '<img class="sbi-result-cover" src="' + r.cover + '" onerror="this.src=\'' + r.packPng + '\'">' +
+        '<img class="sbi-result-cover" src="' + valeCoverUrl(r.cover) + '" onerror="this.src=\'' + r.packPng + '\'">' +
       '</a>';
     }).join('');
   }

@@ -56,7 +56,7 @@ class PackSearch {
         const badge = isOverlay ? '<span class="overlay-badge">OVERLAY</span>' : '';
         return `
         <a class="pack-card" href="/p/${pack.name}/" target="_blank" rel="noopener noreferrer">
-          <img class="cover" src="${pack.cover}" alt="${pack.displayName}" style="visibility:hidden">
+          <img class="cover" src="${valeCoverUrl(pack.cover)}" alt="${pack.displayName}">
           ${badge}
           <div class="info">
             <img class="pack-icon" src="${pack.packPng}" alt="">
@@ -67,27 +67,7 @@ class PackSearch {
       })
       .join('');
 
-    this.resultsContainer.querySelectorAll('.cover').forEach(img => {
-      img.onload = function() {
-        const frameH = this.naturalWidth / 2;
-        const frames = this.naturalHeight / frameH;
-        if (Number.isInteger(frames) && frames > 1) {
-          const wrapper = document.createElement('div');
-          wrapper.className = 'cover animated-cover';
-          wrapper.style.backgroundImage = `url(${this.src})`;
-          wrapper.style.backgroundSize = `100% ${frames * 100}%`;
-          wrapper.style.imageRendering = 'pixelated';
-          let currentFrame = 0;
-          setInterval(() => {
-            currentFrame = (currentFrame + 1) % frames;
-            wrapper.style.backgroundPosition = `0 ${(currentFrame / (frames - 1)) * 100}%`;
-          }, 100);
-          this.replaceWith(wrapper);
-          return;
-        }
-        this.style.visibility = 'visible';
-      };
-    });
+
   }
 }
 

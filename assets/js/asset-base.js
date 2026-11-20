@@ -6,6 +6,11 @@
 // falls back to the in-repo thumbnails directory. The fallback is also what
 // local development uses when no generated data carries a base.
 const VALE_LOCAL_ASSET_BASE = '/thumbnails';
+const VALE_COVER_FILE = 'cover-hud-v1.png';
+
+function valeCoverUrl(url) {
+  return String(url).replace(/\/cover(?:-hud-v\d+)?\.png(?:[?#].*)?$/, '/' + VALE_COVER_FILE);
+}
 
 function valeAssetBaseUrl(packName, assetBase) {
   const base = String(assetBase || VALE_LOCAL_ASSET_BASE).replace(/\/+$/, '');
@@ -13,5 +18,10 @@ function valeAssetBaseUrl(packName, assetBase) {
 }
 
 function valeAssetUrl(packName, fileName, assetBase) {
-  return valeAssetBaseUrl(packName, assetBase) + encodeURIComponent(fileName);
+  const url = valeAssetBaseUrl(packName, assetBase) + encodeURIComponent(fileName);
+  return fileName === 'cover.png' ? valeCoverUrl(url) : url;
+}
+
+if (typeof module !== 'undefined') {
+  module.exports = { VALE_COVER_FILE, valeCoverUrl, valeAssetBaseUrl, valeAssetUrl };
 }

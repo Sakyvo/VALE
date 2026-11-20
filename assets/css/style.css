@@ -199,7 +199,7 @@ nav { display: flex; gap: 12px; align-items: center; }
 
 .pack-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
 }
 
@@ -260,20 +260,16 @@ nav { display: flex; gap: 12px; align-items: center; }
 
 .pack-card .cover {
   width: 100%;
-  aspect-ratio: 2;
-  object-fit: cover;
+  aspect-ratio: 26 / 7;
+  object-fit: contain;
   image-rendering: pixelated;
   display: block;
   border-bottom: 1.5px solid var(--border);
   background-color: var(--surface);
 }
 
-.pack-card .animated-cover {
-  background-color: var(--surface);
-}
-
 .pack-card .placeholder {
-  aspect-ratio: 2;
+  aspect-ratio: 26 / 7;
   background: var(--surface);
   border-bottom: 1.5px solid var(--border);
 }
@@ -310,7 +306,6 @@ footer {
   color: var(--text-secondary);
 }
 
-@media (max-width: 1200px) { .pack-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 900px) { .pack-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 600px) {
   .pack-grid { grid-template-columns: minmax(0, 1fr); }
@@ -532,11 +527,6 @@ footer {
   width: 100%;
   aspect-ratio: 1;
   border: 1px solid #ddd;
-  background-repeat: no-repeat;
-  image-rendering: pixelated;
-}
-
-.animated-cover {
   background-repeat: no-repeat;
   image-rendering: pixelated;
 }
@@ -1283,7 +1273,7 @@ footer {
 .sbi-score { min-width: 48px; text-align: center; font-size: 16px; font-weight: bold; flex-shrink: 0; padding: 0 4px; }
 .sbi-pack-icon { width: 48px; height: 48px; image-rendering: pixelated; flex-shrink: 0; margin: 0 4px 0 0; object-fit: contain; }
 .sbi-result-name { flex: 1; font-family: var(--font-mc); font-size: 16px; font-weight: normal; padding: 0 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-shadow: 1px 0 0 #000; }
-.sbi-result-cover { width: 96px; height: 48px; object-fit: cover; image-rendering: pixelated; flex-shrink: 0; display: block; }
+.sbi-result-cover { width: auto; height: 100%; max-width: 45%; object-fit: contain; image-rendering: pixelated; flex-shrink: 0; display: block; }
 .sbi-mode-toggle { display: flex; border: 2px solid var(--border); border-radius: var(--radius-action); overflow: hidden; width: fit-content; margin: 0 0 4px; }
 .sbi-mode-btn { padding: 3px 14px; font-size: 11px; font-weight: 700; letter-spacing: .06em; background: transparent; color: var(--text-secondary); border: none; cursor: pointer; text-transform: uppercase; }
 .sbi-mode-btn.active { background: var(--accent); color: #fff; }
@@ -1371,7 +1361,7 @@ footer {
 .sbi-ai-popup-indicator { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; background: #f59e0b; }
 .sbi-history-item { display: flex; gap: 16px; padding: 16px; border: 1.5px solid var(--border); margin-bottom: 12px; cursor: pointer; align-items: center; transition: transform .2s; }
 .sbi-history-item:hover { transform: translateY(-2px); box-shadow: var(--shadow-lift); }
-.sbi-history-thumb { width: 120px; height: 68px; object-fit: cover; border: 1px solid var(--border); }
+.sbi-history-thumb { width: auto; max-width: 40%; height: 52px; object-fit: contain; border: 1px solid var(--border); }
 .sbi-history-meta { font-size: 14px; }
 .sbi-history-count { font-size: 12px; color: var(--text-secondary); margin-top: 4px; }
 .sbi-detail-img { max-width: 100%; border: 1.5px solid var(--border); display: block; margin: 16px 0; }
@@ -1383,7 +1373,7 @@ footer {
   .sbi-score { min-width: 38px; font-size: 13px; padding: 0 2px; }
   .sbi-pack-icon { width: 36px; height: 36px; margin: 0 2px 0 0; }
   .sbi-result-name { font-size: 16px; padding: 0 4px; }
-  .sbi-result-cover { width: 72px; height: 36px; }
+  .sbi-result-cover { height: 100%; }
   .sbi-lite-item,
   .sbi-lite-item-anim { width: 24px; height: 24px; }
   .sbi-mode-btn { min-height: 40px; display: inline-flex; align-items: center; justify-content: center; padding: 2px 10px; font-size: 10px; }

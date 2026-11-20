@@ -1,8 +1,8 @@
 // Display-asset downsample rules (pure).
 //
 // Classification by filename:
-// - cover.png: never touched. Multi-frame animated covers compute frame height
-//   from the image dimensions, so any resize would break playback.
+// - cover.png: never touched. It is the published HUD strip and must keep its exact
+//   728x196 geometry; see .docs/spec/pack-cover.md.
 // - Atlas class (particles/inventory/inv/icons/widgets): capped at 512 on the
 //   LARGER side. The frontend slices these atlases at fixed 256-base
 //   coordinates scaled by image width, so a uniform power-of-two factor keeps

@@ -496,7 +496,7 @@ async function loadListDetail(listId) {
         ${packsInList.length === 0 ? '<p>No packs found.</p>' : packsInList.map(pack => `
           <div class="pack-card-wrapper">
             <a class="pack-card" href="/p/${pack.name}/" target="_blank" rel="noopener noreferrer">
-              <img class="cover" src="${pack.cover}" alt="${pack.displayName}">
+              <img class="cover" src="${valeCoverUrl(pack.cover)}" alt="${pack.displayName}">
               ${(pack.lists || []).includes('Overlay') ? '<span class="overlay-badge">OVERLAY</span>' : ''}
               <div class="info">
                 <img class="pack-icon" src="${pack.packPng}" alt="">
@@ -508,26 +508,6 @@ async function loadListDetail(listId) {
         `).join('')}
       </div>
     `;
-
-    document.querySelectorAll('.pack-card .cover').forEach(img => {
-      img.onload = function() {
-        const frameH = this.naturalWidth / 2;
-        const frames = this.naturalHeight / frameH;
-        if (Number.isInteger(frames) && frames > 1) {
-          const wrapper = document.createElement('div');
-          wrapper.className = 'cover animated-cover';
-          wrapper.style.backgroundImage = `url(${this.src})`;
-          wrapper.style.backgroundSize = `100% ${frames * 100}%`;
-          wrapper.style.imageRendering = 'pixelated';
-          let currentFrame = 0;
-          setInterval(() => {
-            currentFrame = (currentFrame + 1) % frames;
-            wrapper.style.backgroundPosition = `0 ${(currentFrame / (frames - 1)) * 100}%`;
-          }, 100);
-          this.replaceWith(wrapper);
-        }
-      };
-    });
 
     document.getElementById('detail-sort-btn')?.addEventListener('click', () => {
       detailSortByDate = !detailSortByDate;

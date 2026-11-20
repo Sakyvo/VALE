@@ -357,3 +357,40 @@ test('a pack whose name is only symbols still renders a non-empty label (021)', 
   assert.match(generator, /coloredName: toColoredHtml\(e\.originalName\) \|\| e\.packId/,
     'coloredName falls back to the pack id instead of rendering an empty label');
 });
+
+test('the cover is a wide HUD strip: cards use three columns of 26:7 cover', () => {
+  const source = css();
+  const grid = block(source, '\n.pack-grid {');
+  assert.match(grid, /grid-template-columns: repeat\(3, minmax\(0, 1fr\)\)/, 'the grid is three columns');
+  assert.doesNotMatch(source, /@media \(max-width: 1200px\) \{ \.pack-grid/, 'the 1200px grid override is gone');
+  assert.match(source, /@media \(max-width: 900px\) \{ \.pack-grid \{ grid-template-columns: repeat\(2, minmax\(0, 1fr\)\); \} \}/);
+  assert.match(source, /\.pack-grid \{ grid-template-columns: minmax\(0, 1fr\); \}/, 'one column on phones');
+
+  assert.match(block(source, '\n.pack-card .cover {'), /aspect-ratio: 26 \/ 7;/, 'cover keeps the strip ratio');
+  assert.match(block(source, '\n.pack-card .cover {'), /object-fit: contain;/, 'all cover edges remain visible');
+  assert.match(block(source, '\n.pack-card .placeholder {'), /aspect-ratio: 26 \/ 7;/, 'the skeleton keeps the strip ratio');
+});
+
+test('SBI thumbnails size by height so the strip is never cropped', () => {
+  const source = css();
+  const resultCover = block(source, '\n.sbi-result-cover {');
+  assert.match(resultCover, /width: auto;/, 'result cover takes its width from the image');
+  assert.match(resultCover, /height: 100%;/, 'result cover fits within the row borders');
+  assert.doesNotMatch(resultCover, /object-fit: cover/, 'result cover must not crop');
+
+  const historyThumb = block(source, '\n.sbi-history-thumb {');
+  assert.match(historyThumb, /width: auto;/, 'history thumb takes its width from the image');
+  assert.match(historyThumb, /height: 52px;/);
+  assert.doesNotMatch(historyThumb, /object-fit: cover/, 'history thumb must not crop');
+
+  assert.match(source, /\.sbi-result-cover \{ height: 100%; \}/, 'mobile result cover keeps the ratio');
+});
+
+test('no renderer or stylesheet still plays multi-frame covers', () => {
+  const read = file => fs.readFileSync(path.join(ROOT, ...file.split('/')), 'utf-8');
+  for (const file of ['assets/js/main.js', 'assets/js/list.js', 'assets/js/pack-loader.js']) {
+    assert.doesNotMatch(read(file), /animated-cover/, `${file} must not build an animated cover`);
+    assert.doesNotMatch(read(file), /naturalWidth \/ 2/, `${file} must not infer frames from a 2:1 cover`);
+  }
+  assert.doesNotMatch(css(), /animated-cover/, 'the animated-cover rules are gone');
+});

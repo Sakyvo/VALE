@@ -8,6 +8,13 @@ const {
   sanitizePreviewPngBuffer,
   generateCoverFromOutputDir,
 } = require('./thumbnail-preview-utils');
+const {
+  POTION_BOTTLES,
+  POTION_COLORS,
+  POTION_OVERLAY,
+  POTION_PRODUCTS,
+  compositePotion,
+} = require('./lib/potion-composite');
 const { PACK_ID_OVERRIDES, sanitizeName } = require('./pack-utils');
 
 // 粒子图集裁剪映射 (16x16 网格, index = x + y * 16)
@@ -27,11 +34,11 @@ const KEY_TEXTURES = {
   items: [
     ['assets/minecraft/textures/items/diamond_sword.png'],
     ['assets/minecraft/textures/items/ender_pearl.png'],
-    { composite: 'potion', bottle: 'assets/minecraft/textures/items/potion_bottle_splash.png', overlay: 'assets/minecraft/textures/items/potion_overlay.png', color: [248, 36, 35] },
     ['assets/minecraft/textures/items/steak.png', 'assets/minecraft/textures/items/beef_cooked.png'],
     ['assets/minecraft/textures/items/iron_sword.png'],
     ['assets/minecraft/textures/items/stone_sword.png'],
     ['assets/minecraft/textures/items/fishing_rod_uncast.png'],
+    ['assets/minecraft/textures/items/bow_standby.png', 'assets/minecraft/textures/items/bow.png'],
     ['assets/minecraft/textures/items/apple_golden.png'],
     ['assets/minecraft/textures/items/golden_carrot.png', 'assets/minecraft/textures/items/carrot_golden.png'],
   ],
@@ -239,7 +246,44 @@ function convertRarToZip(rarPath) {
   }
 }
 
-async function extractPack(zipPath) {
+function readZipOrDefault(zip, relativePath) {
+  const entry = zip.getEntry(relativePath);
+  if (entry) return entry.getData();
+  const defaultPath = path.join('Default_Texture', relativePath);
+  return fs.existsSync(defaultPath) ? fs.readFileSync(defaultPath) : null;
+}
+
+// Potions are composites, not plain textures: a tinted liquid mask under a bottle
+// sprite. The healing splash keeps its own name because the detail page renders it,
+// and the raw mask and bottles are kept for the browser's dynamic potion renderer.
+async function extractPotions(zip, outputDir, extracted) {
+  const overlay = readZipOrDefault(zip, POTION_OVERLAY);
+  if (!overlay) return;
+
+  const bottles = {};
+  for (const [shape, relativePath] of Object.entries(POTION_BOTTLES)) {
+    const buffer = readZipOrDefault(zip, relativePath);
+    if (buffer) bottles[shape] = buffer;
+  }
+
+  for (const [shape, buffer] of Object.entries(bottles)) {
+    const sanitized = await sanitizePreviewPngBuffer(await getFirstFrame(buffer));
+    fs.writeFileSync(path.join(outputDir, `potion_bottle_${shape}.png`), sanitized.buffer);
+  }
+  const sanitizedOverlay = await sanitizePreviewPngBuffer(await getFirstFrame(overlay));
+  fs.writeFileSync(path.join(outputDir, 'potion_overlay.png'), sanitizedOverlay.buffer);
+
+  for (const product of POTION_PRODUCTS) {
+    const bottle = bottles[product.bottle];
+    if (!bottle) continue;
+    const composited = await compositePotion({ bottle, overlay, color: POTION_COLORS[product.color] });
+    const sanitized = await sanitizePreviewPngBuffer(composited);
+    await fs.promises.writeFile(path.join(outputDir, product.file), sanitized.buffer);
+    extracted.items.push(product.file);
+  }
+}
+
+async function extractPack(zipPath, outputRoot = 'thumbnails') {
   const sourceOriginalName = path.basename(zipPath, path.extname(zipPath));
   zipPath = fixNestedArchive(zipPath);
   const originalName = sourceOriginalName;
@@ -256,7 +300,7 @@ async function extractPack(zipPath) {
     return null;
   }
 
-  const outputDir = path.join('thumbnails', packId);
+  const outputDir = path.join(outputRoot, packId);
   fs.mkdirSync(outputDir, { recursive: true });
 
   const extracted = { items: [], blocks: [], armor: [], gui: [], font: [], skin: [], particle: [] };
@@ -287,97 +331,6 @@ async function extractPack(zipPath) {
 
   for (const [category, pathsArray] of Object.entries(KEY_TEXTURES)) {
     for (const alternatives of pathsArray) {
-      // Handle composite textures (like potions)
-      if (alternatives.composite === 'potion') {
-        const filename = 'splash_potion_of_healing.png';
-        const bottleEntry = zip.getEntry(alternatives.bottle);
-        const overlayEntry = zip.getEntry(alternatives.overlay);
-
-        let bottleBuffer = bottleEntry ? bottleEntry.getData() : null;
-        let overlayBuffer = overlayEntry ? overlayEntry.getData() : null;
-
-        if (!bottleBuffer) {
-          const defaultPath = path.join('Default_Texture', alternatives.bottle);
-          if (fs.existsSync(defaultPath)) bottleBuffer = fs.readFileSync(defaultPath);
-        }
-        if (!overlayBuffer) {
-          const defaultPath = path.join('Default_Texture', alternatives.overlay);
-          if (fs.existsSync(defaultPath)) overlayBuffer = fs.readFileSync(defaultPath);
-        }
-
-        if (bottleBuffer && overlayBuffer) {
-          const [r, g, b] = alternatives.color;
-
-          // Extract first frame if animated
-          bottleBuffer = await getFirstFrame(bottleBuffer);
-          overlayBuffer = await getFirstFrame(overlayBuffer);
-
-          // Normalize both textures to the same size
-          const bottleMeta = await sharp(bottleBuffer).metadata();
-          const overlayMeta0 = await sharp(overlayBuffer).metadata();
-          const targetSize = Math.max(bottleMeta.width, bottleMeta.height, overlayMeta0.width, overlayMeta0.height);
-
-          if (bottleMeta.width !== targetSize || bottleMeta.height !== targetSize) {
-            bottleBuffer = await sharp(bottleBuffer).resize(targetSize, targetSize, { kernel: 'nearest' }).toBuffer();
-          }
-          if (overlayMeta0.width !== targetSize || overlayMeta0.height !== targetSize) {
-            overlayBuffer = await sharp(overlayBuffer).resize(targetSize, targetSize, { kernel: 'nearest' }).toBuffer();
-          }
-
-          // 获取 overlay 的原始像素数据
-          const overlayRaw = await sharp(overlayBuffer)
-            .ensureAlpha()
-            .raw()
-            .toBuffer({ resolveWithObject: true });
-
-          const overlayPixels = overlayRaw.data;
-          const { width, height } = overlayRaw.info;
-
-          // Multiply 染色：颜色与灰度相乘，保留阴影细节
-          for (let i = 0; i < overlayPixels.length; i += 4) {
-            if (overlayPixels[i + 3] > 0) {
-              overlayPixels[i] = Math.round(overlayPixels[i] * r / 255);
-              overlayPixels[i + 1] = Math.round(overlayPixels[i + 1] * g / 255);
-              overlayPixels[i + 2] = Math.round(overlayPixels[i + 2] * b / 255);
-            }
-          }
-
-          // 创建染色后的 overlay
-          const tintedOverlay = await sharp(overlayPixels, { raw: { width, height, channels: 4 } })
-            .png()
-            .toBuffer();
-
-          // 正确的合成顺序：透明画布 + 染色液体 + 瓶子
-          const overlayMeta = await sharp(tintedOverlay).metadata();
-          const composited = await sharp({
-            create: {
-              width: overlayMeta.width,
-              height: overlayMeta.height,
-              channels: 4,
-              background: { r: 0, g: 0, b: 0, alpha: 0 }
-            }
-          })
-            .composite([
-              { input: tintedOverlay, blend: 'over' },
-              { input: bottleBuffer, blend: 'over' }
-            ])
-            .png()
-            .toBuffer();
-
-          const sanitizedPotion = await sanitizePreviewPngBuffer(composited);
-          await fs.promises.writeFile(path.join(outputDir, filename), sanitizedPotion.buffer);
-
-          // 同时保存原始 overlay 和 bottle 供前端动态渲染使用
-          const sanitizedOverlay = await sanitizePreviewPngBuffer(overlayBuffer);
-          const sanitizedBottle = await sanitizePreviewPngBuffer(bottleBuffer);
-          fs.writeFileSync(path.join(outputDir, 'potion_overlay.png'), sanitizedOverlay.buffer);
-          fs.writeFileSync(path.join(outputDir, 'potion_bottle_splash.png'), sanitizedBottle.buffer);
-
-          extracted[category].push(filename);
-        }
-        continue;
-      }
-
       let entry = null;
       const filename = path.basename(alternatives[0]);
       for (const alt of alternatives) {
@@ -414,6 +367,8 @@ async function extractPack(zipPath) {
       }
     }
   }
+
+  await extractPotions(zip, outputDir, extracted);
 
   // 从 particles.png 裁剪出单个粒子贴图
   const particlesPath = path.join(outputDir, 'particles.png');
@@ -808,4 +763,5 @@ module.exports = {
   main,
   parseArgs,
   upsertExtraction,
+  extractPack,
 };

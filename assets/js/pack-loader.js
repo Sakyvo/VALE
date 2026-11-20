@@ -112,26 +112,7 @@ class PackLoader {
     coverImg.alt = pack.displayName;
     coverImg.loading = 'lazy';
     coverImg.style.imageRendering = 'pixelated';
-
-    coverImg.onload = function() {
-      // Cover is 2:1 ratio, frame height = width / 2
-      const frameH = this.naturalWidth / 2;
-      const frames = this.naturalHeight / frameH;
-      if (Number.isInteger(frames) && frames > 1) {
-        const wrapper = document.createElement('div');
-        wrapper.className = 'cover animated-cover';
-        wrapper.style.backgroundImage = `url(${this.src})`;
-        wrapper.style.backgroundSize = `100% ${frames * 100}%`;
-        wrapper.style.imageRendering = 'pixelated';
-        let currentFrame = 0;
-        setInterval(() => {
-          currentFrame = (currentFrame + 1) % frames;
-          wrapper.style.backgroundPosition = `0 ${(currentFrame / (frames - 1)) * 100}%`;
-        }, 100);
-        this.replaceWith(wrapper);
-      }
-    };
-    coverImg.src = pack.cover;
+    coverImg.src = valeCoverUrl(pack.cover);
 
     el.innerHTML = `
       <div class="info">

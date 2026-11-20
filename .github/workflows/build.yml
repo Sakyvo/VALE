@@ -17,6 +17,11 @@ on:
       - 'package.json'
       - 'package-lock.json'
   workflow_dispatch:
+    inputs:
+      preserve_catalog:
+        description: 'Deploy committed catalog without extraction or index regeneration'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -42,13 +47,16 @@ jobs:
 
       - run: npm install
 
-      - run: node scripts/extract-textures.js
+      - if: ${{ inputs.preserve_catalog != true }}
+        run: node scripts/extract-textures.js
 
-      - run: node scripts/generate-index.js
+      - if: ${{ inputs.preserve_catalog != true }}
+        run: node scripts/generate-index.js
 
       - run: node scripts/build.js
 
       - name: Commit changes
+        if: ${{ inputs.preserve_catalog != true }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
