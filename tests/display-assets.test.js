@@ -2,6 +2,7 @@ const assert = require('node:assert/strict');
 const test = require('node:test');
 const {
   ATLAS_FILES,
+  classify,
   planDisplayAsset,
 } = require('../scripts/lib/display-assets');
 
@@ -61,6 +62,14 @@ test('cover.png never changes at any input size', () => {
   assert.deepEqual(planDisplayAsset('cover.png', 1920, 1080), { action: 'keep' });
   assert.deepEqual(planDisplayAsset('cover.png', 4096, 4096), { action: 'keep' });
   assert.deepEqual(planDisplayAsset('cover.png', 100, 100), { action: 'keep' });
+});
+
+test('the published HUD cover object is never downsampled either', () => {
+  assert.deepEqual(planDisplayAsset('cover-hud-v1.png', 728, 196), { action: 'keep' });
+  assert.deepEqual(planDisplayAsset('cover-hud-v1.png', 1456, 392), { action: 'keep' });
+  assert.equal(classify('cover-hud-v1.png'), 'cover');
+  assert.equal(classify('cover.png'), 'cover');
+  assert.equal(classify('cover-hud.png'), 'item');
 });
 
 test('every resize is a power-of-two factor applied uniformly to both sides', () => {

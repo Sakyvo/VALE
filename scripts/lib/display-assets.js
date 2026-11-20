@@ -1,8 +1,8 @@
 // Display-asset downsample rules (pure).
 //
 // Classification by filename:
-// - cover.png: never touched. It is the published HUD strip and must keep its exact
-//   728x196 geometry; see .docs/spec/pack-cover.md.
+// - cover*.png: never touched. They are the published HUD strip and must keep their
+//   exact 728x196 geometry; see .docs/spec/pack-cover.md.
 // - Atlas class (particles/inventory/inv/icons/widgets): capped at 512 on the
 //   LARGER side. The frontend slices these atlases at fixed 256-base
 //   coordinates scaled by image width, so a uniform power-of-two factor keeps
@@ -28,7 +28,7 @@ const ITEM_CAP = 256;
 const COVER_FILE = 'cover.png';
 
 function classify(fileName) {
-  if (fileName === COVER_FILE) return 'cover';
+  if (/^cover(-hud-v\d+)?\.png$/.test(fileName)) return 'cover';
   if (ATLAS_FILES.has(fileName)) return 'atlas';
   return 'item';
 }
