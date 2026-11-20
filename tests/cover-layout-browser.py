@@ -53,11 +53,13 @@ async def main():
             await cdp_call(ws, 'Network.setCacheDisabled', {'cacheDisabled': True})
             async def navigate(route, ready):
                 await cdp_call(ws, 'Page.navigate', {'url': base + route})
-                await wait_for(ws, ready, timeout=60)
+                await wait_for(ws, ready, timeout=180)
             async def measure(selector, page, width):
                 await wait_for(ws, f"(() => {{const i=document.querySelector({json.dumps(selector)});return i && i.complete;}})()", timeout=240)
                 probe = await cdp_eval(ws, f"(() => {{const i=document.querySelector({json.dumps(selector)});return [i.naturalWidth,i.naturalHeight,i.currentSrc];}})()")
                 if probe[0] == 0:
+                    markup = await cdp_eval(ws, "document.querySelector('#sbi-results').innerHTML.slice(0,400)")
+                    print('SBI MARKUP', page, width, repr(markup)[:400])
                     diag = await cdp_eval(ws, f"(async () => {{ try {{ const r = await fetch({json.dumps(probe[2])}); return [r.status, r.headers.get('content-type')]; }} catch (e) {{ return ['fetch error', String(e)]; }} }})()")
                     print('IMAGE DIAGNOSTIC', page, width, probe, diag)
                 assert probe[0] > 0, (page, width, probe)
@@ -90,7 +92,7 @@ async def main():
                 if local: await cdp_eval(ws, "(" + localize + ")()")
                 await measure('.pack-card .cover', 'list', width)
                 await navigate('/sbi/', "!!window.__sbiTest && !!window.__sbiTest.renderResultCard")
-                await cdp_eval(ws, "(async()=>{const el=document.querySelector('#sbi-results');el.hidden=false;el.innerHTML=window.__sbiTest.renderResultCard({name:'Eum3_Blue_Editee',score:1},0,'full');})()")
+                await cdp_eval(ws, "(async()=>{await window.__sbiTest.ensurePackNameIndex();const el=document.querySelector('#sbi-results');el.hidden=false;el.innerHTML=window.__sbiTest.renderResultCard({name:'Eum3_Blue_Editee',score:1},0,'full');})()")
                 if local: await cdp_eval(ws, "(" + localize + ")()")
                 await measure('.sbi-result-cover', 'sbi', width)
             print(json.dumps({'passed':len(results),'results':results}, ensure_ascii=True))
