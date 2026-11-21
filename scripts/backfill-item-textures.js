@@ -1,7 +1,8 @@
 // Backfill one item texture into every pack's local master directory, reading each
 // archive over HTTP range requests so the catalog is never downloaded.
 //
-//   node scripts/backfill-item-textures.js [--limit N] [--concurrency N] [--pack <id> ...] [--dry-run]
+//   node scripts/backfill-item-textures.js [--set bow|potion-bottle] [--limit N]
+//                                          [--concurrency N] [--pack <id> ...] [--dry-run]
 //
 // Driven by data/pack-registry.json (archive filename -> repository). Packs whose
 // texture is already present are skipped, so an interrupted run resumes cheaply.
@@ -26,22 +27,37 @@ const BOW_TEXTURES = [
   'assets/minecraft/textures/items/bow.png',
 ];
 
-const TARGET_BASENAME = 'bow_standby.png';
+// One declaration per backfillable texture: archive names to try, the master filename it
+// lands on, and the human label used in the run summary.
+const TEXTURE_SETS = {
+  bow: { label: 'Bow', archiveNames: BOW_TEXTURES, masterName: 'bow_standby.png' },
+  // The cover's two drinkable slots need the bottle outline the pack actually ships; the
+  // liquid mask alone leaves the silhouette vanilla.
+  'potion-bottle': {
+    label: 'Potion bottle',
+    archiveNames: ['assets/minecraft/textures/items/potion_bottle_drinkable.png'],
+    masterName: 'potion_bottle_drinkable.png',
+  },
+};
+
+const DEFAULT_SET = 'bow';
 // A stalled archive must free its worker quickly; the reader retries, and an archive
 // that keeps timing out is reported rather than allowed to hold the crawl.
 const REQUEST_TIMEOUT_MS = 15_000;
 
 function parseArgs(argv) {
-  const options = { limit: 0, concurrency: 4, packs: [], dryRun: false, base: DEFAULT_ARCHIVE_BASE };
+  const options = { limit: 0, concurrency: 4, packs: [], dryRun: false, base: DEFAULT_ARCHIVE_BASE, set: DEFAULT_SET };
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
-    if (arg === '--limit') options.limit = Number(argv[++i]);
+    if (arg === '--set') options.set = argv[++i];
+    else if (arg === '--limit') options.limit = Number(argv[++i]);
     else if (arg === '--concurrency') options.concurrency = Number(argv[++i]);
     else if (arg === '--pack') options.packs.push(argv[++i]);
     else if (arg === '--base') options.base = argv[++i];
     else if (arg === '--dry-run') options.dryRun = true;
     else throw new Error(`Unknown argument: ${arg}`);
   }
+  if (!TEXTURE_SETS[options.set]) throw new Error(`Unknown --set: ${options.set}`);
   return options;
 }
 
@@ -51,26 +67,27 @@ function archiveUrl(base, repo, fileName) {
 
 // One pack. Never throws: a broken archive is data to report, not a reason to stop
 // the run, because the catalog is 3000+ independent archives.
-async function backfillPack({ archiveUrl, outputDir, dryRun = false }) {
+async function backfillPack({ archiveUrl, outputDir, dryRun = false, set = DEFAULT_SET }) {
+  const { archiveNames, masterName } = TEXTURE_SETS[set];
   if (!fs.existsSync(outputDir)) return { status: 'no-master' };
-  if (BOW_TEXTURES.some(name => fs.existsSync(path.join(outputDir, path.basename(name))))) {
+  if (archiveNames.some(name => fs.existsSync(path.join(outputDir, path.basename(name))))) {
     return { status: 'present' };
   }
 
   let entries;
   let missing;
   try {
-    ({ entries, missing } = await readArchiveEntries(archiveUrl, BOW_TEXTURES, { timeoutMs: REQUEST_TIMEOUT_MS }));
+    ({ entries, missing } = await readArchiveEntries(archiveUrl, archiveNames, { timeoutMs: REQUEST_TIMEOUT_MS }));
   } catch (error) {
     return { status: 'unreadable', reason: error.message };
   }
 
-  // Prefer the 1.8 name, then the later one.
-  const chosen = BOW_TEXTURES.find(name => entries.has(name));
+  // Prefer the first declared name that exists (1.8 name before the later one).
+  const chosen = archiveNames.find(name => entries.has(name));
   if (!chosen) return { status: 'absent', reason: missing.join(', ') };
   if (dryRun) return { status: 'written', name: chosen, dryRun: true };
 
-  await fs.promises.writeFile(path.join(outputDir, TARGET_BASENAME), entries.get(chosen));
+  await fs.promises.writeFile(path.join(outputDir, masterName), entries.get(chosen));
   return { status: 'written', name: chosen };
 }
 
@@ -107,6 +124,7 @@ async function main(argv = process.argv.slice(2)) {
       archiveUrl: archiveUrl(options.base, target.repo, target.fileName),
       outputDir: path.join(THUMB_DIR, target.packId),
       dryRun: options.dryRun,
+      set: options.set,
     });
     if ((index + 1) % 100 === 0) console.log(`  ${index + 1}/${targets.length}`);
     return { ...target, ...result };
@@ -120,7 +138,7 @@ async function main(argv = process.argv.slice(2)) {
   for (const row of results) {
     if (row.status === 'unreadable') console.log(`  unreadable ${row.packId} (${row.repo}): ${row.reason}`);
   }
-  console.log(`Bow backfill: ${JSON.stringify(counts)}`);
+  console.log(`${TEXTURE_SETS[options.set].label} backfill: ${JSON.stringify(counts)}`);
   return { counts, results };
 }
 
@@ -133,6 +151,7 @@ if (require.main === module) {
 
 module.exports = {
   BOW_TEXTURES,
+  TEXTURE_SETS,
   archiveUrl,
   backfillPack,
   main,

@@ -7,7 +7,7 @@ const test = require('node:test');
 const AdmZip = require('adm-zip');
 const sharp = require('sharp');
 
-const { backfillPack, BOW_TEXTURES } = require('../scripts/backfill-item-textures');
+const { backfillPack, BOW_TEXTURES, TEXTURE_SETS, parseArgs } = require('../scripts/backfill-item-textures');
 
 const BOW = 'assets/minecraft/textures/items/bow_standby.png';
 
@@ -127,5 +127,43 @@ test('bow texture names cover both the 1.8 and later layouts', () => {
   assert.deepEqual(BOW_TEXTURES, [
     'assets/minecraft/textures/items/bow_standby.png',
     'assets/minecraft/textures/items/bow.png',
+  ]);
+});
+test('the potion-bottle set takes only the drinkable bottle and writes it under its own name', async () => {
+  const bottle = await sharp({
+    create: { width: 16, height: 16, channels: 4, background: { r: 90, g: 40, b: 120, alpha: 1 } },
+  }).png().toBuffer();
+  const zip = new AdmZip();
+  zip.addFile('pack.mcmeta', Buffer.from('{"pack":{"pack_format":1}}'));
+  zip.addFile('assets/minecraft/textures/items/potion_bottle_drinkable.png', bottle);
+  zip.addFile('assets/minecraft/textures/items/potion_bottle_splash.png', Buffer.from('not the target'));
+  const served = await serve(zip.toBuffer());
+  try {
+    const dir = await packDir();
+    const result = await backfillPack({ archiveUrl: served.url, outputDir: dir, set: 'potion-bottle' });
+
+    assert.equal(result.status, 'written');
+    assert.deepEqual(await fs.promises.readdir(dir), ['potion_bottle_drinkable.png']);
+    assert.deepEqual(await fs.promises.readFile(path.join(dir, 'potion_bottle_drinkable.png')), bottle);
+  } finally {
+    served.close();
+  }
+});
+
+test('the potion-bottle set short-circuits on an already extracted bottle', async () => {
+  const dir = await packDir();
+  await fs.promises.writeFile(path.join(dir, 'potion_bottle_drinkable.png'), Buffer.from('already here'));
+  const result = await backfillPack({
+    archiveUrl: 'http://127.0.0.1:1/pack.zip', outputDir: dir, set: 'potion-bottle',
+  });
+
+  assert.equal(result.status, 'present');
+});
+
+test('--set rejects an unknown texture set instead of silently doing nothing', () => {
+  assert.throws(() => parseArgs(['--set', 'nope']), /Unknown --set: nope/);
+  assert.equal(parseArgs([]).set, 'bow');
+  assert.deepEqual(TEXTURE_SETS['potion-bottle'].archiveNames, [
+    'assets/minecraft/textures/items/potion_bottle_drinkable.png',
   ]);
 });

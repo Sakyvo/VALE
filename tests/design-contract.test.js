@@ -133,14 +133,14 @@ test('modals carry the elevated card language with entrance motion', () => {
   assert.match(block(source, '.modal-buttons .btn {'), /margin: 0;/, 'modal buttons drop the default .btn margins');
 });
 
-test('UI font is HarmonyOS Sans with the system stack as fallback', () => {
+test('UI font is the repository-hosted MinecraftAE Soft subset', () => {
   const source = css();
-  assert.match(rootBlock(source), /--font-ui: 'HarmonyOS Sans', -apple-system/);
-  const face = source.match(/@font-face \{[^}]*HarmonyOS Sans[^}]*\}/);
-  assert.ok(face, '@font-face for HarmonyOS Sans exists');
-  assert.match(face[0], /harmonyos-sans\.woff2/);
-  assert.match(face[0], /font-weight: 100 900;/, 'variable weight range declared');
+  assert.match(rootBlock(source), /--font-ui: 'MinecraftAE Soft', -apple-system/);
+  const face = source.match(/@font-face \{[^}]*MinecraftAE Soft[^}]*\}/);
+  assert.ok(face, '@font-face for MinecraftAE Soft exists');
+  assert.match(face[0], /minecraft-ae-soft\.woff2/);
   assert.match(face[0], /font-display: swap;/);
+  assert.equal(fs.existsSync(path.join(ROOT, 'assets', 'fonts', 'minecraft-ae-soft.woff2')), true);
 });
 
 test('admin/List reusable templates carry no inline style attributes', () => {
@@ -171,7 +171,7 @@ function mobileBlocks(source) {
 
 test('mobile: interactive controls reach 40px tap targets at 600px', () => {
   const mobile = mobileBlocks(css());
-  for (const selector of ['.nav-icon-btn', '.sort-btn', '.tab-btn', '.btn-compact', '.sbi-preset-btn', '.sbi-action-btn', '.sbi-mode-btn']) {
+  for (const selector of ['.nav-icon-btn', '.sort-btn', '.tab-btn', '.btn', '.btn-compact', '.sbi-preset-btn', '.sbi-action-btn', '.sbi-mode-btn']) {
     const rule = mobile.match(new RegExp(`[^}]*${selector.replace('.', '\.')}[^{]*\{([^}]*)\}`));
     assert.ok(rule, `600px block styles ${selector}`);
     assert.match(rule[1], /min-height: 40px/, `${selector} reaches 40px tap target on mobile`);
@@ -234,7 +234,7 @@ test('mobile: min-height controls center their label instead of leaving bottom p
     selectors: m[1].split(',').map(sel => sel.trim()),
     body: m[2],
   }));
-  for (const selector of ['.nav-btn', '.tab-btn', '.sort-btn', '.btn-compact', '.sbi-preset-btn', '.sbi-action-btn', '.sbi-mode-btn']) {
+  for (const selector of ['.nav-btn', '.tab-btn', '.sort-btn', '.btn', '.btn-compact', '.sbi-preset-btn', '.sbi-action-btn', '.sbi-mode-btn']) {
     const declared = rules.filter(r => r.selectors.includes(selector)).map(r => r.body).join(' ');
     assert.ok(declared, `600px block styles ${selector}`);
     assert.match(declared, /min-height: 40px/, `${selector} keeps its 40px tap target`);
@@ -368,6 +368,11 @@ test('the cover is a wide HUD strip: cards use three columns of 26:7 cover', () 
 
   assert.match(block(source, '\n.pack-card .cover {'), /aspect-ratio: 26 \/ 7;/, 'cover keeps the strip ratio');
   assert.match(block(source, '\n.pack-card .cover {'), /object-fit: contain;/, 'all cover edges remain visible');
+  // A fractional card width leaves a sub-pixel sliver beside a contained image; it has to
+  // be the strip's own sky, not the pale panel tint.
+  assert.match(block(source, '\n.pack-card .cover {'), /background-color: #87CEEB;/, 'letterbox sliver is sky blue');
+  assert.match(block(source, '\n.sbi-result-cover {'), /background-color: #87CEEB;/);
+  assert.match(block(source, '\n.sbi-history-thumb {'), /background-color: #87CEEB;/);
   assert.match(block(source, '\n.pack-card .placeholder {'), /aspect-ratio: 26 \/ 7;/, 'the skeleton keeps the strip ratio');
 });
 
@@ -384,6 +389,30 @@ test('SBI thumbnails size by height so the strip is never cropped', () => {
   assert.doesNotMatch(historyThumb, /object-fit: cover/, 'history thumb must not crop');
 
   assert.match(source, /\.sbi-result-cover \{ height: 100%; \}/, 'mobile result cover keeps the ratio');
+});
+
+test('soft UI font, copy casing, compact controls, and detail cover contract', () => {
+  const source = css();
+  assert.match(rootBlock(source), /--font-ui: 'MinecraftAE Soft'/);
+  assert.match(source, /@font-face \{[^}]*font-family: 'MinecraftAE Soft'[^}]*minecraft-ae-soft\.woff2/);
+  assert.match(source, /font-size: 14px/);
+  assert.match(source, /text-transform: lowercase/);
+  assert.match(source, /\.main-card-info h1,[\s\S]*?text-transform: none/);
+  assert.match(source, /\.admin-pack-name,[\s\S]*?\.sbi-result-name/);
+  assert.match(block(source, '\n.list-grid .list-item .name {'), /font-family: var\(--font-ui\)/);
+  assert.match(source, /\.list-grid \.list-item \.name[\s\S]*?text-transform: lowercase/);
+  assert.match(block(source, '\n.pack-card .name {'), /font-family: var\(--font-mc\)/);
+
+  const detail = fs.readFileSync(path.join(ROOT, 'assets', 'js', 'pack-detail.js'), 'utf-8');
+  assert.match(detail, /<div class="sub-card">[\s\S]*?<img class="pack-detail-cover"/);
+  assert.doesNotMatch(detail, /gui-preview|img\('inv\.png'\)/);
+  assert.doesNotMatch(fs.readFileSync(path.join(ROOT, 'pack.html'), 'utf-8'), /gui-preview\.js|inventory-preview\.js/);
+  assert.match(detail, /inLists\.length \? `<p class="in-lists">/);
+  assert.doesNotMatch(block(source, '\n.preview-grid {'), /width|height/);
+  assert.doesNotMatch(detail, /pack\.displayName\.toLowerCase\(\)|packName\.toLowerCase\(\)/);
+  assert.match(source, /\.list-grid \.list-item \.name[\s\S]*?font-family: var\(--font-ui\)/);
+  assert.match(source, /\.pack-card \.name \{[\s\S]*?font-family: var\(--font-mc\)/);
+  assert.match(detail, /pack\.coloredName \|\| pack\.displayName/);
 });
 
 test('no renderer or stylesheet still plays multi-frame covers', () => {

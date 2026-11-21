@@ -1,14 +1,23 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { valeCoverUrl, VALE_COVER_FILE } = require('../assets/js/asset-base');
+const { valeCoverUrl, VALE_COVER_FILE, VALE_COVER_VERSION } = require('../assets/js/asset-base');
 const { selectCoverTargets } = require('../scripts/upload-assets-all');
 
 test('cover revision preserves encoded pack identity and is idempotent', () => {
   assert.equal(VALE_COVER_FILE, 'cover-hud-v1.png');
   const url = 'https://assets.vale.cc.cd/A%20%23B/cover.png?v=old';
-  assert.equal(valeCoverUrl(url), 'https://assets.vale.cc.cd/A%20%23B/cover-hud-v1.png');
-  assert.equal(valeCoverUrl(valeCoverUrl(url)), valeCoverUrl(url));
+  const expected = `https://assets.vale.cc.cd/A%20%23B/${VALE_COVER_FILE}?v=${VALE_COVER_VERSION}`;
+  assert.equal(valeCoverUrl(url), expected);
+  assert.equal(valeCoverUrl(valeCoverUrl(url)), expected);
   assert.equal(valeCoverUrl('/thumbnails/P/pack.png'), '/thumbnails/P/pack.png');
+});
+
+test('the cover URL carries a build cache buster so an in-place publish is picked up', () => {
+  assert.match(VALE_COVER_VERSION, /^\d+$/);
+  const bare = `https://assets.vale.cc.cd/P/${VALE_COVER_FILE}`;
+  assert.equal(valeCoverUrl(bare), `${bare}?v=${VALE_COVER_VERSION}`);
+  // The query must survive repeated rewriting rather than accumulate.
+  assert.equal(valeCoverUrl(valeCoverUrl(valeCoverUrl(bare))), `${bare}?v=${VALE_COVER_VERSION}`);
 });
 
 test('cover rollout targets every public identity even when already registered', () => {
