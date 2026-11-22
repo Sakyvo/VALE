@@ -167,3 +167,10 @@ test('--set rejects an unknown texture set instead of silently doing nothing', (
     'assets/minecraft/textures/items/potion_bottle_drinkable.png',
   ]);
 });
+
+test('--timeout is tunable per run and rejected when nonsensical', () => {
+  assert.equal(parseArgs([]).timeoutMs, 15000);
+  assert.equal(parseArgs(['--timeout', '40000']).timeoutMs, 40000);
+  assert.throws(() => parseArgs(['--timeout', '0']), /positive number/);
+  assert.throws(() => parseArgs(['--timeout', 'soon']), /positive number/);
+});

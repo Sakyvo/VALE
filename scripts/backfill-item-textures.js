@@ -42,22 +42,26 @@ const TEXTURE_SETS = {
 
 const DEFAULT_SET = 'bow';
 // A stalled archive must free its worker quickly; the reader retries, and an archive
-// that keeps timing out is reported rather than allowed to hold the crawl.
+// that keeps timing out is reported rather than allowed to hold the crawl. This host
+// flaps between fast and near-stalled, so the deadline is tunable per run: a longer one
+// converts many timeouts into successes during a slow window.
 const REQUEST_TIMEOUT_MS = 15_000;
 
 function parseArgs(argv) {
-  const options = { limit: 0, concurrency: 4, packs: [], dryRun: false, base: DEFAULT_ARCHIVE_BASE, set: DEFAULT_SET };
+  const options = { limit: 0, concurrency: 4, packs: [], dryRun: false, base: DEFAULT_ARCHIVE_BASE, set: DEFAULT_SET, timeoutMs: REQUEST_TIMEOUT_MS };
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
     if (arg === '--set') options.set = argv[++i];
     else if (arg === '--limit') options.limit = Number(argv[++i]);
     else if (arg === '--concurrency') options.concurrency = Number(argv[++i]);
+    else if (arg === '--timeout') options.timeoutMs = Number(argv[++i]);
     else if (arg === '--pack') options.packs.push(argv[++i]);
     else if (arg === '--base') options.base = argv[++i];
     else if (arg === '--dry-run') options.dryRun = true;
     else throw new Error(`Unknown argument: ${arg}`);
   }
   if (!TEXTURE_SETS[options.set]) throw new Error(`Unknown --set: ${options.set}`);
+  if (!Number.isFinite(options.timeoutMs) || options.timeoutMs <= 0) throw new Error('--timeout must be a positive number of milliseconds');
   return options;
 }
 
@@ -67,7 +71,7 @@ function archiveUrl(base, repo, fileName) {
 
 // One pack. Never throws: a broken archive is data to report, not a reason to stop
 // the run, because the catalog is 3000+ independent archives.
-async function backfillPack({ archiveUrl, outputDir, dryRun = false, set = DEFAULT_SET }) {
+async function backfillPack({ archiveUrl, outputDir, dryRun = false, set = DEFAULT_SET, timeoutMs = REQUEST_TIMEOUT_MS }) {
   const { archiveNames, masterName } = TEXTURE_SETS[set];
   if (!fs.existsSync(outputDir)) return { status: 'no-master' };
   if (archiveNames.some(name => fs.existsSync(path.join(outputDir, path.basename(name))))) {
@@ -77,7 +81,7 @@ async function backfillPack({ archiveUrl, outputDir, dryRun = false, set = DEFAU
   let entries;
   let missing;
   try {
-    ({ entries, missing } = await readArchiveEntries(archiveUrl, archiveNames, { timeoutMs: REQUEST_TIMEOUT_MS }));
+    ({ entries, missing } = await readArchiveEntries(archiveUrl, archiveNames, { timeoutMs }));
   } catch (error) {
     return { status: 'unreadable', reason: error.message };
   }
@@ -125,6 +129,7 @@ async function main(argv = process.argv.slice(2)) {
       outputDir: path.join(THUMB_DIR, target.packId),
       dryRun: options.dryRun,
       set: options.set,
+      timeoutMs: options.timeoutMs,
     });
     if ((index + 1) % 100 === 0) console.log(`  ${index + 1}/${targets.length}`);
     return { ...target, ...result };
