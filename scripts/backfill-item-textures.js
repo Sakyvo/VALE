@@ -9,7 +9,7 @@
 
 const fs = require('node:fs');
 const path = require('node:path');
-const { readArchiveEntries } = require('./lib/remote-archive');
+const { readArchiveEntries, MAX_ATTEMPTS } = require('./lib/remote-archive');
 const { getPackIdFromZipName } = require('./pack-utils');
 
 const THUMB_DIR = path.join(__dirname, '..', 'thumbnails');
@@ -41,6 +41,9 @@ const TEXTURE_SETS = {
 };
 
 const DEFAULT_SET = 'bow';
+// A bulk sweep wants failures to cost one deadline, not five: an archive that stalls once
+// usually stalls again, and five 45s attempts per bad pack starves the healthy ones.
+const DEFAULT_ATTEMPTS = MAX_ATTEMPTS;
 // A stalled archive must free its worker quickly; the reader retries, and an archive
 // that keeps timing out is reported rather than allowed to hold the crawl. This host
 // flaps between fast and near-stalled, so the deadline is tunable per run: a longer one
@@ -48,13 +51,14 @@ const DEFAULT_SET = 'bow';
 const REQUEST_TIMEOUT_MS = 15_000;
 
 function parseArgs(argv) {
-  const options = { limit: 0, concurrency: 4, packs: [], dryRun: false, base: DEFAULT_ARCHIVE_BASE, set: DEFAULT_SET, timeoutMs: REQUEST_TIMEOUT_MS };
+  const options = { limit: 0, concurrency: 4, packs: [], dryRun: false, base: DEFAULT_ARCHIVE_BASE, set: DEFAULT_SET, timeoutMs: REQUEST_TIMEOUT_MS, attempts: DEFAULT_ATTEMPTS };
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
     if (arg === '--set') options.set = argv[++i];
     else if (arg === '--limit') options.limit = Number(argv[++i]);
     else if (arg === '--concurrency') options.concurrency = Number(argv[++i]);
     else if (arg === '--timeout') options.timeoutMs = Number(argv[++i]);
+    else if (arg === '--attempts') options.attempts = Number(argv[++i]);
     else if (arg === '--pack') options.packs.push(argv[++i]);
     else if (arg === '--base') options.base = argv[++i];
     else if (arg === '--dry-run') options.dryRun = true;
@@ -62,6 +66,7 @@ function parseArgs(argv) {
   }
   if (!TEXTURE_SETS[options.set]) throw new Error(`Unknown --set: ${options.set}`);
   if (!Number.isFinite(options.timeoutMs) || options.timeoutMs <= 0) throw new Error('--timeout must be a positive number of milliseconds');
+  if (!Number.isInteger(options.attempts) || options.attempts < 1) throw new Error('--attempts must be a positive integer');
   return options;
 }
 
@@ -71,7 +76,7 @@ function archiveUrl(base, repo, fileName) {
 
 // One pack. Never throws: a broken archive is data to report, not a reason to stop
 // the run, because the catalog is 3000+ independent archives.
-async function backfillPack({ archiveUrl, outputDir, dryRun = false, set = DEFAULT_SET, timeoutMs = REQUEST_TIMEOUT_MS }) {
+async function backfillPack({ archiveUrl, outputDir, dryRun = false, set = DEFAULT_SET, timeoutMs = REQUEST_TIMEOUT_MS, attempts = DEFAULT_ATTEMPTS }) {
   const { archiveNames, masterName } = TEXTURE_SETS[set];
   if (!fs.existsSync(outputDir)) return { status: 'no-master' };
   if (archiveNames.some(name => fs.existsSync(path.join(outputDir, path.basename(name))))) {
@@ -81,7 +86,7 @@ async function backfillPack({ archiveUrl, outputDir, dryRun = false, set = DEFAU
   let entries;
   let missing;
   try {
-    ({ entries, missing } = await readArchiveEntries(archiveUrl, archiveNames, { timeoutMs }));
+    ({ entries, missing } = await readArchiveEntries(archiveUrl, archiveNames, { timeoutMs, maxAttempts: attempts }));
   } catch (error) {
     return { status: 'unreadable', reason: error.message };
   }
@@ -130,6 +135,7 @@ async function main(argv = process.argv.slice(2)) {
       dryRun: options.dryRun,
       set: options.set,
       timeoutMs: options.timeoutMs,
+      attempts: options.attempts,
     });
     if ((index + 1) % 100 === 0) console.log(`  ${index + 1}/${targets.length}`);
     return { ...target, ...result };

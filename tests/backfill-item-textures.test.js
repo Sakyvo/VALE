@@ -174,3 +174,10 @@ test('--timeout is tunable per run and rejected when nonsensical', () => {
   assert.throws(() => parseArgs(['--timeout', '0']), /positive number/);
   assert.throws(() => parseArgs(['--timeout', 'soon']), /positive number/);
 });
+
+test('--attempts lets a bulk sweep cap how long one bad archive can cost', () => {
+  assert.equal(parseArgs([]).attempts, 5);
+  assert.equal(parseArgs(['--attempts', '2']).attempts, 2);
+  assert.throws(() => parseArgs(['--attempts', '0']), /positive integer/);
+  assert.throws(() => parseArgs(['--attempts', '2.5']), /positive integer/);
+});
